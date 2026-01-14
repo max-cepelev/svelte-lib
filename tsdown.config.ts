@@ -8,13 +8,11 @@ import { svelteDtsPlugin } from './scripts/tsdown-plugin-svelte-dts.js';
 
 export default defineConfig({
   platform: 'browser',
+  unbundle: true,
   plugins: [
     svelte({ preprocess: sveltePreprocess() }),
     vanillaExtractPlugin({
       identifiers: ({ debugId, hash }) => `${debugId ?? 'style'}__${hash}`,
-      // extract: {
-      //   name: 'styles.css',
-      // }
     }),
     svelteDtsPlugin({
       declarationDir: './dist',

@@ -17,9 +17,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "verbatimModuleSyntax": true,
+    "outDir": "./dist",
     "paths": {
-      "~/components/*": ["src/components/index.ts"],
-      "~/styles/*": ["src/styles/index.ts"]
+      "~/*": ["src/*"],
+      "~/components/*": ["src/components/*"],
+      "~/styles/*": ["src/styles/*"]
     }
   },
   "include": ["src"]
