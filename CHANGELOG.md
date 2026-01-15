@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.0.0
+
+### Major Changes
+
+- added reset styles in button
+
 ## 0.5.0
 
 ### Minor Changes
