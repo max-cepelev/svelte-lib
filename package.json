@@ -1,6 +1,6 @@
 {
 	"name": "@max-ts/svelte",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"type": "module",
 	"description": "Svelte component library.",
 	"author": "Tsepelev Maksim",
@@ -9,10 +9,6 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		},
-		"./components/*": {
-			"types": "./dist/components/*/index.d.ts",
-			"svelte": "./dist/components/*/index.js"
 		}
 	},
 	"main": "./dist/index.js",
