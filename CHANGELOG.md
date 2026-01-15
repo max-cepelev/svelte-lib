@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.0.2
+
+### Patch Changes
+
+- fix tree shaking
+
 ## 1.0.1
 
 ### Patch Changes

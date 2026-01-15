@@ -21,7 +21,7 @@ export default defineConfig({
     }),
   ],
   outputOptions: {
-    minify: true,
+    minify: false,
   },
   alias: {
     '~/components': resolve(cwd(), './src/components'),
