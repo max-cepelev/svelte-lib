@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.0.1
+
+### Patch Changes
+
+- Изменен дефолтный радиус темы
+
 ## 1.0.0
 
 ### Major Changes
