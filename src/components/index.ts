@@ -1,4 +1,5 @@
 export * from './Accordion/index.js';
+export * from './Alert/index.js';
 export * from './Button/index.js';
 export * from './Calendar/index.js';
 export * from './Checkbox/index.js';

@@ -136,28 +136,28 @@ export const buttonVariants = styleVariants<
 
 const buttonSizes = styleVariants<Record<ButtonSize, ComplexStyleRule>>({
 	small: {
-		height: theme.spacing[6],
+		height: theme.spacing[7],
 		padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
 		borderRadius: theme.borderRadius.sm,
 		fontSize: theme.fontSize.xs,
 	},
 	medium: {
-		height: theme.spacing[8],
-		padding: `${theme.spacing[1]} ${theme.spacing[3]}`,
+		height: theme.spacing[9],
+		padding: `${theme.spacing[2]} ${theme.spacing[3]}`,
 		fontSize: theme.fontSize.sm,
 	},
 	large: {
 		height: theme.spacing[10],
-		padding: `${theme.spacing[2]} ${theme.spacing[4]}`,
+		padding: `${theme.spacing[3]} ${theme.spacing[4]}`,
 		fontSize: theme.fontSize.base,
 	},
 	icon: {
-		height: theme.spacing[8],
-		width: theme.spacing[8],
+		height: theme.spacing[9],
+		width: theme.spacing[9],
 	},
 	iconSmall: {
-		height: theme.spacing[6],
-		width: theme.spacing[6],
+		height: theme.spacing[7],
+		width: theme.spacing[7],
 	},
 });
 

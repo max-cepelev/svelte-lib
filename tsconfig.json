@@ -4,8 +4,8 @@
     "target": "esnext",
     "lib": ["es2023", "dom"],
     "moduleDetection": "force",
-    "module": "preserve",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "types": ["node"],
     "strict": true,
@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
     "outDir": "./dist",
     "paths": {
