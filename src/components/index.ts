@@ -2,6 +2,7 @@ export * from './Accordion/index.js';
 export * from './Alert/index.js';
 export * from './Button/index.js';
 export * from './Calendar/index.js';
+export * from './Card/index.js';
 export * from './Checkbox/index.js';
 export * from './CircularProgress/index.js';
 export * from './DataGrid/index.js';
