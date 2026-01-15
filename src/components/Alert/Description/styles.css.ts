@@ -2,12 +2,12 @@ import { globalStyle, style } from '~/styles/index.js';
 import { theme } from '~/styles/theme.css.js';
 
 const description = style({
-	gridColumn: 2,
+	gridArea: 'description',
 	display: 'grid',
 	justifyItems: 'start',
 	gap: theme.spacing[1],
 	fontSize: theme.fontSize.sm,
-	color: theme.colors.text.secondary,
+	opacity: 0.8,
 });
 
 globalStyle(`${description} p`, {

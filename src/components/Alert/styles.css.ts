@@ -1,6 +1,7 @@
 import {
 	type ComplexStyleRule,
 	globalStyle,
+	spacing,
 	style,
 	styleVariants,
 } from '~/styles/index.js';
@@ -10,25 +11,23 @@ import type { AlertVariant } from './types.js';
 const alertBase = style({
 	position: 'relative',
 	display: 'grid',
-	gridTemplateColumns: '0 1fr',
-	alignItems: 'start',
-	gap: `${theme.spacing[1]} 0`,
+	gridTemplateColumns: 'auto 1fr',
+	gridTemplateRows: 'auto auto',
+	gridTemplateAreas: `
+		"icon title"
+		"description description"
+	`,
+	alignItems: 'center',
+	gap: spacing(1, 2),
 	borderRadius: theme.borderRadius.lg,
 	border: `1px solid ${theme.colors.border}`,
-	padding: `${theme.spacing[3]} ${theme.spacing[4]}`,
+	padding: spacing(3, 4),
 	fontSize: theme.fontSize.sm,
-	selectors: {
-		'&[data-has-svg=true]': {
-			gridTemplateColumns: `calc(${theme.spacing[4]}) 1fr`,
-			gap: `0 ${theme.spacing[3]}`,
-		},
-	},
 });
 
 globalStyle(`${alertBase} > svg`, {
 	width: '1rem',
 	height: '1rem',
-	transform: `translateY(${theme.spacing[1]})`,
 	color: 'currentColor',
 });
 
@@ -40,6 +39,7 @@ export const alertVariants = styleVariants<
 		{
 			backgroundColor: theme.colors.background.paper,
 			color: theme.colors.text.primary,
+			borderColor: theme.colors.border,
 		},
 	],
 	error: [
@@ -47,6 +47,7 @@ export const alertVariants = styleVariants<
 		{
 			color: theme.colors.error,
 			backgroundColor: theme.colors.background.paper,
+			borderColor: theme.colors.error,
 		},
 	],
 	info: [
@@ -54,6 +55,7 @@ export const alertVariants = styleVariants<
 		{
 			color: theme.colors.info,
 			backgroundColor: theme.colors.background.paper,
+			borderColor: theme.colors.info,
 		},
 	],
 	success: [
@@ -61,6 +63,7 @@ export const alertVariants = styleVariants<
 		{
 			color: theme.colors.success,
 			backgroundColor: theme.colors.background.paper,
+			borderColor: theme.colors.success,
 		},
 	],
 	warning: [
@@ -68,6 +71,7 @@ export const alertVariants = styleVariants<
 		{
 			color: theme.colors.warning,
 			backgroundColor: theme.colors.background.paper,
+			borderColor: theme.colors.warning,
 		},
 	],
 });

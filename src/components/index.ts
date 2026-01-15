@@ -14,5 +14,6 @@ export * from './Label/index.js';
 export * from './Placeholder/index.js';
 export * from './Select/index.js';
 export * from './Separator/index.js';
+export * from './Spinner/index.js';
 export * from './Tooltip/index.js';
 export * from './Typography/index.js';

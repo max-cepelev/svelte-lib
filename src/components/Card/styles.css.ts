@@ -10,7 +10,7 @@ const card = style({
 	padding: `${theme.spacing[6]} 0`,
 	backgroundColor: theme.colors.background.paper,
 	color: theme.colors.text.primary,
-	boxShadow: theme.shadow[1],
+	boxShadow: theme.shadow[2],
 });
 
 export default {

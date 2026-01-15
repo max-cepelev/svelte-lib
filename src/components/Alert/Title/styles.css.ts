@@ -2,7 +2,7 @@ import { style } from '~/styles/index.js';
 import { theme } from '~/styles/theme.css.js';
 
 const title = style({
-	gridColumn: 2,
+	gridArea: 'title',
 	textOverflow: 'ellipsis',
 	whiteSpace: 'nowrap',
 	overflow: 'hidden',
