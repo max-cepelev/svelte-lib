@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ChevronRightIcon } from '@lucide/svelte';
 import { Calendar as CalendarPrimitive } from 'bits-ui';
-import { type ButtonVariant, buttonVariants } from '~/components/index.js';
+import { type ButtonVariant, buttonVariants } from '../../Button/index.js';
 import styles from './styles.css.js';
 
 let {

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Tooltip as TooltipPrimitive } from 'bits-ui';
 import type { ComponentProps } from 'svelte';
-import type { WithoutChildrenOrChild } from '~/styles/index.js';
+import type { WithoutChildrenOrChild } from '../../../types.js';
 import { Portal } from '../Portal/index.js';
 import styles from './styles.css.js';
 

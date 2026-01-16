@@ -1,8 +1,10 @@
-import { style, theme } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
+import { spacing } from '../../../utils.js';
 
 const cell = style({
 	overflow: 'hidden',
-	padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
+	padding: spacing(1, 2),
 	height: '100%',
 	color: theme.colors.text.primary,
 	fontSize: theme.fontSize.base,

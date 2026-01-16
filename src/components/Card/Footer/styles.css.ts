@@ -1,4 +1,5 @@
-import { globalStyle, style, theme } from '~/styles/index.js';
+import { globalStyle, style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
 
 const footer = style({
 	display: 'flex',

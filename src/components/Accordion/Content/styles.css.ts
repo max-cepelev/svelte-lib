@@ -1,4 +1,5 @@
-import { keyframes, style, theme } from '~/styles/index.js';
+import { keyframes, style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
 
 const accordionUp = keyframes({
 	'0%': {

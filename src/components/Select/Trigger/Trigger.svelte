@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ChevronDownIcon } from '@lucide/svelte';
 import { Select as SelectPrimitive } from 'bits-ui';
-import type { WithoutChild } from '~/styles/index.js';
+import type { WithoutChild } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {

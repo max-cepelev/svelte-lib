@@ -1,4 +1,4 @@
-import type { ComplexStyleRule } from '~/styles/index.js';
+import type { ComplexStyleRule } from '@vanilla-extract/css';
 
 export type FieldOrientation = 'vertical' | 'horizontal' | 'responsive';
 

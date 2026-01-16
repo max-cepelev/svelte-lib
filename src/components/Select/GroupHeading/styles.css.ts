@@ -1,4 +1,5 @@
-import { style, theme } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
 
 const groupHeading = style({
 	color: theme.colors.text.secondary,

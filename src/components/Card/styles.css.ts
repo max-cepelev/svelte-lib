@@ -1,5 +1,5 @@
-import { style } from '~/styles/index.js';
-import { theme } from '~/styles/theme.css.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 
 const card = style({
 	display: 'flex',

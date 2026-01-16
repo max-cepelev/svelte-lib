@@ -3,7 +3,7 @@
 <script lang="ts">
 import { CheckIcon, MinusIcon } from '@lucide/svelte';
 import { Checkbox as CheckboxPrimitive } from 'bits-ui';
-import type { WithoutChildrenOrChild } from '~/styles/index.js';
+import type { WithoutChildrenOrChild } from '../../types.js';
 import styles from './styles.css.js';
 
 let {

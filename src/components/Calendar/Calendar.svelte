@@ -1,10 +1,6 @@
 <script lang="ts">
-import { type DateValue, isEqualMonth } from '@internationalized/date';
+import { isEqualMonth } from '@internationalized/date';
 import { Calendar as CalendarPrimitive } from 'bits-ui';
-import type { Snippet } from 'svelte';
-import type { ButtonVariant } from '~/index.js';
-import type { WithoutChildrenOrChild } from '~/styles/index.js';
-
 import { Caption } from './Caption/index.js';
 import { Cell } from './Cell/index.js';
 import { Day } from './Day/index.js';
@@ -20,6 +16,7 @@ import { Nav } from './Nav/index.js';
 import { NextButton } from './NextButton/index.js';
 import { PrevButton } from './PrevButton/index.js';
 import styles from './styles.css.js';
+import type { CalendarProps } from './types.js';
 
 let {
 	ref = $bindable(null),
@@ -37,15 +34,7 @@ let {
 	day,
 	disableDaysOutsideMonth = false,
 	...restProps
-}: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {
-	buttonVariant?: ButtonVariant;
-	captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
-	months?: CalendarPrimitive.MonthSelectProps['months'];
-	years?: CalendarPrimitive.YearSelectProps['years'];
-	monthFormat?: CalendarPrimitive.MonthSelectProps['monthFormat'];
-	yearFormat?: CalendarPrimitive.YearSelectProps['yearFormat'];
-	day?: Snippet<[{ day: DateValue; outsideMonth: boolean }]>;
-} = $props();
+}: CalendarProps = $props();
 
 const monthFormat = $derived.by(() => {
 	if (monthFormatProp) return monthFormatProp;

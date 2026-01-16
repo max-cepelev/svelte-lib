@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { SeparatorProps } from '~/components/Separator/index.js';
+import type { SeparatorProps } from '../../Separator/types.js';
 import { Separator } from './index.js';
 
 import styles from './styles.css.js';

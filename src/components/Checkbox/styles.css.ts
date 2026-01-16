@@ -1,15 +1,16 @@
-import { style, theme } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 
 const checkboxBase = style({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	width: '1rem', // size-4
-	height: '1rem', // size-4
+	width: theme.spacing[4],
+	height: theme.spacing[4],
 	flexShrink: 0,
-	borderRadius: theme.borderRadius.sm, // rounded-[4px]
+	borderRadius: theme.borderRadius.sm,
 	border: `1px solid ${theme.colors.border}`,
-	backgroundColor: 'transparent', // transparent background
+	backgroundColor: 'transparent',
 	transition: 'box-shadow 150ms, background-color 150ms, border-color 150ms',
 	cursor: 'pointer',
 	outline: 'none',
@@ -21,7 +22,7 @@ const checkboxBase = style({
 		},
 		'&:focus-visible': {
 			outline: 'none',
-			boxShadow: `0 0 0 3px color-mix(in oklch, ${theme.colors.primary} 50%, transparent)`, // ring-[3px] ring-ring/50
+			boxShadow: `0 0 0 3px color-mix(in oklch, ${theme.colors.primary} 50%, transparent)`,
 			borderColor: theme.colors.primary,
 		},
 		'&[data-state="checked"]': {

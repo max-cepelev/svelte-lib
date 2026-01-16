@@ -15,15 +15,9 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
-    "outDir": "./dist",
-    "paths": {
-      "~/*": ["src/*"],
-      "~/components/*": ["src/components/*"],
-      "~/styles/*": ["src/styles/*"]
-    }
+    "outDir": "./dist"
   },
   "include": ["src"]
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ComponentProps } from 'svelte';
-import { Label } from '~/components/index.js';
+import { Label } from '../../Label/index.js';
 import styles from './styles.css.js';
 
 let {

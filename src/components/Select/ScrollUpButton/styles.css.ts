@@ -1,4 +1,5 @@
-import { style, theme } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
 
 const scrollUpButton = style({
 	display: 'flex',

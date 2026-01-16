@@ -1,4 +1,4 @@
-import { style } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
 
 const prevButton = style({
 	width: 'var(--cell-size)',

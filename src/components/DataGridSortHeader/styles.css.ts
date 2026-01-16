@@ -1,4 +1,5 @@
-import { globalStyle, style, styleVariants, theme } from '~/styles/index.js';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 
 export const wrapper = style({
 	display: 'flex',

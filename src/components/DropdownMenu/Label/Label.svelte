@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '~/styles/index.js';
+import type { WithElementRef } from '../../../types.js';
 import { label } from './styles.css.js';
 
 let {

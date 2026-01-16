@@ -1,5 +1,5 @@
 <script lang="ts">
-import { calculateSize } from '~/styles/index.js';
+import { calculateSize } from '../../../utils.js';
 import styles from './styles.css.js';
 import type { CellProps } from './types.js';
 

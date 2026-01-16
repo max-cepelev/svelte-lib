@@ -1,7 +1,7 @@
 <script module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { fn } from 'storybook/test';
-import { Accordion } from '../components/index.js';
+import { Accordion } from '../index.js';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

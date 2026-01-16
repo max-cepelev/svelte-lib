@@ -4,8 +4,8 @@ import {
 	keyframes,
 	style,
 	styleVariants,
-	theme,
-} from '../../styles/index.js';
+} from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 import type { ButtonSize, ButtonVariant } from './types.js';
 
 const buttonBase = style({

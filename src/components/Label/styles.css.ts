@@ -1,13 +1,14 @@
-import { globalStyle, style, theme } from '~/styles/index.js';
+import { globalStyle, style } from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 
 const labelBase = style({
 	display: 'flex',
 	alignItems: 'center',
-	gap: theme.spacing[2], // gap-2
-	fontSize: theme.fontSize.sm, // text-sm
-	lineHeight: 'none', // leading-none
-	fontWeight: theme.fontWeight.medium, // font-medium
-	userSelect: 'none', // select-none
+	gap: theme.spacing[2],
+	fontSize: theme.fontSize.sm,
+	lineHeight: 'none',
+	fontWeight: theme.fontWeight.medium,
+	userSelect: 'none',
 	selectors: {
 		'&[data-disabled="true"]': {
 			pointerEvents: 'none',

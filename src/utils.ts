@@ -1,6 +1,4 @@
-import { type Theme, theme } from './theme.css.js';
-
-type SpacingKey = keyof Theme['spacing'];
+import { type SpacingKey, theme } from './theme.css.js';
 
 export const negativeSpacing = (...keys: SpacingKey[]) =>
 	keys.map((key) => `calc(-1 * ${theme.spacing[key]})`).join(' ');

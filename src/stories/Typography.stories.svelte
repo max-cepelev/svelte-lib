@@ -1,6 +1,6 @@
 <script module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Typography } from '../components/index.js';
+import { Typography } from '../index.js';
 
 const { Story } = defineMeta({
 	title: 'Typography',

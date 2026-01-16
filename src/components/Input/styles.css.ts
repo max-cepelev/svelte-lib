@@ -1,10 +1,6 @@
-import {
-    globalStyle,
-    spacing,
-    style,
-    styleVariants,
-    theme,
-} from '~/styles/index.js';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
+import { spacing } from '../../utils.js';
 
 const inputBase = style({
 	backgroundColor: theme.colors.background.paper,

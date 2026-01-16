@@ -1,5 +1,5 @@
-import { globalStyle, style } from '~/styles/index.js';
-import { theme } from '~/styles/theme.css.js';
+import { globalStyle, style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
 
 const description = style({
 	gridArea: 'description',

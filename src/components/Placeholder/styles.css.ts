@@ -1,9 +1,9 @@
 import {
-    type ComplexStyleRule,
-    style,
-    styleVariants,
-    theme,
-} from '~/styles/index.js';
+	type ComplexStyleRule,
+	style,
+	styleVariants,
+} from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
 import type { PlaceholderSize } from './types.js';
 
 const wrapper = style({

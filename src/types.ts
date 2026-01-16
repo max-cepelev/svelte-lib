@@ -1,5 +1,3 @@
-export type { ComplexStyleRule, CSSProperties } from '@vanilla-extract/css';
-
 // biome-ignore lint/suspicious/noExplicitAny: <>
 export type WithoutChild<T> = T extends { child?: any } ? Omit<T, 'child'> : T;
 export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;

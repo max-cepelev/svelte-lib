@@ -90,7 +90,7 @@ Component props (`types.ts`):
 
 Root component (`Component.svelte`):
 - Import types and styles: `import { styleOrVariants } from './styles.css.js'` and the public types from `./types.js`.
-- Use `$props()` with `WithElementRef` from `~/styles/index.js` to support `bind:this`.
+- Use `$props()` with `WithElementRef` from `@vanilla-extract/css` to support `bind:this`.
 - Apply classes via array syntax: `class={[styles.something, className]}` or for variants `class={[variants[variant], className]}`.
 - Set a `data-slot` attribute, e.g. `data-slot="alert"`.
 
@@ -100,7 +100,7 @@ Exports (`index.ts`):
 
 ### Styling Guidelines (Vanilla Extract)
 In each `styles.css.ts`:
-- Import from `~/styles/index.js`: `style`, `styleVariants`, `globalStyle` and from `~/styles/theme.css.js`: `theme`.
+- Import from `@vanilla-extract/css`: `style`, `styleVariants`, `globalStyle` and from `~/styles/theme.css.js`: `theme`.
 - Create a base style with `style({ ... })`.
 - Create variants with `styleVariants<Record<VariantUnion, ComplexStyleRule>>({...})`.
 - Use `globalStyle` to target child nodes (e.g., `${parent} > svg`), not `selectors` with `& child`.
@@ -120,7 +120,7 @@ Subcomponents:
 
 Example:
 ```ts
-import { style } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
 import { theme } from '~/styles/theme.css.js';
 
 export const container = style({

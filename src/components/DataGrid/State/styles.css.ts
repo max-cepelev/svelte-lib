@@ -1,4 +1,4 @@
-import { style } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
 
 const container = style({
 	width: '100%',

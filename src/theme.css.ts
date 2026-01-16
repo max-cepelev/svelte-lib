@@ -178,3 +178,5 @@ createGlobalTheme(':root', theme, {
 });
 
 export type Theme = typeof theme;
+
+export type SpacingKey = keyof Theme['spacing'];

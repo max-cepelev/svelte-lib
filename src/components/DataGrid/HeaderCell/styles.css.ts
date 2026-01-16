@@ -1,7 +1,9 @@
-import { style, theme } from '~/styles/index.js';
+import { style } from '@vanilla-extract/css';
+import { theme } from '../../../theme.css.js';
+import { spacing } from '../../../utils.js';
 
 const cell = style({
-	padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
+	padding: spacing(1, 2),
 	width: '100%',
 	fontWeight: theme.fontWeight.semibold,
 	fontSize: theme.fontSize.sm,

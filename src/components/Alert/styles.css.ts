@@ -1,11 +1,11 @@
 import {
 	type ComplexStyleRule,
 	globalStyle,
-	spacing,
 	style,
 	styleVariants,
-} from '~/styles/index.js';
-import { theme } from '~/styles/theme.css.js';
+} from '@vanilla-extract/css';
+import { theme } from '../../theme.css.js';
+import { spacing } from '../../utils.js';
 import type { AlertVariant } from './types.js';
 
 const alertBase = style({
