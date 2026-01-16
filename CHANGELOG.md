@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.0.6
+
+### Patch Changes
+
+- reorganization import
+
 ## 1.0.3
 
 ### Patch Changes

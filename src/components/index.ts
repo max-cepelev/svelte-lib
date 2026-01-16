@@ -40,7 +40,26 @@ export {
 	type DataGridSorting,
 } from './DataGridSortHeader/index.js';
 
-export { DropdownMenu } from './DropdownMenu/index.js';
+export {
+	DropdownMenuRoot,
+	DropdownMenuCheckboxGroup,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuGroupHeading,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuPortal,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
+	type DropdownMenuProps,
+} from './DropdownMenu/index.js';
 
 export {
 	Field,

@@ -7,7 +7,6 @@ import { svelteDtsPlugin } from './scripts/tsdown-plugin-svelte-dts.js';
 export default defineConfig({
 	platform: 'browser',
 	unbundle: true,
-	exports: true,
 	entry: {
 		components: './src/components/index.ts',
 		theme: './src/theme.css.ts',
