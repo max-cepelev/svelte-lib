@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.0.8
+
+### Patch Changes
+
+- added package.json exports
+
 ## 1.0.7
 
 ### Patch Changes
