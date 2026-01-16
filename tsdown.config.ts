@@ -8,7 +8,7 @@ export default defineConfig({
 	platform: 'browser',
 	unbundle: true,
 	entry: {
-		components: './src/components/index.ts',
+		'components/index': './src/components/index.ts',
 		theme: './src/theme.css.ts',
 		utils: './src/utils.ts',
 	},

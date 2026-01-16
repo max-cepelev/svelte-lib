@@ -1,6 +1,6 @@
 {
 	"name": "@max-ts/svelte",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"type": "module",
 	"description": "Svelte component library.",
 	"author": "Tsepelev Maksim",
@@ -20,106 +20,6 @@
 			"types": "./dist/utils.d.ts",
 			"svelte": "./dist/utils.js",
 			"default": "./dist/utils.js"
-		},
-		"./Accordion": {
-			"types": "./dist/components/Accordion/index.d.ts",
-			"svelte": "./dist/components/Accordion/index.js",
-			"default": "./dist/components/Accordion/index.js"
-		},
-		"./Alert": {
-			"types": "./dist/components/Alert/index.d.ts",
-			"svelte": "./dist/components/Alert/index.js",
-			"default": "./dist/components/Alert/index.js"
-		},
-		"./Button": {
-			"types": "./dist/components/Button/index.d.ts",
-			"svelte": "./dist/components/Button/index.js",
-			"default": "./dist/components/Button/index.js"
-		},
-		"./Calendar": {
-			"types": "./dist/components/Calendar/index.d.ts",
-			"svelte": "./dist/components/Calendar/index.js",
-			"default": "./dist/components/Calendar/index.js"
-		},
-		"./Card": {
-			"types": "./dist/components/Card/index.d.ts",
-			"svelte": "./dist/components/Card/index.js",
-			"default": "./dist/components/Card/index.js"
-		},
-		"./Checkbox": {
-			"types": "./dist/components/Checkbox/index.d.ts",
-			"svelte": "./dist/components/Checkbox/index.js",
-			"default": "./dist/components/Checkbox/index.js"
-		},
-		"./CircularProgress": {
-			"types": "./dist/components/CircularProgress/index.d.ts",
-			"svelte": "./dist/components/CircularProgress/index.js",
-			"default": "./dist/components/CircularProgress/index.js"
-		},
-		"./ContentState": {
-			"types": "./dist/components/ContentState/index.d.ts",
-			"svelte": "./dist/components/ContentState/index.js",
-			"default": "./dist/components/ContentState/index.js"
-		},
-		"./DataGrid": {
-			"types": "./dist/components/DataGrid/index.d.ts",
-			"svelte": "./dist/components/DataGrid/index.js",
-			"default": "./dist/components/DataGrid/index.js"
-		},
-		"./DataGridSortHeader": {
-			"types": "./dist/components/DataGridSortHeader/index.d.ts",
-			"svelte": "./dist/components/DataGridSortHeader/index.js",
-			"default": "./dist/components/DataGridSortHeader/index.js"
-		},
-		"./DropdownMenu": {
-			"types": "./dist/components/DropdownMenu/index.d.ts",
-			"svelte": "./dist/components/DropdownMenu/index.js",
-			"default": "./dist/components/DropdownMenu/index.js"
-		},
-		"./Field": {
-			"types": "./dist/components/Field/index.d.ts",
-			"svelte": "./dist/components/Field/index.js",
-			"default": "./dist/components/Field/index.js"
-		},
-		"./Input": {
-			"types": "./dist/components/Input/index.d.ts",
-			"svelte": "./dist/components/Input/index.js",
-			"default": "./dist/components/Input/index.js"
-		},
-		"./Label": {
-			"types": "./dist/components/Label/index.d.ts",
-			"svelte": "./dist/components/Label/index.js",
-			"default": "./dist/components/Label/index.js"
-		},
-		"./Placeholder": {
-			"types": "./dist/components/Placeholder/index.d.ts",
-			"svelte": "./dist/components/Placeholder/index.js",
-			"default": "./dist/components/Placeholder/index.js"
-		},
-		"./Select": {
-			"types": "./dist/components/Select/index.d.ts",
-			"svelte": "./dist/components/Select/index.js",
-			"default": "./dist/components/Select/index.js"
-		},
-		"./Separator": {
-			"types": "./dist/components/Separator/index.d.ts",
-			"svelte": "./dist/components/Separator/index.js",
-			"default": "./dist/components/Separator/index.js"
-		},
-		"./Spinner": {
-			"types": "./dist/components/Spinner/index.d.ts",
-			"svelte": "./dist/components/Spinner/index.js",
-			"default": "./dist/components/Spinner/index.js"
-		},
-		"./Tooltip": {
-			"types": "./dist/components/Tooltip/index.d.ts",
-			"svelte": "./dist/components/Tooltip/index.js",
-			"default": "./dist/components/Tooltip/index.js"
-		},
-		"./Typography": {
-			"types": "./dist/components/Typography/index.d.ts",
-			"svelte": "./dist/components/Typography/index.js",
-			"default": "./dist/components/Typography/index.js"
 		}
 	},
 	"sideEffects": [
