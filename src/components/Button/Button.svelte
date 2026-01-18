@@ -43,6 +43,7 @@ const classNames = $derived([
 	<button
 		bind:this={ref}
 		data-slot="button"
+		aria-disabled={disabled}
 		class={classNames}
 		{type}
 		{disabled}

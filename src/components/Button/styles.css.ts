@@ -167,6 +167,16 @@ const buttonSizes = styleVariants<Record<ButtonSize, ComplexStyleRule>>({
 	},
 });
 
+globalStyle(`${buttonSizes.icon} svg`, {
+	width: theme.spacing[6],
+	height: theme.spacing[6],
+});
+
+globalStyle(`${buttonSizes.iconSmall} svg`, {
+	width: theme.spacing[4],
+	height: theme.spacing[4],
+});
+
 globalStyle('*, *::before, *::after', {
 	boxSizing: 'border-box',
 	'@media': {

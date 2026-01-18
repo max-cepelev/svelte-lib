@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 import { theme } from '../../../theme.css.js';
 
 const subTrigger = style({
@@ -28,6 +28,12 @@ const subTrigger = style({
 			paddingInlineStart: theme.spacing[8],
 		},
 	},
+});
+
+globalStyle(`${subTrigger} svg`, {
+	color: theme.colors.text.hint,
+	height: theme.spacing[4],
+	width: theme.spacing[4],
 });
 
 const icon = style({

@@ -103,7 +103,12 @@ In each `styles.css.ts`:
 - Import from `@vanilla-extract/css`: `style`, `styleVariants`, `globalStyle` and from `~/styles/theme.css.js`: `theme`.
 - Create a base style with `style({ ... })`.
 - Create variants with `styleVariants<Record<VariantUnion, ComplexStyleRule>>({...})`.
-- Use `globalStyle` to target child nodes (e.g., `${parent} > svg`), not `selectors` with `& child`.
+- **Complex Selectors Rules**:
+  - Each style block can only target a **single element**.
+  - All selectors must target the `&` character (reference to current element), e.g., `selectors: { '&:hover': { ... } }`.
+  - To target child nodes (e.g., `& > svg`), you **MUST** use `globalStyle(`${parent} > svg`, { ... })`.
+  - Selectors can reference other scoped class names: `selectors: { [`${parent} &`]: { ... } }`.
+  - **Forbidden**: Targeting other elements from within `selectors`, e.g., `& a[href]` or `& .otherClass` is NOT allowed. Use `globalStyle` instead.
 - Reference tokens only from `theme` (colors, spacing, fontSize, fontWeight, lineHeight, borderRadius, shadow, elevation).
 - Import styles in Svelte as `.js`: `import styles from './styles.css.js'`.
 
