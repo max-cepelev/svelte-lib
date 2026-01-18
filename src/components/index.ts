@@ -39,27 +39,8 @@ export {
 	type DataGridSortHeaderProps,
 	type DataGridSorting,
 } from './DataGridSortHeader/index.js';
-
-export {
-	DropdownMenuRoot,
-	DropdownMenuCheckboxGroup,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuGroupHeading,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuPortal,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-	DropdownMenuTrigger,
-	type DropdownMenuProps,
-} from './DropdownMenu/index.js';
+export * as DropdownMenu from './DropdownMenu/index.js';
+export type { DropdownMenuProps } from './DropdownMenu/index.js';
 
 export {
 	Field,

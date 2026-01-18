@@ -15,25 +15,25 @@ import { Sub } from './Sub/index.js';
 import { SubContent } from './SubContent/index.js';
 import { SubTrigger } from './SubTrigger/index.js';
 import { Trigger } from './Trigger/index.js';
-import type { Props } from './types.js';
 
 export {
-	Root as DropdownMenuRoot,
-	CheckboxGroup as DropdownMenuCheckboxGroup,
-	CheckboxItem as DropdownMenuCheckboxItem,
-	Content as DropdownMenuContent,
-	Group as DropdownMenuGroup,
-	GroupHeading as DropdownMenuGroupHeading,
-	Item as DropdownMenuItem,
-	Label as DropdownMenuLabel,
-	Portal as DropdownMenuPortal,
-	RadioGroup as DropdownMenuRadioGroup,
-	RadioItem as DropdownMenuRadioItem,
-	Separator as DropdownMenuSeparator,
-	Shortcut as DropdownMenuShortcut,
-	Sub as DropdownMenuSub,
-	SubContent as DropdownMenuSubContent,
-	SubTrigger as DropdownMenuSubTrigger,
-	Trigger as DropdownMenuTrigger,
+	CheckboxGroup,
+	CheckboxItem,
+	Content,
+	Group,
+	GroupHeading,
+	Item,
+	Label,
+	Portal,
+	RadioGroup,
+	RadioItem,
+	Root,
+	Separator,
+	Shortcut,
+	Sub,
+	SubContent,
+	SubTrigger,
+	Trigger,
 };
-export type { Props as DropdownMenuProps };
+
+export type { DropdownMenuProps } from './types.js';

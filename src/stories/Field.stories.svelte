@@ -1,6 +1,6 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Button, Checkbox, Field, Input } from '../index.js';
+import { Button, Checkbox, Field, Input } from '../components/index.js';
 
 const { Story } = defineMeta({
 	title: 'Field',
