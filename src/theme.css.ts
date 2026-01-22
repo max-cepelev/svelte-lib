@@ -134,10 +134,10 @@ createGlobalTheme(':root', theme, {
 	},
 	shadow: {
 		1: '0 1px 2px rgba(0, 0, 0, 0.05)',
-		2: '0 1px 3px rgba(0, 0, 0, 0.1)',
-		3: '0 4px 6px rgba(0, 0, 0, 0.1)',
-		4: '0 10px 15px rgba(0, 0, 0, 0.15)',
-		5: '0 20px 25px rgba(0, 0, 0, 0.2)',
+		2: '0 1px 2px 0px rgba(0, 0, 0, 0.05)',
+		3: '0 1px 3px 0px rgba(0, 0, 0, 0.1), 0 1px 2px 0px rgba(0, 0, 0, 0.06)',
+		4: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+		5: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 	},
 	elevation: {
 		1: '0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba #00000024 (0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)',

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.3.0
+
+### Minor Changes
+
+- Добавлен Tabs
+
 ## 1.2.0
 
 ### Minor Changes

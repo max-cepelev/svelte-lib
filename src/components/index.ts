@@ -100,6 +100,8 @@ export { Slider, type SliderProps } from './Slider/index.js';
 
 export { Spinner, type SpinnerSize } from './Spinner/index.js';
 
+export { Tabs, type TabsProps } from './Tabs/index.js';
+
 export { Tooltip, type TooltipProps } from './Tooltip/index.js';
 
 export {
