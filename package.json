@@ -1,6 +1,6 @@
 {
 	"name": "@max-ts/svelte",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "module",
 	"description": "Svelte component library.",
 	"author": "Tsepelev Maksim",
@@ -13,12 +13,11 @@
 		},
 		"./package.json": "./package.json",
 		"./theme": {
-			"types": "./dist/theme.css.d.ts",
-			"default": "./dist/theme.css.js"
+			"types": "./dist/theme.d.ts",
+			"default": "./dist/theme.js"
 		},
 		"./utils": {
 			"types": "./dist/utils.d.ts",
-			"svelte": "./dist/utils.js",
 			"default": "./dist/utils.js"
 		}
 	},
