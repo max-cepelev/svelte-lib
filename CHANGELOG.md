@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.2.0
+
+### Minor Changes
+
+- Добавлен Empty компонент
+
 ## 1.1.1
 
 ### Patch Changes

@@ -16,8 +16,11 @@ export {
 	type ButtonGroupOrientation,
 	type ButtonGroupProps,
 } from './ButtonGroup/index.js';
+
 export { Calendar, type CalendarProps } from './Calendar/index.js';
-export { Card } from './Card/index.js';
+
+export { Card, type CardVariant } from './Card/index.js';
+
 export { Carousel, type CarouselProps } from './Carousel/index.js';
 
 export { Checkbox } from './Checkbox/index.js';
@@ -48,6 +51,8 @@ export {
 } from './DataGridSortHeader/index.js';
 export * as DropdownMenu from './DropdownMenu/index.js';
 export type { DropdownMenuProps } from './DropdownMenu/index.js';
+
+export { Empty, type EmptyMediaVariant } from './Empty/index.js';
 
 export {
 	Field,
