@@ -1,24 +1,27 @@
-import type { WithElementRef } from '../../types.js';
-import type { HTMLAttributes } from 'svelte/elements';
 import type {
 	EmblaCarouselSvelteType,
 	default as emblaCarouselSvelte,
 } from 'embla-carousel-svelte';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { WithElementRef } from '../../types.js';
 
 export type CarouselAPI =
-	NonNullable<NonNullable<EmblaCarouselSvelteType['$$_attributes']>['onemblaInit']> extends (
-		evt: CustomEvent<infer API>
-	) => void
+	NonNullable<
+		NonNullable<EmblaCarouselSvelteType['$$_attributes']>['onemblaInit']
+	> extends (evt: CustomEvent<infer API>) => void
 		? API
 		: any;
 
-type EmblaCarouselConfig = NonNullable<Parameters<typeof emblaCarouselSvelte>[1]>;
+type EmblaCarouselConfig = NonNullable<
+	Parameters<typeof emblaCarouselSvelte>[1]
+>;
 
 export type CarouselOptions = EmblaCarouselConfig['options'];
 export type CarouselPlugins = EmblaCarouselConfig['plugins'];
 
-export interface CarouselProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
-	opts?: CarouselOptions;
+export interface CarouselProps
+	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+	options?: CarouselOptions;
 	plugins?: CarouselPlugins;
 	setApi?: (api: CarouselAPI | undefined) => void;
 	orientation?: 'horizontal' | 'vertical';

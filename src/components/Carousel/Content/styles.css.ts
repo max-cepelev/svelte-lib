@@ -1,5 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
+import { negativeSpacing } from '../../../utils.js';
 
 export const contentWrapper = style({
 	overflow: 'hidden',
@@ -11,11 +11,11 @@ export const container = style({
 
 export const orientation = styleVariants({
 	horizontal: {
-		marginLeft: `calc(-1 * ${theme.spacing[4]})`,
+		marginLeft: negativeSpacing(4),
 		flexDirection: 'row',
 	},
 	vertical: {
-		marginTop: `calc(-1 * ${theme.spacing[4]})`,
+		marginTop: negativeSpacing(4),
 		flexDirection: 'column',
 	},
 });

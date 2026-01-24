@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.4.0
+
+### Minor Changes
+
+- feat: add Arrows and Dots components to Carousel, refactor Carousel props and state management
+
 ## 1.3.0
 
 ### Minor Changes
