@@ -1,5 +1,4 @@
 <script lang="ts">
-import type { Snippet } from 'svelte';
 import {
 	alignments,
 	colors,
@@ -12,8 +11,7 @@ import {
 } from './styles.css.js';
 import type {
 	ComponentVariant,
-	TypographyAlign,
-	TypographyColor,
+	TypographyProps,
 	TypographyVariant,
 } from './types.js';
 
@@ -31,21 +29,7 @@ let {
 	variant = 'body1',
 	weight = 'normal',
 	...restProps
-}: {
-	align?: TypographyAlign;
-	variant?: TypographyVariant;
-	color?: TypographyColor;
-	component?: ComponentVariant;
-	display?: 'block' | 'inline';
-	weight?: 'normal' | 'bold' | 'medium' | 'semibold';
-	transform?: 'lowercase' | 'capitalize' | 'uppercase';
-	decoration?: 'none' | 'underline' | 'lineThrough';
-	gutterBottom?: boolean;
-	children?: Snippet;
-	ref?: HTMLElement | null;
-	class?: string;
-	[key: string]: any;
-} = $props();
+}: TypographyProps = $props();
 
 const VARIANT_COMPONENT_MAP: Record<
 	NonNullable<TypographyVariant>,

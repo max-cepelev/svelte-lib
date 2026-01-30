@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte';
+
 export type TypographyVariant =
 	| 'h1'
 	| 'h2'
@@ -34,3 +36,18 @@ export type TypographyColor =
 	| 'error'
 	| 'muted'
 	| 'warning';
+
+export type TypographyProps = {
+	align?: TypographyAlign;
+	variant?: TypographyVariant;
+	color?: TypographyColor;
+	component?: ComponentVariant;
+	display?: 'block' | 'inline';
+	weight?: 'normal' | 'bold' | 'medium' | 'semibold';
+	transform?: 'lowercase' | 'capitalize' | 'uppercase';
+	decoration?: 'none' | 'underline' | 'lineThrough';
+	gutterBottom?: boolean;
+	children?: Snippet<[]>;
+	ref?: HTMLElement | null;
+	class?: string;
+};
