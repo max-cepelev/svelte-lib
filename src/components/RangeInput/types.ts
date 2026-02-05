@@ -3,7 +3,8 @@ import type { WithElementRef } from '../../types.js';
 
 export type RangeInputSize = 'small' | 'medium' | 'large';
 
-export interface RangeInputProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+export interface RangeInputProps
+	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
 	minValue?: number;
 	maxValue?: number;
 	min: number;

@@ -1,96 +1,96 @@
 <script lang="ts">
-  import { setEmblaContext } from './context.js';
-  import styles from './styles.css.js';
-  import {
-    type CarouselAPI,
-    type CarouselProps,
-    type EmblaContext,
-  } from './types.js';
+import { setEmblaContext } from './context.js';
+import styles from './styles.css.js';
+import {
+  type CarouselAPI,
+  type CarouselProps,
+  type EmblaContext,
+} from './types.js';
 
-  let {
-    ref = $bindable(null),
-    options,
-    plugins,
-    setApi = () => {},
-    orientation = 'horizontal',
-    class: className,
-    children,
-    ...restProps
-  }: CarouselProps = $props();
+let {
+  ref = $bindable(null),
+  options,
+  plugins,
+  setApi = () => {},
+  orientation = 'horizontal',
+  class: className,
+  children,
+  ...restProps
+}: CarouselProps = $props();
 
-  let carouselState = $state<EmblaContext>({
-    api: undefined,
-    scrollPrev,
-    scrollNext,
-    orientation: 'horizontal',
-    canScrollNext: false,
-    canScrollPrev: false,
-    handleKeyDown,
-    options: {},
-    plugins: [],
-    onInit,
-    scrollSnaps: [],
-    selectedIndex: 0,
-    scrollTo,
-  });
+let carouselState = $state<EmblaContext>({
+  api: undefined,
+  scrollPrev,
+  scrollNext,
+  orientation: 'horizontal',
+  canScrollNext: false,
+  canScrollPrev: false,
+  handleKeyDown,
+  options: {},
+  plugins: [],
+  onInit,
+  scrollSnaps: [],
+  selectedIndex: 0,
+  scrollTo,
+});
 
-  setEmblaContext(carouselState);
+setEmblaContext(carouselState);
 
-  function scrollPrev() {
-    carouselState.api?.scrollPrev();
+function scrollPrev() {
+  carouselState.api?.scrollPrev();
+}
+
+function scrollNext() {
+  carouselState.api?.scrollNext();
+}
+
+function scrollTo(index: number, jump?: boolean) {
+  carouselState.api?.scrollTo(index, jump);
+}
+
+function onSelect() {
+  if (!carouselState.api) return;
+  carouselState.selectedIndex = carouselState.api.selectedScrollSnap();
+  carouselState.canScrollNext = carouselState.api.canScrollNext();
+  carouselState.canScrollPrev = carouselState.api.canScrollPrev();
+}
+
+function handleKeyDown(e: KeyboardEvent) {
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    scrollPrev();
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    scrollNext();
+  }
+}
+
+function onInit(event: CustomEvent<CarouselAPI>) {
+  carouselState.api = event.detail;
+  setApi(carouselState.api);
+
+  carouselState.scrollSnaps = carouselState.api.scrollSnapList();
+  carouselState.api.on('select', onSelect);
+  onSelect();
+}
+
+$effect(() => {
+  if (orientation) {
+    carouselState.orientation = orientation;
   }
 
-  function scrollNext() {
-    carouselState.api?.scrollNext();
+  if (options) {
+    carouselState.options = options;
   }
 
-  function scrollTo(index: number, jump?: boolean) {
-    carouselState.api?.scrollTo(index, jump);
+  if (plugins?.length) {
+    carouselState.plugins = plugins;
   }
 
-  function onSelect() {
-    if (!carouselState.api) return;
-    carouselState.selectedIndex = carouselState.api.selectedScrollSnap();
-    carouselState.canScrollNext = carouselState.api.canScrollNext();
-    carouselState.canScrollPrev = carouselState.api.canScrollPrev();
-  }
-
-  function handleKeyDown(e: KeyboardEvent) {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      scrollPrev();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      scrollNext();
-    }
-  }
-
-  function onInit(event: CustomEvent<CarouselAPI>) {
-    carouselState.api = event.detail;
-    setApi(carouselState.api);
-
-    carouselState.scrollSnaps = carouselState.api.scrollSnapList();
-    carouselState.api.on('select', onSelect);
-    onSelect();
-  }
-
-  $effect(() => {
-    if (orientation) {
-      carouselState.orientation = orientation;
-    }
-
-    if (options) {
-      carouselState.options = options;
-    }
-
-    if (plugins?.length) {
-      carouselState.plugins = plugins;
-    }
-
-    return () => {
-      carouselState.api?.off('select', onSelect);
-    };
-  });
+  return () => {
+    carouselState.api?.off('select', onSelect);
+  };
+});
 </script>
 
 <div

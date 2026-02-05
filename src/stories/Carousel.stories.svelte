@@ -1,17 +1,17 @@
 <script module lang="ts">
-  import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { fn } from 'storybook/test';
-  import { Card, Carousel, Typography } from '../components/index.js';
+import { defineMeta } from '@storybook/addon-svelte-csf';
+import { fn } from 'storybook/test';
+import { Card, Carousel, Typography } from '../components/index.js';
 
-  // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-  const { Story } = defineMeta({
-    title: 'Carousel',
-    component: Carousel.Root,
-    tags: ['autodocs'],
-    args: {
-      onclick: fn(),
-    },
-  });
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
+const { Story } = defineMeta({
+  title: 'Carousel',
+  component: Carousel.Root,
+  tags: ['autodocs'],
+  args: {
+    onclick: fn(),
+  },
+});
 </script>
 
 <Story name="Default" asChild>

@@ -5,23 +5,23 @@ import { type ButtonVariant, buttonVariants } from '../../Button/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	variant = 'ghost',
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  variant = 'ghost',
+  ...restProps
 }: CalendarPrimitive.PrevButtonProps & {
-	variant?: ButtonVariant;
+  variant?: ButtonVariant;
 } = $props();
 </script>
 
 {#snippet fallback()}
-	<ChevronLeftIcon size={16} />
+  <ChevronLeftIcon size={16} />
 {/snippet}
 
 <CalendarPrimitive.PrevButton
-	bind:ref
-	class={[buttonVariants[variant], styles.prevButton, className]}
-	children={children || fallback}
-	{...restProps}
+  bind:ref
+  class={[buttonVariants[variant], styles.prevButton, className]}
+  children={children || fallback}
+  {...restProps}
 />

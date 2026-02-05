@@ -4,22 +4,22 @@ import type { WithElementRef } from '../../../types.js';
 import { label } from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	inset,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  inset,
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-	inset?: boolean;
+  inset?: boolean;
 } = $props();
 </script>
 
 <div
-	bind:this={ref}
-	data-slot="dropdown-menu-label"
-	data-inset={inset}
-	class={[label, className]}
-	{...restProps}
+  bind:this={ref}
+  data-slot="dropdown-menu-label"
+  data-inset={inset}
+  class={[label, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </div>

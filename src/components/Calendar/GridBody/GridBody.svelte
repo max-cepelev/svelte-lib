@@ -2,7 +2,7 @@
 import { Calendar as CalendarPrimitive } from 'bits-ui';
 
 let { ref = $bindable(null), ...restProps }: CalendarPrimitive.GridBodyProps =
-	$props();
+  $props();
 </script>
 
 <CalendarPrimitive.GridBody bind:ref {...restProps} />

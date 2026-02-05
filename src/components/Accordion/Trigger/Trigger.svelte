@@ -5,26 +5,24 @@ import type { WithoutChild } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	level = 3,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  level = 3,
+  children,
+  ...restProps
 }: WithoutChild<AccordionPrimitive.TriggerProps> & {
-	level?: AccordionPrimitive.HeaderProps['level'];
+  level?: AccordionPrimitive.HeaderProps['level'];
 } = $props();
 </script>
 
 <AccordionPrimitive.Header {level} class={styles.header}>
-	<AccordionPrimitive.Trigger
-		data-slot="accordion-trigger"
-		bind:ref
-		class={[styles.trigger, className]}
-		{...restProps}
-	>
-		{@render children?.()}
-		<ChevronDownIcon
-			class={styles.icon}
-		/>
-	</AccordionPrimitive.Trigger>
+  <AccordionPrimitive.Trigger
+    data-slot="accordion-trigger"
+    bind:ref
+    class={[styles.trigger, className]}
+    {...restProps}
+  >
+    {@render children?.()}
+    <ChevronDownIcon class={styles.icon} />
+  </AccordionPrimitive.Trigger>
 </AccordionPrimitive.Header>

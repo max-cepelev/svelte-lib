@@ -3,16 +3,16 @@ import { Separator } from '../../Separator/index.js';
 import type { ComponentProps } from 'svelte';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  ...restProps
 }: ComponentProps<typeof Separator> = $props();
 </script>
 
 <Separator
-	bind:ref
-	data-slot="item-separator"
-	orientation="horizontal"
-	class={className}
-	{...restProps}
+  bind:ref
+  data-slot="item-separator"
+  orientation="horizontal"
+  class={className}
+  {...restProps}
 />

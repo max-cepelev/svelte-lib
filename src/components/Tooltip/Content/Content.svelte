@@ -6,48 +6,47 @@ import { Portal } from '../Portal/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	sideOffset = 0,
-	side = 'top',
-	children,
-	arrowClasses,
-	portalProps,
-	arrow,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  sideOffset = 0,
+  side = 'top',
+  children,
+  arrowClasses,
+  portalProps,
+  arrow,
+  ...restProps
 }: TooltipPrimitive.ContentProps & {
-	arrowClasses?: string;
-	arrow?: boolean;
-	portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
+  arrowClasses?: string;
+  arrow?: boolean;
+  portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
 } = $props();
 </script>
 
 <Portal {...portalProps}>
-	<TooltipPrimitive.Content
-		bind:ref
-		data-slot="tooltip-content"
-		{sideOffset}
-		{side}
-		class={[
+  <TooltipPrimitive.Content
+    bind:ref
+    data-slot="tooltip-content"
+    {sideOffset}
+    {side}
+    class={[
 			styles.content,
 			className
 		]}
-		{...restProps}
-	>
-		{@render children?.()}
-		{#if arrow}
-			<TooltipPrimitive.Arrow>
-				{#snippet child({ props })}
-					<div
-						class={[
+    {...restProps}
+  >
+    {@render children?.()}
+    {#if arrow}
+      <TooltipPrimitive.Arrow>
+        {#snippet child({ props })}
+          <div
+            class={[
 							styles.arrow,
 							arrowClasses
 						]}
-						{...props}
-					></div>
-				{/snippet}
-			</TooltipPrimitive.Arrow>
-		{/if}
-
-	</TooltipPrimitive.Content>
+            {...props}
+          ></div>
+        {/snippet}
+      </TooltipPrimitive.Arrow>
+    {/if}
+  </TooltipPrimitive.Content>
 </Portal>

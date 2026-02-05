@@ -5,25 +5,25 @@ import styles from '../styles.css.js';
 import type { PopoverContentProps } from '../types.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	sideOffset = 4,
-	align = 'center',
-	portalProps,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  sideOffset = 4,
+  align = 'center',
+  portalProps,
+  children,
+  ...restProps
 }: PopoverContentProps = $props();
 </script>
 
 <PopoverPortal {...portalProps}>
-	<PopoverPrimitive.Content
-		bind:ref
-		data-slot="popover-content"
-		{sideOffset}
-		{align}
-		class={[styles.content, className]}
-		{...restProps}
-	>
-		{@render children?.()}
-	</PopoverPrimitive.Content>
+  <PopoverPrimitive.Content
+    bind:ref
+    data-slot="popover-content"
+    {sideOffset}
+    {align}
+    class={[styles.content, className]}
+    {...restProps}
+  >
+    {@render children?.()}
+  </PopoverPrimitive.Content>
 </PopoverPortal>

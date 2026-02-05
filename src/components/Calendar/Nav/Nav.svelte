@@ -4,17 +4,13 @@ import type { WithElementRef } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLElement>> = $props();
 </script>
 
-<nav
-	{...restProps}
-	bind:this={ref}
-	class={[styles.nav, className]}
->
-	{@render children?.()}
+<nav {...restProps} bind:this={ref} class={[styles.nav, className]}>
+  {@render children?.()}
 </nav>

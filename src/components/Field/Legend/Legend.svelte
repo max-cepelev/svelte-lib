@@ -4,22 +4,22 @@ import type { WithElementRef } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	variant = 'legend',
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  variant = 'legend',
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLLegendElement>> & {
-	variant?: 'legend' | 'label';
+  variant?: 'legend' | 'label';
 } = $props();
 </script>
 
 <legend
-	bind:this={ref}
-	data-slot="field-legend"
-	data-variant={variant}
-	class={[styles.root, className]}
-	{...restProps}
+  bind:this={ref}
+  data-slot="field-legend"
+  data-variant={variant}
+  class={[styles.root, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </legend>

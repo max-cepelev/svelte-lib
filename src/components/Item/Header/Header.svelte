@@ -4,18 +4,18 @@ import type { WithElementRef } from '../../../types.js';
 import styles from '../styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
 <div
-	bind:this={ref}
-	data-slot="item-header"
-	class={[styles.header, className]}
-	{...restProps}
+  bind:this={ref}
+  data-slot="item-header"
+  class={[styles.header, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </div>

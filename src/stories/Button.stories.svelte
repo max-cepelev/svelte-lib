@@ -5,12 +5,12 @@ import { Button } from '../components/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
-	title: 'Button',
-	component: Button,
-	tags: ['autodocs'],
-	args: {
-		onclick: fn(),
-	},
+  title: 'Button',
+  component: Button,
+  tags: ['autodocs'],
+  args: {
+    onclick: fn(),
+  },
 });
 </script>
 
@@ -22,4 +22,3 @@ const { Story } = defineMeta({
 <Story name="Large" args={{ size: 'large' }}>Large</Story>
 
 <Story name="Small" args={{ size: 'small' }}>Small</Story>
-

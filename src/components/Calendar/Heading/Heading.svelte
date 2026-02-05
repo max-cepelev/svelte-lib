@@ -3,14 +3,14 @@ import { Calendar as CalendarPrimitive } from 'bits-ui';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  ...restProps
 }: CalendarPrimitive.HeadingProps = $props();
 </script>
 
 <CalendarPrimitive.Heading
-	bind:ref
-	class={[styles.heading, className]}
-	{...restProps}
+  bind:ref
+  class={[styles.heading, className]}
+  {...restProps}
 />

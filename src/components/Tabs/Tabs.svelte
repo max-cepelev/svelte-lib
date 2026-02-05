@@ -4,20 +4,20 @@ import styles from './styles.css.js';
 import type { TabsProps } from './types.js';
 
 let {
-	ref = $bindable(null),
-	value = $bindable(''),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  value = $bindable(''),
+  class: className,
+  children,
+  ...restProps
 }: TabsProps = $props();
 </script>
 
 <TabsPrimitive.Root
-	bind:ref
-	bind:value
-	data-slot="tabs"
-	class={[styles.root, className]}
-	{...restProps}
+  bind:ref
+  bind:value
+  data-slot="tabs"
+  class={[styles.root, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </TabsPrimitive.Root>

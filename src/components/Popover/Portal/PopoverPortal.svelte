@@ -6,5 +6,5 @@ let { children, ...restProps }: PopoverPortalProps = $props();
 </script>
 
 <PopoverPrimitive.Portal {...restProps}>
-	{@render children?.()}
+  {@render children?.()}
 </PopoverPrimitive.Portal>

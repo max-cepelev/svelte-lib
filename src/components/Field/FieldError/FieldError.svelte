@@ -5,57 +5,57 @@ import type { WithElementRef } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	errors,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  errors,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-	children?: Snippet;
-	errors?: { message?: string }[];
+  children?: Snippet;
+  errors?: { message?: string }[];
 } = $props();
 
 const hasContent = $derived.by(() => {
-	// has slotted error
-	if (children) return true;
+  // has slotted error
+  if (children) return true;
 
-	// no errors
-	if (!errors) return false;
+  // no errors
+  if (!errors) return false;
 
-	// has an error but no message
-	if (errors.length === 1 && !errors[0]?.message) {
-		return false;
-	}
+  // has an error but no message
+  if (errors.length === 1 && !errors[0]?.message) {
+    return false;
+  }
 
-	return true;
+  return true;
 });
 
 const isMultipleErrors = $derived(errors && errors.length > 1);
 const singleErrorMessage = $derived(
-	errors && errors.length === 1 && errors[0]?.message,
+  errors && errors.length === 1 && errors[0]?.message,
 );
 </script>
 
 {#if hasContent}
-	<div
-		bind:this={ref}
-		role="alert"
-		data-slot="field-error"
-		class={[styles.root, className]}
-		{...restProps}
-	>
-		{#if children}
-			{@render children()}
-		{:else if singleErrorMessage}
-			{singleErrorMessage}
-		{:else if isMultipleErrors}
-			<ul>
-				{#each errors ?? [] as error, index (index)}
-					{#if error?.message}
-						<li>{error.message}</li>
-					{/if}
-				{/each}
-			</ul>
-		{/if}
-	</div>
+  <div
+    bind:this={ref}
+    role="alert"
+    data-slot="field-error"
+    class={[styles.root, className]}
+    {...restProps}
+  >
+    {#if children}
+      {@render children()}
+    {:else if singleErrorMessage}
+      {singleErrorMessage}
+    {:else if isMultipleErrors}
+      <ul>
+        {#each errors ?? [] as error, index (index)}
+          {#if error?.message}
+            <li>{error.message}</li>
+          {/if}
+        {/each}
+      </ul>
+    {/if}
+  </div>
 {/if}

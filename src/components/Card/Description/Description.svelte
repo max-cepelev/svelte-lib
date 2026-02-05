@@ -4,18 +4,18 @@ import type { WithElementRef } from '../../../types.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLParagraphElement>> = $props();
 </script>
 
 <p
-	bind:this={ref}
-	data-slot="card-description"
-	class={[styles.description, className]}
-	{...restProps}
+  bind:this={ref}
+  data-slot="card-description"
+  class={[styles.description, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </p>

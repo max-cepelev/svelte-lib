@@ -4,9 +4,9 @@ import { Input, Label } from '../components/index.js';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
-	title: 'Input',
-	component: Input,
-	tags: ['autodocs'],
+  title: 'Input',
+  component: Input,
+  tags: ['autodocs'],
 });
 </script>
 
@@ -17,8 +17,8 @@ const { Story } = defineMeta({
 <Story name="Disabled" args={{ disabled: true }} />
 
 <Story name="File" asChild>
-	<div style:display="flex" style:flex-direction="column" style:gap="4px">
-		<Label for="picture">Picture</Label>
-  	<Input id="picture" type="file" />
-	</div>
+  <div style:display="flex" style:flex-direction="column" style:gap="4px">
+    <Label for="picture">Picture</Label>
+    <Input id="picture" type="file" />
+  </div>
 </Story>

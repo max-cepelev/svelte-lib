@@ -1,5 +1,3 @@
-
-
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../types.js';
@@ -7,23 +5,23 @@ import { fieldVariants } from './styles.css.js';
 import type { FieldOrientation } from './types.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	orientation = 'vertical',
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  orientation = 'vertical',
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-	orientation?: FieldOrientation;
+  orientation?: FieldOrientation;
 } = $props();
 </script>
 
 <div
-	bind:this={ref}
-	role="group"
-	data-slot="field"
-	data-orientation={orientation}
-	class={[fieldVariants[orientation], className]}
-	{...restProps}
+  bind:this={ref}
+  role="group"
+  data-slot="field"
+  data-orientation={orientation}
+  class={[fieldVariants[orientation], className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </div>

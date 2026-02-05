@@ -6,22 +6,22 @@ import { Portal } from '../Portal/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	sideOffset = 4,
-	portalProps,
-	class: className,
-	...restProps
+  ref = $bindable(null),
+  sideOffset = 4,
+  portalProps,
+  class: className,
+  ...restProps
 }: DropdownMenuPrimitive.ContentProps & {
-	portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
+  portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
 } = $props();
 </script>
 
 <Portal {...portalProps}>
-	<DropdownMenuPrimitive.Content
-		bind:ref
-		data-slot="dropdown-menu-content"
-		{sideOffset}
-		class={[styles.content, className]}
-		{...restProps}
-	/>
+  <DropdownMenuPrimitive.Content
+    bind:ref
+    data-slot="dropdown-menu-content"
+    {sideOffset}
+    class={[styles.content, className]}
+    {...restProps}
+  />
 </Portal>

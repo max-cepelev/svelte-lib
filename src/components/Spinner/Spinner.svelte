@@ -5,17 +5,17 @@ import styles from './styles.css.js';
 import type { SpinnerSize } from './types.js';
 
 let {
-	class: className,
-	size = 'medium',
-	...restProps
+  class: className,
+  size = 'medium',
+  ...restProps
 }: ComponentProps<typeof Loader> & {
-	size?: SpinnerSize;
+  size?: SpinnerSize;
 } = $props();
 </script>
 
 <Loader
-	role="status"
-	aria-label="Loading"
-	class={[styles.spinner, styles.spinnerSizes[size], className]}
-	{...restProps}
+  role="status"
+  aria-label="Loading"
+  class={[styles.spinner, styles.spinnerSizes[size], className]}
+  {...restProps}
 />

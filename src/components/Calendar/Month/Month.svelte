@@ -3,12 +3,12 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../../types.js';
 
 let {
-	ref = $bindable(null),
-	children,
-	...restProps
+  ref = $bindable(null),
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLElement>> = $props();
 </script>
 
 <div {...restProps} bind:this={ref} style="display:flex;flex-direction:column;">
-	{@render children?.()}
+  {@render children?.()}
 </div>

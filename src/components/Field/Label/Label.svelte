@@ -4,18 +4,18 @@ import { Label } from '../../Label/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: ComponentProps<typeof Label> = $props();
 </script>
 
 <Label
-	bind:ref
-	data-slot="field-label"
-	class={[styles.root, className]}
-	{...restProps}
+  bind:ref
+  data-slot="field-label"
+  class={[styles.root, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </Label>

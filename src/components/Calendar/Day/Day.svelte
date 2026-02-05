@@ -4,14 +4,14 @@ import { buttonVariants } from '../../Button/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  ...restProps
 }: CalendarPrimitive.DayProps = $props();
 </script>
 
 <CalendarPrimitive.Day
-	bind:ref
-	class={[buttonVariants.ghost, styles.day, className]}
-	{...restProps}
+  bind:ref
+  class={[buttonVariants.ghost, styles.day, className]}
+  {...restProps}
 />

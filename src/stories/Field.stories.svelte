@@ -3,12 +3,11 @@ import { defineMeta } from '@storybook/addon-svelte-csf';
 import { Button, Checkbox, Field, Input } from '../components/index.js';
 
 const { Story } = defineMeta({
-	title: 'Field',
-	component: Field.Item,
-	tags: ['autodocs'],
+  title: 'Field',
+  component: Field.Item,
+  tags: ['autodocs'],
 });
 </script>
-
 
 <Story name="Example" asChild>
   <div style="width: 100%;max-width: 400px">
@@ -16,14 +15,14 @@ const { Story } = defineMeta({
       <Field.Group>
         <Field.Set>
           <Field.Legend>Payment Method</Field.Legend>
-          <Field.Description
-            >All transactions are secure and encrypted</Field.Description
-          >
+          <Field.Description>
+            All transactions are secure and encrypted
+          </Field.Description>
           <Field.Group>
             <Field.Item>
-              <Field.Label for="checkout-7j9-card-name-43j"
-                >Name on Card</Field.Label
-              >
+              <Field.Label for="checkout-7j9-card-name-43j">
+                Name on Card
+              </Field.Label>
               <Input
                 id="checkout-7j9-card-name-43j"
                 placeholder="John Doe"
@@ -31,7 +30,9 @@ const { Story } = defineMeta({
               />
               <Field.Error errors={[{ message: 'Name is required' }]} />
             </Field.Item>
-            <div style="display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr);">
+            <div
+              style="display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr);"
+            >
               <Field.Item style="grid-column: span 2;">
                 <Field.Label for="checkout-7j9-card-number-uw1">
                   Card Number
@@ -41,7 +42,9 @@ const { Story } = defineMeta({
                   placeholder="1234 5678 9012 3456"
                   required
                 />
-                <Field.Description>Enter your 16-digit number.</Field.Description>
+                <Field.Description>
+                  Enter your 16-digit number.
+                </Field.Description>
               </Field.Item>
               <Field.Item style="grid-column: span 1;">
                 <Field.Label for="checkout-7j9-cvv">CVV</Field.Label>
@@ -77,5 +80,3 @@ const { Story } = defineMeta({
     </form>
   </div>
 </Story>
-
-

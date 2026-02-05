@@ -9,15 +9,13 @@ let { columns, height, sticky }: HeaderProps<TRow> = $props();
 </script>
 
 <thead>
-	<tr class={{
+  <tr
+    class={{
 		[styles.sticky]: sticky
-	}}>
-		{#each columns as column (column.title)}
-			<HeaderCell
-				{column}
-				{height}
-				width={column.width}
-			/>
-		{/each}
-	</tr>
+	}}
+  >
+    {#each columns as column (column.title)}
+      <HeaderCell {column} {height} width={column.width} />
+    {/each}
+  </tr>
 </thead>

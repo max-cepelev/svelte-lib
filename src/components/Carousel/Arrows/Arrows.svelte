@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { ArrowLeftIcon } from '@lucide/svelte';
-  import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
-  import type { SvelteHTMLElements } from 'svelte/elements';
-  import { getEmblaContext } from '../context.js';
-  import styles from './styles.css.js';
+import { ArrowLeftIcon } from '@lucide/svelte';
+import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
+import type { SvelteHTMLElements } from 'svelte/elements';
+import { getEmblaContext } from '../context.js';
+import styles from './styles.css.js';
 
-  let {
-    class: className,
-    ...restProps
-  }: Omit<SvelteHTMLElements['button'], 'children'> = $props();
+let {
+  class: className,
+  ...restProps
+}: Omit<SvelteHTMLElements['button'], 'children'> = $props();
 
-  const emblaNextCtx = getEmblaContext('<Carousel.Next/>');
-  const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
+const emblaNextCtx = getEmblaContext('<Carousel.Next/>');
+const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
 </script>
 
 <button

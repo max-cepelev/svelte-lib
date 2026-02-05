@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.4.2
+
+### Patch Changes
+
+- feat: Update dependencies and Biome config
+
 ## 1.4.1
 
 ### Patch Changes

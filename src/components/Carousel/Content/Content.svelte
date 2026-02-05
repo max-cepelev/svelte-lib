@@ -6,19 +6,19 @@ import { getEmblaContext } from '../context.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 
 const emblaCtx = getEmblaContext('<Carousel.Content/>');
 </script>
 
 <div
-	data-slot="carousel-content-wrapper"
-	class={styles.contentWrapper}
-	use:emblaCarouselSvelte={{
+  data-slot="carousel-content-wrapper"
+  class={styles.contentWrapper}
+  use:emblaCarouselSvelte={{
 		options: {
 			container: '[data-embla-container]',
 			slides: '[data-embla-slide]',
@@ -27,18 +27,18 @@ const emblaCtx = getEmblaContext('<Carousel.Content/>');
 		},
 		plugins: emblaCtx.plugins,
 	}}
-	onemblaInit={emblaCtx.onInit}
+  onemblaInit={emblaCtx.onInit}
 >
-	<div
-		bind:this={ref}
-		class={[
+  <div
+    bind:this={ref}
+    class={[
 			styles.container,
 			styles.orientation[emblaCtx.orientation],
 			className
 		]}
-		data-embla-container=""
-		{...restProps}
-	>
-		{@render children?.()}
-	</div>
+    data-embla-container=""
+    {...restProps}
+  >
+    {@render children?.()}
+  </div>
 </div>

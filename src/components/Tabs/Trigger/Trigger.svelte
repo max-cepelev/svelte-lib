@@ -4,18 +4,18 @@ import styles from '../styles.css.js';
 import type { TabsTriggerProps } from '../types.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	children,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
 }: TabsTriggerProps = $props();
 </script>
 
 <TabsPrimitive.Trigger
-	bind:ref
-	data-slot="tabs-trigger"
-	class={[styles.trigger, className]}
-	{...restProps}
+  bind:ref
+  data-slot="tabs-trigger"
+  class={[styles.trigger, className]}
+  {...restProps}
 >
-	{@render children?.()}
+  {@render children?.()}
 </TabsPrimitive.Trigger>

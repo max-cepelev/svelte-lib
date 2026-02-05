@@ -8,31 +8,31 @@ import { ScrollUpButton } from '../ScrollUpButton/index.js';
 import styles from './styles.css.js';
 
 let {
-	ref = $bindable(null),
-	class: className,
-	sideOffset = 4,
-	portalProps,
-	children,
-	preventScroll = true,
-	...restProps
+  ref = $bindable(null),
+  class: className,
+  sideOffset = 4,
+  portalProps,
+  children,
+  preventScroll = true,
+  ...restProps
 }: WithoutChild<SelectPrimitive.ContentProps> & {
-	portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
+  portalProps?: WithoutChildrenOrChild<ComponentProps<typeof Portal>>;
 } = $props();
 </script>
 
 <Portal {...portalProps}>
-	<SelectPrimitive.Content
-		bind:ref
-		{sideOffset}
-		{preventScroll}
-		data-slot="select-content"
-		class={[styles.content, className]}
-		{...restProps}
-	>
-		<ScrollUpButton />
-		<SelectPrimitive.Viewport class={styles.viewport}>
-			{@render children?.()}
-		</SelectPrimitive.Viewport>
-		<ScrollDownButton />
-	</SelectPrimitive.Content>
+  <SelectPrimitive.Content
+    bind:ref
+    {sideOffset}
+    {preventScroll}
+    data-slot="select-content"
+    class={[styles.content, className]}
+    {...restProps}
+  >
+    <ScrollUpButton />
+    <SelectPrimitive.Viewport class={styles.viewport}>
+      {@render children?.()}
+    </SelectPrimitive.Viewport>
+    <ScrollDownButton />
+  </SelectPrimitive.Content>
 </Portal>
