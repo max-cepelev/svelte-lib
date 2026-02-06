@@ -2,13 +2,13 @@ export { Accordion } from './Accordion';
 
 export { Alert } from './Alert';
 
-export { Badge, badgeVariants, type BadgeVariant } from './Badge';
+export { Badge, type BadgeVariant, badgeVariants } from './Badge';
 
 export {
 	Button,
-	buttonVariants,
 	type ButtonSize,
 	type ButtonVariant,
+	buttonVariants,
 } from './Button';
 
 export {
@@ -49,8 +49,8 @@ export {
 	type DataGridSortHeaderProps,
 	type DataGridSorting,
 } from './DataGridSortHeader';
-export * as DropdownMenu from './DropdownMenu';
 export type { DropdownMenuProps } from './DropdownMenu';
+export * as DropdownMenu from './DropdownMenu';
 
 export { Empty, type EmptyMediaVariant } from './Empty';
 
@@ -108,5 +108,6 @@ export {
 	Typography,
 	type TypographyAlign,
 	type TypographyColor,
+	type TypographyProps,
 	type TypographyVariant,
 } from './Typography';

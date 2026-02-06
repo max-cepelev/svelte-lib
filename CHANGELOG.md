@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.4.4
+
+### Patch Changes
+
+- Export TypographyProps from Typography
+
 ## 1.4.3
 
 ### Patch Changes
