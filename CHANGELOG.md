@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.4.5
+
+### Patch Changes
+
+- feat: Resolve path aliases in generated d.ts files
+
 ## 1.4.4
 
 ### Patch Changes

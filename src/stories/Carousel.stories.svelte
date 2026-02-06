@@ -37,7 +37,7 @@ const { Story } = defineMeta({
 <Story name="Vertical" asChild>
   <Carousel.Root
     orientation="vertical"
-    opts={{
+    options={{
       align: 'start',
     }}
     style="width: 100%; max-width: 400px;"
