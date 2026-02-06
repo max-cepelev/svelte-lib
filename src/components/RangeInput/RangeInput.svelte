@@ -1,9 +1,9 @@
 <script lang="ts">
-import { calculateSize } from '../../utils.js';
-import { Slider } from '../Slider/index.js';
-import { Typography } from '../Typography/index.js';
-import styles from './styles.css.js';
-import type { RangeInputProps } from './types.js';
+import { calculateSize } from '~/utils';
+import { Slider } from '../Slider';
+import { Typography } from '../Typography';
+import styles from './styles.css';
+import type { RangeInputProps } from './types';
 
 let {
   min,

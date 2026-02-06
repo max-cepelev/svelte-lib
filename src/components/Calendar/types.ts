@@ -1,8 +1,8 @@
 import type { DateValue } from '@internationalized/date';
 import type { Calendar } from 'bits-ui';
 import type { Snippet } from 'svelte';
-import type { WithoutChildrenOrChild } from '../../types.js';
-import type { ButtonVariant } from '../Button/types.js';
+import type { WithoutChildrenOrChild } from '~/types';
+import type { ButtonVariant } from '../Button/types';
 
 export type CalendarProps = WithoutChildrenOrChild<Calendar.RootProps> & {
 	buttonVariant?: ButtonVariant;

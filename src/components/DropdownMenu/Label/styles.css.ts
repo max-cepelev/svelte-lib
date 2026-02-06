@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
+import { theme } from '~/theme';
 
 export const label = style({
 	paddingLeft: theme.spacing[2], // px-2

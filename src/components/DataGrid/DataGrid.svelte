@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Body } from './Body/index.js';
-import { ROW_HEIGHT } from './constants.js';
-import { Footer } from './Footer/index.js';
-import { Header } from './Header/index.js';
+import { Body } from './Body';
+import { ROW_HEIGHT } from './constants';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
-import styles from './styles.css.js';
-import type { DataGridProps } from './types.js';
+import styles from './styles.css';
+import type { DataGridProps } from './types';
 
 type TRow = $$Generic;
 

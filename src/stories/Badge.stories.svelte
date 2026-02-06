@@ -1,6 +1,6 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Badge } from '../components/index.js';
+import { Badge } from '../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

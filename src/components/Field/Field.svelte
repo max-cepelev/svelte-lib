@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '../../types.js';
-import { fieldVariants } from './styles.css.js';
-import type { FieldOrientation } from './types.js';
+import type { WithElementRef } from '~/types';
+import { fieldVariants } from './styles.css';
+import type { FieldOrientation } from './types';
 
 let {
   ref = $bindable(null),

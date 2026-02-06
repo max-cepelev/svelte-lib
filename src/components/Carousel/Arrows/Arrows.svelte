@@ -2,8 +2,8 @@
 import { ArrowLeftIcon } from '@lucide/svelte';
 import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import { getEmblaContext } from '../context.js';
-import styles from './styles.css.js';
+import { getEmblaContext } from '../context';
+import styles from './styles.css';
 
 let {
   class: className,

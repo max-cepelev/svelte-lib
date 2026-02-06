@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Select as SelectPrimitive } from 'bits-ui';
 import type { ComponentProps } from 'svelte';
-import styles from './styles.css.js';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

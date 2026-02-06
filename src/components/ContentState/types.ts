@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte';
-import type { PlaceholderProps } from '../Placeholder/index.js';
+import type { PlaceholderProps } from '../Placeholder';
 
 export type ContentStateProps = {
 	/**

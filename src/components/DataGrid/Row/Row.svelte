@@ -1,9 +1,9 @@
 <script lang="ts">
 type TRow = $$Generic;
 
-import { Cell } from '../Cell/index.js';
-import styles from './styles.css.js';
-import type { RowProps } from './types.js';
+import { Cell } from '../Cell';
+import styles from './styles.css';
+import type { RowProps } from './types';
 
 let { row, columns, rowIndex, rowId, rowHeight, onRowClick }: RowProps<TRow> =
   $props();

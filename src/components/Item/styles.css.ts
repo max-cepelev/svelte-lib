@@ -4,9 +4,9 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import { spacing } from '../../utils.js';
-import type { ItemMediaVariant, ItemSize, ItemVariant } from './types.js';
+import { theme } from '~/theme';
+import { spacing } from '~/utils';
+import type { ItemMediaVariant, ItemSize, ItemVariant } from './types';
 
 export const item = style({
 	display: 'flex',

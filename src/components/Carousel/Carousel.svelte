@@ -1,11 +1,11 @@
 <script lang="ts">
-import { setEmblaContext } from './context.js';
-import styles from './styles.css.js';
+import { setEmblaContext } from './context';
+import styles from './styles.css';
 import {
   type CarouselAPI,
   type CarouselProps,
   type EmblaContext,
-} from './types.js';
+} from './types';
 
 let {
   ref = $bindable(null),

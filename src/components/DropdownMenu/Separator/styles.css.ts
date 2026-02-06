@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
-import { negativeSpacing } from '../../../utils.js';
+import { theme } from '~/theme';
+import { negativeSpacing } from '~/utils';
 
 const separator = style({
 	backgroundColor: theme.colors.border,

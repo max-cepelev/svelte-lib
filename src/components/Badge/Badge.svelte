@@ -1,6 +1,6 @@
 <script lang="ts">
-import styles from './styles.css.js';
-import type { BadgeProps } from './types.js';
+import styles from './styles.css';
+import type { BadgeProps } from './types';
 
 let {
   ref = $bindable(null),

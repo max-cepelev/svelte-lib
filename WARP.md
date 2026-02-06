@@ -55,7 +55,7 @@ Component/
 1. Create component directory under `src/components/`
 2. Follow the established file structure pattern
 3. Export from component's `index.ts`
-4. Add export to `src/components/index.ts`
+4. Add export to `src/components.ts`
 5. Create Storybook story in `src/stories/`
 
 ### Directory Structure for Components
@@ -89,18 +89,18 @@ Component props (`types.ts`):
 - Define public variants and sizes as unions, e.g. `export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info'`.
 
 Root component (`Component.svelte`):
-- Import types and styles: `import { styleOrVariants } from './styles.css.js'` and the public types from `./types.js`.
+- Import types and styles: `import { styleOrVariants } from './styles.css'` and the public types from `./types.js`.
 - Use `$props()` with `WithElementRef` from `@vanilla-extract/css` to support `bind:this`.
 - Apply classes via array syntax: `class={[styles.something, className]}` or for variants `class={[variants[variant], className]}`.
 - Set a `data-slot` attribute, e.g. `data-slot="alert"`.
 
 Exports (`index.ts`):
-- Simple components: `export { default as Button } from './Button.svelte'; export { buttonVariants } from './styles.css.js'; export type * from './types.js';`
+- Simple components: `export { default as Button } from './Button.svelte'; export { buttonVariants } from './styles.css'; export type * from './types';`
 - Compound components: export object with Root and subcomponents, plus style variants: `export { Alert, alertVariants }`.
 
 ### Styling Guidelines (Vanilla Extract)
 In each `styles.css.ts`:
-- Import from `@vanilla-extract/css`: `style`, `styleVariants`, `globalStyle` and from `~/styles/theme.css.js`: `theme`.
+- Import from `@vanilla-extract/css`: `style`, `styleVariants`, `globalStyle` and from `~/styles/theme.css`: `theme`.
 - Create a base style with `style({ ... })`.
 - Create variants with `styleVariants<Record<VariantUnion, ComplexStyleRule>>({...})`.
 - **Complex Selectors Rules**:
@@ -110,7 +110,7 @@ In each `styles.css.ts`:
   - Selectors can reference other scoped class names: `selectors: { [`${parent} &`]: { ... } }`.
   - **Forbidden**: Targeting other elements from within `selectors`, e.g., `& a[href]` or `& .otherClass` is NOT allowed. Use `globalStyle` instead.
 - Reference tokens only from `theme` (colors, spacing, fontSize, fontWeight, lineHeight, borderRadius, shadow, elevation).
-- Import styles in Svelte as `.js`: `import styles from './styles.css.js'`.
+- Import styles in Svelte as `.js`: `import styles from './styles.css'`.
 
 Subcomponents:
 - Each subcomponent directory contains its own `styles.css.ts` and imports it locally in the Svelte file.
@@ -126,7 +126,7 @@ Subcomponents:
 Example:
 ```ts
 import { style } from '@vanilla-extract/css';
-import { theme } from '~/styles/theme.css.js';
+import { theme } from '~/styles/theme.css';
 
 export const container = style({
   padding: `${theme.spacing[3]} ${theme.spacing[4]}`,

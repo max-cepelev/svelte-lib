@@ -1,7 +1,7 @@
 <script lang="ts">
-import { calculateSize } from '../../../utils.js';
-import styles from './styles.css.js';
-import type { CellProps } from './types.js';
+import { calculateSize } from '~/utils';
+import styles from './styles.css';
+import type { CellProps } from './types';
 
 type TRow = $$Generic;
 

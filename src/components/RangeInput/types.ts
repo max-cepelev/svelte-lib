@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '../../types.js';
+import type { WithElementRef } from '~/types';
 
 export type RangeInputSize = 'small' | 'medium' | 'large';
 

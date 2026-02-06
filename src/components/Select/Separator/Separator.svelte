@@ -1,8 +1,7 @@
 <script lang="ts">
-import type { SeparatorProps } from '../../Separator/types.js';
-import { Separator } from './index.js';
+import { type SeparatorProps, Separator } from '../../Separator';
 
-import styles from './styles.css.js';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

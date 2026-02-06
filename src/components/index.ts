@@ -1,40 +1,40 @@
-export { Accordion } from './Accordion/index.js';
+export { Accordion } from './Accordion';
 
-export { Alert } from './Alert/index.js';
+export { Alert } from './Alert';
 
-export { Badge, badgeVariants, type BadgeVariant } from './Badge/index.js';
+export { Badge, badgeVariants, type BadgeVariant } from './Badge';
 
 export {
 	Button,
 	buttonVariants,
 	type ButtonSize,
 	type ButtonVariant,
-} from './Button/index.js';
+} from './Button';
 
 export {
 	ButtonGroup,
 	type ButtonGroupOrientation,
 	type ButtonGroupProps,
-} from './ButtonGroup/index.js';
+} from './ButtonGroup';
 
-export { Calendar, type CalendarProps } from './Calendar/index.js';
+export { Calendar, type CalendarProps } from './Calendar';
 
-export { Card, type CardVariant } from './Card/index.js';
+export { Card, type CardVariant } from './Card';
 
-export { Carousel, type CarouselProps } from './Carousel/index.js';
+export { Carousel, type CarouselProps } from './Carousel';
 
-export { Checkbox } from './Checkbox/index.js';
+export { Checkbox } from './Checkbox';
 
 export {
 	CircularProgress,
 	type CircularProgressProps,
-} from './CircularProgress/index.js';
+} from './CircularProgress';
 
 export {
 	ContentState,
 	type ContentStateErrorProps,
 	type ContentStateProps,
-} from './ContentState/index.js';
+} from './ContentState';
 
 export {
 	DataGrid,
@@ -42,71 +42,71 @@ export {
 	type DataGridColumns,
 	type DataGridProps,
 	type DataGridState,
-} from './DataGrid/index.js';
+} from './DataGrid';
 
 export {
 	DataGridSortHeader,
 	type DataGridSortHeaderProps,
 	type DataGridSorting,
-} from './DataGridSortHeader/index.js';
-export * as DropdownMenu from './DropdownMenu/index.js';
-export type { DropdownMenuProps } from './DropdownMenu/index.js';
+} from './DataGridSortHeader';
+export * as DropdownMenu from './DropdownMenu';
+export type { DropdownMenuProps } from './DropdownMenu';
 
-export { Empty, type EmptyMediaVariant } from './Empty/index.js';
+export { Empty, type EmptyMediaVariant } from './Empty';
 
 export {
 	Field,
 	type FieldOrientation,
 	type FieldVariants,
-} from './Field/index.js';
+} from './Field';
 
 export {
 	Input,
 	type InputProps,
 	type InputType,
-} from './Input/index.js';
+} from './Input';
 
 export {
 	Item,
 	type ItemProps,
 	type ItemSize,
 	type ItemVariant,
-} from './Item/index.js';
+} from './Item';
 
-export { Label } from './Label/index.js';
+export { Label } from './Label';
 
 export {
 	Placeholder,
 	type PlaceholderProps,
 	type PlaceholderSize,
-} from './Placeholder/index.js';
+} from './Placeholder';
 
-export { Popover, type PopoverProps } from './Popover/index.js';
+export { Popover, type PopoverProps } from './Popover';
 
 export {
 	RangeInput,
 	type RangeInputProps,
 	type RangeInputSize,
-} from './RangeInput/index.js';
+} from './RangeInput';
 
-export { Select } from './Select/index.js';
+export { Select } from './Select';
 
 export {
 	Separator,
 	type SeparatorProps,
-} from './Separator/index.js';
+} from './Separator';
 
-export { Slider, type SliderProps } from './Slider/index.js';
+export { Slider, type SliderProps } from './Slider';
 
-export { Spinner, type SpinnerSize } from './Spinner/index.js';
+export { Spinner, type SpinnerSize } from './Spinner';
 
-export { Tabs, type TabsProps } from './Tabs/index.js';
+export { Tabs, type TabsProps } from './Tabs';
 
-export { Tooltip, type TooltipProps } from './Tooltip/index.js';
+export { Tooltip, type TooltipProps } from './Tooltip';
 
 export {
 	Typography,
 	type TypographyAlign,
 	type TypographyColor,
 	type TypographyVariant,
-} from './Typography/index.js';
+} from './Typography';

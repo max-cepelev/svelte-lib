@@ -3,8 +3,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { SliderSize } from './types.js';
+import { theme } from '~/theme';
+import type { SliderSize } from './types';
 
 export const root = style({
 	position: 'relative',

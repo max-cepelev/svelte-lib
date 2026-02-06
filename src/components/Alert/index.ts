@@ -1,7 +1,7 @@
 import Root from './Alert.svelte';
-import { Description } from './Description/index.js';
-import { alertVariants } from './styles.css.js';
-import { Title } from './Title/index.js';
+import { Description } from './Description';
+import { alertVariants } from './styles.css';
+import { Title } from './Title';
 
 const Alert = {
 	Root,
@@ -11,4 +11,4 @@ const Alert = {
 
 export { Alert, alertVariants };
 
-export type * from './types.js';
+export type * from './types';

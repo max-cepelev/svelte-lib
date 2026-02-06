@@ -1,5 +1,5 @@
 import { getContext, hasContext, setContext } from 'svelte';
-import type { EmblaContext } from './types.js';
+import type { EmblaContext } from './types';
 
 const EMBLA_CAROUSEL_CONTEXT = Symbol('EMBLA_CAROUSEL_CONTEXT');
 

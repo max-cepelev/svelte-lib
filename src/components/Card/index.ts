@@ -1,10 +1,10 @@
-import { Action } from './Action/index.js';
+import { Action } from './Action';
 import Root from './Card.svelte';
-import { Content } from './Content/index.js';
-import { Description } from './Description/index.js';
-import { Footer } from './Footer/index.js';
-import { Header } from './Header/index.js';
-import { Title } from './Title/index.js';
+import { Content } from './Content';
+import { Description } from './Description';
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { Title } from './Title';
 
 const Card = {
 	Root,
@@ -18,4 +18,4 @@ const Card = {
 
 export { Card };
 
-export type * from './types.js';
+export type * from './types';

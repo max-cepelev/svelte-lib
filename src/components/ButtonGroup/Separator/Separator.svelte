@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ComponentProps } from 'svelte';
-import { Separator } from '../../Separator/index.js';
-import styles from './styles.css.js';
+import { Separator } from '../../Separator';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

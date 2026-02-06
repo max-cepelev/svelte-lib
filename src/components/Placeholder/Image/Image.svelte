@@ -1,6 +1,6 @@
 <script lang="ts">
-import styles from './styles.css.js';
-import type { ImageProps } from './types.js';
+import styles from './styles.css';
+import type { ImageProps } from './types';
 
 let { class: className, size = 'medium', ...restProps }: ImageProps = $props();
 </script>

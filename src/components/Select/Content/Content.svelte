@@ -1,11 +1,11 @@
 <script lang="ts">
 import { Select as SelectPrimitive } from 'bits-ui';
 import type { ComponentProps } from 'svelte';
-import type { WithoutChild, WithoutChildrenOrChild } from '../../../types.js';
-import { Portal } from '../Portal/index.js';
-import { ScrollDownButton } from '../ScrollDownButton/index.js';
-import { ScrollUpButton } from '../ScrollUpButton/index.js';
-import styles from './styles.css.js';
+import type { WithoutChild, WithoutChildrenOrChild } from '~/types';
+import { Portal } from '../Portal';
+import { ScrollDownButton } from '../ScrollDownButton';
+import { ScrollUpButton } from '../ScrollUpButton';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

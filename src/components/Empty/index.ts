@@ -1,9 +1,9 @@
 import Root from './Empty.svelte';
-import { Header } from './Header/index.js';
-import { Media } from './Media/index.js';
-import { Title } from './Title/index.js';
-import { Description } from './Description/index.js';
-import { Content } from './Content/index.js';
+import { Header } from './Header';
+import { Media } from './Media';
+import { Title } from './Title';
+import { Description } from './Description';
+import { Content } from './Content';
 
 export const Empty = {
 	Root,
@@ -14,4 +14,4 @@ export const Empty = {
 	Content,
 };
 
-export type * from './types.js';
+export type * from './types';

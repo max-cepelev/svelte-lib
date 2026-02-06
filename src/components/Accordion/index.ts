@@ -1,7 +1,7 @@
 import Root from './Accordion.svelte';
-import { Content } from './Content/index.js';
-import { Item } from './Item/index.js';
-import { Trigger } from './Trigger/index.js';
+import { Content } from './Content';
+import { Item } from './Item';
+import { Trigger } from './Trigger';
 
 const Accordion = {
 	Trigger,

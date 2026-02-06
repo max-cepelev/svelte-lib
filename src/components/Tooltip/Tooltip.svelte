@@ -1,9 +1,9 @@
 <script lang="ts">
 import { Tooltip as TooltipPrimitive } from 'bits-ui';
-import { Content } from './Content/index.js';
-import { Provider } from './Provider/index.js';
-import { Trigger } from './Trigger/index.js';
-import type { TooltipProps } from './types.js';
+import { Content } from './Content';
+import { Provider } from './Provider';
+import { Trigger } from './Trigger';
+import type { TooltipProps } from './types';
 
 let {
   open = $bindable(false),

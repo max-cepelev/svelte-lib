@@ -1,5 +1,5 @@
 import { globalStyle, style } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
+import { theme } from '~/theme';
 
 const root = style({
 	display: 'flex',

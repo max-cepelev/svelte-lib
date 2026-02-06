@@ -4,4 +4,4 @@ export type {
 	TypographyAlign,
 	TypographyColor,
 	TypographyVariant,
-} from './types.js';
+} from './types';

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { Popover as PopoverPrimitive } from 'bits-ui';
 import PopoverPortal from '../Portal/PopoverPortal.svelte';
-import styles from '../styles.css.js';
-import type { PopoverContentProps } from '../types.js';
+import styles from '../styles.css';
+import type { PopoverContentProps } from '../types';
 
 let {
   ref = $bindable(null),

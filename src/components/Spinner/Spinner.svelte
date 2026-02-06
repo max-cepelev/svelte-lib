@@ -1,8 +1,8 @@
 <script lang="ts">
 import { Loader } from '@lucide/svelte';
 import type { ComponentProps } from 'svelte';
-import styles from './styles.css.js';
-import type { SpinnerSize } from './types.js';
+import styles from './styles.css';
+import type { SpinnerSize } from './types';
 
 let {
   class: className,

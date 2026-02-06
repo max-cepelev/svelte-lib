@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Snippet } from 'svelte';
-import styles from './styles.css.js';
+import styles from './styles.css';
 
 let {
   children,

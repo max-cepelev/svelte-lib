@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Tabs as TabsPrimitive } from 'bits-ui';
-import type { TabsContentProps } from '../types.js';
-import styles from '../styles.css.js';
+import type { TabsContentProps } from '../types';
+import styles from '../styles.css';
 
 let {
   ref = $bindable(null),

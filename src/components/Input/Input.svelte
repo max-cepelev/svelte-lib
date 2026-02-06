@@ -1,6 +1,6 @@
 <script lang="ts">
-import styles from './styles.css.js';
-import type { InputProps } from './types.js';
+import styles from './styles.css';
+import type { InputProps } from './types';
 
 let {
   ref = $bindable(null),

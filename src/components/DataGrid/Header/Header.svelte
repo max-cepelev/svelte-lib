@@ -1,7 +1,7 @@
 <script lang="ts">
-import { HeaderCell } from '../HeaderCell/index.js';
-import styles from './styles.css.js';
-import type { HeaderProps } from './types.js';
+import { HeaderCell } from '../HeaderCell';
+import styles from './styles.css';
+import type { HeaderProps } from './types';
 
 type TRow = $$Generic;
 

@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
+import { theme } from '~/theme';
 
 const description = style({
 	fontSize: theme.fontSize.sm,

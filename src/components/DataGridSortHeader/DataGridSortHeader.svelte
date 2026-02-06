@@ -6,8 +6,8 @@ import {
   ArrowDownUp,
   ArrowDownWideNarrow,
 } from '@lucide/svelte';
-import styles from './styles.css.js';
-import type { DataGridSortHeaderProps } from './types.js';
+import styles from './styles.css';
+import type { DataGridSortHeaderProps } from './types';
 
 let {
   sorting,

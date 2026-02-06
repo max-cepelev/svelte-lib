@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Typography } from '../Typography/index.js';
+import { Typography } from '../Typography';
 import {
   IMAGE_HEIGHT,
   IMAGE_WIDTH,
   MAX_INNER_WIDTH,
   TITLE_HEADER_LEVEL,
-} from './constants.js';
-import { Image } from './Image/index.js';
-import styles from './styles.css.js';
-import type { PlaceholderProps } from './types.js';
+} from './constants';
+import { Image } from './Image';
+import styles from './styles.css';
+import type { PlaceholderProps } from './types';
 
 let {
   class: className,
@@ -43,7 +43,7 @@ let {
 
     {#if description}
       <Typography
-        className={styles.descriptionClass}
+        class={styles.descriptionClass}
         component="div"
         variant="body1"
       >

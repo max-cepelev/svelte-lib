@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Popover as PopoverPrimitive } from 'bits-ui';
-import styles from '../styles.css.js';
-import type { PopoverCloseProps } from '../types.js';
+import styles from '../styles.css';
+import type { PopoverCloseProps } from '../types';
 
 let {
   ref = $bindable(null),

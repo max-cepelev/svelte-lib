@@ -1,13 +1,13 @@
 import Root from './Item.svelte';
-import { Group } from './Group/index.js';
-import { Separator } from './Separator/index.js';
-import { Header } from './Header/index.js';
-import { Footer } from './Footer/index.js';
-import { Content } from './Content/index.js';
-import { Title } from './Title/index.js';
-import { Description } from './Description/index.js';
-import { Actions } from './Actions/index.js';
-import { Media } from './Media/index.js';
+import { Group } from './Group';
+import { Separator } from './Separator';
+import { Header } from './Header';
+import { Footer } from './Footer';
+import { Content } from './Content';
+import { Title } from './Title';
+import { Description } from './Description';
+import { Actions } from './Actions';
+import { Media } from './Media';
 
 export const Item = {
 	Root,
@@ -22,4 +22,4 @@ export const Item = {
 	Media,
 };
 
-export type * from './types.js';
+export type * from './types';

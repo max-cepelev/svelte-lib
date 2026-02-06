@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Popover as PopoverPrimitive } from 'bits-ui';
-import type { PopoverProps } from './types.js';
+import type { PopoverProps } from './types';
 
 let {
   open = $bindable(false),

@@ -1,4 +1,4 @@
-import type { DataGridColumn } from '../DataGrid/types.js';
+import type { DataGridColumn } from '../DataGrid/types';
 
 export type DataGridSorting<TData> = {
 	key: keyof TData;

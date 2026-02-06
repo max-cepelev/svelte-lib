@@ -4,9 +4,9 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import { spacing } from '../../utils.js';
-import type { AlertVariant } from './types.js';
+import { theme } from '~/theme';
+import { spacing } from '~/utils';
+import type { AlertVariant } from './types';
 
 const alertBase = style({
 	position: 'relative',

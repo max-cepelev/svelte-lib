@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import { spacing } from '../../utils.js';
+import { theme } from '~/theme';
+import { spacing } from '~/utils';
 
 export const root = style({
 	display: 'flex',

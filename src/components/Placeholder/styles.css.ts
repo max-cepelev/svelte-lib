@@ -3,8 +3,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { PlaceholderSize } from './types.js';
+import { theme } from '~/theme';
+import type { PlaceholderSize } from './types';
 
 const wrapper = style({
 	display: 'flex',

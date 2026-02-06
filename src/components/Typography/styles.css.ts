@@ -3,8 +3,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { TypographyVariant } from './types.js';
+import { theme } from '~/theme';
+import type { TypographyVariant } from './types';
 
 export const variants = styleVariants<
 	Record<TypographyVariant, ComplexStyleRule>

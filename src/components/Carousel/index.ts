@@ -1,8 +1,8 @@
-import { Arrows } from './Arrows/index.js';
+import { Arrows } from './Arrows';
 import Root from './Carousel.svelte';
-import { Content } from './Content/index.js';
-import { Dots } from './Dots/index.js';
-import { Item } from './Item/index.js';
+import { Content } from './Content';
+import { Dots } from './Dots';
+import { Item } from './Item';
 
 export const Carousel = {
 	Root,
@@ -12,4 +12,4 @@ export const Carousel = {
 	Dots,
 };
 
-export type * from './types.js';
+export type * from './types';

@@ -1,20 +1,20 @@
-import { CheckboxGroup } from './CheckboxGroup/index.js';
-import { CheckboxItem } from './CheckboxItem/index.js';
-import { Content } from './Content/index.js';
+import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxItem } from './CheckboxItem';
+import { Content } from './Content';
 import Root from './DropdownMenu.svelte';
-import { Group } from './Group/index.js';
-import { GroupHeading } from './GroupHeading/index.js';
-import { Item } from './Item/index.js';
-import { Label } from './Label/index.js';
-import { Portal } from './Portal/index.js';
-import { RadioGroup } from './RadioGroup/index.js';
-import { RadioItem } from './RadioItem/index.js';
-import { Separator } from './Separator/index.js';
-import { Shortcut } from './Shortcut/index.js';
-import { Sub } from './Sub/index.js';
-import { SubContent } from './SubContent/index.js';
-import { SubTrigger } from './SubTrigger/index.js';
-import { Trigger } from './Trigger/index.js';
+import { Group } from './Group';
+import { GroupHeading } from './GroupHeading';
+import { Item } from './Item';
+import { Label } from './Label';
+import { Portal } from './Portal';
+import { RadioGroup } from './RadioGroup';
+import { RadioItem } from './RadioItem';
+import { Separator } from './Separator';
+import { Shortcut } from './Shortcut';
+import { Sub } from './Sub';
+import { SubContent } from './SubContent';
+import { SubTrigger } from './SubTrigger';
+import { Trigger } from './Trigger';
 
 export {
 	CheckboxGroup,
@@ -36,4 +36,4 @@ export {
 	Trigger,
 };
 
-export type { DropdownMenuProps } from './types.js';
+export type { DropdownMenuProps } from './types';

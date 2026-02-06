@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Tabs as TabsPrimitive } from 'bits-ui';
-import styles from './styles.css.js';
-import type { TabsProps } from './types.js';
+import styles from './styles.css';
+import type { TabsProps } from './types';
 
 let {
   ref = $bindable(null),

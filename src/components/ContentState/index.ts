@@ -1,3 +1,3 @@
 export { default as ContentState } from './ContentState.svelte';
 
-export * from './types.js';
+export * from './types';

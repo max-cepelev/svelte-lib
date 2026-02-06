@@ -1,5 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { negativeSpacing } from '../../../utils.js';
+import { negativeSpacing } from '~/utils';
 
 export const contentWrapper = style({
 	overflow: 'hidden',

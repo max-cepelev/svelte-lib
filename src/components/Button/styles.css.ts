@@ -5,8 +5,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { ButtonSize, ButtonVariant } from './types.js';
+import { theme } from '~/theme';
+import type { ButtonSize, ButtonVariant } from './types';
 
 const buttonBase = style({
 	display: 'inline-flex',

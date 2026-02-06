@@ -1,6 +1,6 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Button, Empty } from '../components/index.js';
+import { Button, Empty } from '../components';
 import { ArrowUpRightIcon, FolderCodeIcon } from '@lucide/svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

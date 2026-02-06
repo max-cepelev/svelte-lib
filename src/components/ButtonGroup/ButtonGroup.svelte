@@ -1,6 +1,6 @@
 <script lang="ts">
-import styles from './styles.css.js';
-import type { ButtonGroupProps } from './types.js';
+import styles from './styles.css';
+import type { ButtonGroupProps } from './types';
 
 let {
   ref = $bindable(null),

@@ -1,6 +1,6 @@
 import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { FieldVariants } from './types.js';
+import { theme } from '~/theme';
+import type { FieldVariants } from './types';
 
 const base = style({
 	display: 'flex',

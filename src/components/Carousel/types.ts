@@ -3,7 +3,7 @@ import type {
 	default as emblaCarouselSvelte,
 } from 'embla-carousel-svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '../../types.js';
+import type { WithElementRef } from '~/types';
 
 export type CarouselAPI =
 	NonNullable<

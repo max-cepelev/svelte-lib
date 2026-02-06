@@ -4,8 +4,8 @@
     "target": "esnext",
     "lib": ["es2023", "dom"],
     "moduleDetection": "force",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": ["node"],
     "strict": true,
@@ -17,7 +17,13 @@
     "skipLibCheck": true,
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "~/types": ["./src/types.ts"],
+      "~/theme": ["./src/theme.css.ts"],
+      "~/utils": ["./src/utils.ts"]
+    }
   },
   "include": ["src"]
 }

@@ -1,4 +1,4 @@
-import type { DataGridColumn } from '../types.js';
+import type { DataGridColumn } from '../types';
 
 export type HeaderCellProps<T> = {
 	column: DataGridColumn<T>;

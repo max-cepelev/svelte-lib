@@ -4,7 +4,7 @@ import { sveltePreprocess } from 'svelte-preprocess';
 import { defineConfig } from 'tsdown';
 import { svelteDtsPlugin } from './scripts/tsdown-plugin-svelte-dts.js';
 
-// const componentEntries = globSync('src/components/*/index.ts').reduce(
+// const componentEntries = globSync('src/components/*.ts').reduce(
 // 	(acc: Record<string, string>, file) => {
 // 		const outName = path.relative('src', file).replace(/\.ts$/, '');
 // 		acc[outName] = `./${file}`;
@@ -17,7 +17,7 @@ export default defineConfig({
 	platform: 'browser',
 	unbundle: true,
 	entry: {
-		'components/index': './src/components/index.ts',
+		components: './src/components/index.ts',
 		theme: './src/theme.css.ts',
 		utils: './src/utils.ts',
 	},

@@ -2,8 +2,8 @@
 import { CheckIcon, MinusIcon } from '@lucide/svelte';
 import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 import type { Snippet } from 'svelte';
-import type { WithoutChildrenOrChild } from '../../../types.js';
-import styles from './styles.css.js';
+import type { WithoutChildrenOrChild } from '~/types';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

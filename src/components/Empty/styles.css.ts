@@ -4,8 +4,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { EmptyMediaVariant } from './types.js';
+import { theme } from '~/theme';
+import type { EmptyMediaVariant } from './types';
 
 export const root = style({
 	display: 'flex',

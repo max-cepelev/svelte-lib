@@ -1,7 +1,7 @@
 import Root from './Tabs.svelte';
-import { List } from './List/index.js';
-import { Trigger } from './Trigger/index.js';
-import { Content } from './Content/index.js';
+import { List } from './List';
+import { Trigger } from './Trigger';
+import { Content } from './Content';
 
 export const Tabs = {
 	Root,
@@ -10,4 +10,4 @@ export const Tabs = {
 	Content,
 };
 
-export type * from './types.js';
+export type * from './types';

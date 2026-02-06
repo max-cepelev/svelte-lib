@@ -4,8 +4,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { ButtonGroupOrientation } from './types.js';
+import { theme } from '~/theme';
+import type { ButtonGroupOrientation } from './types';
 
 export const container = style({
 	display: 'flex',

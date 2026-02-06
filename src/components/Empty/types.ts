@@ -1,4 +1,4 @@
-import type { WithElementRef } from '../../types.js';
+import type { WithElementRef } from '~/types';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export type EmptyMediaVariant = 'default' | 'icon';

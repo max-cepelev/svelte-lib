@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Label } from 'bits-ui';
-import styles from './styles.css.js';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

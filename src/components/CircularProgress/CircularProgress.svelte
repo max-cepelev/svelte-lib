@@ -1,6 +1,6 @@
 <script lang="ts">
-import styles from './styles.css.js';
-import type { CircularProgressProps } from './types.js';
+import styles from './styles.css';
+import type { CircularProgressProps } from './types';
 
 let {
   size = 30,

@@ -1,4 +1,4 @@
 import State from './State.svelte';
 
-export type { StateProps } from './types.js';
+export type { StateProps } from './types';
 export { State };

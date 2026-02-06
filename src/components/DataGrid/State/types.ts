@@ -1,4 +1,4 @@
-import type { DataGridState } from '../types.js';
+import type { DataGridState } from '../types';
 
 export type StateProps = {
 	isLoading?: boolean;

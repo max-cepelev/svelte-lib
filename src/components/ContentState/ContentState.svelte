@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button } from '../Button/index.js';
-import { Placeholder } from '../Placeholder/index.js';
+import { Button } from '../Button';
+import { Placeholder } from '../Placeholder';
 import Spinner from '../Spinner/Spinner.svelte';
-import styles from './styles.css.js';
-import type { ContentStateProps } from './types.js';
+import styles from './styles.css';
+import type { ContentStateProps } from './types';
 
 let {
   isLoading,

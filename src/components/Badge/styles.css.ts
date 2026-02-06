@@ -4,8 +4,8 @@ import {
 	style,
 	styleVariants,
 } from '@vanilla-extract/css';
-import { theme } from '../../theme.css.js';
-import type { BadgeVariant } from './types.js';
+import { theme } from '~/theme';
+import type { BadgeVariant } from './types';
 
 export const badge = style({
 	display: 'inline-flex',

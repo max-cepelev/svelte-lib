@@ -1,4 +1,4 @@
-import type { DataGridProps } from '../types.js';
+import type { DataGridProps } from '../types';
 
 export type BodyProps<TRow> = Pick<
 	DataGridProps<TRow>,

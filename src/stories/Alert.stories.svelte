@@ -1,7 +1,7 @@
 <script lang="ts" module>
 import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from '@lucide/svelte';
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Alert } from '../components/index.js';
+import { Alert } from '../components';
 
 const { Story } = defineMeta({
   title: 'Alert',

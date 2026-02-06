@@ -8,12 +8,12 @@ import {
   transforms,
   variants,
   weights,
-} from './styles.css.js';
+} from './styles.css';
 import type {
   ComponentVariant,
   TypographyProps,
   TypographyVariant,
-} from './types.js';
+} from './types';
 
 let {
   ref = $bindable(null),

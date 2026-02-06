@@ -1,4 +1,4 @@
-import type { PlaceholderSize } from './types.js';
+import type { PlaceholderSize } from './types';
 
 export const SIZE: Record<PlaceholderSize, PlaceholderSize> = {
 	small: 'small',

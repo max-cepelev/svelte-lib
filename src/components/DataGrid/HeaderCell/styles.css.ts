@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
-import { theme } from '../../../theme.css.js';
-import { spacing } from '../../../utils.js';
+import { theme } from '~/theme';
+import { spacing } from '~/utils';
 
 const cell = style({
 	padding: spacing(1, 2),

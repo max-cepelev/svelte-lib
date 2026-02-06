@@ -1,4 +1,4 @@
-import type { WithElementRef } from '../../types.js';
+import type { WithElementRef } from '~/types';
 import type { HTMLAnchorAttributes } from 'svelte/elements';
 
 export type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline';

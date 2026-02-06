@@ -6,8 +6,8 @@ import {
 } from '@internationalized/date';
 import type { ComponentProps } from 'svelte';
 import Calendar from '../Calendar.svelte';
-import { MonthSelect } from '../MonthSelect/index.js';
-import { YearSelect } from '../YearSelect/index.js';
+import { MonthSelect } from '../MonthSelect';
+import { YearSelect } from '../YearSelect';
 
 let {
   captionLayout,

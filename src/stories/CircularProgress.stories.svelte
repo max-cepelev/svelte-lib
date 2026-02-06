@@ -1,6 +1,6 @@
 <script module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { CircularProgress } from '../components/index.js';
+import { CircularProgress } from '../components';
 
 const { Story } = defineMeta({
   title: 'CircularProgress',

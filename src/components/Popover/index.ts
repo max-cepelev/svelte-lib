@@ -1,8 +1,8 @@
 import Root from './Popover.svelte';
-import { Content } from './Content/index.js';
-import { Trigger } from './Trigger/index.js';
-import { Close } from './Close/index.js';
-import { Portal } from './Portal/index.js';
+import { Content } from './Content';
+import { Trigger } from './Trigger';
+import { Close } from './Close';
+import { Portal } from './Portal';
 
 export const Popover = {
 	Root,
@@ -12,4 +12,4 @@ export const Popover = {
 	Portal,
 };
 
-export type * from './types.js';
+export type * from './types';

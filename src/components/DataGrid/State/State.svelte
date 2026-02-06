@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button } from '../../Button/index.js';
-import { CircularProgress } from '../../CircularProgress/index.js';
-import { Placeholder } from '../../Placeholder/index.js';
-import styles from './styles.css.js';
-import type { StateProps } from './types.js';
+import { Button } from '../../Button';
+import { CircularProgress } from '../../CircularProgress';
+import { Placeholder } from '../../Placeholder';
+import styles from './styles.css';
+import type { StateProps } from './types';
 
 let {
   isLoading,

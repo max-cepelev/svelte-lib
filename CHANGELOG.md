@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.4.3
+
+### Patch Changes
+
+- Refactor: Update imports and package.json
+
 ## 1.4.2
 
 ### Patch Changes

@@ -1,10 +1,10 @@
 <script lang="ts">
 type TRow = $$Generic;
 
-import { Row } from '../Row/index.js';
-import { State } from '../State/index.js';
-import styles from './styles.css.js';
-import type { BodyProps } from './types.js';
+import { Row } from '../Row';
+import { State } from '../State';
+import styles from './styles.css';
+import type { BodyProps } from './types';
 
 let {
   isError,

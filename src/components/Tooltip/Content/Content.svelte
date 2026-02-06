@@ -1,9 +1,9 @@
 <script lang="ts">
 import { Tooltip as TooltipPrimitive } from 'bits-ui';
 import type { ComponentProps } from 'svelte';
-import type { WithoutChildrenOrChild } from '../../../types.js';
-import { Portal } from '../Portal/index.js';
-import styles from './styles.css.js';
+import type { WithoutChildrenOrChild } from '~/types';
+import { Portal } from '../Portal';
+import styles from './styles.css';
 
 let {
   ref = $bindable(null),

@@ -1,22 +1,22 @@
 <script lang="ts">
 import { isEqualMonth } from '@internationalized/date';
 import { Calendar as CalendarPrimitive } from 'bits-ui';
-import { Caption } from './Caption/index.js';
-import { Cell } from './Cell/index.js';
-import { Day } from './Day/index.js';
-import { Grid } from './Grid/index.js';
-import { GridBody } from './GridBody/index.js';
-import { GridHead } from './GridHead/index.js';
-import { GridRow } from './GridRow/index.js';
-import { HeadCell } from './HeadCell/index.js';
-import { Header } from './Header/index.js';
-import { Month } from './Month/index.js';
-import { Months } from './Months/index.js';
-import { Nav } from './Nav/index.js';
-import { NextButton } from './NextButton/index.js';
-import { PrevButton } from './PrevButton/index.js';
-import styles from './styles.css.js';
-import type { CalendarProps } from './types.js';
+import { Caption } from './Caption';
+import { Cell } from './Cell';
+import { Day } from './Day';
+import { Grid } from './Grid';
+import { GridBody } from './GridBody';
+import { GridHead } from './GridHead';
+import { GridRow } from './GridRow';
+import { HeadCell } from './HeadCell';
+import { Header } from './Header';
+import { Month } from './Month';
+import { Months } from './Months';
+import { Nav } from './Nav';
+import { NextButton } from './NextButton';
+import { PrevButton } from './PrevButton';
+import styles from './styles.css';
+import type { CalendarProps } from './types';
 
 let {
   ref = $bindable(null),

@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '../../types.js';
+import type { WithElementRef } from '~/types';
 
 export type ItemVariant = 'default' | 'outline' | 'muted';
 export type ItemSize = 'default' | 'small';
