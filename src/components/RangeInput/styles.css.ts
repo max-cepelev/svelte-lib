@@ -1,6 +1,11 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import {
+	type ComplexStyleRule,
+	style,
+	styleVariants,
+} from '@vanilla-extract/css';
 import { theme } from '~/theme';
 import { spacing } from '~/utils';
+import type { RangeInputSize } from './types';
 
 export const container = style({
 	position: 'relative',
@@ -24,7 +29,7 @@ export const activeClass = style({
 	borderColor: theme.colors.primary,
 });
 
-export const sizes = styleVariants({
+export const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
 	small: {
 		padding: `0.125rem ${theme.spacing[2]}`,
 		height: '28px',

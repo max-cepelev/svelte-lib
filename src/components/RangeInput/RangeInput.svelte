@@ -11,8 +11,8 @@ let {
   minValue = $bindable(),
   maxValue = $bindable(),
   width = 150,
-  label = '',
-  unit = '',
+  label,
+  unit,
   size = 'medium',
   class: className,
   isActive,
@@ -21,6 +21,8 @@ let {
   ref = $bindable(null),
   ...restProps
 }: RangeInputProps = $props();
+
+const calculatedWidth = $derived(calculateSize(width));
 
 // Инициализация значений, если они не переданы
 $effect.pre(() => {
@@ -62,14 +64,9 @@ function onKeyDown(event: KeyboardEvent) {
 </script>
 
 <div
+  class={[styles.container, styles.sizes[size],{ [styles.activeClass]: isActive }, className]}
   bind:this={ref}
-  class={[
-		styles.container,
-		styles.sizes[size],
-		isActive ? styles.activeClass : '',
-		className
-	]}
-  style:width={calculateSize(width)}
+  style:width={calculatedWidth}
   {...restProps}
 >
   <Typography class={styles.textClass} color="disabled" variant="body2">

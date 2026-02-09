@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.6.0
+
+### Minor Changes
+
+- feat: Add Dialog component
+
 ## 1.5.2
 
 ### Patch Changes

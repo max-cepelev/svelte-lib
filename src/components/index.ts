@@ -6,6 +6,7 @@ export { Badge, type BadgeVariant, badgeVariants } from './Badge';
 
 export {
 	Button,
+	type ButtonProps,
 	type ButtonSize,
 	type ButtonVariant,
 	buttonVariants,
@@ -35,7 +36,6 @@ export {
 	type ContentStateErrorProps,
 	type ContentStateProps,
 } from './ContentState';
-
 export {
 	DataGrid,
 	type DataGridColumn,
@@ -43,12 +43,22 @@ export {
 	type DataGridProps,
 	type DataGridState,
 } from './DataGrid';
-
 export {
 	DataGridSortHeader,
 	type DataGridSortHeaderProps,
 	type DataGridSorting,
 } from './DataGridSortHeader';
+export {
+	Dialog,
+	type DialogCloseProps,
+	type DialogContentProps,
+	type DialogDescriptionProps,
+	type DialogFooterProps,
+	type DialogHeaderProps,
+	type DialogProps,
+	type DialogTitleProps,
+	type DialogTriggerProps,
+} from './Dialog';
 export type { DropdownMenuProps } from './DropdownMenu';
 export * as DropdownMenu from './DropdownMenu';
 
