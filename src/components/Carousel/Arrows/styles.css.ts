@@ -1,7 +1,7 @@
 import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
 import { theme } from '~/theme';
 
-export const buttonBase = style({
+const buttonBase = style({
 	position: 'absolute',
 	backgroundColor: 'transparent',
 	border: 'none',
@@ -16,7 +16,7 @@ export const buttonBase = style({
 	},
 });
 
-export const iconWrapper = style({
+const iconWrapper = style({
 	width: theme.spacing[8],
 	height: theme.spacing[8],
 	display: 'flex',
@@ -37,7 +37,7 @@ globalStyle(`${iconWrapper} svg`, {
 	height: theme.spacing[5],
 });
 
-export const buttonNext = styleVariants({
+const buttonNext = styleVariants({
 	horizontal: [
 		buttonBase,
 		{
@@ -58,7 +58,7 @@ export const buttonNext = styleVariants({
 	],
 });
 
-export const buttonPrev = styleVariants({
+const buttonPrev = styleVariants({
 	horizontal: [
 		buttonBase,
 		{

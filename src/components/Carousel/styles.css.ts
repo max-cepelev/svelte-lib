@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const carousel = style({
+const carousel = style({
 	position: 'relative',
 });
 

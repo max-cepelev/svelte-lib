@@ -6,7 +6,7 @@ import {
 import { theme } from '~/theme';
 import type { SliderSize } from './types';
 
-export const root = style({
+const root = style({
 	position: 'relative',
 	display: 'flex',
 	width: '100%',
@@ -26,7 +26,7 @@ export const root = style({
 	},
 });
 
-export const track = style({
+const track = style({
 	backgroundColor: theme.colors.background.element,
 	position: 'relative',
 	flexGrow: 1,
@@ -34,7 +34,7 @@ export const track = style({
 	borderRadius: '9999px',
 });
 
-export const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
+const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 	small: {
 		selectors: {
 			[`${root}[data-orientation=horizontal] &`]: {
@@ -67,7 +67,7 @@ export const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 	},
 });
 
-export const range = style({
+const range = style({
 	backgroundColor: theme.colors.primary,
 	position: 'absolute',
 	selectors: {
@@ -80,7 +80,7 @@ export const range = style({
 	},
 });
 
-export const thumb = style({
+const thumb = style({
 	display: 'block',
 	flexShrink: 0,
 	borderRadius: '9999px',
@@ -104,7 +104,7 @@ export const thumb = style({
 	},
 });
 
-export const thumbSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
+const thumbSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 	small: {
 		width: 12,
 		height: 12,

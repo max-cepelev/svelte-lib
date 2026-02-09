@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.6.2
+
+### Patch Changes
+
+- fix styles imports
+
 ## 1.6.1
 
 ### Patch Changes

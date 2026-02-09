@@ -7,7 +7,7 @@ import { theme } from '~/theme';
 import { spacing } from '~/utils';
 import type { RangeInputSize } from './types';
 
-export const container = style({
+const container = style({
 	position: 'relative',
 	display: 'grid',
 	gridTemplateColumns: 'auto auto 1fr auto 1fr auto',
@@ -25,11 +25,11 @@ export const container = style({
 	},
 });
 
-export const activeClass = style({
+const activeClass = style({
 	borderColor: theme.colors.primary,
 });
 
-export const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
+const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
 	small: {
 		padding: `0.125rem ${theme.spacing[2]}`,
 		height: '28px',
@@ -47,11 +47,11 @@ export const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
 	},
 });
 
-export const textClass = style({
+const textClass = style({
 	fontSize: 'inherit',
 });
 
-export const inputClass = style({
+const inputClass = style({
 	textAlign: 'center',
 	width: '100%',
 	minWidth: '24px',
@@ -71,7 +71,7 @@ export const inputClass = style({
 	},
 });
 
-export const sliderClass = style({
+const sliderClass = style({
 	position: 'absolute',
 	bottom: -1,
 	left: '50%',
