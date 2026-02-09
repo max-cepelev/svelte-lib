@@ -3,6 +3,14 @@
   "overrides": [
     {
       "includes": ["**/*.svelte"],
+      "assist": {
+        "enabled": true,
+        "actions": {
+          "source": {
+            "organizeImports": "off"
+          }
+        }
+      },
       "formatter": {
         "enabled": true,
         "indentStyle": "space"
@@ -47,13 +55,5 @@
   },
   "html": {
     "experimentalFullSupportEnabled": true
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
   }
 }

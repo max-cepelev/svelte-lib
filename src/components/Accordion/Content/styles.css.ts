@@ -21,7 +21,7 @@ const accordionDown = keyframes({
 
 const content = style({
 	overflow: 'hidden',
-	fontSize: theme.fontSize.sm,
+	paddingInline: theme.spacing[2],
 	selectors: {
 		'&[data-state=closed]': {
 			animation: `${accordionUp} 0.2s ease-out`,

@@ -88,7 +88,7 @@ export const thumb = style({
 	backgroundColor: theme.colors.background.paper,
 	boxShadow: theme.shadow[1],
 	transition: 'box-shadow 0.2s, transform 0.2s',
-	cursor: 'pointer',
+	cursor: 'grab',
 	outline: 'none',
 	selectors: {
 		'&:hover': {

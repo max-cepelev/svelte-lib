@@ -46,7 +46,7 @@ const content = style({
 	zIndex: 50,
 	backgroundColor: theme.colors.background.tooltip,
 	color: theme.colors.background.paper,
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.borderRadius.sm,
 	padding: spacing(2, 3),
 	fontSize: theme.fontSize.xs,
 	fontWeight: theme.fontWeight.semibold,
@@ -88,24 +88,21 @@ const content = style({
 });
 
 const arrow = style({
-	backgroundColor: theme.colors.background.tooltip,
-	width: theme.spacing[3],
-	height: theme.spacing[3],
-	borderRadius: '2px',
-	zIndex: 50,
-	rotate: '45deg',
+	fill: theme.colors.background.tooltip,
+	width: theme.spacing[4],
+	height: theme.spacing[4],
 	selectors: {
 		'&[data-side="top"]': {
-			translate: 'calc(50% + 2px) calc(-50% + 2px)',
+			translate: '0 -5px',
 		},
 		'&[data-side="bottom"]': {
-			translate: '-50% calc(-50% + 12px)',
+			translate: '0 5px',
 		},
 		'&[data-side="right"]': {
-			translate: 'calc(50% + 4px) 50%',
+			translate: '5px 0',
 		},
 		'&[data-side="left"]': {
-			translate: 'calc(-50% + 4px) calc(50% - 8px)',
+			translate: '-5px 0',
 		},
 	},
 });

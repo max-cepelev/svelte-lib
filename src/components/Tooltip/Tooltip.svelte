@@ -14,6 +14,7 @@ let {
   sideOffset = 4,
   side = 'top',
   arrow,
+  arrowClass,
   ...restProps
 }: TooltipProps = $props();
 </script>
@@ -25,6 +26,7 @@ let {
       class={className}
       {alignOffset}
       {sideOffset}
+      {arrowClass}
       {side}
       {arrow}
       hideWhenDetached

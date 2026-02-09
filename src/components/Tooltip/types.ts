@@ -9,4 +9,5 @@ export type TooltipProps = Tooltip.RootProps & {
 	alignOffset?: number;
 	side?: Tooltip.ContentProps['side'];
 	class?: string;
+	arrowClass?: string;
 };

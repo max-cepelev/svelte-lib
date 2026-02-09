@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.5.0
+
+### Minor Changes
+
+- feat: Add InputGroup component
+
 ## 1.4.5
 
 ### Patch Changes

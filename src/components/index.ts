@@ -67,6 +67,12 @@ export {
 } from './Input';
 
 export {
+	InputGroup,
+	type InputGroupAddonAlign,
+	type InputGroupButtonSize,
+} from './InputGroup';
+
+export {
 	Item,
 	type ItemProps,
 	type ItemSize,

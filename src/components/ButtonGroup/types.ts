@@ -1,5 +1,5 @@
-import type { WithElementRef } from '~/types';
 import type { HTMLAttributes } from 'svelte/elements';
+import type { WithElementRef } from '~/types';
 
 export type ButtonGroupOrientation = 'horizontal' | 'vertical';
 

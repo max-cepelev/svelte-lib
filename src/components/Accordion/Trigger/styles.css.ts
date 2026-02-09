@@ -1,5 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 import { theme } from '~/theme';
+import { spacing } from '~/utils';
 
 const header = style({
 	display: 'flex',
@@ -11,23 +12,16 @@ const trigger = style({
 	alignItems: 'flex-start',
 	justifyContent: 'space-between',
 	gap: theme.spacing[4],
-	borderRadius: theme.borderRadius.md,
-	paddingTop: theme.spacing[4],
-	paddingBottom: theme.spacing[4],
+	padding: spacing(2),
+	borderRadius: theme.borderRadius.sm,
 	textAlign: 'start',
-	fontSize: theme.fontSize.sm,
-	fontWeight: theme.fontWeight.medium,
 	transitionProperty: 'all',
 	transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
 	transitionDuration: '150ms',
 	outline: '2px solid transparent',
 	outlineOffset: '2px',
 	selectors: {
-		'&:hover': {
-			textDecoration: 'underline',
-		},
 		'&:focus-visible': {
-			// This combines border-ring and ring-ring/50
 			boxShadow: `0 0 0 3px ${theme.colors.info}`,
 			borderColor: theme.colors.info,
 		},

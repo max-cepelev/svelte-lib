@@ -50,9 +50,9 @@ function handleInput(type: 'min' | 'max', event: Event) {
 function onKeyDown(event: KeyboardEvent) {
   if (event.key === 'Enter') {
     // Валидация при нажатии Enter
-    if (minValue! < min) minValue = min;
-    if (maxValue! > max) maxValue = max;
-    if (minValue! > maxValue!) {
+    if (minValue && minValue < min) minValue = min;
+    if (maxValue && maxValue > max) maxValue = max;
+    if (minValue && maxValue && minValue > maxValue) {
       const temp = minValue;
       minValue = maxValue;
       maxValue = temp;
@@ -100,14 +100,13 @@ function onKeyDown(event: KeyboardEvent) {
   <Typography class={styles.textClass} color="disabled" variant="body2">
     {unit}
   </Typography>
-  <div class={styles.sliderClass}>
-    <Slider
-      {min}
-      {max}
-      {size}
-      type="multiple"
-      value={[minValue ?? min, maxValue ?? max]}
-      onValueChange={onValueChange}
-    />
-  </div>
+  <Slider
+    {min}
+    {max}
+    {size}
+    class={styles.sliderClass}
+    type="multiple"
+    value={[minValue ?? min, maxValue ?? max]}
+    onValueChange={onValueChange}
+  />
 </div>

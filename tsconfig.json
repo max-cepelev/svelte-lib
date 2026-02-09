@@ -20,6 +20,7 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
+      "~/components": ["./src/components/index.ts"],
       "~/types": ["./src/types.ts"],
       "~/theme": ["./src/theme.css.ts"],
       "~/utils": ["./src/utils.ts"]
