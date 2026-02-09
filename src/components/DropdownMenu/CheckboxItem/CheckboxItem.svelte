@@ -2,7 +2,7 @@
 import { CheckIcon, MinusIcon } from '@lucide/svelte';
 import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 import type { Snippet } from 'svelte';
-import type { WithoutChildrenOrChild } from '~/types';
+import type { WithoutChildrenOrChild } from '../../../types.ts';
 import styles from './styles.css';
 
 let {
@@ -33,8 +33,8 @@ let {
         <CheckIcon
           size={16}
           class={{
-					[styles.unchecked]: !checked
-				}}
+            [styles.unchecked]: !checked,
+          }}
         />
       {/if}
     </span>

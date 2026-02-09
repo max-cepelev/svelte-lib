@@ -3,7 +3,7 @@ import type {
 	HTMLInputAttributes,
 	HTMLTextareaAttributes,
 } from 'svelte/elements';
-import type { WithElementRef } from '~/types';
+import type { WithElementRef } from '../../types.ts';
 import type { ButtonProps } from '../Button/types';
 
 export type InputGroupAddonAlign =

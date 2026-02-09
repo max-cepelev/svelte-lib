@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
+import type { WithElementRef } from '../../../types.ts';
 import { getEmblaContext } from '../context';
 import styles from './styles.css';
-import type { WithElementRef } from '~/types';
 
 let {
   ref = $bindable(null),
@@ -19,11 +19,7 @@ const emblaCtx = getEmblaContext('<Carousel.Item/>');
   data-slot="carousel-item"
   role="group"
   aria-roledescription="slide"
-  class={[
-		styles.item,
-		styles.orientation[emblaCtx.orientation],
-		className
-	]}
+  class={[styles.item, styles.orientation[emblaCtx.orientation], className]}
   data-embla-slide=""
   {...restProps}
 >

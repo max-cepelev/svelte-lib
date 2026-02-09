@@ -1,7 +1,6 @@
 import { resolve } from 'node:path';
 import process from 'node:process';
 import { emitDts } from 'svelte2tsx';
-import { replaceTscAliasPaths } from 'tsc-alias';
 
 export function svelteDtsPlugin(options = {}) {
 	return {
@@ -26,14 +25,6 @@ export function svelteDtsPlugin(options = {}) {
 				});
 
 				console.log('Svelte DTS generation complete');
-
-				// Замена alias на относительные пути
-				await replaceTscAliasPaths({
-					configFile: tsconfigAbs,
-					outDir: declarationDirAbs,
-				});
-
-				console.log('✅ Alias paths resolved');
 			} catch (error) {
 				console.error('❌ Svelte DTS generation failed:', error);
 				throw error;

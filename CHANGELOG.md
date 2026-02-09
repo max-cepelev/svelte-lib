@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.5.1
+
+### Patch Changes
+
+- Refactor: Update type import paths
+
 ## 1.5.0
 
 ### Minor Changes

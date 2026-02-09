@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
+import type { WithElementRef } from '../../../types.ts';
 import styles from '../styles.css';
-import type { WithElementRef } from '~/types';
 
 let {
   ref = $bindable(null),

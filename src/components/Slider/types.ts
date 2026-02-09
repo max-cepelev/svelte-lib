@@ -1,5 +1,5 @@
 import type { Slider as SliderPrimitive } from 'bits-ui';
-import type { WithoutChildrenOrChild } from '~/types';
+import type { WithoutChildrenOrChild } from '../../types.ts';
 
 export type SliderSize = 'small' | 'medium' | 'large';
 

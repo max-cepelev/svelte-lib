@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ChevronDownIcon } from '@lucide/svelte';
 import { Calendar as CalendarPrimitive } from 'bits-ui';
-import type { WithoutChildrenOrChild } from '~/types';
+import type { WithoutChildrenOrChild } from '../../../types.ts';
 import styles from './styles.css';
 
 let {
@@ -20,15 +20,17 @@ let {
           <option
             value={yearItem.value}
             selected={value !== undefined
-							? yearItem.value === value
-							: yearItem.value === selectedYearItem.value}
+              ? yearItem.value === value
+              : yearItem.value === selectedYearItem.value}
           >
             {yearItem.label}
           </option>
         {/each}
       </select>
       <span class={styles.visiblePart} aria-hidden="true">
-        {yearItems.find((item) => item.value === value)?.label || selectedYearItem?.label || ''}
+        {yearItems.find((item) => item.value === value)?.label ||
+          selectedYearItem?.label ||
+          ''}
         <ChevronDownIcon size={16} />
       </span>
     {/snippet}

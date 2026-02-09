@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
-import type { WithElementRef } from '~/types';
+import type { WithElementRef } from '../../types.ts';
 import { fieldVariants } from './styles.css';
 import type { FieldOrientation } from './types';
 

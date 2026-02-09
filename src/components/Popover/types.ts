@@ -1,5 +1,5 @@
 import type { Popover as PopoverPrimitive } from 'bits-ui';
-import type { WithoutChildrenOrChild } from '~/types';
+import type { WithoutChildrenOrChild } from '../../types.ts';
 
 export type PopoverProps = PopoverPrimitive.RootProps;
 

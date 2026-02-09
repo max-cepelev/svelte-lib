@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Accordion as AccordionPrimitive } from 'bits-ui';
-import type { WithoutChild } from '~/types';
+import type { WithoutChild } from '../../../types.ts';
 import styles from './styles.css';
 
 let {
