@@ -11,6 +11,9 @@ let {
   size = 'medium',
   ...restProps
 }: SliderProps = $props();
+
+const thumbClass = $derived([styles.thumb, styles.thumbSizes[size]]);
+const trackClass = $derived([styles.track, styles.trackSizes[size]]);
 </script>
 
 <SliderPrimitive.Root
@@ -25,7 +28,7 @@ let {
     <span
       data-orientation={orientation}
       data-slot="slider-track"
-      class={[styles.track, styles.trackSizes[size]]}
+      class={trackClass}
     >
       <SliderPrimitive.Range data-slot="slider-range" class={styles.range} />
     </span>
@@ -33,7 +36,7 @@ let {
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
         index={thumb.index}
-        class={[styles.thumb, styles.thumbSizes[size]]}
+        class={thumbClass}
       />
     {/each}
   {/snippet}

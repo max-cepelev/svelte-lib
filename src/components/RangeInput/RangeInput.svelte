@@ -22,6 +22,13 @@ let {
   ...restProps
 }: RangeInputProps = $props();
 
+const containerClass = $derived([
+  styles.container,
+  styles.sizes[size],
+  { [styles.activeClass]: isActive },
+  className,
+]);
+
 const calculatedWidth = $derived(calculateSize(width));
 
 // Инициализация значений, если они не переданы
@@ -64,7 +71,7 @@ function onKeyDown(event: KeyboardEvent) {
 </script>
 
 <div
-  class={[styles.container, styles.sizes[size],{ [styles.activeClass]: isActive }, className]}
+  class={containerClass}
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
