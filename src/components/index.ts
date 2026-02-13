@@ -59,6 +59,19 @@ export {
 	type DialogTitleProps,
 	type DialogTriggerProps,
 } from './Dialog';
+export {
+	Drawer,
+	type DrawerCloseProps,
+	type DrawerContentProps,
+	type DrawerDescriptionProps,
+	type DrawerFooterProps,
+	type DrawerHeaderProps,
+	type DrawerOverlayProps,
+	type DrawerPortalProps,
+	type DrawerProps,
+	type DrawerTitleProps,
+	type DrawerTriggerProps,
+} from './Drawer';
 export type { DropdownMenuProps } from './DropdownMenu';
 export * as DropdownMenu from './DropdownMenu';
 

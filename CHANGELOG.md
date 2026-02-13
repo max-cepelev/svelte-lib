@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.7.0
+
+### Minor Changes
+
+- Add Drawer component with swipe-to-close support
+
 ## 1.6.2
 
 ### Patch Changes
