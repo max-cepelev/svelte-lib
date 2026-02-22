@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.7.3
+
+### Patch Changes
+
+- Update dependencies
+
 ## 1.7.2
 
 ### Patch Changes
