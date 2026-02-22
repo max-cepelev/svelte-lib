@@ -216,3 +216,17 @@ const setSorting = (newSorting: DataGridSorting<(typeof rows)[0]>) => {
     />
   </div>
 </Story>
+
+<Story name="onRowClick" asChild>
+  <div style:display="flex" style:align-items="center" style:height="400px">
+    <DataGrid
+      stickyHeader
+      rows={sortedRows}
+      columns={columnsWithSorting}
+      onRowClick={(row) => {
+        alert(`Clicked on row with ID: ${row.id}`);
+      }}
+      keyId="id"
+    />
+  </div>
+</Story>

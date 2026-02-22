@@ -28,8 +28,8 @@ let innerMax = $state(maxValue);
 
 // Синхронизация с пропсами при внешних изменениях
 $effect(() => {
-  innerMin = minValue;
-  innerMax = maxValue;
+  innerMin = minValue || min;
+  innerMax = maxValue || max;
 });
 
 const calculatedWidth = $derived(calculateSize(width));
