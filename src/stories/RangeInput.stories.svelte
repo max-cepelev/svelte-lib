@@ -1,6 +1,6 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { RangeInput } from '../components';
+import { Label, RangeInput } from '../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
@@ -9,41 +9,25 @@ const { Story } = defineMeta({
   tags: ['autodocs'],
 });
 
-let minValue = $state(1);
-let maxValue = $state(10);
+let price = $state<{ min?: number; max?: number }>({});
+const handleChange = (value: number[]) => {
+  console.log(value);
+  price.min = value[0];
+  price.max = value[1];
+};
 </script>
 
 <Story name="Default" asChild>
-  <div style="display: flex; flex-direction: column; gap: 16px">
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <Label>Цена</Label>
     <RangeInput
-      label="Цена"
-      bind:minValue={minValue}
-      bind:maxValue={maxValue}
+      minValue={price.min}
+      maxValue={price.max}
       unit="руб."
-      size="small"
-      min={1}
-      max={10}
-      width={250}
-    />
-    <RangeInput
-      label="Цена"
-      bind:minValue={minValue}
-      bind:maxValue={maxValue}
-      unit="руб."
-      size="medium"
-      min={1}
-      max={10}
-      width={250}
-    />
-    <RangeInput
-      label="Цена"
-      bind:minValue={minValue}
-      bind:maxValue={maxValue}
-      unit="руб."
-      size="large"
-      min={1}
-      max={10}
-      width={250}
+      min={3000000}
+      max={5000000}
+      width={300}
+      onValueChange={handleChange}
     />
   </div>
 </Story>

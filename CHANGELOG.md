@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.7.1
+
+### Patch Changes
+
+- Refactor RangeInput with internal state management
+
 ## 1.7.0
 
 ### Minor Changes

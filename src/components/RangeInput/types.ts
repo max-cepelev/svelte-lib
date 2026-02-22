@@ -9,11 +9,11 @@ export interface RangeInputProps
 	maxValue?: number;
 	min: number;
 	max: number;
-	label?: string;
+	step?: number;
 	unit?: string;
 	width?: number | string;
 	size?: RangeInputSize;
 	isActive?: boolean;
-	minInputRef?: HTMLInputElement | null;
-	maxInputRef?: HTMLInputElement | null;
+	onValueChange?: (value: number[]) => void;
+	id?: string;
 }

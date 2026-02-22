@@ -4,113 +4,150 @@ import { Slider } from '../Slider';
 import { Typography } from '../Typography';
 import styles from './styles.css';
 import type { RangeInputProps } from './types';
+import { formatNumber, parseFormattedNumber } from './utils';
 
 let {
-  min,
-  max,
-  minValue = $bindable(),
-  maxValue = $bindable(),
-  width = 150,
-  label,
+  min = 0,
+  max = 100,
+  minValue = $bindable(min),
+  maxValue = $bindable(max),
+  width = 180,
+  step = 1,
   unit,
   size = 'medium',
   class: className,
   isActive,
-  minInputRef = $bindable(null),
-  maxInputRef = $bindable(null),
   ref = $bindable(null),
+  onValueChange,
   ...restProps
 }: RangeInputProps = $props();
 
-const containerClass = $derived([
-  styles.container,
-  styles.sizes[size],
-  { [styles.activeClass]: isActive },
-  className,
-]);
+// Внутреннее состояние для редактирования
+let innerMin = $state(minValue);
+let innerMax = $state(maxValue);
 
-const calculatedWidth = $derived(calculateSize(width));
-
-// Инициализация значений, если они не переданы
-$effect.pre(() => {
-  if (minValue === undefined) minValue = min;
-  if (maxValue === undefined) maxValue = max;
+// Синхронизация с пропсами при внешних изменениях
+$effect(() => {
+  innerMin = minValue;
+  innerMax = maxValue;
 });
 
-function onValueChange(newValue: number[]) {
-  if (newValue[0] !== newValue[1]) {
-    minValue = newValue[0];
-    maxValue = newValue[1];
+const calculatedWidth = $derived(calculateSize(width));
+const innerMinDisplay = $derived(formatNumber(innerMin));
+const innerMaxDisplay = $derived(formatNumber(innerMax));
+
+const adaptiveStep = $derived.by(() => {
+  const range = max - min;
+  const MAX_STEPS = 1000;
+  return Math.max(step, Math.ceil(range / MAX_STEPS));
+});
+
+// Применение и коммит значений
+function applyValues(newMin: number, newMax: number) {
+  const clampedMin = Math.max(min, Math.min(newMin, newMax));
+  const clampedMax = Math.min(max, Math.max(newMax, newMin));
+
+  innerMin = clampedMin;
+  innerMax = clampedMax;
+
+  // Обновляем bindable пропсы
+  minValue = clampedMin;
+  maxValue = clampedMax;
+
+  onValueChange?.([clampedMin, clampedMax]);
+}
+
+// Обработчики инпутов
+function handleInput(e: Event) {
+  const target = e.target as HTMLInputElement;
+  let value = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
+
+  if (Number.isNaN(value)) {
+    value = target.name === 'min' ? min : max;
+  }
+
+  if (target.name === 'min') {
+    applyValues(Math.max(min, Math.min(value, innerMax)), innerMax);
+  } else {
+    applyValues(innerMin, Math.min(max, Math.max(value, innerMin)));
   }
 }
 
-function handleInput(type: 'min' | 'max', event: Event) {
-  const target = event.target as HTMLInputElement;
-  const val = target.value;
-  if (val === '') return;
+function handleBlur() {
+  // При blur коммитим финальное значение
+  applyValues(innerMin, innerMax);
+}
 
-  const num = Number.parseFloat(val);
-  if (!Number.isNaN(num)) {
-    if (type === 'min') minValue = num;
-    else maxValue = num;
+function handleKeyDown(e: KeyboardEvent) {
+  if (e.key === 'Enter') {
+    (e.target as HTMLInputElement).blur();
   }
 }
 
-function onKeyDown(event: KeyboardEvent) {
-  if (event.key === 'Enter') {
-    // Валидация при нажатии Enter
-    if (minValue && minValue < min) minValue = min;
-    if (maxValue && maxValue > max) maxValue = max;
-    if (minValue && maxValue && minValue > maxValue) {
-      const temp = minValue;
-      minValue = maxValue;
-      maxValue = temp;
-    }
+// Слайдер коммитит при mouseup
+function handleSliderChange(value: number[]) {
+  if (value.length === 2) {
+    innerMin = value[0];
+    innerMax = value[1];
+  }
+}
+
+function handleSliderCommit(value: number[]) {
+  if (value.length === 2) {
+    applyValues(value[0], value[1]);
   }
 }
 </script>
 
 <div
-  class={containerClass}
+  class={[styles.container, styles.sizes[size], { [styles.active]: isActive }, className]}
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
 >
-  <Typography class={styles.textClass} color="disabled" variant="body2">
-    {label}
-  </Typography>
-  <Typography class={styles.textClass} color="disabled" variant="body2">
+  <Typography class={styles.text} color="disabled" variant="body2">
     от
   </Typography>
+
   <input
-    bind:this={minInputRef}
-    class={styles.inputClass}
+    class={styles.input}
     type="text"
-    bind:value={minValue}
-    oninput={(e) => handleInput('min', e)}
-    onkeydown={onKeyDown}
+    inputmode="numeric"
+    name="min"
+    value={innerMinDisplay}
+    oninput={handleInput}
+    onblur={handleBlur}
+    onkeydown={handleKeyDown}
   >
-  <Typography class={styles.textClass} color="disabled" variant="body2">
+
+  <Typography class={styles.text} color="disabled" variant="body2">
     до
   </Typography>
+
   <input
-    bind:this={maxInputRef}
-    class={styles.inputClass}
+    class={styles.input}
     type="text"
-    bind:value={maxValue}
-    oninput={(e) => handleInput('max', e)}
-    onkeydown={onKeyDown}
+    inputmode="numeric"
+    name="max"
+    value={innerMaxDisplay}
+    oninput={handleInput}
+    onblur={handleBlur}
+    onkeydown={handleKeyDown}
   >
-  <Typography class={styles.textClass} color="disabled" variant="body2">
+
+  <Typography class={styles.text} color="disabled" variant="body2">
     {unit}
   </Typography>
+
   <Slider
     {min}
     {max}
     {size}
-    class={styles.sliderClass}
+    step={adaptiveStep}
+    class={styles.slider}
     type="multiple"
-    value={[minValue ?? min, maxValue ?? max]}
-    onValueChange={onValueChange}
+    value={[innerMin, innerMax]}
+    onValueChange={handleSliderChange}
+    onValueCommit={handleSliderCommit}
   />
 </div>
