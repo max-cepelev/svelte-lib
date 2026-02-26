@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.8.0
+
+### Minor Changes
+
+- added ScalableContainer
+
 ## 1.7.3
 
 ### Patch Changes
