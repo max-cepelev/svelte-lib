@@ -13,12 +13,10 @@
     },
     "./package.json": "./package.json",
     "./theme": {
-      "svelte": "./dist/theme.js",
       "types": "./dist/theme.d.ts",
       "default": "./dist/theme.js"
     },
     "./utils": {
-      "svelte": "./dist/utils.js",
       "types": "./dist/utils.d.ts",
       "default": "./dist/utils.js"
     }
@@ -48,18 +46,18 @@
     "@internationalized/date": "^3.10.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-svelte": "^8.6.0",
-    "svelte": "^5.46.3"
+    "svelte": "^5.53.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@changesets/cli": "^2.29.8",
     "@chromatic-com/storybook": "^5.0.1",
     "@internationalized/date": "^3.11.0",
-    "@storybook/addon-a11y": "^10.2.12",
-    "@storybook/addon-docs": "^10.2.12",
+    "@storybook/addon-a11y": "^10.2.13",
+    "@storybook/addon-docs": "^10.2.13",
     "@storybook/addon-svelte-csf": "^5.0.11",
-    "@storybook/addon-vitest": "^10.2.12",
-    "@storybook/sveltekit": "^10.2.12",
+    "@storybook/addon-vitest": "^10.2.13",
+    "@storybook/sveltekit": "^10.2.13",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^25.3.1",
@@ -71,7 +69,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-svelte": "^8.6.0",
     "rollup-plugin-svelte": "^7.2.3",
-    "storybook": "^10.2.12",
+    "storybook": "^10.2.13",
     "svelte": "^5.53.5",
     "svelte-check": "^4.4.3",
     "svelte-preprocess": "^6.0.3",

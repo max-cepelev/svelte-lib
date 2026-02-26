@@ -22,7 +22,10 @@ export default defineConfig({
 		utils: './src/utils.ts',
 	},
 	plugins: [
-		svelte({ preprocess: sveltePreprocess() }),
+		svelte({
+			preprocess: sveltePreprocess(),
+			exclude: ['**/*.svelte.ts'],
+		}),
 		vanillaExtractPlugin(),
 		svelteDtsPlugin({
 			declarationDir: './dist',

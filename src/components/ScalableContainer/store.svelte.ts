@@ -132,7 +132,8 @@ export class ScalableContainerStore {
 
 	movePinch = (t1: Touch, t2: Touch) => {
 		if (this.#initialPinchDistance === 0) return;
-		const dist = this.#getDistance(t1, t2);
+    const dist = this.#getDistance(t1, t2);
+		console.log({ dist })
 		this.#setScale(
 			this.#initialPinchScale * (dist / this.#initialPinchDistance),
 		);
@@ -145,7 +146,7 @@ export class ScalableContainerStore {
 	wheel = (deltaY: number, metaKey: boolean) => {
 		if (metaKey) {
 			this.showOverlay = false;
-			this.#setScale(this.scale + deltaY * 0.05);
+			this.#setScale(this.scale - deltaY * 0.05);
 		} else {
 			this.showOverlay = true;
 			clearTimeout(this.#overlayTimeout);

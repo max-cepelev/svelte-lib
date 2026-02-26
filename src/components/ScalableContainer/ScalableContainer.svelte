@@ -36,8 +36,6 @@ const store = new ScalableContainerStore({
   },
 });
 
-// ── Pointer handlers — сайд-эффект DOM живёт здесь, не в классе ──────
-
 function onpointerdown(e: PointerEvent): void {
   (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   store.startDrag(e.pointerId, e.clientX, e.clientY);
@@ -52,7 +50,6 @@ function onpointerup(e: PointerEvent): void {
 }
 
 // ── Touch handlers — только для pinch-to-zoom ─────────────────────────
-
 function ontouchstart(e: TouchEvent): void {
   if (e.touches.length === 2) {
     store.startPinch(e.touches[0], e.touches[1]);
