@@ -14,9 +14,7 @@ const { Story } = defineMeta({
   <div style:display="grid" style:gap="1.5rem" style:max-width="28rem">
     <InputGroup.Root>
       <InputGroup.Input placeholder="Search..." aria-label="Search" />
-      <InputGroup.Addon>
-        <Search />
-      </InputGroup.Addon>
+      <InputGroup.Addon> <Search /> </InputGroup.Addon>
       <InputGroup.Addon align="inline-end">
         <InputGroup.Text>12 results</InputGroup.Text>
       </InputGroup.Addon>

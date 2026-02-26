@@ -14,13 +14,13 @@ const cell = style({
 });
 
 globalStyle(`${cell}:first-child[data-selected] [data-bits-day]`, {
-	borderTopLeftRadius: theme.borderRadius.md,
-	borderBottomLeftRadius: theme.borderRadius.md,
+	borderTopLeftRadius: theme.radius.medium,
+	borderBottomLeftRadius: theme.radius.medium,
 });
 
 globalStyle(`${cell}:last-child[data-selected] [data-bits-day]`, {
-	borderTopRightRadius: theme.borderRadius.md,
-	borderBottomRightRadius: theme.borderRadius.md,
+	borderTopRightRadius: theme.radius.medium,
+	borderBottomRightRadius: theme.radius.medium,
 });
 
 export default {

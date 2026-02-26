@@ -4,7 +4,7 @@ import { theme } from '~/theme';
 const wrapper = style({
 	position: 'relative',
 	display: 'flex',
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	boxShadow: theme.shadow[1],
 	selectors: {
@@ -28,7 +28,7 @@ const visiblePart = style({
 	height: theme.spacing[8],
 	alignItems: 'center',
 	gap: theme.spacing[1],
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	paddingLeft: theme.spacing[2],
 	paddingRight: theme.spacing[1],
 	fontSize: theme.fontSize.sm,

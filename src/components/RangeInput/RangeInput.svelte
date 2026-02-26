@@ -145,6 +145,7 @@ function handleSliderCommit(value: number[]) {
     {size}
     step={adaptiveStep}
     class={styles.slider}
+    trackClass={styles.track}
     type="multiple"
     value={[innerMin, innerMax]}
     onValueChange={handleSliderChange}

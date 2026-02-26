@@ -13,7 +13,7 @@ const buttonBase = style({
 	justifyContent: 'center',
 	alignItems: 'center',
 	whiteSpace: 'nowrap',
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	borderWidth: 0,
 	fontSize: 'inherit',
 	fontFamily: 'inherit',
@@ -144,18 +144,18 @@ const buttonSizes = styleVariants<Record<ButtonSize, ComplexStyleRule>>({
 	small: {
 		height: theme.spacing[7],
 		padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
-		borderRadius: theme.borderRadius.sm,
+		borderRadius: theme.radius.small,
 		fontSize: theme.fontSize.xs,
 	},
 	medium: {
 		height: theme.spacing[9],
 		padding: `${theme.spacing[2]} ${theme.spacing[3]}`,
-		fontSize: theme.fontSize.sm,
+		fontSize: theme.fontSize.base,
 	},
 	large: {
 		height: theme.spacing[10],
 		padding: `${theme.spacing[3]} ${theme.spacing[4]}`,
-		fontSize: theme.fontSize.base,
+		fontSize: theme.fontSize.lg,
 	},
 	icon: {
 		height: theme.spacing[9],
@@ -259,7 +259,7 @@ globalStyle('*::-webkit-scrollbar-track', {
 
 globalStyle('*::-webkit-scrollbar-thumb', {
 	backgroundColor: `color-mix(in oklch, ${theme.colors.primary} 60%, transparent)`,
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	width: 6,
 	height: 6,
 });

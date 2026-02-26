@@ -132,7 +132,7 @@ export const container = style({
   padding: `${theme.spacing[3]} ${theme.spacing[4]}`,
   backgroundColor: theme.colors.background.paper,
   color: theme.colors.text.primary,
-  borderRadius: theme.borderRadius.md,
+  borderRadius: theme.radius.medium,
 });
 ```
 

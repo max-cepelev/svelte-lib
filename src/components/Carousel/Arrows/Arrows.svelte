@@ -15,6 +15,7 @@ const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
 </script>
 
 <button
+  type="button"
   data-slot="carousel-previous"
   disabled={!emblaPrevCtx.canScrollPrev}
   class={[styles.buttonPrev[emblaPrevCtx.orientation], className]}
@@ -23,11 +24,10 @@ const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
   aria-label="Previous slide"
   {...restProps}
 >
-  <span class={styles.iconWrapper}>
-    <ArrowLeftIcon />
-  </span>
+  <span class={styles.iconWrapper}> <ArrowLeftIcon /> </span>
 </button>
 <button
+  type="button"
   data-slot="carousel-next"
   disabled={!emblaNextCtx.canScrollNext}
   aria-disabled={!emblaNextCtx.canScrollNext}
@@ -37,7 +37,5 @@ const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
   aria-label="Next slide"
   {...restProps}
 >
-  <span class={styles.iconWrapper}>
-    <ArrowRightIcon />
-  </span>
+  <span class={styles.iconWrapper}> <ArrowRightIcon /> </span>
 </button>

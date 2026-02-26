@@ -30,7 +30,7 @@ const content = style({
 	minWidth: '8rem',
 	overflowX: 'hidden',
 	overflowY: 'auto',
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	boxShadow: theme.shadow[3],
 	selectors: {

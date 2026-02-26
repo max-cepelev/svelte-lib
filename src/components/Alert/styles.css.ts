@@ -19,7 +19,7 @@ const alertBase = style({
 	`,
 	alignItems: 'center',
 	gap: spacing(1, 2),
-	borderRadius: theme.borderRadius.lg,
+	borderRadius: theme.radius.large,
 	border: `1px solid ${theme.colors.border}`,
 	padding: spacing(3, 4),
 	fontSize: theme.fontSize.sm,

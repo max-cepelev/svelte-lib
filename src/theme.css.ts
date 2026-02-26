@@ -83,10 +83,10 @@ export const theme = createGlobalThemeContract({
 		relaxed: 'lineHeight-relaxed',
 		loose: 'lineHeight-loose',
 	},
-	borderRadius: {
-		sm: 'borderRadius-sm',
-		md: 'borderRadius-md',
-		lg: 'borderRadius-lg',
+	radius: {
+		small: 'radius-small',
+		medium: 'radius-medium',
+		large: 'radius-large',
 	},
 });
 
@@ -170,10 +170,10 @@ createGlobalTheme(':root', theme, {
 		relaxed: '1.625',
 		loose: '2',
 	},
-	borderRadius: {
-		sm: '0.375rem',
-		md: '0.5rem',
-		lg: '1rem',
+	radius: {
+		small: '0.375rem',
+		medium: '0.5rem',
+		large: '1rem',
 	},
 });
 

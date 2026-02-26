@@ -13,7 +13,7 @@ const root = style({
 	paddingTop: '0.375rem', // py-1.5
 	paddingBottom: '0.375rem',
 
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	fontSize: theme.fontSize.sm,
 	userSelect: 'none',
 	outline: 'none',

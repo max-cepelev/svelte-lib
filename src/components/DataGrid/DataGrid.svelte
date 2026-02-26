@@ -54,22 +54,24 @@ const heightValue = $derived(
 	]}
   >
     {#if title}
-      <caption class={styles.title}>{title}</caption>
+      <caption class={styles.title}>
+        {title}
+      </caption>
     {/if}
 
-    <Header columns={columns} height={headerHeight} sticky={stickyHeader} />
+    <Header {columns} height={headerHeight} sticky={stickyHeader} />
 
     <Body
-      rows={rows}
-      columns={columns}
-      rowHeight={rowHeight}
-      keyId={keyId}
-      onRowClick={onRowClick}
-      isLoading={isLoading}
-      emptyState={emptyState}
-      errorState={errorState}
-      isError={isError}
-      onRetry={onRetry}
+      {rows}
+      {columns}
+      {rowHeight}
+      {keyId}
+      {onRowClick}
+      {isLoading}
+      {emptyState}
+      {errorState}
+      {isError}
+      {onRetry}
     />
   </table>
   {#if footer}

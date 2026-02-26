@@ -15,7 +15,7 @@ const container = style({
 	columnGap: theme.spacing[1],
 	background: theme.colors.background.paper,
 	border: `1px solid ${theme.colors.border}`,
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	transition: 'border 0.2s',
 	'@media': {
 		'(max-width: 600px)': {
@@ -81,6 +81,10 @@ const slider = style({
 	width: 'calc(100% - 4px)',
 });
 
+const track = style({
+	backgroundColor: 'transparent',
+});
+
 export default {
 	container,
 	active,
@@ -89,4 +93,5 @@ export default {
 	input,
 	slider,
 	fullWidth,
+	track,
 };

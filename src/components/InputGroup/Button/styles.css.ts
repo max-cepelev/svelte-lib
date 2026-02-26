@@ -18,24 +18,24 @@ export const sizes = styleVariants<
 	xs: {
 		height: theme.spacing[6],
 		paddingInline: theme.spacing[2],
-		borderRadius: theme.borderRadius.sm,
+		borderRadius: theme.radius.small,
 	},
 	sm: {
 		height: theme.spacing[8],
 		paddingInline: theme.spacing[3],
-		borderRadius: theme.borderRadius.md,
+		borderRadius: theme.radius.medium,
 	},
 	'icon-xs': {
 		height: theme.spacing[6],
 		width: theme.spacing[6],
 		padding: 0,
-		borderRadius: theme.borderRadius.sm,
+		borderRadius: theme.radius.small,
 	},
 	'icon-sm': {
 		height: theme.spacing[8],
 		width: theme.spacing[8],
 		padding: 0,
-		borderRadius: theme.borderRadius.md,
+		borderRadius: theme.radius.medium,
 	},
 });
 

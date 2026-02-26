@@ -50,4 +50,5 @@ export type TypographyProps = {
 	children?: Snippet<[]>;
 	ref?: HTMLElement | null;
 	class?: string;
+	style?: string;
 };

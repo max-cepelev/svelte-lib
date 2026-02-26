@@ -75,8 +75,8 @@ globalStyle(`${container} > input`, {
 globalStyle(
 	`${orientation.horizontal}:has(> select[aria-hidden=true]:last-child) > [data-slot=select-trigger]:last-of-type`,
 	{
-		borderTopRightRadius: theme.borderRadius.md,
-		borderBottomRightRadius: theme.borderRadius.md,
+		borderTopRightRadius: theme.radius.medium,
+		borderBottomRightRadius: theme.radius.medium,
 	},
 );
 

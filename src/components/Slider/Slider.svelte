@@ -9,6 +9,8 @@ let {
   orientation = 'horizontal',
   class: className,
   size = 'medium',
+  trackClass,
+  thumbClass,
   ...restProps
 }: SliderProps = $props();
 </script>
@@ -25,7 +27,7 @@ let {
     <span
       data-orientation={orientation}
       data-slot="slider-track"
-      class={[styles.track, styles.trackSizes[size]]}
+      class={[styles.track, styles.trackSizes[size], trackClass]}
     >
       <SliderPrimitive.Range data-slot="slider-range" class={styles.range} />
     </span>
@@ -33,7 +35,7 @@ let {
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
         index={thumb.index}
-        class={[styles.thumb, styles.thumbSizes[size]]}
+        class={[styles.thumb, styles.thumbSizes[size], thumbClass]}
       />
     {/each}
   {/snippet}

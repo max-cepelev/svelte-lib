@@ -7,7 +7,7 @@ const item = style({
 	cursor: 'default',
 	alignItems: 'center',
 	gap: theme.spacing[2],
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	paddingTop: '0.375rem',
 	paddingBottom: '0.375rem',
 	paddingInlineStart: theme.spacing[8],

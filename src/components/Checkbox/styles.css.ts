@@ -1,5 +1,26 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, keyframes, style } from '@vanilla-extract/css';
 import { theme } from '~/theme';
+
+const checked = keyframes({
+	'0%': {
+		scale: 0,
+	},
+	'60%': {
+		scale: 1.15,
+	},
+	'100%': {
+		scale: 1,
+	},
+});
+
+const unchecked = keyframes({
+	from: {
+		scale: 1,
+	},
+	to: {
+		scale: 0,
+	},
+});
 
 const checkboxBase = style({
 	display: 'flex',
@@ -8,40 +29,49 @@ const checkboxBase = style({
 	width: theme.spacing[4],
 	height: theme.spacing[4],
 	flexShrink: 0,
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.spacing[1],
 	border: `1px solid ${theme.colors.border}`,
 	backgroundColor: 'transparent',
-	transition: 'box-shadow 150ms, background-color 150ms, border-color 150ms',
+	transition: 'background-color 200ms, border-color 200ms',
 	cursor: 'pointer',
 	outline: 'none',
 	color: theme.colors.foreground.primary,
+	':focus-visible': {
+		outline: 'none',
+		borderColor: theme.colors.primary,
+	},
+	':hover': {
+		borderColor: theme.colors.primary,
+		boxShadow: theme.shadow[2],
+	},
 	selectors: {
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: '0.5',
-		},
-		'&:focus-visible': {
-			outline: 'none',
-			boxShadow: `0 0 0 3px color-mix(in oklch, ${theme.colors.primary} 50%, transparent)`,
-			borderColor: theme.colors.primary,
 		},
 		'&[data-state="checked"]': {
 			backgroundColor: theme.colors.primary,
 			borderColor: theme.colors.primary,
 		},
 		'&[aria-invalid="true"]': {
-			boxShadow: `0 0 0 1px color-mix(in oklch, ${theme.colors.error} 20%, transparent)`,
 			borderColor: theme.colors.error,
 		},
 	},
 });
 
-const checkboxIndicator = style({
+const indicator = style({
 	color: 'currentColor',
-	transition: 'none',
+});
+
+globalStyle(`${checkboxBase}[data-state="checked"] ${indicator}`, {
+	animation: `${checked} 400ms ease-in-out`,
+});
+
+globalStyle(`${checkboxBase}[data-state="unchecked"] ${indicator}`, {
+	animation: `${unchecked} 400ms ease-in-out`,
 });
 
 export default {
 	checkboxBase,
-	checkboxIndicator,
+	indicator,
 };

@@ -29,9 +29,9 @@ const errorStateData = $derived(errorState || { text: 'Произошла оши
 
 {#if isLoading}
   <tr class={styles.container}>
-    <td colSpan={columnsLength} align="center"><span class={styles.loader}>
-      <CircularProgress />
-    </span></td>
+    <td colSpan={columnsLength} align="center">
+      <span class={styles.loader}> <CircularProgress /> </span>
+    </td>
   </tr>
 {:else if isEmpty}
   <tr class={styles.container}>
@@ -50,7 +50,7 @@ const errorStateData = $derived(errorState || { text: 'Произошла оши
         title={errorStateData.text}
         imgSrc={errorStateData.imgSrc}
         imgAlt={errorStateData.imgAlt}
-        actions={actions}
+        {actions}
       />
     </td>
   </tr>

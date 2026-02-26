@@ -38,6 +38,16 @@ const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 	small: {
 		selectors: {
 			[`${root}[data-orientation=horizontal] &`]: {
+				height: 1,
+			},
+			[`${root}[data-orientation=vertical] &`]: {
+				width: 1,
+			},
+		},
+	},
+	medium: {
+		selectors: {
+			[`${root}[data-orientation=horizontal] &`]: {
 				height: 2,
 			},
 			[`${root}[data-orientation=vertical] &`]: {
@@ -45,23 +55,13 @@ const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 			},
 		},
 	},
-	medium: {
+	large: {
 		selectors: {
 			[`${root}[data-orientation=horizontal] &`]: {
 				height: 3,
 			},
 			[`${root}[data-orientation=vertical] &`]: {
 				width: 3,
-			},
-		},
-	},
-	large: {
-		selectors: {
-			[`${root}[data-orientation=horizontal] &`]: {
-				height: 4,
-			},
-			[`${root}[data-orientation=vertical] &`]: {
-				width: 4,
 			},
 		},
 	},
@@ -106,16 +106,16 @@ const thumb = style({
 
 const thumbSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
 	small: {
-		width: 12,
-		height: 12,
+		width: 11,
+		height: 11,
 	},
 	medium: {
-		width: 14,
-		height: 14,
+		width: 13,
+		height: 13,
 	},
 	large: {
-		width: 16,
-		height: 16,
+		width: 15,
+		height: 15,
 	},
 });
 

@@ -6,7 +6,7 @@ export const container = style({
 	display: 'flex',
 	width: '100%',
 	alignItems: 'stretch',
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	backgroundColor: theme.colors.background.paper,
 	boxShadow: theme.shadow[1],

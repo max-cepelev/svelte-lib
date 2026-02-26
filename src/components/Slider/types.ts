@@ -5,4 +5,6 @@ export type SliderSize = 'small' | 'medium' | 'large';
 
 export type SliderProps = WithoutChildrenOrChild<SliderPrimitive.RootProps> & {
 	size?: SliderSize;
+	trackClass?: string;
+	thumbClass?: string;
 };

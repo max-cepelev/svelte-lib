@@ -5,7 +5,7 @@ const card = style({
 	display: 'flex',
 	flexDirection: 'column',
 	gap: theme.spacing[6],
-	borderRadius: theme.borderRadius.lg,
+	borderRadius: theme.radius.large,
 	border: `1px solid ${theme.colors.border}`,
 	padding: `${theme.spacing[6]} 0`,
 	backgroundColor: theme.colors.background.paper,

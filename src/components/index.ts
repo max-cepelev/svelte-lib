@@ -118,6 +118,11 @@ export {
 	type RangeInputSize,
 } from './RangeInput';
 
+export {
+	ScalableContainer,
+	type ScalableContainerProps,
+} from './ScalableContainer';
+
 export { Select } from './Select';
 
 export {

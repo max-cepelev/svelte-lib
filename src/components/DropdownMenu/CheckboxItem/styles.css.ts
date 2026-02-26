@@ -14,7 +14,7 @@ const root = style({
 	paddingBottom: '0.375rem',
 	paddingLeft: theme.spacing[8], // ps-8
 	paddingRight: theme.spacing[2], // pe-2
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	fontSize: theme.fontSize.sm,
 	cursor: 'default',
 	userSelect: 'none',

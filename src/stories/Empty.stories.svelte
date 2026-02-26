@@ -14,9 +14,7 @@ const { Story } = defineMeta({
 <Story name="Default" asChild>
   <Empty.Root>
     <Empty.Header>
-      <Empty.Media variant="icon">
-        <FolderCodeIcon />
-      </Empty.Media>
+      <Empty.Media variant="icon"> <FolderCodeIcon /> </Empty.Media>
       <Empty.Title>No Projects Yet</Empty.Title>
       <Empty.Description>
         You haven't created any projects yet. Get started by creating your first

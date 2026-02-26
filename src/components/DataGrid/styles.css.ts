@@ -10,7 +10,7 @@ const container = style({
 	height: '100%',
 	overflow: 'hidden auto',
 	border: `1px solid ${theme.colors.border}`,
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 });
 
 const table = style({

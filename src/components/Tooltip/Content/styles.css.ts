@@ -46,7 +46,7 @@ const content = style({
 	zIndex: 50,
 	backgroundColor: theme.colors.background.tooltip,
 	color: theme.colors.background.paper,
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	padding: spacing(2, 3),
 	fontSize: theme.fontSize.xs,
 	fontWeight: theme.fontWeight.semibold,
@@ -89,8 +89,8 @@ const content = style({
 
 const arrow = style({
 	fill: theme.colors.background.tooltip,
-	width: theme.spacing[4],
-	height: theme.spacing[4],
+	width: 14,
+	height: 14,
 	selectors: {
 		'&[data-side="top"]': {
 			translate: '0 -5px',

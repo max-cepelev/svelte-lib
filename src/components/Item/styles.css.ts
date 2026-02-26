@@ -12,7 +12,7 @@ export const item = style({
 	display: 'flex',
 	flexWrap: 'wrap',
 	alignItems: 'center',
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: '1px solid transparent',
 	fontSize: theme.fontSize.sm,
 	transition: 'background-color 0.1s, border-color 0.1s, box-shadow 0.1s',
@@ -140,14 +140,14 @@ export const mediaVariants = styleVariants<
 		backgroundColor: theme.colors.background.element,
 		width: theme.spacing[8],
 		height: theme.spacing[8],
-		borderRadius: theme.borderRadius.sm,
+		borderRadius: theme.radius.small,
 		border: `1px solid ${theme.colors.border}`,
 	},
 	image: {
 		width: theme.spacing[10],
 		height: theme.spacing[10],
 		overflow: 'hidden',
-		borderRadius: theme.borderRadius.sm,
+		borderRadius: theme.radius.small,
 	},
 });
 

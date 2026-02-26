@@ -25,7 +25,7 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip arrow content={content} side="right" delayDuration={200}>
+    <Tooltip arrow {content} side="right" delayDuration={200}>
       <Button variant="outline">Hover</Button>
     </Tooltip>
   </div>

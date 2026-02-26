@@ -20,14 +20,15 @@ const dashOffset = $derived(
     : circumference * 0.25,
 );
 const viewBox = $derived(`0 0 ${size} ${size}`);
+const sizeValue = $derived(`${size}px`);
 </script>
 
 <div
-  style:with={size + 'px'}
-  style:height={size + 'px'}
+  style:with={sizeValue}
+  style:height={sizeValue}
   class={[styles.root, styles.variants[variant], styles.colors[color], className]}
 >
-  <svg class={styles.svg} viewBox={viewBox}>
+  <svg class={styles.svg} {viewBox}>
     <title>Progress bar</title>
     <circle
       class={styles.circle}

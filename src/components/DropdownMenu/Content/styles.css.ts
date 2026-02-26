@@ -54,7 +54,7 @@ const content = style({
 	overflowX: 'hidden',
 	overflowY: 'auto',
 
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	padding: theme.spacing[1],
 	boxShadow: theme.shadow[4],

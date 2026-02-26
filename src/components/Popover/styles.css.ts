@@ -16,7 +16,7 @@ export const content = style({
 	color: theme.colors.text.primary,
 	zIndex: 50,
 	width: '18rem', // 72 in tailwind
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	padding: theme.spacing[4],
 	boxShadow: theme.shadow[2],

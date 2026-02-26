@@ -36,9 +36,7 @@ const { Story } = defineMeta({
               <Input id="tabs-demo-username" value="@peduarte" />
             </div>
           </Card.Content>
-          <Card.Footer>
-            <Button>Save changes</Button>
-          </Card.Footer>
+          <Card.Footer> <Button>Save changes</Button> </Card.Footer>
         </Card.Root>
       </Tabs.Content>
       <Tabs.Content value="password">
@@ -60,9 +58,7 @@ const { Story } = defineMeta({
               <Input id="tabs-demo-new" type="password" />
             </div>
           </Card.Content>
-          <Card.Footer>
-            <Button>Save password</Button>
-          </Card.Footer>
+          <Card.Footer> <Button>Save password</Button> </Card.Footer>
         </Card.Root>
       </Tabs.Content>
     </Tabs.Root>

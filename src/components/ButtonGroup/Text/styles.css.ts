@@ -7,7 +7,7 @@ export const text = style({
 	display: 'flex',
 	alignItems: 'center',
 	gap: theme.spacing[2],
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	padding: spacing(2, 4),
 	fontSize: theme.fontSize.sm,

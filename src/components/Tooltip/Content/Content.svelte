@@ -35,6 +35,7 @@ let {
     {#if arrow}
       <TooltipPrimitive.Arrow>
         {#snippet child({ props })}
+          <!-- biome-ignore lint/a11y/noSvgWithoutTitle: <> -->
           <svg
             class={[styles.arrow, arrowClass]}
             viewBox="0 0 7.68 4.35"

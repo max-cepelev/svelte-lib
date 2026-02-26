@@ -16,7 +16,7 @@ const root = style({
 		'&:has(>[data-slot=field])': {
 			width: '100%',
 			flexDirection: 'column',
-			borderRadius: theme.borderRadius.md,
+			borderRadius: theme.radius.medium,
 			borderWidth: 1,
 			borderStyle: 'solid',
 			borderColor: theme.colors.border,

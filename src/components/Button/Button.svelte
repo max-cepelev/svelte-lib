@@ -28,13 +28,14 @@ const classNames = $derived([
 </script>
 
 {#if href}
+  <!-- svelte-ignore a11y_no_redundant_roles -->
   <a
     bind:this={ref}
     data-slot="button"
     class={classNames}
     href={disabled ? undefined : href}
     aria-disabled={disabled}
-    role={disabled ? "link" : undefined}
+    role="link"
     tabindex={disabled ? -1 : undefined}
   >
     {@render children?.()}

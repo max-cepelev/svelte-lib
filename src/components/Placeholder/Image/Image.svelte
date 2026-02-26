@@ -2,7 +2,16 @@
 import styles from './styles.css';
 import type { ImageProps } from './types';
 
-let { class: className, size = 'medium', ...restProps }: ImageProps = $props();
+let {
+  class: className,
+  size = 'medium',
+  alt: altAttr = '',
+  ...restProps
+}: ImageProps = $props();
 </script>
 
-<img {...restProps} class={[styles.wrapper, styles.sizes[size], className]}>
+<img
+  {...restProps}
+  alt={altAttr}
+  class={[styles.wrapper, styles.sizes[size], className]}
+>

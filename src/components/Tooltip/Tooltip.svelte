@@ -15,13 +15,21 @@ let {
   side = 'top',
   arrow,
   arrowClass,
+  triggerId = null,
+  payload = null,
   ...restProps
 }: TooltipProps = $props();
 </script>
 
 <Provider>
   <TooltipPrimitive.Root bind:open {...restProps}>
-    <Trigger>{@render children?.()}</Trigger>
+    <Trigger
+      >{@render children?.({
+      open,
+      triggerId,
+      payload
+    })}</Trigger
+    >
     <Content
       class={className}
       {alignOffset}

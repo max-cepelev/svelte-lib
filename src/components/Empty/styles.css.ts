@@ -15,7 +15,7 @@ export const root = style({
 	alignItems: 'center',
 	justifyContent: 'center',
 	gap: theme.spacing[6],
-	borderRadius: theme.borderRadius.lg,
+	borderRadius: theme.radius.large,
 	border: `2px dashed ${theme.colors.border}`,
 	padding: theme.spacing[6],
 	textAlign: 'center',
@@ -98,7 +98,7 @@ export const mediaVariants = styleVariants<
 		flexShrink: 0,
 		alignItems: 'center',
 		justifyContent: 'center',
-		borderRadius: theme.borderRadius.lg,
+		borderRadius: theme.radius.large,
 	},
 });
 

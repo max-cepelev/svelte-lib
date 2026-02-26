@@ -44,7 +44,7 @@ const content = style({
 	maxWidth: '100%',
 	maxHeight: '100%',
 	inset: 'auto 0 0 0',
-	borderRadius: `${theme.borderRadius.lg} ${theme.borderRadius.lg} 0 0`,
+	borderRadius: `${theme.radius.large} ${theme.radius.large} 0 0`,
 	selectors: {
 		'&[data-state=open]': {
 			animation: `${slideIn} 220ms ease-out`,
@@ -97,7 +97,7 @@ const closeButton = style({
 	backgroundColor: 'transparent',
 	color: theme.colors.text.secondary,
 	padding: theme.spacing[1],
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	cursor: 'pointer',
 	opacity: 0.7,
 	transition: 'opacity 0.2s ease',
@@ -122,7 +122,7 @@ const handle = style({
 		content: '',
 		width: 100,
 		height: 8,
-		borderRadius: theme.borderRadius.md,
+		borderRadius: theme.radius.medium,
 		backgroundColor: theme.colors.background.element,
 	},
 });

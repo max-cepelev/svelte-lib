@@ -21,3 +21,25 @@ export const spacing: Spacing = (...keys: SpacingKey[]) => {
 
 export const calculateSize = (value?: string | number) =>
 	typeof value === 'number' ? `${value}px` : value;
+
+export const createGetters = <T extends Record<string, unknown>>(
+	obj: T,
+): {
+	[K in keyof T]: () => T[K];
+} => {
+	const getters = {} as {
+		[K in keyof T]: () => T[K];
+	};
+
+	for (const key of Object.keys(obj) as (keyof T)[]) {
+		Object.defineProperty(getters, key, {
+			get() {
+				return obj[key];
+			},
+			enumerable: true,
+			configurable: true,
+		});
+	}
+
+	return getters;
+};

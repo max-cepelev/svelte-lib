@@ -5,7 +5,7 @@ import { spacing } from '~/utils';
 const inputBase = style({
 	backgroundColor: theme.colors.background.paper,
 	border: `1px solid ${theme.colors.border}`,
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	color: theme.colors.text.primary,
 	fontSize: theme.fontSize.base,
 	fontWeight: theme.fontWeight.normal,
@@ -67,7 +67,7 @@ const sizes = styleVariants({
 const fileInput = style({
 	backgroundColor: theme.colors.background.paper,
 	border: `1px solid ${theme.colors.border}`,
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	color: theme.colors.text.primary,
 	fontSize: theme.fontSize.base,
 	fontWeight: theme.fontWeight.medium,

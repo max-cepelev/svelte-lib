@@ -8,7 +8,7 @@ const trigger = style({
 	alignItems: 'center',
 	justifyContent: 'space-between',
 	gap: theme.spacing[2],
-	borderRadius: theme.borderRadius.md,
+	borderRadius: theme.radius.medium,
 	border: `1px solid ${theme.colors.border}`,
 	backgroundColor: 'transparent',
 	paddingLeft: theme.spacing[3],

@@ -9,11 +9,11 @@ const header = style({
 const trigger = style({
 	display: 'flex',
 	flex: 1,
-	alignItems: 'flex-start',
+	alignItems: 'center',
 	justifyContent: 'space-between',
 	gap: theme.spacing[4],
 	padding: spacing(2),
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	textAlign: 'start',
 	transitionProperty: 'all',
 	transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',

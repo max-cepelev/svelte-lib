@@ -22,12 +22,18 @@ let {
   {...restProps}
 >
   {#snippet children({ checked, indeterminate })}
-    <div data-slot="checkbox-indicator" class={styles.checkboxIndicator}>
-      {#if checked}
-        <CheckIcon size={16} />
-      {:else if indeterminate}
-        <MinusIcon size={16} />
-      {/if}
-    </div>
+    {#if checked}
+      <CheckIcon
+        data-slot="checkbox-indicator"
+        class={styles.indicator}
+        size={16}
+      />
+    {:else if indeterminate}
+      <MinusIcon
+        data-slot="checkbox-indicator"
+        class={styles.indicator}
+        size={16}
+      />
+    {/if}
   {/snippet}
 </CheckboxPrimitive.Root>

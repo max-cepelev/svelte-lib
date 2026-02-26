@@ -6,7 +6,7 @@ const subTrigger = style({
 	cursor: 'default',
 	alignItems: 'center',
 	gap: theme.spacing[2],
-	borderRadius: theme.borderRadius.sm,
+	borderRadius: theme.radius.small,
 	paddingLeft: theme.spacing[2],
 	paddingRight: theme.spacing[2],
 	paddingTop: '0.375rem',

@@ -61,7 +61,7 @@ globalStyle(`${addon} > svg:not([class*='size-'])`, {
 });
 
 globalStyle(`${addon} > kbd`, {
-	borderRadius: `calc(${theme.borderRadius.md} - 4px)`,
+	borderRadius: `calc(${theme.radius.medium} - 4px)`,
 });
 
 globalStyle(`[data-slot="input-group"][data-disabled="true"] ${addon}`, {
