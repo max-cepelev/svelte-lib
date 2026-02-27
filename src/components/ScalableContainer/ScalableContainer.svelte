@@ -35,8 +35,18 @@ const store = new ScalableContainerStore({
     return onPositionChanged;
   },
 });
+function shouldSkipDragStart(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false;
+  return Boolean(
+    target.closest(
+      'button, a, input, textarea, select, label, path, summary, [role="button"], [contenteditable="true"]',
+    ),
+  );
+}
 
 function onpointerdown(e: PointerEvent): void {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  if (shouldSkipDragStart(e.target)) return;
   (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   store.startDrag(e.pointerId, e.clientX, e.clientY);
 }
@@ -85,12 +95,12 @@ function onwheel(e: WheelEvent): void {
   {#if showToolbar}
     <ButtonGroup.Root orientation="vertical" class={styles.toolbar}>
       <Button
-        onclick={store.reset}
+        onclick={store.zoomIn}
         size="iconSmall"
-        title="Сбросить"
+        title="Увеличить"
         variant="outline"
       >
-        <RotateCcw />
+        <ZoomIn />
       </Button>
       <Button
         onclick={store.zoomOut}
@@ -101,12 +111,12 @@ function onwheel(e: WheelEvent): void {
         <ZoomOut />
       </Button>
       <Button
-        onclick={store.zoomIn}
+        onclick={store.reset}
         size="iconSmall"
-        title="Увеличить"
+        title="Сбросить"
         variant="outline"
       >
-        <ZoomIn />
+        <RotateCcw />
       </Button>
     </ButtonGroup.Root>
   {/if}
