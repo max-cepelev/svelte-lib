@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SvelteHTMLElements } from 'svelte/elements';
-import { getEmblaContext } from '../context';
+import { getCarouselContext } from '../context';
 import styles from './styles.css';
 
 let {
@@ -8,7 +8,7 @@ let {
   ...restProps
 }: Omit<SvelteHTMLElements['div'], 'children'> = $props();
 
-const emblaCtx = getEmblaContext('<Carousel.Dots/>');
+const emblaCtx = getCarouselContext('<Carousel.Dots/>');
 
 const onClick = (index: number) => {
   emblaCtx.scrollTo(index);

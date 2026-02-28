@@ -1,5 +1,4 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { theme } from '~/theme';
 
 const item = style({
 	minWidth: 0,
@@ -10,10 +9,12 @@ const item = style({
 
 const orientation = styleVariants({
 	horizontal: {
-		paddingLeft: theme.spacing[4],
+		scrollSnapAlign: 'center',
+		scrollSnapStop: 'always',
 	},
 	vertical: {
-		paddingTop: theme.spacing[4],
+		scrollSnapAlign: 'start',
+		scrollSnapStop: 'always',
 	},
 });
 

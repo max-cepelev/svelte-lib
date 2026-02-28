@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../../types.ts';
-import { getEmblaContext } from '../context';
+import { getCarouselContext } from '../context';
 import styles from './styles.css';
 
 let {
@@ -11,16 +11,16 @@ let {
   ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 
-const emblaCtx = getEmblaContext('<Carousel.Item/>');
+const emblaCtx = getCarouselContext('<Carousel.Item />');
 </script>
 
 <div
   bind:this={ref}
   data-slot="carousel-item"
+  data-orientation={emblaCtx.orientation}
   role="group"
   aria-roledescription="slide"
   class={[styles.item, styles.orientation[emblaCtx.orientation], className]}
-  data-embla-slide=""
   {...restProps}
 >
   {@render children?.()}

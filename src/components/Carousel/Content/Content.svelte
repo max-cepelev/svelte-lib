@@ -1,8 +1,8 @@
 <script lang="ts">
-import emblaCarouselSvelte from 'embla-carousel-svelte';
+import { onMount } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../../types.ts';
-import { getEmblaContext } from '../context';
+import { getCarouselContext } from '../context';
 import styles from './styles.css';
 
 let {
@@ -12,32 +12,23 @@ let {
   ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 
-const emblaCtx = getEmblaContext('<Carousel.Content/>');
+const emblaCtx = getCarouselContext('<Carousel.Content />');
+onMount(() => {
+  emblaCtx.setViewport(ref as HTMLDivElement | null);
+  return () => emblaCtx.setViewport(null);
+});
 </script>
 
 <div
-  data-slot="carousel-content-wrapper"
-  class={[styles.contentWrapper, className]}
-  use:emblaCarouselSvelte={{
-    options: {
-      container: '[data-embla-container]',
-      slides: '[data-embla-slide]',
-      ...emblaCtx.options,
-      axis: emblaCtx.orientation === 'horizontal' ? 'x' : 'y',
-    },
-    plugins: emblaCtx.plugins,
-  }}
-  onemblaInit={emblaCtx.onInit}
+  bind:this={ref}
+  data-slot="carousel-content"
+  class={[
+    styles.content,
+    styles.orientation[emblaCtx.orientation],
+    className,
+  ]}
+  data-orientation={emblaCtx.orientation}
+  {...restProps}
 >
-  <div
-    bind:this={ref}
-    class={[
-      styles.container,
-      styles.orientation[emblaCtx.orientation],
-    ]}
-    data-embla-container=""
-    {...restProps}
-  >
-    {@render children?.()}
-  </div>
+  {@render children?.()}
 </div>

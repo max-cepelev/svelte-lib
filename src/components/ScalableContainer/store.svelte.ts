@@ -132,8 +132,8 @@ export class ScalableContainerStore {
 
 	movePinch = (t1: Touch, t2: Touch) => {
 		if (this.#initialPinchDistance === 0) return;
-    const dist = this.#getDistance(t1, t2);
-		console.log({ dist })
+		const dist = this.#getDistance(t1, t2);
+		console.log({ dist });
 		this.#setScale(
 			this.#initialPinchScale * (dist / this.#initialPinchDistance),
 		);

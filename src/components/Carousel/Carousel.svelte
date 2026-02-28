@@ -3,92 +3,230 @@ import { setEmblaContext } from './context';
 import styles from './styles.css';
 import {
   type CarouselAPI,
+  type CarouselAlign,
   type CarouselProps,
-  type EmblaContext,
+  type CarouselContext,
 } from './types';
 
 let {
   ref = $bindable(null),
-  options,
-  plugins,
   setApi = () => {},
   orientation = 'horizontal',
+  align,
   class: className,
   children,
   ...restProps
 }: CarouselProps = $props();
 
-let carouselState = $state<EmblaContext>({
+let carouselState = $state<CarouselContext>({
   api: undefined,
+  viewport: null,
   scrollPrev,
   scrollNext,
   orientation: 'horizontal',
+  align: 'center',
   canScrollNext: false,
   canScrollPrev: false,
   handleKeyDown,
-  options: {},
-  plugins: [],
-  onInit,
+  setViewport,
+  refresh,
   scrollSnaps: [],
   selectedIndex: 0,
   scrollTo,
 });
 
 setEmblaContext(carouselState);
+const listeners = new Set<() => void>();
+
+const api: CarouselAPI = {
+  scrollPrev,
+  scrollNext,
+  scrollTo,
+  canScrollNext: () => carouselState.canScrollNext,
+  canScrollPrev: () => carouselState.canScrollPrev,
+  selectedScrollSnap: () => carouselState.selectedIndex,
+  scrollSnapList: () => carouselState.scrollSnaps,
+  on(event, callback) {
+    if (event !== 'select') return;
+    listeners.add(callback);
+  },
+  off(event, callback) {
+    if (event !== 'select') return;
+    listeners.delete(callback);
+  },
+};
+
+carouselState.api = api;
+
+function emitSelect() {
+  for (const callback of listeners) {
+    callback();
+  }
+}
+
+function getSlides() {
+  if (!carouselState.viewport) return [];
+  return Array.from(
+    carouselState.viewport.querySelectorAll<HTMLElement>(
+      '[data-slot="carousel-item"]',
+    ),
+  );
+}
+
+function getAlign(): CarouselAlign {
+  return carouselState.align === 'start' ||
+    carouselState.align === 'end' ||
+    carouselState.align === 'center'
+    ? carouselState.align
+    : 'center';
+}
+
+function getTargetFor(index: number) {
+  if (!carouselState.viewport) return 0;
+  const slides = getSlides();
+  const slide = slides[index];
+  if (!slide) return 0;
+
+  const viewportSize =
+    carouselState.orientation === 'horizontal'
+      ? carouselState.viewport.clientWidth
+      : carouselState.viewport.clientHeight;
+  const slideSize =
+    carouselState.orientation === 'horizontal'
+      ? slide.offsetWidth
+      : slide.offsetHeight;
+  const slideStart =
+    carouselState.orientation === 'horizontal'
+      ? slide.offsetLeft
+      : slide.offsetTop;
+
+  const align = getAlign();
+  let target = slideStart;
+
+  if (align === 'center') {
+    target = slideStart - (viewportSize - slideSize) / 2;
+  } else if (align === 'end') {
+    target = slideStart - (viewportSize - slideSize);
+  }
+
+  const max =
+    carouselState.orientation === 'horizontal'
+      ? carouselState.viewport.scrollWidth - carouselState.viewport.clientWidth
+      : carouselState.viewport.scrollHeight -
+        carouselState.viewport.clientHeight;
+  return Math.max(0, Math.min(target, Math.max(0, max)));
+}
+
+function setScroll(target: number, jump = false) {
+  if (!carouselState.viewport) return;
+  carouselState.viewport.scrollTo(
+    carouselState.orientation === 'horizontal'
+      ? { left: target, behavior: jump ? 'auto' : 'smooth' }
+      : { top: target, behavior: jump ? 'auto' : 'smooth' },
+  );
+}
 
 function scrollPrev() {
-  carouselState.api?.scrollPrev();
+  if (!carouselState.viewport) return;
+  const index = Math.max(0, carouselState.selectedIndex - 1);
+  scrollTo(index);
 }
 
 function scrollNext() {
-  carouselState.api?.scrollNext();
+  const slides = getSlides();
+  if (!slides.length) return;
+  const index = Math.min(slides.length - 1, carouselState.selectedIndex + 1);
+  scrollTo(index);
 }
 
 function scrollTo(index: number, jump?: boolean) {
-  carouselState.api?.scrollTo(index, jump);
+  setScroll(getTargetFor(index), jump);
 }
 
-function onSelect() {
-  if (!carouselState.api) return;
-  carouselState.selectedIndex = carouselState.api.selectedScrollSnap();
-  carouselState.canScrollNext = carouselState.api.canScrollNext();
-  carouselState.canScrollPrev = carouselState.api.canScrollPrev();
+function refresh() {
+  const slides = getSlides();
+  carouselState.scrollSnaps = slides.map((_, index) => getTargetFor(index));
+
+  if (!carouselState.viewport || !slides.length) {
+    carouselState.selectedIndex = 0;
+    carouselState.canScrollPrev = false;
+    carouselState.canScrollNext = false;
+    emitSelect();
+    return;
+  }
+
+  const scrollPosition =
+    carouselState.orientation === 'horizontal'
+      ? carouselState.viewport.scrollLeft
+      : carouselState.viewport.scrollTop;
+
+  let nearestIndex = 0;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+  for (let index = 0; index < carouselState.scrollSnaps.length; index += 1) {
+    const distance = Math.abs(
+      carouselState.scrollSnaps[index] - scrollPosition,
+    );
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      nearestIndex = index;
+    }
+  }
+
+  carouselState.selectedIndex = nearestIndex;
+  carouselState.canScrollPrev = nearestIndex > 0;
+  carouselState.canScrollNext = nearestIndex < slides.length - 1;
+  emitSelect();
 }
 
 function handleKeyDown(e: KeyboardEvent) {
-  if (e.key === 'ArrowLeft') {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
     e.preventDefault();
     scrollPrev();
-  } else if (e.key === 'ArrowRight') {
+  } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
     e.preventDefault();
     scrollNext();
   }
 }
-
-function onInit(event: CustomEvent<CarouselAPI>) {
-  carouselState.api = event.detail;
-  setApi(carouselState.api);
-
-  carouselState.scrollSnaps = carouselState.api.scrollSnapList();
-  carouselState.api.on('select', onSelect);
-  onSelect();
+function setViewport(node: HTMLDivElement | null) {
+  carouselState.viewport = node;
+  refresh();
 }
 
 $effect(() => {
-  if (orientation) {
-    carouselState.orientation = orientation;
+  carouselState.orientation = orientation;
+  carouselState.align = align ?? 'center';
+  setApi(api);
+});
+
+$effect(() => {
+  if (!carouselState.viewport) return;
+  const onScroll = () => {
+    refresh();
+  };
+  carouselState.viewport.addEventListener('scroll', onScroll, {
+    passive: true,
+  });
+
+  const resizeObserver = new ResizeObserver(() => {
+    refresh();
+  });
+  resizeObserver.observe(carouselState.viewport);
+  for (const slide of getSlides()) {
+    resizeObserver.observe(slide);
   }
 
-  if (options) {
-    carouselState.options = options;
-  }
-
-  if (plugins?.length) {
-    carouselState.plugins = plugins;
-  }
+  const mutationObserver = new MutationObserver(() => {
+    refresh();
+  });
+  mutationObserver.observe(carouselState.viewport, {
+    childList: true,
+    subtree: false,
+  });
 
   return () => {
-    carouselState.api?.off('select', onSelect);
+    carouselState.viewport?.removeEventListener('scroll', onScroll);
+    resizeObserver.disconnect();
+    mutationObserver.disconnect();
   };
 });
 </script>

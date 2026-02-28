@@ -2,7 +2,7 @@
 import { ArrowLeftIcon } from '@lucide/svelte';
 import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import { getEmblaContext } from '../context';
+import { getCarouselContext } from '../context';
 import styles from './styles.css';
 
 let {
@@ -10,17 +10,16 @@ let {
   ...restProps
 }: Omit<SvelteHTMLElements['button'], 'children'> = $props();
 
-const emblaNextCtx = getEmblaContext('<Carousel.Next/>');
-const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
+const ctx = getCarouselContext('<Carousel.Arrows />');
 </script>
 
 <button
   type="button"
   data-slot="carousel-previous"
-  disabled={!emblaPrevCtx.canScrollPrev}
-  class={[styles.buttonPrev[emblaPrevCtx.orientation], className]}
-  onclick={emblaPrevCtx.scrollPrev}
-  onkeydown={emblaPrevCtx.handleKeyDown}
+  disabled={!ctx.canScrollPrev}
+  class={[styles.buttonPrev[ctx.orientation], className]}
+  onclick={ctx.scrollPrev}
+  onkeydown={ctx.handleKeyDown}
   aria-label="Previous slide"
   {...restProps}
 >
@@ -29,11 +28,11 @@ const emblaPrevCtx = getEmblaContext('<Carousel.Previous/>');
 <button
   type="button"
   data-slot="carousel-next"
-  disabled={!emblaNextCtx.canScrollNext}
-  aria-disabled={!emblaNextCtx.canScrollNext}
-  class={[styles.buttonNext[emblaNextCtx.orientation], className]}
-  onclick={emblaNextCtx.scrollNext}
-  onkeydown={emblaNextCtx.handleKeyDown}
+  disabled={!ctx.canScrollNext}
+  aria-disabled={!ctx.canScrollNext}
+  class={[styles.buttonNext[ctx.orientation], className]}
+  onclick={ctx.scrollNext}
+  onkeydown={ctx.handleKeyDown}
   aria-label="Next slide"
   {...restProps}
 >

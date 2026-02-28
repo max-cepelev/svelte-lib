@@ -1,30 +1,40 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { negativeSpacing } from '~/utils';
+import { theme } from '~/theme';
 
-const contentWrapper = style({
+const content = style({
+	display: 'flex',
 	overflow: 'hidden',
 	height: '100%',
-});
-
-const container = style({
-	display: 'flex',
-	height: '100%',
 	width: '100%',
+	scrollBehavior: 'smooth',
+	WebkitOverflowScrolling: 'touch',
+	overscrollBehavior: 'contain',
+	scrollbarWidth: 'none',
+	selectors: {
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
+	},
 });
 
 const orientation = styleVariants({
 	horizontal: {
-		marginLeft: negativeSpacing(4),
+		overflowX: 'auto',
+		overflowY: 'hidden',
 		flexDirection: 'row',
+		scrollSnapType: 'x mandatory',
+		columnGap: theme.spacing[4],
 	},
 	vertical: {
-		marginTop: negativeSpacing(4),
+		overflowY: 'auto',
+		overflowX: 'hidden',
 		flexDirection: 'column',
+		scrollSnapType: 'y mandatory',
+		rowGap: theme.spacing[4],
 	},
 });
 
 export default {
-	contentWrapper,
-	container,
+	content,
 	orientation,
 };
