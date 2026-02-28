@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.8.2
+
+### Patch Changes
+
+- Move className prop from container to wrapper in Carousel.Content
+
 ## 1.8.1
 
 ### Patch Changes

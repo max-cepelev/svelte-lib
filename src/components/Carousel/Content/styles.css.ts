@@ -3,6 +3,7 @@ import { negativeSpacing } from '~/utils';
 
 const contentWrapper = style({
 	overflow: 'hidden',
+	height: '100%',
 });
 
 const container = style({

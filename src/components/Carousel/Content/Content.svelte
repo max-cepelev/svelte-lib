@@ -17,7 +17,7 @@ const emblaCtx = getEmblaContext('<Carousel.Content/>');
 
 <div
   data-slot="carousel-content-wrapper"
-  class={styles.contentWrapper}
+  class={[styles.contentWrapper, className]}
   use:emblaCarouselSvelte={{
     options: {
       container: '[data-embla-container]',
@@ -34,7 +34,6 @@ const emblaCtx = getEmblaContext('<Carousel.Content/>');
     class={[
       styles.container,
       styles.orientation[emblaCtx.orientation],
-      className,
     ]}
     data-embla-container=""
     {...restProps}
