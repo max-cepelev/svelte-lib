@@ -11,16 +11,16 @@ let {
   ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 
-const emblaCtx = getCarouselContext('<Carousel.Item />');
+const carouselCtx = getCarouselContext('<Carousel.Item/>');
 </script>
 
 <div
   bind:this={ref}
   data-slot="carousel-item"
-  data-orientation={emblaCtx.orientation}
+  data-orientation={carouselCtx.orientation}
   role="group"
   aria-roledescription="slide"
-  class={[styles.item, styles.orientation[emblaCtx.orientation], className]}
+  class={[styles.item, styles.orientation[carouselCtx.orientation], className]}
   {...restProps}
 >
   {@render children?.()}

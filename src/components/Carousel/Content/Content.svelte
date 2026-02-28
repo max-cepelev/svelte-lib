@@ -12,10 +12,10 @@ let {
   ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 
-const emblaCtx = getCarouselContext('<Carousel.Content />');
+const carouselCtx = getCarouselContext('<Carousel.Content />');
 onMount(() => {
-  emblaCtx.setViewport(ref as HTMLDivElement | null);
-  return () => emblaCtx.setViewport(null);
+  carouselCtx.setViewport(ref as HTMLDivElement | null);
+  return () => carouselCtx.setViewport(null);
 });
 </script>
 
@@ -24,10 +24,10 @@ onMount(() => {
   data-slot="carousel-content"
   class={[
     styles.content,
-    styles.orientation[emblaCtx.orientation],
+    styles.orientation[carouselCtx.orientation],
     className,
   ]}
-  data-orientation={emblaCtx.orientation}
+  data-orientation={carouselCtx.orientation}
   {...restProps}
 >
   {@render children?.()}

@@ -3,7 +3,7 @@ import type { CarouselContext } from './types';
 
 const CAROUSEL_CONTEXT = Symbol('CAROUSEL_CONTEXT');
 
-export function setEmblaContext(config: CarouselContext): CarouselContext {
+export function setCarouselContext(config: CarouselContext): CarouselContext {
 	setContext(CAROUSEL_CONTEXT, config);
 	return config;
 }

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.8.4
+
+### Patch Changes
+
+- Refactor Carousel to use CarouselStore class
+
 ## 1.8.3
 
 ### Patch Changes

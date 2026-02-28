@@ -1,13 +1,7 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../types.ts';
 export type CarouselAlign = 'start' | 'center' | 'end';
-
-export type CarouselOptions = {
-	align?: CarouselAlign;
-	[key: string]: unknown;
-};
-
-export type CarouselPlugins = unknown[];
+export type CarouselOrientation = 'horizontal' | 'vertical';
 
 type CarouselEventName = 'select';
 type CarouselEventCallback = () => void;
@@ -27,7 +21,7 @@ export type CarouselAPI = {
 export interface CarouselProps
 	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
 	setApi?: (api: CarouselAPI | undefined) => void;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: CarouselOrientation;
 	align?: CarouselAlign;
 }
 
@@ -35,7 +29,7 @@ export type CarouselContext = {
 	api: CarouselAPI | undefined;
 	viewport: HTMLDivElement | null;
 	align: CarouselAlign;
-	orientation: 'horizontal' | 'vertical';
+	orientation: CarouselOrientation;
 	scrollNext: () => void;
 	scrollPrev: () => void;
 	canScrollNext: boolean;

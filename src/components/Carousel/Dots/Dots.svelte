@@ -8,22 +8,22 @@ let {
   ...restProps
 }: Omit<SvelteHTMLElements['div'], 'children'> = $props();
 
-const emblaCtx = getCarouselContext('<Carousel.Dots/>');
+const carouselCtx = getCarouselContext('<Carousel.Dots/>');
 
 const onClick = (index: number) => {
-  emblaCtx.scrollTo(index);
+  carouselCtx.scrollTo(index);
 };
 </script>
 
-<div class={[styles.wrapper[emblaCtx.orientation], className]} {...restProps}>
-  {#each emblaCtx.scrollSnaps as _, index}
+<div class={[styles.wrapper[carouselCtx.orientation], className]} {...restProps}>
+  {#each carouselCtx.scrollSnaps as _, index}
     <button
       type="button"
       aria-label="Carousel Dots"
       class={[
-        styles.dotButton[emblaCtx.orientation],
+        styles.dotButton[carouselCtx.orientation],
         {
-          [styles.selected]: index === emblaCtx.selectedIndex,
+          [styles.selected]: index === carouselCtx.selectedIndex,
         },
       ]}
       onclick={() => onClick(index)}
