@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.8.3
+
+### Patch Changes
+
+- Add height and width to Carousel container
+
 ## 1.8.2
 
 ### Patch Changes

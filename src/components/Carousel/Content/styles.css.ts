@@ -8,6 +8,8 @@ const contentWrapper = style({
 
 const container = style({
 	display: 'flex',
+	height: '100%',
+	width: '100%',
 });
 
 const orientation = styleVariants({
