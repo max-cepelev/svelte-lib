@@ -8,7 +8,6 @@ const content = style({
 	width: '100%',
 	scrollBehavior: 'smooth',
 	WebkitOverflowScrolling: 'touch',
-	overscrollBehavior: 'contain',
 	scrollbarWidth: 'none',
 	selectors: {
 		'&::-webkit-scrollbar': {
@@ -23,6 +22,8 @@ const orientation = styleVariants({
 		overflowY: 'hidden',
 		flexDirection: 'row',
 		scrollSnapType: 'x mandatory',
+		overscrollBehaviorX: 'contain',
+		overscrollBehaviorY: 'auto',
 		columnGap: theme.spacing[4],
 	},
 	vertical: {
@@ -30,6 +31,8 @@ const orientation = styleVariants({
 		overflowX: 'hidden',
 		flexDirection: 'column',
 		scrollSnapType: 'y mandatory',
+		overscrollBehaviorY: 'contain',
+		overscrollBehaviorX: 'auto',
 		rowGap: theme.spacing[4],
 	},
 });
