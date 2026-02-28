@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.8.5
+
+### Patch Changes
+
+- fix(Carousel): Make overscroll behavior orientation-specific
+
 ## 1.8.4
 
 ### Patch Changes
