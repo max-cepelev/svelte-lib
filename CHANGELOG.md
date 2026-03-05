@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.9.0
+
+### Minor Changes
+
+- Add SliderInput component and refactor RangeInput
+
 ## 1.8.5
 
 ### Patch Changes

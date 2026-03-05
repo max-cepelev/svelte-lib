@@ -6,13 +6,8 @@ export interface Position {
 }
 
 export class ScalableContainerStore {
-	readonly initialScale: number;
-	readonly minScale: number;
-	readonly maxScale: number;
+	readonly #props;
 	readonly meta: string;
-
-	readonly #onScaleChanged: ((scale: number) => void) | undefined;
-	readonly #onPositionChanged: ((pos: Position) => void) | undefined;
 
 	scale = $state<number>(1);
 	position = $state<Position>({ x: 0, y: 0 });
@@ -45,12 +40,7 @@ export class ScalableContainerStore {
 			| 'onPositionChanged'
 		>,
 	) {
-		this.initialScale = props.initialScale ?? 1;
-		this.scale = props.initialScale ?? 1;
-		this.minScale = props.minScale ?? 0.1;
-		this.maxScale = props.maxScale ?? 4;
-		this.#onScaleChanged = props.onScaleChanged;
-		this.#onPositionChanged = props.onPositionChanged;
+		this.#props = props;
 		this.meta =
 			typeof window !== 'undefined' &&
 			window.navigator &&
@@ -62,13 +52,16 @@ export class ScalableContainerStore {
 	// ── Внутренние сеттеры ────────────────────────────────────────────────
 
 	#setScale = (value: number) => {
-		this.scale = Math.max(this.minScale, Math.min(this.maxScale, value));
-		this.#onScaleChanged?.(this.scale);
+		this.scale = Math.max(
+			this.#props.minScale || 0.1,
+			Math.min(this.#props.maxScale || 4, value),
+		);
+		this.#props.onScaleChanged?.(this.scale);
 	};
 
 	#setPosition = (pos: Position) => {
 		this.position = pos;
-		this.#onPositionChanged?.(pos);
+		this.#props.onPositionChanged?.(pos);
 	};
 
 	// ── Публичные действия ────────────────────────────────────────────────
@@ -82,7 +75,7 @@ export class ScalableContainerStore {
 	};
 
 	reset = (): void => {
-		this.#setScale(this.initialScale);
+		this.#setScale(this.#props.initialScale || 1);
 		this.#setPosition({ x: 0, y: 0 });
 	};
 
@@ -133,7 +126,6 @@ export class ScalableContainerStore {
 	movePinch = (t1: Touch, t2: Touch) => {
 		if (this.#initialPinchDistance === 0) return;
 		const dist = this.#getDistance(t1, t2);
-		console.log({ dist });
 		this.#setScale(
 			this.#initialPinchScale * (dist / this.#initialPinchDistance),
 		);

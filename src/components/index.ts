@@ -132,6 +132,8 @@ export {
 
 export { Slider, type SliderProps } from './Slider';
 
+export { SliderInput, type SliderInputProps } from './SliderInput';
+
 export { Spinner, type SpinnerSize } from './Spinner';
 
 export { Tabs, type TabsProps } from './Tabs';

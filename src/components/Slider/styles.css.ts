@@ -31,7 +31,7 @@ const track = style({
 	position: 'relative',
 	flexGrow: 1,
 	overflow: 'hidden',
-	borderRadius: '9999px',
+	borderRadius: 9999,
 });
 
 const trackSizes = styleVariants<Record<SliderSize, ComplexStyleRule>>({
@@ -90,17 +90,15 @@ const thumb = style({
 	transition: 'box-shadow 0.2s, transform 0.2s',
 	cursor: 'grab',
 	outline: 'none',
-	selectors: {
-		'&:hover': {
-			boxShadow: `0 0 0 4px color-mix(in oklch, ${theme.colors.primary} 15%, transparent)`,
-		},
-		'&:focus-visible': {
-			boxShadow: `0 0 0 4px color-mix(in oklch, ${theme.colors.primary} 25%, transparent)`,
-		},
-		'&:disabled': {
-			pointerEvents: 'none',
-			opacity: 0.5,
-		},
+	':hover': {
+		boxShadow: `0 0 0 4px color-mix(in oklch, ${theme.colors.primary} 15%, transparent)`,
+	},
+	':focus-visible': {
+		boxShadow: `0 0 0 4px color-mix(in oklch, ${theme.colors.primary} 25%, transparent)`,
+	},
+	':disabled': {
+		pointerEvents: 'none',
+		opacity: 0.5,
 	},
 });
 

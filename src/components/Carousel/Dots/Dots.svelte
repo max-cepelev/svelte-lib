@@ -15,7 +15,10 @@ const onClick = (index: number) => {
 };
 </script>
 
-<div class={[styles.wrapper[carouselCtx.orientation], className]} {...restProps}>
+<div
+  class={[styles.wrapper[carouselCtx.orientation], className]}
+  {...restProps}
+>
   {#each carouselCtx.scrollSnaps as _, index}
     <button
       type="button"

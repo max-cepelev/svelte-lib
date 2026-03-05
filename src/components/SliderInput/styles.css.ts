@@ -5,12 +5,12 @@ import {
 } from '@vanilla-extract/css';
 import { theme } from '~/theme';
 import { spacing } from '~/utils';
-import type { RangeInputSize } from './types';
+import type { SliderInputSize } from './types';
 
 const container = style({
 	position: 'relative',
 	display: 'grid',
-	gridTemplateColumns: 'auto 1fr auto 1fr auto',
+	gridTemplateColumns: '1fr auto',
 	alignItems: 'center',
 	columnGap: theme.spacing[1],
 	background: theme.colors.background.paper,
@@ -32,19 +32,19 @@ const active = style({
 	borderColor: theme.colors.primary,
 });
 
-const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
+const sizes = styleVariants<Record<SliderInputSize, ComplexStyleRule>>({
 	small: {
-		padding: `0.125rem ${theme.spacing[2]} ${theme.spacing[1]} ${theme.spacing[2]}`,
+		padding: `0.125rem ${theme.spacing[2]}`,
 		height: '28px',
 		fontSize: theme.fontSize.sm,
 	},
 	medium: {
-		padding: spacing(1, 3, 2, 3),
+		padding: spacing(1, 3),
 		height: '36px',
 		fontSize: theme.fontSize.base,
 	},
 	large: {
-		padding: spacing(2, 4, 3, 4),
+		padding: spacing(2, 4),
 		height: '44px',
 		fontSize: theme.fontSize.lg,
 	},
@@ -55,7 +55,6 @@ const text = style({
 });
 
 const input = style({
-	textAlign: 'center',
 	width: '100%',
 	minWidth: '24px',
 	border: 'none',
@@ -74,9 +73,12 @@ const input = style({
 });
 
 const slider = style({
+	position: 'absolute',
 	bottom: -2,
 	left: '50%',
 	transform: 'translateX(-50%)',
+	width: `calc(100% - ${theme.radius.large})`,
+	borderRadius: 9999,
 });
 
 const track = style({
