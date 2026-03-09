@@ -26,7 +26,9 @@ export default defineConfig({
 			preprocess: sveltePreprocess(),
 			exclude: ['**/*.svelte.ts'],
 		}),
-		vanillaExtractPlugin(),
+		vanillaExtractPlugin({
+			unstable_injectFilescopes: true,
+		}),
 		svelteDtsPlugin({
 			declarationDir: './dist',
 			libRoot: './src',

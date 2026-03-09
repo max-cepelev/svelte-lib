@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.9.1
+
+### Patch Changes
+
+- Bump dependencies and enable vanilla-extract option
+
 ## 1.9.0
 
 ### Minor Changes
