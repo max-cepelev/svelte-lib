@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.0
+
+### Minor Changes
+
+- Move global styles into theme and extract CSS
+
 ## 1.9.1
 
 ### Patch Changes

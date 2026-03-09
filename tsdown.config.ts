@@ -16,6 +16,9 @@ import { svelteDtsPlugin } from './scripts/tsdown-plugin-svelte-dts.js';
 export default defineConfig({
 	platform: 'browser',
 	unbundle: true,
+	outputOptions: {
+		assetFileNames: 'assets/[name][extname]',
+	},
 	entry: {
 		'components/index': './src/components/index.ts',
 		theme: './src/theme.css.ts',
@@ -27,7 +30,10 @@ export default defineConfig({
 			exclude: ['**/*.svelte.ts'],
 		}),
 		vanillaExtractPlugin({
-			unstable_injectFilescopes: true,
+			extract: {
+				name: 'styles.css',
+				sourcemap: false,
+			},
 		}),
 		svelteDtsPlugin({
 			declarationDir: './dist',

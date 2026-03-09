@@ -1,6 +1,7 @@
 import {
 	createGlobalTheme,
 	createGlobalThemeContract,
+	globalStyle,
 } from '@vanilla-extract/css';
 
 export const theme = createGlobalThemeContract({
@@ -141,10 +142,10 @@ createGlobalTheme(':root', theme, {
 	},
 	elevation: {
 		1: '0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba #00000024 (0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
-		2: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);',
+		2: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
 		3: '0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12)',
 		4: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)',
-		6: '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);',
+		6: '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)',
 	},
 	fontSize: {
 		xs: '0.75rem',
@@ -175,6 +176,93 @@ createGlobalTheme(':root', theme, {
 		medium: '0.5rem',
 		large: '1rem',
 	},
+});
+
+globalStyle('*, *::before, *::after', {
+	boxSizing: 'border-box',
+	'@media': {
+		'(prefers-reduced-motion: reduce)': {
+			animationDuration: '0.01ms !important',
+			animationIterationCount: '1 !important',
+			transitionDuration: '0.01ms !important',
+			scrollBehavior: 'auto',
+		},
+	},
+});
+
+globalStyle('body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd', {
+	margin: 0,
+});
+
+globalStyle('ul[role="list"], ol[role="list"]', {
+	padding: 0,
+});
+
+globalStyle('ul, ol', {
+	listStyle: 'none',
+	margin: 0,
+	padding: 0,
+});
+
+globalStyle('li', {
+	padding: 0,
+	margin: 0,
+	listStyleType: 'none',
+});
+
+globalStyle('body', {
+	lineHeight: 1.5,
+	fontFamily:
+		'Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+	WebkitFontSmoothing: 'antialiased',
+	color: theme.colors.text.primary,
+	backgroundColor: theme.colors.background.paper,
+});
+
+globalStyle('h1, h2, h3, h4, h5, h6', {
+	fontSize: 'inherit',
+	fontWeight: 'inherit',
+});
+
+globalStyle('button, input, textarea, select', {
+	font: 'inherit',
+	color: 'inherit',
+	background: 'none',
+	border: 'none',
+	padding: 0,
+	margin: 0,
+	outline: 'none',
+});
+
+globalStyle('button', {
+	cursor: 'pointer',
+});
+
+globalStyle('a', {
+	textDecoration: 'none',
+	color: 'inherit',
+});
+
+globalStyle('img, picture, video, canvas', {
+	display: 'block',
+	maxWidth: '100%',
+	height: 'auto',
+});
+
+globalStyle('*::-webkit-scrollbar', {
+	width: 6,
+	height: 6,
+});
+
+globalStyle('*::-webkit-scrollbar-track', {
+	backgroundColor: 'transparent',
+});
+
+globalStyle('*::-webkit-scrollbar-thumb', {
+	backgroundColor: `color-mix(in oklch, ${theme.colors.primary} 60%, transparent)`,
+	borderRadius: theme.radius.small,
+	width: 6,
+	height: 6,
 });
 
 export type Theme = typeof theme;
