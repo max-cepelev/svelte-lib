@@ -28,13 +28,14 @@ let {
 let timerId: NodeJS.Timeout | undefined;
 const calculatedWidth = $derived(calculateSize(width));
 
-let innerMin = $derived(formatNumber(value?.[0] || min));
-let innerMax = $derived(formatNumber(value?.[1] || max));
+// svelte-ignore state_referenced_locally
+let innerValue = $state([value?.[0] || min, value?.[1] || max]);
+
+let innerMin = $derived(formatNumber(innerValue[0]));
+let innerMax = $derived(formatNumber(innerValue[1]));
 
 $effect(() => {
-  if (!value) {
-    value = [min, max];
-  }
+  innerValue = [value?.[0] || min, value?.[1] || max];
 });
 
 const adaptiveStep = $derived.by(() => {
@@ -97,7 +98,7 @@ function handleSliderChange(newValue: number[]) {
   style:width={calculatedWidth}
   {...restProps}
 >
-  <Typography class={styles.text} color="muted" variant="caption">
+  <Typography class={styles.text} color="muted" variant="body2">
     от
   </Typography>
 
@@ -112,7 +113,7 @@ function handleSliderChange(newValue: number[]) {
     onkeydown={handleKeyDown}
   >
 
-  <Typography class={styles.text} color="muted" variant="caption">
+  <Typography class={styles.text} color="muted" variant="body2">
     до
   </Typography>
 
@@ -127,7 +128,7 @@ function handleSliderChange(newValue: number[]) {
     onkeydown={handleKeyDown}
   >
 
-  <Typography class={styles.text} color="muted" variant="caption">
+  <Typography class={styles.text} color="muted" variant="body2">
     {unit}
   </Typography>
 
@@ -140,7 +141,7 @@ function handleSliderChange(newValue: number[]) {
     step={adaptiveStep}
     style="position: absolute;"
     type="multiple"
-    bind:value
+    bind:value={innerValue}
     onValueCommit={handleSliderCommit}
     onValueChange={handleSliderChange}
   />
