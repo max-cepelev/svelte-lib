@@ -31,6 +31,12 @@ const calculatedWidth = $derived(calculateSize(width));
 let innerMin = $derived(formatNumber(value?.[0] || min));
 let innerMax = $derived(formatNumber(value?.[1] || max));
 
+$effect(() => {
+  if (!value) {
+    value = [min, max];
+  }
+});
+
 const adaptiveStep = $derived.by(() => {
   const range = max - min;
   const MAX_STEPS = 1000;

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.3
+
+### Patch Changes
+
+- Initialize value to [min, max] when unset
+
 ## 1.10.2
 
 ### Patch Changes
