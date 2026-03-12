@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.1
+
+### Patch Changes
+
+- Unify range/slider APIs and refactor field errors
+
 ## 1.10.0
 
 ### Minor Changes
