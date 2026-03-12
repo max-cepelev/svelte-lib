@@ -1,6 +1,6 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Label, SliderInput } from '../components';
+import { Label, SliderInput, Typography } from '../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
@@ -17,13 +17,22 @@ let price = $state(1500000);
 
 const handleValueChange = (newValue: number) => {
   console.log('Value changed:', newValue);
+  value = newValue;
 };
 </script>
 
 <Story name="Default" asChild>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <Label>Default Slider Input</Label>
-    <SliderInput bind:value min={0} max={100} unit="%" width={250} />
+    <SliderInput
+      {value}
+      min={0}
+      max={100}
+      unit="%"
+      width={250}
+      onValueCommit={handleValueChange}
+    />
+    <Typography>{value}</Typography>
   </div>
 </Story>
 

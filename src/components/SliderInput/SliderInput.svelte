@@ -1,11 +1,12 @@
 <script lang="ts">
 import { calculateSize } from '~/utils';
 
+import { Typography } from '../Typography';
+import { Slider } from '../Slider';
+
 import styles from './styles.css';
 import type { SliderInputProps } from './types';
 import { formatNumber, parseFormattedNumber } from './utils';
-import { Typography } from '../Typography';
-import { Slider } from '../Slider';
 
 let {
   min = 0,
@@ -20,6 +21,8 @@ let {
   isActive,
   ref = $bindable(null),
   onValueChange,
+  onValueCommit,
+  id = 'slider-input',
   ...restProps
 }: SliderInputProps = $props();
 
@@ -27,14 +30,7 @@ let timerId: NodeJS.Timeout | undefined;
 const calculatedWidth = $derived(calculateSize(width));
 
 // Внутреннее состояние для редактирования
-// svelte-ignore state_referenced_locally
-let innerValue = $state(value);
-let innerDisplayValue = $derived(formatNumber(innerValue || min));
-
-// Синхронизация с пропсами при внешних изменениях
-$effect(() => {
-  innerValue = value || min;
-});
+let innerDisplayValue = $derived(formatNumber(value || min));
 
 const adaptiveStep = $derived.by(() => {
   const range = max - min;
@@ -45,8 +41,6 @@ const adaptiveStep = $derived.by(() => {
 // Применение и коммит значений
 function applyValues(newValue: number) {
   const clampedValue = Math.max(min, Math.min(max, newValue));
-
-  innerValue = clampedValue;
 
   // Обновляем bindable пропсы
   value = clampedValue;
@@ -59,24 +53,28 @@ function handleInput(e: Event) {
 
   timerId = setTimeout(() => {
     const target = e.target as HTMLInputElement;
-    let value = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
+    let newValue = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
 
-    if (Number.isNaN(value)) {
-      value = min;
+    if (Number.isNaN(newValue)) {
+      newValue = min;
     }
 
-    applyValues(value);
+    applyValues(newValue);
   }, 700);
 }
 
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'Enter') {
-    applyValues(innerValue || min);
+    (e.target as HTMLInputElement).blur();
   }
 }
 
 function handleSliderCommit(value: number) {
-  applyValues(value);
+  onValueCommit?.(value);
+}
+
+function handleSliderChange(value: number) {
+  onValueChange?.(value);
 }
 </script>
 
@@ -93,6 +91,7 @@ function handleSliderCommit(value: number) {
     value={innerDisplayValue}
     oninput={handleInput}
     onkeydown={handleKeyDown}
+    {id}
     {name}
   >
 
@@ -108,7 +107,8 @@ function handleSliderCommit(value: number) {
     class={styles.slider}
     trackClass={styles.track}
     type="single"
-    bind:value={innerValue}
+    bind:value
     onValueCommit={handleSliderCommit}
+    onValueChange={handleSliderChange}
   />
 </div>

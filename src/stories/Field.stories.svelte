@@ -28,7 +28,7 @@ const { Story } = defineMeta({
                 placeholder="John Doe"
                 required
               />
-              <Field.Error errors={[{ message: 'Name is required' }]} />
+              <Field.Error errors={['Name is required']} />
             </Field.Item>
             <div
               style="display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr);"

@@ -3,6 +3,7 @@ import type { Snippet } from 'svelte';
 
 export type TooltipProps<Payload = never> = Tooltip.RootProps & {
 	content?: Snippet<[]> | string;
+	child?: Snippet<[{ props: Record<string, unknown> }]>;
 	arrow?: boolean;
 	align?: Tooltip.ContentProps['align'];
 	sideOffset?: number;

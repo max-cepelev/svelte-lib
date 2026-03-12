@@ -7,7 +7,7 @@ import { theme } from '~/theme';
 import { spacing } from '~/utils';
 import type { RangeInputSize } from './types';
 
-const container = style({
+export const container = style({
 	position: 'relative',
 	display: 'grid',
 	gridTemplateColumns: 'auto 1fr auto 1fr auto',
@@ -24,37 +24,37 @@ const container = style({
 	},
 });
 
-const fullWidth = style({
+export const fullWidth = style({
 	width: '100%',
 });
 
-const active = style({
+export const active = style({
 	borderColor: theme.colors.primary,
 });
 
-const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
+export const sizes = styleVariants<Record<RangeInputSize, ComplexStyleRule>>({
 	small: {
-		padding: `0.125rem ${theme.spacing[2]} ${theme.spacing[1]} ${theme.spacing[2]}`,
+		padding: `0.125rem ${theme.spacing[2]}`,
 		height: '28px',
 		fontSize: theme.fontSize.sm,
 	},
 	medium: {
-		padding: spacing(1, 3, 2, 3),
+		padding: spacing(1, 3),
 		height: '36px',
 		fontSize: theme.fontSize.base,
 	},
 	large: {
-		padding: spacing(2, 4, 3, 4),
+		padding: spacing(2, 4),
 		height: '44px',
 		fontSize: theme.fontSize.lg,
 	},
 });
 
-const text = style({
+export const text = style({
 	fontSize: 'inherit',
 });
 
-const input = style({
+export const input = style({
 	textAlign: 'center',
 	width: '100%',
 	minWidth: '24px',
@@ -73,23 +73,15 @@ const input = style({
 	},
 });
 
-const slider = style({
-	bottom: -2,
-	left: '50%',
-	transform: 'translateX(-50%)',
-});
+export const slider = style(
+	{
+		bottom: -2,
+		left: '50%',
+		transform: 'translateX(-50%)',
+	},
+	'slider',
+);
 
-const track = style({
-	backgroundColor: 'transparent',
+export const track = style({
+	backgroundColor: 'transparent !important',
 });
-
-export default {
-	container,
-	active,
-	sizes,
-	text,
-	input,
-	slider,
-	fullWidth,
-	track,
-};

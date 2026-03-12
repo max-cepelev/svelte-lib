@@ -5,7 +5,7 @@ import type { FieldVariants } from './types';
 const base = style({
 	display: 'flex',
 	width: '100%',
-	gap: theme.spacing[3],
+	gap: theme.spacing[1],
 	selectors: {
 		'&[data-invalid=true]': {
 			color: theme.colors.error,

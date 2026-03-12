@@ -17,13 +17,14 @@ let {
   arrowClass,
   triggerId = null,
   payload = null,
+  child,
   ...restProps
 }: TooltipProps = $props();
 </script>
 
 <Provider>
   <TooltipPrimitive.Root bind:open {...restProps}>
-    <Trigger
+    <Trigger {child}
       >{@render children?.({
       open,
       triggerId,

@@ -15,5 +15,6 @@ export interface SliderInputProps
 	name?: string;
 	isActive?: boolean;
 	onValueChange?: (value: number) => void;
+	onValueCommit?: (value: number) => void;
 	id?: string;
 }

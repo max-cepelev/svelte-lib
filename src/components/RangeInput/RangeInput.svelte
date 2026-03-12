@@ -1,7 +1,7 @@
 <script lang="ts">
 import { calculateSize } from '~/utils';
 
-import styles from './styles.css';
+import * as styles from './styles.css';
 import type { RangeInputProps } from './types';
 import { formatNumber, parseFormattedNumber } from './utils';
 import { Typography } from '../Typography';
@@ -10,8 +10,7 @@ import { Slider } from '../Slider';
 let {
   min = 0,
   max = 100,
-  minValue = $bindable(),
-  maxValue = $bindable(),
+  value = $bindable([min, max]),
   width = 180,
   step = 1,
   unit,
@@ -20,24 +19,17 @@ let {
   isActive,
   ref = $bindable(null),
   onValueChange,
+  onValueCommit,
+  minInputId = 'range-input-min',
+  maxInputId = 'range-input-max',
   ...restProps
 }: RangeInputProps = $props();
 
 let timerId: NodeJS.Timeout | undefined;
 const calculatedWidth = $derived(calculateSize(width));
 
-// Внутреннее состояние для редактирования
-// svelte-ignore state_referenced_locally
-let innerValue = $state([minValue ?? min, maxValue ?? max]);
-let innerDisplayValue = $derived([
-  formatNumber(innerValue[0]),
-  formatNumber(innerValue[1]),
-]);
-
-// Синхронизация с пропсами при внешних изменениях
-$effect(() => {
-  innerValue = [minValue || min, maxValue || max];
-});
+let innerMin = $derived(formatNumber(value[0]));
+let innerMax = $derived(formatNumber(value[1]));
 
 const adaptiveStep = $derived.by(() => {
   const range = max - min;
@@ -50,13 +42,12 @@ function applyValues([newMin, newMax]: number[]) {
   const clampedMin = Math.max(min, Math.min(newMin, newMax));
   const clampedMax = Math.min(max, Math.max(newMax, newMin));
 
-  innerValue = [clampedMin, clampedMax];
+  const newValue = [clampedMin, clampedMax];
 
   // Обновляем bindable пропсы
-  minValue = clampedMin;
-  maxValue = clampedMax;
+  value = newValue;
 
-  onValueChange?.([clampedMin, clampedMax]);
+  onValueChange?.(newValue);
 }
 
 // Обработчики инпутов
@@ -65,16 +56,16 @@ function handleInput(e: Event) {
 
   timerId = setTimeout(() => {
     const target = e.target as HTMLInputElement;
-    let value = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
+    let newValue = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
 
     if (Number.isNaN(value)) {
-      value = target.name === 'min' ? min : max;
+      newValue = target.name === 'min' ? min : max;
     }
 
     if (target.name === 'min') {
-      applyValues([value, innerValue[1]]);
+      applyValues([newValue, value[1]]);
     } else {
-      applyValues([innerValue[0], value]);
+      applyValues([value[0], newValue]);
     }
   }, 700);
 }
@@ -86,9 +77,11 @@ function handleKeyDown(e: KeyboardEvent) {
 }
 
 function handleSliderCommit(value: number[]) {
-  if (value.length === 2) {
-    applyValues(value);
-  }
+  onValueCommit?.(value);
+}
+
+function handleSliderChange(newValue: number[]) {
+  onValueChange?.(newValue);
 }
 </script>
 
@@ -103,11 +96,12 @@ function handleSliderCommit(value: number[]) {
   </Typography>
 
   <input
+    id={minInputId}
     class={styles.input}
     type="text"
     inputmode="numeric"
     name="min"
-    value={innerDisplayValue[0]}
+    value={innerMin}
     oninput={handleInput}
     onkeydown={handleKeyDown}
   >
@@ -117,11 +111,12 @@ function handleSliderCommit(value: number[]) {
   </Typography>
 
   <input
+    id={maxInputId}
     class={styles.input}
     type="text"
     inputmode="numeric"
     name="max"
-    value={innerDisplayValue[1]}
+    value={innerMax}
     oninput={handleInput}
     onkeydown={handleKeyDown}
   >
@@ -131,15 +126,16 @@ function handleSliderCommit(value: number[]) {
   </Typography>
 
   <Slider
+    trackClass={styles.track}
+    class={styles.slider}
     {min}
     {max}
     {size}
     step={adaptiveStep}
-    class={styles.slider}
-    trackClass={styles.track}
     style="position: absolute;"
     type="multiple"
-    bind:value={innerValue}
+    bind:value
     onValueCommit={handleSliderCommit}
+    onValueChange={handleSliderChange}
   />
 </div>

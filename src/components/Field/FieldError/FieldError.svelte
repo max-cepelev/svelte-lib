@@ -12,7 +12,7 @@ let {
   ...restProps
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
   children?: Snippet;
-  errors?: { message?: string }[];
+  errors?: string[];
 } = $props();
 
 const hasContent = $derived.by(() => {
@@ -20,19 +20,14 @@ const hasContent = $derived.by(() => {
   if (children) return true;
 
   // no errors
-  if (!errors) return false;
-
-  // has an error but no message
-  if (errors.length === 1 && !errors[0]?.message) {
-    return false;
-  }
+  if (!errors?.length) return false;
 
   return true;
 });
 
 const isMultipleErrors = $derived(errors && errors.length > 1);
 const singleErrorMessage = $derived(
-  errors && errors.length === 1 && errors[0]?.message,
+  errors?.length === 1 ? errors[0] : undefined,
 );
 </script>
 
@@ -51,8 +46,8 @@ const singleErrorMessage = $derived(
     {:else if isMultipleErrors}
       <ul>
         {#each errors ?? [] as error, index (index)}
-          {#if error?.message}
-            <li>{error.message}</li>
+          {#if error}
+            <li>{error}</li>
           {/if}
         {/each}
       </ul>

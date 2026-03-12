@@ -5,8 +5,7 @@ export type RangeInputSize = 'small' | 'medium' | 'large';
 
 export interface RangeInputProps
 	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
-	minValue?: number;
-	maxValue?: number;
+	value?: number[];
 	min: number;
 	max: number;
 	step?: number;
@@ -15,5 +14,7 @@ export interface RangeInputProps
 	size?: RangeInputSize;
 	isActive?: boolean;
 	onValueChange?: (value: number[]) => void;
-	id?: string;
+	onValueCommit?: (value: number[]) => void;
+	minInputId?: string;
+	maxInputId?: string;
 }
