@@ -10,7 +10,7 @@ import { Slider } from '../Slider';
 let {
   min = 0,
   max = 100,
-  value = $bindable([min, max]),
+  value = $bindable(),
   width = 180,
   step = 1,
   unit,
@@ -28,8 +28,8 @@ let {
 let timerId: NodeJS.Timeout | undefined;
 const calculatedWidth = $derived(calculateSize(width));
 
-let innerMin = $derived(formatNumber(value[0]));
-let innerMax = $derived(formatNumber(value[1]));
+let innerMin = $derived(formatNumber(value?.[0] || min));
+let innerMax = $derived(formatNumber(value?.[1] || max));
 
 const adaptiveStep = $derived.by(() => {
   const range = max - min;
@@ -63,9 +63,9 @@ function handleInput(e: Event) {
     }
 
     if (target.name === 'min') {
-      applyValues([newValue, value[1]]);
+      applyValues([newValue, value?.[1] || max]);
     } else {
-      applyValues([value[0], newValue]);
+      applyValues([value?.[0] || min, newValue]);
     }
   }, 700);
 }

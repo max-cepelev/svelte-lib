@@ -24,13 +24,7 @@ let {
 
 <Provider>
   <TooltipPrimitive.Root bind:open {...restProps}>
-    <Trigger {child}
-      >{@render children?.({
-      open,
-      triggerId,
-      payload
-    })}</Trigger
-    >
+    <Trigger {child} />
     <Content
       class={className}
       {alignOffset}

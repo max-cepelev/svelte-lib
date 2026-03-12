@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.2
+
+### Patch Changes
+
+- Support optional RangeInput value and simplify Tooltip
+
 ## 1.10.1
 
 ### Patch Changes
