@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.5
+
+### Patch Changes
+
+- Bump small button font and simplify drawer swipe
+
 ## 1.10.4
 
 ### Patch Changes

@@ -28,7 +28,7 @@ const style = $derived(
 
 function handleTouchStart(event: TouchEvent) {
   isDragging = true;
-  startPosition = event.touches[0]?.clientY ?? null;
+  startPosition = event.touches[0]?.clientY;
 }
 
 function handleTouchMove(event: TouchEvent) {
@@ -40,11 +40,7 @@ function handleTouchMove(event: TouchEvent) {
 
 function handleTouchEnd() {
   isDragging = false;
-  if (
-    position &&
-    startPosition &&
-    position - startPosition > swipeCloseThreshold
-  ) {
+  if (position && position > swipeCloseThreshold) {
     drawer?.close();
   }
 

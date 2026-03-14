@@ -145,7 +145,7 @@ const buttonSizes = styleVariants<Record<ButtonSize, ComplexStyleRule>>({
 		height: theme.spacing[7],
 		padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
 		borderRadius: theme.radius.small,
-		fontSize: theme.fontSize.xs,
+		fontSize: theme.fontSize.sm,
 	},
 	medium: {
 		height: theme.spacing[9],
