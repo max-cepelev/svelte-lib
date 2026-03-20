@@ -22,6 +22,5 @@ const Field = {
 	Title,
 };
 
-export { Field };
-
 export * from './types';
+export { Field };

@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	let activeDismiss: (() => void) | null = null;
+let activeDismiss: (() => void) | null = null;
 </script>
 
 <script lang="ts">
@@ -183,12 +183,7 @@ function attachTrigger(node: HTMLElement) {
       style:position="fixed"
       style:top="{position.top}px"
       style:left="{position.left}px"
-      onmouseenter={() => {
-        clearTimeout(closeTimer);
-        clearTimeout(delayTimer);
-        activeDismiss = dismiss;
-        open = true;
-      }}
+      onmouseenter={show}
       onmouseleave={hide}
     >
       {#if typeof content === 'string'}

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.8
+
+### Patch Changes
+
+- Reorder exports and simplify Tooltip hover
+
 ## 1.10.7
 
 ### Patch Changes

@@ -16,6 +16,7 @@ import { SubContent } from './SubContent';
 import { SubTrigger } from './SubTrigger';
 import { Trigger } from './Trigger';
 
+export type { DropdownMenuProps } from './types';
 export {
 	CheckboxGroup,
 	CheckboxItem,
@@ -35,5 +36,3 @@ export {
 	SubTrigger,
 	Trigger,
 };
-
-export type { DropdownMenuProps } from './types';

@@ -16,6 +16,5 @@ const Card = {
 	Action,
 };
 
-export { Card };
-
 export type * from './types';
+export { Card };

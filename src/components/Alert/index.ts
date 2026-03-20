@@ -9,6 +9,5 @@ const Alert = {
 	Description,
 };
 
-export { Alert, alertVariants };
-
 export type * from './types';
+export { Alert, alertVariants };

@@ -22,6 +22,5 @@ const Dialog = {
 	Description,
 };
 
-export { Dialog };
-
 export type * from './types';
+export { Dialog };
