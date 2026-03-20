@@ -112,6 +112,8 @@ export {
 
 export { Popover, type PopoverProps } from './Popover';
 
+export { Portal } from './Portal';
+
 export {
 	RangeInput,
 	type RangeInputProps,
@@ -138,7 +140,12 @@ export { Spinner, type SpinnerSize } from './Spinner';
 
 export { Tabs, type TabsProps } from './Tabs';
 
-export { Tooltip, type TooltipProps } from './Tooltip';
+export {
+	Tooltip,
+	type TooltipAlign,
+	type TooltipProps,
+	type TooltipSide,
+} from './Tooltip';
 
 export {
 	Typography,

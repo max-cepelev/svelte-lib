@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.6
+
+### Patch Changes
+
+- Refactor Tooltip to custom implementation
+
 ## 1.10.5
 
 ### Patch Changes

@@ -52,7 +52,6 @@ const content = style({
 	fontWeight: theme.fontWeight.semibold,
 	textAlign: 'center',
 	width: 'fit-content',
-	transformOrigin: 'var(--bits-tooltip-content-transform-origin)',
 	animation: `${fadeIn} 150ms ease-out, ${zoomIn} 150ms ease-out`,
 	textWrap: 'balance',
 	lineHeight: theme.lineHeight.none,
@@ -90,19 +89,29 @@ const content = style({
 const arrow = style({
 	fill: theme.colors.background.tooltip,
 	width: 14,
-	height: 14,
+	height: 8,
+	position: 'absolute',
+	pointerEvents: 'none',
 	selectors: {
 		'&[data-side="top"]': {
-			translate: '0 -5px',
+			bottom: 1,
+			left: '50%',
+			transform: 'translateX(-50%) translateY(100%)',
 		},
 		'&[data-side="bottom"]': {
-			translate: '0 5px',
-		},
-		'&[data-side="right"]': {
-			translate: '5px 0',
+			top: 1,
+			left: '50%',
+			transform: 'translateX(-50%) translateY(-100%) rotate(180deg)',
 		},
 		'&[data-side="left"]': {
-			translate: '-5px 0',
+			right: 4,
+			top: '50%',
+			transform: 'translateY(-50%) translateX(100%) rotate(-90deg)',
+		},
+		'&[data-side="right"]': {
+			left: 4,
+			top: '50%',
+			transform: 'translateY(-50%) translateX(-100%) rotate(90deg)',
 		},
 	},
 });
