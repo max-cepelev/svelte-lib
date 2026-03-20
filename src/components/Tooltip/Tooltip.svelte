@@ -1,3 +1,7 @@
+<script lang="ts" module>
+	let activeDismiss: (() => void) | null = null;
+</script>
+
 <script lang="ts">
 import { tick, untrack } from 'svelte';
 import { Portal } from '../Portal';
@@ -71,16 +75,29 @@ function updatePosition() {
   position = { top, left };
 }
 
+function dismiss() {
+  clearTimeout(delayTimer);
+  clearTimeout(closeTimer);
+  if (activeDismiss === dismiss) activeDismiss = null;
+  open = false;
+  visible = false;
+}
+
 function show() {
+  if (activeDismiss && activeDismiss !== dismiss) {
+    activeDismiss();
+  }
   clearTimeout(closeTimer);
   clearTimeout(delayTimer);
-  delayTimer = setTimeout(async () => {
+  activeDismiss = dismiss;
+  delayTimer = setTimeout(() => {
     open = true;
   }, delayDuration);
 }
 
 function hide() {
   clearTimeout(delayTimer);
+  if (activeDismiss === dismiss) activeDismiss = null;
   open = false;
 }
 
@@ -116,12 +133,9 @@ $effect(() => {
   };
 });
 
-// Cleanup timers
+// Cleanup on unmount
 $effect(() => {
-  return () => {
-    clearTimeout(delayTimer);
-    clearTimeout(closeTimer);
-  };
+  return () => dismiss();
 });
 
 function attachTrigger(node: HTMLElement) {
@@ -172,6 +186,8 @@ function attachTrigger(node: HTMLElement) {
       onmouseenter={() => {
         clearTimeout(closeTimer);
         clearTimeout(delayTimer);
+        activeDismiss = dismiss;
+        open = true;
       }}
       onmouseleave={hide}
     >

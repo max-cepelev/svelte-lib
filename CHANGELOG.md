@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.7
+
+### Patch Changes
+
+- Bump dev dependencies and add tooltip dismiss
+
 ## 1.10.6
 
 ### Patch Changes
