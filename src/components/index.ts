@@ -142,9 +142,7 @@ export { Tabs, type TabsProps } from './Tabs';
 
 export {
 	Tooltip,
-	type TooltipAlign,
 	type TooltipProps,
-	type TooltipSide,
 } from './Tooltip';
 
 export {

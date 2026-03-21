@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.10
+
+### Patch Changes
+
+- Rename Tooltip side to placement and remove types
+
 ## 1.10.9
 
 ### Patch Changes

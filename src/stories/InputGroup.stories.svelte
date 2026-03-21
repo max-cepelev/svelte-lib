@@ -26,7 +26,7 @@ const { Story } = defineMeta({
       </InputGroup.Addon>
       <InputGroup.Input placeholder="acme.com" aria-label="Domain" />
       <InputGroup.Addon align="inline-end">
-        <Tooltip content="Extra context" side="top" arrow>
+        <Tooltip content="Extra context" placement="top" arrow>
           <InputGroup.Button
             style="border-radius: 50%;"
             size="icon-xs"
