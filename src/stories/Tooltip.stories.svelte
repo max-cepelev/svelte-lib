@@ -7,6 +7,8 @@ const { Story } = defineMeta({
   component: Tooltip,
   tags: ['autodocs'],
 });
+
+const gridItems = Array.from({ length: 30 }, (_, i) => i + 1);
 </script>
 
 {#snippet content()}
@@ -25,7 +27,7 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip arrow {content} side="right" delayDuration={200}>
+    <Tooltip arrow {content} placement="right" delayDuration={200}>
       <Button variant="outline">Hover</Button>
     </Tooltip>
   </div>
@@ -38,7 +40,7 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip content="Top tooltip" delayDuration={100} side="top" arrow>
+    <Tooltip content="Top tooltip" delayDuration={100} placement="top" arrow>
       <Button variant="outline">Hover</Button>
     </Tooltip>
   </div>
@@ -51,7 +53,12 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip content="Bottom tooltip" delayDuration={100} side="bottom" arrow>
+    <Tooltip
+      content="Bottom tooltip"
+      delayDuration={100}
+      placement="bottom"
+      arrow
+    >
       <Button variant="outline">Hover</Button>
     </Tooltip>
   </div>
@@ -64,7 +71,7 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip content="Left tooltip" delayDuration={100} side="left" arrow>
+    <Tooltip content="Left tooltip" delayDuration={100} placement="left" arrow>
       <Button variant="outline">Hover</Button>
     </Tooltip>
   </div>
@@ -77,8 +84,34 @@ const { Story } = defineMeta({
     style:width="400px"
     style:height="400px"
   >
-    <Tooltip content="Right tooltip" delayDuration={100} side="right" arrow>
+    <Tooltip
+      content="Right tooltip"
+      delayDuration={100}
+      placement="right"
+      arrow
+    >
       <Button variant="outline">Hover</Button>
     </Tooltip>
+  </div>
+</Story>
+
+<Story name="Tooltip Grid / Hover Stress" asChild>
+  <div
+    style:display="grid"
+    style:grid-template-columns="repeat(6, minmax(0, 1fr))"
+    style:gap="12px"
+    style:padding="16px"
+    style:width="760px"
+  >
+    {#each gridItems as id}
+      <Tooltip
+        content={`Tooltip #${id}`}
+        delayDuration={80}
+        placement="top"
+        arrow
+      >
+        <Button variant="outline"> Item {id} </Button>
+      </Tooltip>
+    {/each}
   </div>
 </Story>

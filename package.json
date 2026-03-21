@@ -1,6 +1,6 @@
 {
   "name": "@max-ts/svelte",
-  "version": "1.10.8",
+  "version": "1.10.9",
   "type": "module",
   "description": "Svelte component library.",
   "author": "Tsepelev Maksim",
@@ -79,6 +79,7 @@
     "vitest-browser-svelte": "^2.1.0"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.6",
     "@lucide/svelte": "^0.577.0",
     "bits-ui": "^2.16.3"
   }

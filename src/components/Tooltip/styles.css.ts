@@ -71,18 +71,6 @@ const content = style({
 		'&[data-side="top"]': {
 			animation: `${fadeIn} 150ms ease-out, ${slideInFromBottom} 150ms ease-out`,
 		},
-		'&[data-side="bottom"][data-state="closed"]': {
-			animation: `${fadeOut} 150ms ease-out, ${zoomOut} 150ms ease-out, ${slideInFromTop} 150ms ease-out reverse`,
-		},
-		'&[data-side="left"][data-state="closed"]': {
-			animation: `${fadeOut} 150ms ease-out, ${zoomOut} 150ms ease-out, ${slideInFromEnd} 150ms ease-out reverse`,
-		},
-		'&[data-side="right"][data-state="closed"]': {
-			animation: `${fadeOut} 150ms ease-out, ${zoomOut} 150ms ease-out, ${slideInFromStart} 150ms ease-out reverse`,
-		},
-		'&[data-side="top"][data-state="closed"]': {
-			animation: `${fadeOut} 150ms ease-out, ${zoomOut} 150ms ease-out, ${slideInFromBottom} 150ms ease-out reverse`,
-		},
 	},
 });
 

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.9
+
+### Patch Changes
+
+- Refactor Tooltip to use Floating UI store
+
 ## 1.10.8
 
 ### Patch Changes
