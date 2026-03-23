@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.10.11
+
+### Patch Changes
+
+- Use fixed strategy for tooltip positioning
+
 ## 1.10.10
 
 ### Patch Changes

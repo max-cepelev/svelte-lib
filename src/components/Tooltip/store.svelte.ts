@@ -97,6 +97,7 @@ export class TooltipStore {
 
 			computePosition(this.triggerEl, node, {
 				placement: this.#options.placement,
+				strategy: 'fixed',
 				middleware: [
 					offset({
 						mainAxis: this.#options.offset,
