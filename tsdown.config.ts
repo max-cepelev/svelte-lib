@@ -1,6 +1,6 @@
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin';
 import svelte from 'rollup-plugin-svelte';
-import { sveltePreprocess } from 'svelte-preprocess';
 import { defineConfig } from 'tsdown';
 import { svelteDtsPlugin } from './scripts/tsdown-plugin-svelte-dts.js';
 
@@ -26,7 +26,7 @@ export default defineConfig({
 	},
 	plugins: [
 		svelte({
-			preprocess: sveltePreprocess(),
+			preprocess: vitePreprocess(),
 			exclude: ['**/*.svelte.ts'],
 		}),
 		vanillaExtractPlugin({

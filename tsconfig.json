@@ -17,8 +17,8 @@
     "skipLibCheck": true,
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
+    "rootDir": ".",
     "outDir": "./dist",
-    "baseUrl": ".",
     "paths": {
       "~/components": ["./src/components/index.ts"],
       "~/theme": ["./src/theme.css.ts"],
