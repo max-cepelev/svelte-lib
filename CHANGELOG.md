@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.11.0
+
+### Minor Changes
+
+- Add required indicator to Label and tweak styles
+
 ## 1.10.11
 
 ### Patch Changes

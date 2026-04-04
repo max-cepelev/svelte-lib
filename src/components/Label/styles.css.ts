@@ -4,9 +4,9 @@ import { theme } from '~/theme';
 const labelBase = style({
 	display: 'flex',
 	alignItems: 'center',
-	gap: theme.spacing[2],
+	gap: theme.spacing[1],
 	fontSize: theme.fontSize.sm,
-	lineHeight: 'none',
+	lineHeight: 'normal',
 	fontWeight: theme.fontWeight.medium,
 	userSelect: 'none',
 	selectors: {
@@ -21,6 +21,14 @@ const labelBase = style({
 	},
 });
 
+const required = style({
+	':after': {
+		content: '*',
+		marginTop: theme.spacing[1],
+		color: theme.colors.error,
+	},
+});
+
 // Apply styles when Label follows a disabled peer element
 globalStyle('.peer:disabled + *', {
 	cursor: 'not-allowed',
@@ -29,4 +37,5 @@ globalStyle('.peer:disabled + *', {
 
 export default {
 	labelBase,
+	required,
 };
