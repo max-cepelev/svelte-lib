@@ -1,6 +1,6 @@
 {
   "name": "@max-ts/svelte",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "type": "module",
   "description": "Svelte component library.",
   "author": "Tsepelev Maksim",
@@ -59,6 +59,7 @@
     "@storybook/sveltekit": "^10.3.6",
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tsconfig/svelte": "^5.0.8",
+    "@tsdown/css": "^0.21.10",
     "@types/node": "^25.6.0",
     "@vanilla-extract/css": "^1.20.1",
     "@vanilla-extract/rollup-plugin": "^1.5.3",
