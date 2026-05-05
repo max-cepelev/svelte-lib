@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.0
+
+### Minor Changes
+
+- Add Description component and update deps
+
 ## 1.11.0
 
 ### Minor Changes

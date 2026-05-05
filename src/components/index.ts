@@ -36,6 +36,7 @@ export {
 	type ContentStateErrorProps,
 	type ContentStateProps,
 } from './ContentState';
+
 export {
 	DataGrid,
 	type DataGridColumn,
@@ -43,11 +44,22 @@ export {
 	type DataGridProps,
 	type DataGridState,
 } from './DataGrid';
+
 export {
 	DataGridSortHeader,
 	type DataGridSortHeaderProps,
 	type DataGridSorting,
 } from './DataGridSortHeader';
+
+export {
+	Description,
+	type DescriptionDirection,
+	type DescriptionJustifyContent,
+	type DescriptionNameProps,
+	type DescriptionProps,
+	type DescriptionValueProps,
+} from './Description';
+
 export {
 	Dialog,
 	type DialogCloseProps,
@@ -59,6 +71,7 @@ export {
 	type DialogTitleProps,
 	type DialogTriggerProps,
 } from './Dialog';
+
 export {
 	Drawer,
 	type DrawerCloseProps,
@@ -72,6 +85,7 @@ export {
 	type DrawerTitleProps,
 	type DrawerTriggerProps,
 } from './Drawer';
+
 export type { DropdownMenuProps } from './DropdownMenu';
 export * as DropdownMenu from './DropdownMenu';
 
