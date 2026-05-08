@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.2
+
+### Patch Changes
+
+- Add separate tooltip content class prop
+
 ## 1.12.1
 
 ### Patch Changes

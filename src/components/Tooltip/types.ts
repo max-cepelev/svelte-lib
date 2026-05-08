@@ -9,5 +9,6 @@ export type TooltipProps = {
 	offset?: number;
 	class?: string;
 	arrowClass?: string;
+	contentClass?: string;
 	placement?: Placement;
 };

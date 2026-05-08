@@ -12,6 +12,7 @@ let {
   placement = 'top',
   arrow = false,
   arrowClass,
+  contentClass,
   delayDuration = 200,
 }: TooltipProps = $props();
 
@@ -37,6 +38,7 @@ $effect(() => () => store.destroy());
 <span
   style="display: contents;"
   data-slot="tooltip-trigger"
+  class={className}
   {@attach store.attachTrigger}
 >
   {@render children?.()}
@@ -50,7 +52,7 @@ $effect(() => () => store.destroy());
       data-slot="tooltip-content"
       data-state={store.open ? 'open' : 'closed'}
       data-side={store.placement}
-      class={[styles.content, className]}
+      class={[styles.content, contentClass]}
       style:position="fixed"
       style:top="{store.y}px"
       style:left="{store.x}px"
