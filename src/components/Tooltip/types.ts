@@ -4,10 +4,9 @@ import type { Snippet } from 'svelte';
 export type TooltipProps = {
 	delayDuration?: number;
 	content?: Snippet<[]> | string;
-	children?: Snippet<[]>;
+	children?: Snippet<[{ attach: (node: HTMLElement) => void }]>;
 	arrow?: boolean;
 	offset?: number;
-	class?: string;
 	arrowClass?: string;
 	contentClass?: string;
 	placement?: Placement;

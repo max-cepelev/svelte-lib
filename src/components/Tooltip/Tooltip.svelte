@@ -7,7 +7,6 @@ import styles from './styles.css';
 let {
   children,
   content,
-  class: className,
   offset = 10,
   placement = 'top',
   arrow = false,
@@ -35,14 +34,9 @@ $effect(() => () => store.destroy());
   onkeydown={(e) => e.key === 'Escape' && store.open && store.hide()}
 />
 
-<span
-  style="display: contents;"
-  data-slot="tooltip-trigger"
-  class={className}
-  {@attach store.attachTrigger}
->
-  {@render children?.()}
-</span>
+{@render children?.({
+  attach: store.attachTrigger,
+})}
 
 {#if store.visible}
   <Portal>

@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.3
+
+### Patch Changes
+
+- Pass tooltip trigger attach to children
+
 ## 1.12.2
 
 ### Patch Changes
