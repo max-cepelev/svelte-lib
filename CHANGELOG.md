@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.4
+
+### Patch Changes
+
+- Update tooltip trigger attachment API
+
 ## 1.12.3
 
 ### Patch Changes

@@ -12,7 +12,7 @@ let {
   arrow = false,
   arrowClass,
   contentClass,
-  delayDuration = 200,
+  delayDuration = 100,
 }: TooltipProps = $props();
 
 const store = new TooltipStore({
@@ -34,9 +34,13 @@ $effect(() => () => store.destroy());
   onkeydown={(e) => e.key === 'Escape' && store.open && store.hide()}
 />
 
-{@render children?.({
-  attach: store.attachTrigger,
-})}
+<span
+  style="display: contents;"
+  data-slot="tooltip-trigger"
+  {@attach store.attachTrigger}
+>
+  {@render children?.()}
+</span>
 
 {#if store.visible}
   <Portal>
