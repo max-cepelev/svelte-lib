@@ -66,7 +66,7 @@ export const header = style({
 	gap: theme.spacing[2],
 	padding: theme.spacing[4],
 	'@media': {
-		'max-width: 48rem': {
+		'(max-width: 48rem)': {
 			padding: theme.spacing[2],
 		},
 	},

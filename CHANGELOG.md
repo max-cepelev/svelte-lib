@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.6
+
+### Patch Changes
+
+- Fix Drawer header media query syntax
+
 ## 1.12.5
 
 ### Patch Changes
