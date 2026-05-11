@@ -2,7 +2,7 @@
 import { Dialog as DialogPrimitive } from 'bits-ui';
 import { getDrawerContext } from '../context';
 import type { DrawerOverlayProps } from '../types';
-import styles from '../styles.css';
+import * as styles from '../styles.css';
 
 const drawer = getDrawerContext();
 

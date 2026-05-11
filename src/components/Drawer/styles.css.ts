@@ -16,7 +16,7 @@ const slideIn = keyframes({
 	to: { transform: 'translateY(0)' },
 });
 
-const overlay = style({
+export const overlay = style({
 	position: 'fixed',
 	inset: 0,
 	backgroundColor: 'rgb(15 23 42 / 0.5)',
@@ -31,7 +31,7 @@ const overlay = style({
 	},
 });
 
-const content = style({
+export const content = style({
 	position: 'fixed',
 	display: 'flex',
 	flexDirection: 'column',
@@ -56,18 +56,23 @@ const content = style({
 	},
 });
 
-const contentTransition = style({
+export const contentTransition = style({
 	transition: 'transform 210ms ease-in-out',
 });
 
-const header = style({
+export const header = style({
 	display: 'flex',
 	flexDirection: 'column',
 	gap: theme.spacing[2],
 	padding: theme.spacing[4],
+	'@media': {
+		'max-width: 48rem': {
+			padding: theme.spacing[2],
+		},
+	},
 });
 
-const footer = style({
+export const footer = style({
 	marginTop: 'auto',
 	display: 'flex',
 	flexDirection: 'column',
@@ -75,18 +80,18 @@ const footer = style({
 	padding: theme.spacing[4],
 });
 
-const title = style({
+export const title = style({
 	fontSize: theme.fontSize.lg,
 	fontWeight: theme.fontWeight.semibold,
 	color: theme.colors.text.primary,
 });
 
-const description = style({
+export const description = style({
 	fontSize: theme.fontSize.sm,
 	color: theme.colors.text.secondary,
 });
 
-const closeButton = style({
+export const closeButton = style({
 	position: 'absolute',
 	top: theme.spacing[4],
 	right: theme.spacing[4],
@@ -112,7 +117,7 @@ const closeButton = style({
 	},
 });
 
-const handle = style({
+export const handle = style({
 	width: '100%',
 	height: theme.spacing[8],
 	display: 'flex',
@@ -127,7 +132,7 @@ const handle = style({
 	},
 });
 
-const visuallyHidden = style({
+export const visuallyHidden = style({
 	position: 'absolute',
 	width: '1px',
 	height: '1px',
@@ -138,16 +143,3 @@ const visuallyHidden = style({
 	whiteSpace: 'nowrap',
 	border: 0,
 });
-
-export default {
-	overlay,
-	visuallyHidden,
-	handle,
-	closeButton,
-	title,
-	description,
-	header,
-	footer,
-	content,
-	contentTransition,
-};

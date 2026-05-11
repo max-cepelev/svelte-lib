@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { DrawerFooterProps } from '../types';
-import styles from '../styles.css';
+import * as styles from '../styles.css';
 
 let {
   ref = $bindable(null),

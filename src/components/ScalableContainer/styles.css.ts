@@ -4,20 +4,15 @@ import { spacing } from '~/utils';
 
 const toolbar = style({
 	position: 'absolute',
-	top: 0,
 	right: 4,
 	zIndex: 1,
 	opacity: 0.5,
+	top: '50%',
+	bottom: 'unset',
+	transform: 'translateY(-50%)',
 	transition: 'opacity 0.2s ease-in-out',
 	':hover': {
 		opacity: 1,
-	},
-	'@media': {
-		'(min-width: 48rem)': {
-			top: '50%',
-			bottom: 'unset',
-			transform: 'translateY(-50%)',
-		},
 	},
 });
 

@@ -5,7 +5,7 @@ import type { DrawerContentProps } from '../types';
 import { Overlay } from '../Overlay';
 import { Portal } from '../Portal';
 import { getDrawerContext } from '../context';
-import styles from '../styles.css';
+import * as styles from '../styles.css';
 
 const drawer = getDrawerContext();
 const isNotCloseable = drawer.isNotCloseable();

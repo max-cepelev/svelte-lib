@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.12.5
+
+### Patch Changes
+
+- Fix style exports and toolbar positioning
+
 ## 1.12.4
 
 ### Patch Changes
