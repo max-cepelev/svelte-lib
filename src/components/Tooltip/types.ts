@@ -7,6 +7,7 @@ export type TooltipProps = {
 	children?: Snippet<[]>;
 	arrow?: boolean;
 	offset?: number;
+	open?: boolean;
 	arrowClass?: string;
 	contentClass?: string;
 	placement?: Placement;

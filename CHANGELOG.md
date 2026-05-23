@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.13.0
+
+### Minor Changes
+
+- Add OverflowTypography component
+
 ## 1.12.6
 
 ### Patch Changes

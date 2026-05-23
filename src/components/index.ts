@@ -119,6 +119,12 @@ export {
 export { Label } from './Label';
 
 export {
+	OverflowTypography,
+	type OverflowTypographyProps,
+	type OverflowTypographyTooltipProps,
+} from './OverflowTypography';
+
+export {
 	Placeholder,
 	type PlaceholderProps,
 	type PlaceholderSize,

@@ -1,6 +1,5 @@
 import { keyframes, style } from '@vanilla-extract/css';
 import { theme } from '~/theme';
-import { spacing } from '~/utils';
 
 const fadeIn = keyframes({
 	'0%': { opacity: 0 },
@@ -42,18 +41,21 @@ const slideInFromStart = keyframes({
 	'100%': { transform: 'translateX(0)', opacity: 1 },
 });
 
-const content = style({
+export const content = style({
 	zIndex: 50,
 	backgroundColor: theme.colors.background.tooltip,
 	color: theme.colors.background.paper,
 	borderRadius: theme.radius.small,
-	padding: spacing(2, 3),
+	padding: theme.spacing[2],
 	fontSize: theme.fontSize.xs,
 	fontWeight: theme.fontWeight.semibold,
 	textAlign: 'center',
 	width: 'fit-content',
+	maxWidth: 'min(320px, calc(100vw - 32px))',
 	animation: `${fadeIn} 150ms ease-out, ${zoomIn} 150ms ease-out`,
-	textWrap: 'balance',
+	whiteSpace: 'normal',
+	overflowWrap: 'break-word',
+	// textWrap: 'balance',
 	lineHeight: theme.lineHeight.none,
 	selectors: {
 		'&[data-state="closed"]': {
@@ -74,7 +76,7 @@ const content = style({
 	},
 });
 
-const arrow = style({
+export const arrow = style({
 	fill: theme.colors.background.tooltip,
 	width: 14,
 	height: 8,
@@ -103,8 +105,3 @@ const arrow = style({
 		},
 	},
 });
-
-export default {
-	content,
-	arrow,
-};

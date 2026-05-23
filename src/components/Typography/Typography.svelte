@@ -53,7 +53,6 @@ const TagComponent = $derived(Component || VARIANT_COMPONENT_MAP[variant]);
 
 const mergedProps = $derived({
   ...restProps,
-  ref,
   class: [
     decorations[decoration],
     variants[variant],
@@ -70,7 +69,7 @@ const mergedProps = $derived({
 });
 </script>
 
-<svelte:element this={TagComponent} {...mergedProps}>
+<svelte:element this={TagComponent} bind:this={ref} {...mergedProps}>
   {#if children}
     {@render children()}
   {/if}

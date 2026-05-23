@@ -2,12 +2,13 @@
 import { Portal } from '../Portal';
 import { TooltipStore } from './store.svelte';
 import type { TooltipProps } from './types';
-import styles from './styles.css';
+import * as styles from './styles.css';
 
 let {
   children,
   content,
   offset = 10,
+  open,
   placement = 'top',
   arrow = false,
   arrowClass,
@@ -21,6 +22,9 @@ const store = new TooltipStore({
   },
   get offset() {
     return offset;
+  },
+  get open() {
+    return open;
   },
   get delayDuration() {
     return delayDuration;
@@ -42,7 +46,7 @@ $effect(() => () => store.destroy());
   {@render children?.()}
 </span>
 
-{#if store.visible}
+{#if store.visible && content != null && open !== false}
   <Portal>
     <div
       id={store.tooltipId}

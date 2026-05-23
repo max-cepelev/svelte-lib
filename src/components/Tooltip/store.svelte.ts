@@ -7,18 +7,18 @@ import {
 } from '@floating-ui/dom';
 import type { TooltipProps } from './types';
 
-type Options = Pick<TooltipProps, 'delayDuration' | 'placement' | 'offset'>;
+type Options = Pick<
+	TooltipProps,
+	'delayDuration' | 'placement' | 'offset' | 'open'
+>;
 
 export class TooltipStore {
 	open = $state(false);
 	visible = $state(false);
 	x = $state(0);
 	y = $state(0);
-	#options = $state<Options>({
-		delayDuration: 300,
-		placement: 'top',
-		offset: 8,
-	});
+	placement = $state<NonNullable<TooltipProps['placement']>>('top');
+	readonly #options: Options;
 
 	readonly tooltipId = `tooltip-${Math.random().toString(36).slice(2, 11)}`;
 
@@ -30,14 +30,12 @@ export class TooltipStore {
 	private closeTimer: ReturnType<typeof setTimeout> | undefined;
 
 	constructor(options: Options) {
-		this.#options = { ...this.#options, ...options };
-	}
-
-	public get placement() {
-		return this.#options.placement;
+		this.#options = options;
+		this.placement = this.preferredPlacement;
 	}
 
 	show = () => {
+		if (this.#options.open === false) return;
 		if (TooltipStore.active && TooltipStore.active !== this) {
 			TooltipStore.active.forceClose();
 		}
@@ -48,7 +46,7 @@ export class TooltipStore {
 		this.delayTimer = setTimeout(() => {
 			this.visible = true;
 			this.open = true;
-		}, this.#options.delayDuration);
+		}, this.delayDuration);
 	};
 
 	hide = () => {
@@ -96,11 +94,11 @@ export class TooltipStore {
 			if (!this.triggerEl) return;
 
 			computePosition(this.triggerEl, node, {
-				placement: this.#options.placement,
+				placement: this.preferredPlacement,
 				strategy: 'fixed',
 				middleware: [
 					offset({
-						mainAxis: this.#options.offset,
+						mainAxis: this.offset,
 					}),
 					flip(),
 					shift({ padding: 8 }),
@@ -108,7 +106,7 @@ export class TooltipStore {
 			}).then(({ x, y, placement }) => {
 				this.x = x;
 				this.y = y;
-				this.#options.placement = placement;
+				this.placement = placement;
 			});
 		});
 
@@ -130,5 +128,17 @@ export class TooltipStore {
 		this.visible = false;
 		this.cleanupAutoUpdate?.();
 		this.cleanupAutoUpdate = undefined;
+	}
+
+	private get delayDuration() {
+		return this.#options.delayDuration ?? 300;
+	}
+
+	private get offset() {
+		return this.#options.offset ?? 8;
+	}
+
+	private get preferredPlacement() {
+		return this.#options.placement ?? 'top';
 	}
 }
