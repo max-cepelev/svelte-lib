@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.14.0
+
+### Minor Changes
+
+- Added InputOTP component and Update dependencies
+
 ## 1.13.0
 
 ### Minor Changes

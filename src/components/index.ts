@@ -102,12 +102,18 @@ export {
 	type InputProps,
 	type InputType,
 } from './Input';
-
 export {
 	InputGroup,
 	type InputGroupAddonAlign,
 	type InputGroupButtonSize,
 } from './InputGroup';
+export {
+	InputOTP,
+	type InputOTPGroupProps,
+	type InputOTPProps,
+	type InputOTPSeparatorProps,
+	type InputOTPSlotProps,
+} from './InputOTP';
 
 export {
 	Item,

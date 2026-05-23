@@ -15,7 +15,7 @@ export const badge = style({
 	justifyContent: 'center',
 	gap: theme.spacing[1],
 	overflow: 'hidden',
-	borderRadius: '9999px',
+	borderRadius: theme.radius.small,
 	border: '1px solid transparent',
 	padding: `2px ${theme.spacing[2]}`,
 	fontSize: theme.fontSize.xs,
@@ -50,7 +50,7 @@ export const badgeVariants = styleVariants<
 		},
 	},
 	secondary: {
-		backgroundColor: theme.colors.secondary,
+		backgroundColor: theme.colors.background.elementHover,
 		color: theme.colors.foreground.secondary,
 		selectors: {
 			'&[href]:hover': {
