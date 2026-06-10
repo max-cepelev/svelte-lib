@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.14.1
+
+### Patch Changes
+
+- Update dependencies
+
 ## 1.14.0
 
 ### Minor Changes
