@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.14.2
+
+### Patch Changes
+
+- Improve ScalableContainer drag and zoom behavior
+
 ## 1.14.1
 
 ### Patch Changes

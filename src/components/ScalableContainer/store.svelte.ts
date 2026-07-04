@@ -5,24 +5,36 @@ export interface Position {
 	y: number;
 }
 
+const DEFAULT_POSITION: Position = { x: 0, y: 0 };
+const OVERLAY_TIMEOUT = 1500;
+const DRAG_THRESHOLD = 4;
+const ZOOM_FACTOR = 1.5;
+const WHEEL_ZOOM_FACTOR = 0.05;
+
+function clampScale(value: number, minScale: number, maxScale: number): number {
+	return Math.max(minScale, Math.min(maxScale, value));
+}
+
 export class ScalableContainerStore {
 	readonly #props;
 	readonly meta: string;
 
 	scale = $state<number>(1);
-	position = $state<Position>({ x: 0, y: 0 });
+	position = $state<Position>(DEFAULT_POSITION);
 	#isDragging = $state<boolean>(false);
 	showOverlay = $state<boolean>(false);
 
-	// Не реактивные — нужны только во время жеста
-	#dragStart: Position = { x: 0, y: 0 };
-	#activePointers = new Map<number, { x: number; y: number }>();
-	#initialPinchDistance: number = 0;
-	#initialPinchScale: number = 1;
+	#dragStart: Position = DEFAULT_POSITION;
+	#dragOrigin: Position = DEFAULT_POSITION;
+	#didDrag = false;
+	#activePointers = new Map<number, Position>();
+	#initialPinchDistance = 0;
+	#initialPinchScale = 1;
+	#overlayTimeout: ReturnType<typeof setTimeout> | undefined = undefined;
 
 	pointers = $derived(this.#activePointers);
 
-	trnsform = $derived(
+	transform = $derived(
 		`translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`,
 	);
 
@@ -41,6 +53,12 @@ export class ScalableContainerStore {
 		>,
 	) {
 		this.#props = props;
+		this.scale = clampScale(
+			this.#props.initialScale || 1,
+			this.#props.minScale || 0.1,
+			this.#props.maxScale || 4,
+		);
+		this.#initialPinchScale = this.scale;
 		this.meta =
 			typeof window !== 'undefined' &&
 			window.navigator &&
@@ -49,12 +67,11 @@ export class ScalableContainerStore {
 				: 'ctrl';
 	}
 
-	// ── Внутренние сеттеры ────────────────────────────────────────────────
-
 	#setScale = (value: number) => {
-		this.scale = Math.max(
+		this.scale = clampScale(
+			value,
 			this.#props.minScale || 0.1,
-			Math.min(this.#props.maxScale || 4, value),
+			this.#props.maxScale || 4,
 		);
 		this.#props.onScaleChanged?.(this.scale);
 	};
@@ -64,34 +81,28 @@ export class ScalableContainerStore {
 		this.#props.onPositionChanged?.(pos);
 	};
 
-	// ── Публичные действия ────────────────────────────────────────────────
-
 	zoomIn = () => {
-		this.#setScale(this.scale * 1.5);
+		this.#setScale(this.scale * ZOOM_FACTOR);
 	};
 
 	zoomOut = () => {
-		this.#setScale(this.scale / 1.5);
+		this.#setScale(this.scale / ZOOM_FACTOR);
 	};
 
 	reset = (): void => {
 		this.#setScale(this.#props.initialScale || 1);
-		this.#setPosition({ x: 0, y: 0 });
+		this.#setPosition(DEFAULT_POSITION);
 	};
 
 	center = () => {
-		this.#setPosition({ x: 0, y: 0 });
+		this.#setPosition(DEFAULT_POSITION);
 	};
-
-	// ── Drag: принимает координаты, а не события ──────────────────────────
-	// setPointerCapture живёт в компоненте — класс не знает про DOM
 
 	startDrag = (pointerId: number, x: number, y: number) => {
 		this.#activePointers.set(pointerId, { x, y });
 
-		// Начинать drag только если это единственный палец/курсор
 		if (this.#activePointers.size === 1) {
-			this.#isDragging = true;
+			this.#dragOrigin = { x, y };
 			this.#dragStart = {
 				x: x - this.position.x,
 				y: y - this.position.y,
@@ -99,24 +110,61 @@ export class ScalableContainerStore {
 		}
 	};
 
-	moveDrag = (pointerId: number, x: number, y: number) => {
-		if (!this.#activePointers.has(pointerId)) return;
+	moveDrag = (pointerId: number, x: number, y: number): boolean => {
+		if (!this.#activePointers.has(pointerId)) return false;
 		this.#activePointers.set(pointerId, { x, y });
 
-		if (this.#activePointers.size === 1) {
-			this.#setPosition({
-				x: x - this.#dragStart.x,
-				y: y - this.#dragStart.y,
-			});
+		if (this.#activePointers.size !== 1) return false;
+
+		let startedDragging = false;
+
+		if (!this.#isDragging) {
+			const deltaX = x - this.#dragOrigin.x;
+			const deltaY = y - this.#dragOrigin.y;
+
+			if (Math.sqrt(deltaX * deltaX + deltaY * deltaY) < DRAG_THRESHOLD) {
+				return false;
+			}
+
+			this.#isDragging = true;
+			this.#didDrag = true;
+			startedDragging = true;
 		}
+
+		this.#setPosition({
+			x: x - this.#dragStart.x,
+			y: y - this.#dragStart.y,
+		});
+
+		return startedDragging;
 	};
 
 	endDrag = (pointerId: number) => {
-		this.#isDragging = false;
 		this.#activePointers.delete(pointerId);
+
+		const remainingPointer = this.#activePointers.values().next().value;
+
+		if (remainingPointer) {
+			this.#dragOrigin = remainingPointer;
+			this.#dragStart = {
+				x: remainingPointer.x - this.position.x,
+				y: remainingPointer.y - this.position.y,
+			};
+		}
+
+		this.#isDragging = false;
+
+		window.setTimeout(() => {
+			this.#didDrag = false;
+		});
 	};
 
-	// ── Pinch-to-zoom ─────────────────────────────────────────────────────
+	consumeClickAfterDrag = (): boolean => {
+		if (!this.#didDrag) return false;
+
+		this.#didDrag = false;
+		return true;
+	};
 
 	startPinch = (t1: Touch, t2: Touch) => {
 		this.#initialPinchDistance = this.#getDistance(t1, t2);
@@ -138,19 +186,19 @@ export class ScalableContainerStore {
 	wheel = (deltaY: number, metaKey: boolean) => {
 		if (metaKey) {
 			this.showOverlay = false;
-			this.#setScale(this.scale - deltaY * 0.05);
+			this.#setScale(this.scale - deltaY * WHEEL_ZOOM_FACTOR);
 		} else {
 			this.showOverlay = true;
 			clearTimeout(this.#overlayTimeout);
 			this.#overlayTimeout = setTimeout(() => {
 				this.showOverlay = false;
-			}, 1500);
+			}, OVERLAY_TIMEOUT);
 		}
 	};
 
-	#overlayTimeout: ReturnType<typeof setTimeout> | undefined = undefined;
-
-	// ── Helpers ───────────────────────────────────────────────────────────
+	destroy = () => {
+		clearTimeout(this.#overlayTimeout);
+	};
 
 	#getDistance = (t1: Touch, t2: Touch): number => {
 		const dx = t1.clientX - t2.clientX;
