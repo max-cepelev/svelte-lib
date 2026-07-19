@@ -1,2 +1,6 @@
 allowBuilds:
   esbuild: false
+minimumReleaseAgeExclude:
+  - '@tsdown/css@0.22.12'
+  - tsdown@0.22.12
+  - verkit@0.1.0

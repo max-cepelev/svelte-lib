@@ -1,12 +1,11 @@
 <script lang="ts">
-import { calculateSize } from '~/utils';
-
 import { Typography } from '../Typography';
 import { Slider } from '../Slider';
 
 import styles from './styles.css';
 import type { SliderInputProps } from './types';
 import { formatNumber, parseFormattedNumber } from './utils';
+import { calculateSize } from '../../utils';
 
 let {
   min = 0,

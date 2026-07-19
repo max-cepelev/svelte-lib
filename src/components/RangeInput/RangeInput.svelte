@@ -1,5 +1,5 @@
 <script lang="ts">
-import { calculateSize } from '~/utils';
+import { calculateSize } from '../../utils';
 
 import * as styles from './styles.css';
 import type { RangeInputProps } from './types';
