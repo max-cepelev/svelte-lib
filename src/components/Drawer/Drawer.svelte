@@ -14,11 +14,17 @@ let {
   ...restProps
 }: DrawerProps & { children?: Snippet } = $props();
 
-const close = () => {
-  if (notCloseable) return;
-  open = false;
-  onOpenChange?.(false);
-};
+function setOpen(value: boolean) {
+  if (notCloseable && !value) {
+    open = true;
+    return;
+  }
+
+  open = value;
+  onOpenChange?.(value);
+}
+
+const close = () => setOpen(false);
 
 setDrawerContext({
   close,
@@ -38,16 +44,8 @@ $effect(() => {
 onDestroy(() => {
   document.documentElement.classList.remove(SCALE_CLASS);
 });
-
-function handleOpenChange(value: boolean) {
-  if (notCloseable && !value) {
-    return;
-  }
-  open = value;
-  onOpenChange?.(value);
-}
 </script>
 
-<DialogPrimitive.Root bind:open onOpenChange={handleOpenChange} {...restProps}>
+<DialogPrimitive.Root bind:open onOpenChange={setOpen} {...restProps}>
   {@render children?.()}
 </DialogPrimitive.Root>

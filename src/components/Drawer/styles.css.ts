@@ -43,6 +43,7 @@ export const content = style({
 	width: '100%',
 	maxWidth: '100%',
 	maxHeight: '100%',
+	overscrollBehaviorY: 'contain',
 	inset: 'auto 0 0 0',
 	borderRadius: `${theme.radius.large} ${theme.radius.large} 0 0`,
 	selectors: {
@@ -67,7 +68,7 @@ export const header = style({
 	padding: theme.spacing[4],
 	'@media': {
 		'(max-width: 48rem)': {
-			padding: theme.spacing[2],
+			padding: theme.spacing[3],
 		},
 	},
 });
@@ -93,8 +94,8 @@ export const description = style({
 
 export const closeButton = style({
 	position: 'absolute',
-	top: theme.spacing[4],
-	right: theme.spacing[4],
+	top: theme.spacing[2],
+	right: theme.spacing[2],
 	display: 'inline-flex',
 	alignItems: 'center',
 	justifyContent: 'center',
@@ -123,6 +124,9 @@ export const handle = style({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
+	touchAction: 'none',
+	userSelect: 'none',
+	WebkitUserSelect: 'none',
 	'::after': {
 		content: '',
 		width: 100,

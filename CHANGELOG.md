@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.14.3
+
+### Patch Changes
+
+- Refactor Drawer to use pointer events
+
 ## 1.14.2
 
 ### Patch Changes

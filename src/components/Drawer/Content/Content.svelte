@@ -8,7 +8,7 @@ import { getDrawerContext } from '../context';
 import * as styles from '../styles.css';
 
 const drawer = getDrawerContext();
-const isNotCloseable = drawer.isNotCloseable();
+const isNotCloseable = $derived(drawer.isNotCloseable());
 
 let {
   class: className,
@@ -20,32 +20,49 @@ let {
 }: DrawerContentProps = $props();
 
 let isDragging = $state<boolean>(false);
+let pointerId = $state<number | undefined>(undefined);
 let startPosition = $state<number | undefined>(undefined);
 let position = $state<number | undefined>(undefined);
 const style = $derived(
-  position ? { transform: `translateY(${position}px)` } : undefined,
+  position !== undefined
+    ? { transform: `translateY(${position}px)` }
+    : undefined,
 );
 
-function handleTouchStart(event: TouchEvent) {
+function handlePointerDown(event: PointerEvent) {
+  if (event.pointerType === 'mouse' && event.button !== 0) return;
+  if (pointerId !== undefined) return;
+
   isDragging = true;
-  startPosition = event.touches[0]?.clientY;
+  pointerId = event.pointerId;
+  startPosition = event.clientY;
+  (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
 }
 
-function handleTouchMove(event: TouchEvent) {
-  const clientY = event.touches[0]?.clientY ?? position;
-  if (startPosition && clientY > startPosition) {
-    position = clientY - startPosition;
-  }
+function handlePointerMove(event: PointerEvent) {
+  if (event.pointerId !== pointerId || startPosition === undefined) return;
+  position = Math.max(0, event.clientY - startPosition);
 }
 
-function handleTouchEnd() {
+function resetGesture() {
   isDragging = false;
-  if (position && position > swipeCloseThreshold) {
-    drawer?.close();
-  }
-
+  pointerId = undefined;
   startPosition = undefined;
   position = undefined;
+}
+
+function handlePointerEnd(event: PointerEvent) {
+  if (event.pointerId !== pointerId) return;
+
+  const shouldClose = (position ?? 0) > swipeCloseThreshold;
+  resetGesture();
+
+  if (shouldClose) drawer.close();
+}
+
+function handlePointerCancel(event: PointerEvent) {
+  if (event.pointerId !== pointerId) return;
+  resetGesture();
 }
 </script>
 
@@ -61,9 +78,11 @@ function handleTouchEnd() {
   >
     {#if !isNotCloseable && !showCloseButton}
       <div
-        ontouchmove={handleTouchMove}
-        ontouchstart={handleTouchStart}
-        ontouchend={handleTouchEnd}
+        onpointerdown={handlePointerDown}
+        onpointermove={handlePointerMove}
+        onpointerup={handlePointerEnd}
+        onpointercancel={handlePointerCancel}
+        onlostpointercapture={handlePointerCancel}
         class={styles.handle}
         aria-hidden="true"
       ></div>
