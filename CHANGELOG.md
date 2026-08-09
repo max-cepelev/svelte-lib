@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 1.15.0
+
+### Minor Changes
+
+- chore(release): v1.15.0
+
 ## 1.14.3
 
 ### Patch Changes
