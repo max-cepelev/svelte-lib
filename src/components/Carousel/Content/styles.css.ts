@@ -6,7 +6,6 @@ const content = style({
 	overflow: 'hidden',
 	height: '100%',
 	width: '100%',
-	scrollBehavior: 'smooth',
 	WebkitOverflowScrolling: 'touch',
 	scrollbarWidth: 'none',
 	selectors: {

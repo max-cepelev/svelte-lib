@@ -22,7 +22,16 @@ export { Calendar, type CalendarProps } from './Calendar';
 
 export { Card, type CardVariant } from './Card';
 
-export { Carousel, type CarouselProps } from './Carousel';
+export {
+	Carousel,
+	type CarouselAlign,
+	type CarouselAPI,
+	type CarouselApi,
+	type CarouselEventCallback,
+	type CarouselEventName,
+	type CarouselOrientation,
+	type CarouselProps,
+} from './Carousel';
 
 export { Checkbox } from './Checkbox';
 

@@ -11,7 +11,7 @@ let {
 const carouselCtx = getCarouselContext('<Carousel.Dots/>');
 
 const onClick = (index: number) => {
-  carouselCtx.scrollTo(index);
+  carouselCtx.api.scrollToSnap(index);
 };
 </script>
 
@@ -19,16 +19,13 @@ const onClick = (index: number) => {
   class={[styles.wrapper[carouselCtx.orientation], className]}
   {...restProps}
 >
-  {#each carouselCtx.scrollSnaps as _, index}
+  {#each carouselCtx.scrollSnaps as snap, index (snap)}
     <button
       type="button"
-      aria-label="Carousel Dots"
-      class={[
-        styles.dotButton[carouselCtx.orientation],
-        {
-          [styles.selected]: index === carouselCtx.selectedIndex,
-        },
-      ]}
+      aria-label={`Go to slide ${index + 1}`}
+      aria-current={index === carouselCtx.selectedIndex ? 'true' : undefined}
+      data-selected={index === carouselCtx.selectedIndex}
+      class={styles.dotButton[carouselCtx.orientation]}
       onclick={() => onClick(index)}
     ></button>
   {/each}

@@ -1,32 +1,45 @@
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 import type { WithElementRef } from '../../types.ts';
 export type CarouselAlign = 'start' | 'center' | 'end';
 export type CarouselOrientation = 'horizontal' | 'vertical';
 
-type CarouselEventName = 'select';
-type CarouselEventCallback = () => void;
+export type CarouselEventName = 'reInit' | 'select';
+export type CarouselEventCallback = (api: CarouselApi) => void;
 
-export type CarouselAPI = {
+export type CarouselApi = {
 	scrollPrev: () => void;
 	scrollNext: () => void;
 	scrollTo: (index: number, jump?: boolean) => void;
+	scrollToSnap: (index: number, jump?: boolean) => void;
 	canScrollNext: () => boolean;
 	canScrollPrev: () => boolean;
 	selectedScrollSnap: () => number;
 	scrollSnapList: () => number[];
-	on: (event: CarouselEventName, callback: CarouselEventCallback) => void;
-	off: (event: CarouselEventName, callback: CarouselEventCallback) => void;
+	on: (
+		event: CarouselEventName,
+		callback: CarouselEventCallback,
+	) => CarouselApi;
+	off: (
+		event: CarouselEventName,
+		callback: CarouselEventCallback,
+	) => CarouselApi;
+	reInit: () => void;
 };
 
+/** @deprecated Use `CarouselApi` instead. */
+export type CarouselAPI = CarouselApi;
+
 export interface CarouselProps
-	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
-	setApi?: (api: CarouselAPI | undefined) => void;
-	orientation?: CarouselOrientation;
+	extends WithElementRef<SvelteHTMLElements['section'], HTMLElement> {
 	align?: CarouselAlign;
+	initialIndex?: number;
+	loop?: boolean;
+	orientation?: CarouselOrientation;
+	setApi?: (api: CarouselApi | undefined) => void;
 }
 
 export type CarouselContext = {
-	api: CarouselAPI | undefined;
+	api: CarouselApi;
 	viewport: HTMLDivElement | null;
 	align: CarouselAlign;
 	orientation: CarouselOrientation;
@@ -36,8 +49,6 @@ export type CarouselContext = {
 	canScrollPrev: boolean;
 	handleKeyDown: (e: KeyboardEvent) => void;
 	setViewport: (node: HTMLDivElement | null) => void;
-	refresh: () => void;
-	scrollTo: (index: number, jump?: boolean) => void;
 	scrollSnaps: number[];
 	selectedIndex: number;
 };

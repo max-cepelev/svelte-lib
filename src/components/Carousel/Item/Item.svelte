@@ -14,13 +14,20 @@ let {
 const carouselCtx = getCarouselContext('<Carousel.Item/>');
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: Carousel slides need group semantics without fieldset behavior. -->
 <div
   bind:this={ref}
   data-slot="carousel-item"
   data-orientation={carouselCtx.orientation}
+  data-align={carouselCtx.align}
   role="group"
   aria-roledescription="slide"
-  class={[styles.item, styles.orientation[carouselCtx.orientation], className]}
+  class={[
+    styles.item,
+    styles.orientation[carouselCtx.orientation],
+    styles.alignment[carouselCtx.align],
+    className,
+  ]}
   {...restProps}
 >
   {@render children?.()}

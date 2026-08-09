@@ -7,34 +7,46 @@ import styles from './styles.css';
 
 let {
   class: className,
+  onclick,
   ...restProps
 }: Omit<SvelteHTMLElements['button'], 'children'> = $props();
 
 const ctx = getCarouselContext('<Carousel.Arrows />');
+
+type ButtonClickHandler = NonNullable<SvelteHTMLElements['button']['onclick']>;
+
+const handlePreviousClick: ButtonClickHandler = (event) => {
+  onclick?.(event);
+  if (!event.defaultPrevented) ctx.scrollPrev();
+};
+
+const handleNextClick: ButtonClickHandler = (event) => {
+  onclick?.(event);
+  if (!event.defaultPrevented) ctx.scrollNext();
+};
 </script>
 
 <button
+  {...restProps}
   type="button"
   data-slot="carousel-previous"
   disabled={!ctx.canScrollPrev}
+  aria-disabled={!ctx.canScrollPrev}
   class={[styles.buttonPrev[ctx.orientation], className]}
-  onclick={ctx.scrollPrev}
-  onkeydown={ctx.handleKeyDown}
+  onclick={handlePreviousClick}
   aria-label="Previous slide"
-  {...restProps}
 >
   <span class={styles.iconWrapper}> <ArrowLeftIcon /> </span>
 </button>
 <button
+  {...restProps}
   type="button"
   data-slot="carousel-next"
   disabled={!ctx.canScrollNext}
   aria-disabled={!ctx.canScrollNext}
   class={[styles.buttonNext[ctx.orientation], className]}
-  onclick={ctx.scrollNext}
-  onkeydown={ctx.handleKeyDown}
+  onclick={handleNextClick}
   aria-label="Next slide"
-  {...restProps}
 >
   <span class={styles.iconWrapper}> <ArrowRightIcon /> </span>
 </button>
