@@ -17,6 +17,7 @@ const classNames = $derived([
 ]);
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: A fieldset would change the component's layout and form semantics. -->
 <div
   bind:this={ref}
   role="group"

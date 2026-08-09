@@ -26,13 +26,12 @@ const align = $derived(
 
 let copied = $state(false);
 
-async function handleCopy(event: MouseEvent) {
+async function copyValue(element: HTMLElement | null) {
   if (!canCopy) return;
-  event.preventDefault();
 
   let textToCopy = copyText;
-  if (!textToCopy && event.currentTarget instanceof HTMLElement) {
-    textToCopy = event.currentTarget.innerText;
+  if (!textToCopy && element) {
+    textToCopy = element.innerText;
   }
 
   if (textToCopy) {
@@ -46,6 +45,17 @@ async function handleCopy(event: MouseEvent) {
       console.error('Failed to copy text: ', err);
     }
   }
+}
+
+function handleCopy(event: MouseEvent) {
+  event.preventDefault();
+  void copyValue(event.currentTarget as HTMLElement);
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  event.preventDefault();
+  void copyValue(event.currentTarget as HTMLElement);
 }
 </script>
 
@@ -67,11 +77,13 @@ async function handleCopy(event: MouseEvent) {
   {/if}
 {/snippet}
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<!-- svelte-ignore a11y_no_noninteractive_tabindex: The dd becomes a keyboard-accessible button when canCopy is enabled. -->
 <dd
   data-hide-personal-data={isHidePersonalData ? true : undefined}
-  onclick={handleCopy}
+  role={canCopy ? 'button' : undefined}
+  tabindex={canCopy ? 0 : undefined}
+  onclick={canCopy ? handleCopy : undefined}
+  onkeydown={canCopy ? handleKeyDown : undefined}
   class={[
     styles.wrapper,
     {

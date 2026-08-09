@@ -13,6 +13,7 @@ let {
 const classNames = $derived([styles.container, className]);
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: A fieldset would change the input group's layout and form semantics. -->
 <div
   bind:this={ref}
   role="group"

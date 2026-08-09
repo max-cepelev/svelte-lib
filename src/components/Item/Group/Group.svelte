@@ -11,6 +11,7 @@ let {
 }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: The generic group supports polymorphic item content. -->
 <div
   bind:this={ref}
   role="list"

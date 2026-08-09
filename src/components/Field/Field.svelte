@@ -15,6 +15,7 @@ let {
 } = $props();
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: A fieldset would change this layout primitive's form semantics. -->
 <div
   bind:this={ref}
   role="group"

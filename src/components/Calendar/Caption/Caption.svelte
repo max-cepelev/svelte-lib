@@ -53,7 +53,7 @@ function formatMonth(date: DateValue) {
     value={month.month}
     onchange={(e) => {
 			if (!placeholder) return;
-			const v = Number.parseInt(e.currentTarget.value);
+			const v = Number.parseInt(e.currentTarget.value, 10);
 			const newPlaceholder = placeholder.set({ month: v });
 			placeholder = newPlaceholder.subtract({ months: monthIndex });
 		}}

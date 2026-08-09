@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.14/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
   "overrides": [
     {
       "includes": ["**/*.svelte"],
@@ -27,6 +27,12 @@
           }
         }
       }
+    },
+    {
+      "includes": ["src/stories/assets/**/*.svg"],
+      "linter": {
+        "enabled": false
+      }
     }
   ],
   "vcs": {
@@ -44,7 +50,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "preset": "recommended"
     }
   },
   "javascript": {

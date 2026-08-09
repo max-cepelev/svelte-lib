@@ -7,6 +7,7 @@ let {
   class: className,
   children,
   align = 'inline-start',
+  onpointerdown,
   ...restProps
 }: InputGroupAddonProps = $props();
 
@@ -20,21 +21,29 @@ const focusControl = (element: HTMLElement | null) => {
   );
   control?.focus();
 };
+
+type PointerDownHandler = NonNullable<InputGroupAddonProps['onpointerdown']>;
+
+const handlePointerDown: PointerDownHandler = (event) => {
+  onpointerdown?.(event);
+  if (event.defaultPrevented) return;
+
+  const target = event.target;
+  if (target instanceof Element && target.closest('[data-slot="button"]')) {
+    return;
+  }
+  focusControl(event.currentTarget);
+};
 </script>
 
+<!-- biome-ignore lint/a11y/useSemanticElements: A fieldset would change the addon's layout and form semantics. -->
 <div
   bind:this={ref}
   role="group"
   data-slot="input-group-addon"
   data-align={align}
   class={classNames}
-  onclick={(event) => {
-		const target = event.target as HTMLElement | null;
-		if (target?.closest('[data-slot="button"]')) {
-			return;
-		}
-		focusControl(event.currentTarget as HTMLElement | null);
-	}}
+  onpointerdown={handlePointerDown}
   {...restProps}
 >
   {@render children?.()}

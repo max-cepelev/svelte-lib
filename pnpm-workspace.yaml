@@ -4,3 +4,4 @@ minimumReleaseAgeExclude:
   - '@tsdown/css@0.22.12'
   - tsdown@0.22.12
   - verkit@0.1.0
+  - '@lucide/svelte@1.31.0'
