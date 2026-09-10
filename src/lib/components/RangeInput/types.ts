@@ -6,7 +6,7 @@ export type RangeInputValue = [number, number];
 
 export interface RangeInputProps
 	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
-	value?: RangeInputValue;
+	value?: number[];
 	min: number;
 	max: number;
 	step?: number;
