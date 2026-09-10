@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.0.0
+
+### Major Changes
+
+- replace vanilla-extract with native Svelte styles
+
 ## 1.15.0
 
 ### Minor Changes

@@ -26,17 +26,11 @@ let {
   line-height: var(--lineHeight-normal);
   font-weight: var(--fontWeight-normal);
 }
-:global([data-slot="field"][data-orientation="horizontal"]) .root {
-  text-wrap: balance;
-}
 .root:last-child {
   margin-top: 0;
 }
 .root:nth-last-child(2) {
   margin-top: calc(-1 * var(--spacing-1));
-}
-:global([data-variant="legend"]) + .root {
-  margin-top: calc(-1.5 * var(--spacing-1));
 }
 .root > :global(a) {
   text-decoration-line: underline;
@@ -44,5 +38,11 @@ let {
 }
 .root > :global(a:hover) {
   color: var(--colors-primary);
+}
+:global([data-variant="legend"]) + .root {
+  margin-top: calc(-1.5 * var(--spacing-1));
+}
+:global([data-slot="field"][data-orientation="horizontal"]) .root {
+  text-wrap: balance;
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "@max-ts/svelte",
-  "version": "1.15.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Svelte component library.",
   "author": "Tsepelev Maksim",
@@ -53,34 +53,34 @@
     "svelte": "^5.53.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.7",
-    "@changesets/cli": "^2.31.1",
-    "@chromatic-com/storybook": "^5.3.0",
-    "@internationalized/date": "^3.12.3",
-    "@storybook/addon-a11y": "^10.5.7",
-    "@storybook/addon-docs": "^10.5.7",
-    "@storybook/addon-svelte-csf": "^5.1.2",
-    "@storybook/addon-vitest": "^10.5.7",
-    "@storybook/sveltekit": "^10.5.7",
+    "@biomejs/biome": "^2.5.13",
+    "@changesets/cli": "^3.0.2",
+    "@chromatic-com/storybook": "^5.3.1",
+    "@internationalized/date": "^3.12.4",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-svelte-csf": "^5.1.3",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/sveltekit": "^10.6.0",
     "@sveltejs/package": "^2.5.8",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^26.2.0",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "@vitest/browser-playwright": "^4.1.10",
-    "bumpp": "^12.2.0",
-    "storybook": "^10.5.7",
-    "svelte": "^5.56.8",
-    "svelte-check": "^4.7.5",
+    "@vitest/browser-playwright": "4.1.10",
+    "bumpp": "^12.3.0",
+    "storybook": "^10.6.0",
+    "svelte": "^5.57.0",
+    "svelte-check": "^4.7.6",
     "typescript": "~6.0.3",
-    "vite": "^8.2.1",
-    "vitest": "^4.1.10",
-    "vitest-browser-svelte": "^3.0.0"
+    "vite": "^8.3.0",
+    "vitest": "4.1.10",
+    "vitest-browser-svelte": "^3.1.0"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.8.0",
-    "@lucide/svelte": "^1.31.0",
-    "bits-ui": "^2.18.1"
+    "@lucide/svelte": "^1.44.0",
+    "bits-ui": "^2.19.2"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@12.3.4"
 }
