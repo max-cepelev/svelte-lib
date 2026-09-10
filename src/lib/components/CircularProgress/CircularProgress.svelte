@@ -45,6 +45,17 @@ const sizeValue = $derived(`${size}px`);
 </div>
 
 <style>
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+.circle {
+  stroke: currentColor;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s;
+}
 .root {
   display: inline-block;
   position: relative;
@@ -72,17 +83,6 @@ const sizeValue = $derived(`${size}px`);
       animation: dash 1.4s ease-in-out infinite;
     }
   }
-}
-.svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-}
-.circle {
-  stroke: currentColor;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 0.35s;
 }
 
 @keyframes rotate {

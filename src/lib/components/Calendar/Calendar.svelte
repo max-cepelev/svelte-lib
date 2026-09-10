@@ -95,9 +95,9 @@ get along, so we shut typescript up by casting `value` to `never`.
                     <Cell {date} month={month.value}>
                       {#if day}
                         {@render day({
-													day: date,
-													outsideMonth: !isEqualMonth(date, month.value),
-												})}
+    						day: date,
+    						outsideMonth: !isEqualMonth(date, month.value),
+						})}
                       {:else}
                         <Day />
                       {/if}
