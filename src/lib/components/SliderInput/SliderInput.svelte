@@ -55,7 +55,7 @@ function syncFromProps(nextValue: number) {
 
 function updateValue(nextValue: number, commit = false) {
   const normalized = normalizeValue(nextValue);
-  const changed = value !== normalized;
+  const changed = normalizeValue(value) !== normalized;
 
   if (innerValue !== normalized) {
     innerValue = normalized;
@@ -125,12 +125,12 @@ function handleSliderCommit(nextValue: number) {
 }
 
 function handleSliderChange(nextValue: number) {
-  updateValue(nextValue);
+  untrack(() => updateValue(nextValue));
 }
 
 syncFromProps(normalizeValue(value));
 
-$effect(() => {
+$effect.pre(() => {
   const nextValue = normalizeValue(value);
   untrack(() => syncFromProps(nextValue));
 });

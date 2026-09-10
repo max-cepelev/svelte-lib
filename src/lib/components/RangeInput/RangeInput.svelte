@@ -79,7 +79,7 @@ function syncFromProps(nextValue: RangeInputValue) {
 
 function updateValue(nextValue: readonly number[], commit = false) {
   const normalized = normalizeValue(nextValue);
-  const changed = !rangesEqual(value, normalized);
+  const changed = !rangesEqual(normalizeValue(value), normalized);
 
   if (!rangesEqual(innerValue, normalized)) {
     innerValue = normalized;
@@ -162,7 +162,7 @@ function handleSliderCommit(nextValue: number[]) {
 }
 
 function handleSliderChange(newValue: number[]) {
-  updateValue(newValue);
+  untrack(() => updateValue(newValue));
 }
 
 function getValueFromProps() {
@@ -171,7 +171,7 @@ function getValueFromProps() {
 
 syncFromProps(getValueFromProps());
 
-$effect(() => {
+$effect.pre(() => {
   const nextValue = getValueFromProps();
   untrack(() => syncFromProps(nextValue));
 });

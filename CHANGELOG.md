@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.0.2
+
+### Patch Changes
+
+- Fix slider value sync and change detection
+
 ## 2.0.1
 
 ### Patch Changes
