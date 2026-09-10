@@ -1,7 +1,12 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { ArrowUp, Check, Info, Plus, Search } from '@lucide/svelte';
-import { DropdownMenu, InputGroup, Separator, Tooltip } from '../components';
+import {
+  DropdownMenu,
+  InputGroup,
+  Separator,
+  Tooltip,
+} from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'InputGroup',

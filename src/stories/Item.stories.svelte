@@ -1,7 +1,7 @@
 <script module lang="ts">
 import { BadgeCheckIcon, ChevronRightIcon } from '@lucide/svelte';
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Button, Item } from '../components';
+import { Button, Item } from '../lib/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

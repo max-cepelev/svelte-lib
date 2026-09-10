@@ -12,7 +12,7 @@ import {
 } from '@lucide/svelte';
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { fn } from 'storybook/test';
-import { Button, ButtonGroup, DropdownMenu } from '../components';
+import { Button, ButtonGroup, DropdownMenu } from '../lib/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

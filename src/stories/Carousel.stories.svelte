@@ -1,7 +1,7 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { fn } from 'storybook/test';
-import { Card, Carousel, Typography } from '../components';
+import { Card, Carousel, Typography } from '../lib/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

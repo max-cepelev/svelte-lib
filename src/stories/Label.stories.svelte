@@ -1,6 +1,6 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Checkbox, Input, Label } from '../components';
+import { Checkbox, Input, Label } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'Label',

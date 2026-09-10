@@ -1,7 +1,7 @@
 <script lang="ts" module>
 import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date';
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Calendar } from '../components';
+import { Calendar } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'Calendar',

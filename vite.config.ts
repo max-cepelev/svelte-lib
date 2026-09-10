@@ -1,18 +1,14 @@
 /// <reference types="vitest/config" />
 
+import path from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
 	root: './src',
+	cacheDir: './node_modules/.vite',
 	resolve: {
 		tsconfigPaths: true,
 	},
-	plugins: [
-		svelte(),
-		vanillaExtractPlugin({
-			identifiers: ({ debugId, hash }) => `${debugId ?? 'style'}__${hash}`,
-		}),
-	],
+	plugins: [svelte({ configFile: path.resolve('./svelte.config.js') })],
 });

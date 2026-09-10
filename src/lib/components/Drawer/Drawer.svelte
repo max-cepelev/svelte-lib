@@ -1,0 +1,48 @@
+<script lang="ts">
+import { Dialog as DialogPrimitive } from 'bits-ui';
+import type { Snippet } from 'svelte';
+import { setDrawerContext } from './context';
+import type { DrawerProps } from './types';
+
+let {
+  open = $bindable(false),
+  notCloseable = false,
+  shouldScaleBackground = false,
+  children,
+  onOpenChange,
+  ...restProps
+}: DrawerProps & { children?: Snippet } = $props();
+
+function setOpen(value: boolean) {
+  if (notCloseable && !value) {
+    open = true;
+    return;
+  }
+
+  open = value;
+  onOpenChange?.(value);
+}
+
+const close = () => setOpen(false);
+
+setDrawerContext({
+  close,
+  isOpen: () => open,
+  isNotCloseable: () => notCloseable,
+});
+
+const SCALE_CLASS = 'drawer-scaled-background';
+
+$effect(() => {
+  if (!shouldScaleBackground) return;
+  const classList = document.documentElement.classList;
+  if (open) classList.add(SCALE_CLASS);
+  else classList.remove(SCALE_CLASS);
+
+  return () => classList.remove(SCALE_CLASS);
+});
+</script>
+
+<DialogPrimitive.Root bind:open onOpenChange={setOpen} {...restProps}>
+  {@render children?.()}
+</DialogPrimitive.Root>

@@ -6,7 +6,7 @@ import {
   type DataGridColumns,
   DataGridSortHeader,
   type DataGridSorting,
-} from '../components';
+} from '../lib/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

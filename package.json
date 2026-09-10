@@ -7,9 +7,9 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./dist/components/index.d.ts",
-      "svelte": "./dist/components/index.js",
-      "default": "./dist/components/index.js"
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json",
     "./theme": {
@@ -20,20 +20,25 @@
       "types": "./dist/utils.d.ts",
       "default": "./dist/utils.js"
     },
-    "./styles.css": "./dist/assets/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./theme.css": "./dist/theme.css",
+    "./reset.css": "./dist/reset.css"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "!dist/stories",
+    "!dist/**/*.test.*",
+    "!dist/.svelte-check"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
+    "build": "svelte-package",
+    "dev": "svelte-package --watch",
     "play": "vite",
     "test": "vitest",
     "lint:types": "svelte-check --tsgo --workspace ./src --tsconfig ../tsconfig.json",
@@ -57,22 +62,16 @@
     "@storybook/addon-svelte-csf": "^5.1.2",
     "@storybook/addon-vitest": "^10.5.7",
     "@storybook/sveltekit": "^10.5.7",
+    "@sveltejs/package": "^2.5.8",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
-    "@tsdown/css": "^0.22.14",
     "@types/node": "^26.2.0",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "@vanilla-extract/css": "^1.21.2",
-    "@vanilla-extract/rollup-plugin": "^1.5.4",
-    "@vanilla-extract/vite-plugin": "^5.2.6",
     "@vitest/browser-playwright": "^4.1.10",
     "bumpp": "^12.2.0",
-    "rollup-plugin-svelte": "^7.2.3",
     "storybook": "^10.5.7",
     "svelte": "^5.56.8",
     "svelte-check": "^4.7.5",
-    "svelte2tsx": "^0.7.59",
-    "tsdown": "0.22.14",
     "typescript": "~6.0.3",
     "vite": "^8.2.1",
     "vitest": "^4.1.10",

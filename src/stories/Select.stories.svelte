@@ -1,6 +1,6 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Select } from '../components';
+import { Select } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'Select',
@@ -17,6 +17,7 @@ const fruits = [
 ];
 
 let value = $state('');
+let multipleValue = $state(['apple', 'banana', 'blueberry', 'pineapple']);
 
 const triggerContent = $derived(
   fruits.find((f) => f.value === value)?.label ?? 'Select a fruit',
@@ -41,6 +42,31 @@ const triggerContent = $derived(
       </Select.Group>
     </Select.Content>
   </Select.Root>
+</Story>
+
+<Story name="Multiple" asChild>
+  <div style:width="280px">
+    <Select.Root
+      type="multiple"
+      items={fruits}
+      name="favoriteFruits"
+      bind:value={multipleValue}
+    >
+      <Select.Trigger style="width: 100%;">
+        <Select.Value placeholder="Select fruits" />
+      </Select.Trigger>
+      <Select.Content>
+        <Select.Group>
+          <Select.Label>Fruits</Select.Label>
+          {#each fruits as fruit (fruit.value)}
+            <Select.Item value={fruit.value} label={fruit.label}>
+              {fruit.label}
+            </Select.Item>
+          {/each}
+        </Select.Group>
+      </Select.Content>
+    </Select.Root>
+  </div>
 </Story>
 
 <Story name="Scrollable" asChild>

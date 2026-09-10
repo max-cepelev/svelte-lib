@@ -1,7 +1,7 @@
 <script module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { fn } from 'storybook/test';
-import { Button } from '../components/Button';
+import { Button } from '../lib/components/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({

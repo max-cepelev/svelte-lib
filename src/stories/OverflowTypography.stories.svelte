@@ -1,6 +1,6 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { OverflowTypography } from '../components';
+import { OverflowTypography } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'OverflowTypography',
@@ -30,6 +30,12 @@ const fileName =
 <Story name="Without overflow" asChild>
   <div style:width="260px">
     <OverflowTypography text="Короткий текст" variant="body2" />
+  </div>
+</Story>
+
+<Story name="Snippet content" asChild>
+  <div style:width="260px">
+    <OverflowTypography variant="body2">{longText}</OverflowTypography>
   </div>
 </Story>
 

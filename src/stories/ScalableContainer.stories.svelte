@@ -1,7 +1,7 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { fn } from 'storybook/test';
-import { ScalableContainer, Typography, Card } from '../components';
+import { ScalableContainer, Typography, Card } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'ScalableContainer',
