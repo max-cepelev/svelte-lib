@@ -9,10 +9,12 @@ import { ScrollUpButton } from './ScrollUpButton';
 import Root from './Select.svelte';
 import { Separator } from './Separator';
 import { Trigger } from './Trigger';
+import { Value } from './Value';
 
 const Select = {
 	Root,
 	Trigger,
+	Value,
 	Label,
 	Portal,
 	ScrollUpButton,

@@ -2,6 +2,11 @@
 import { ChevronDownIcon } from '@lucide/svelte';
 import { Select as SelectPrimitive } from 'bits-ui';
 import type { WithoutChild } from '../../../types.ts';
+import { getSelectContext } from '../context.svelte';
+
+type TriggerChildProps = Parameters<
+  NonNullable<SelectPrimitive.TriggerProps['child']>
+>[0];
 
 let {
   ref = $bindable(null),
@@ -12,13 +17,30 @@ let {
 }: WithoutChild<SelectPrimitive.TriggerProps> & {
   size?: 'sm' | 'default';
 } = $props();
+
+const select = getSelectContext();
 </script>
+
+{#snippet multipleTrigger({ props }: TriggerChildProps)}
+  {@const { disabled, ...triggerProps } = props}
+  <div
+    {...triggerProps}
+    aria-disabled={disabled ? 'true' : undefined}
+    aria-expanded={triggerProps['aria-expanded'] === 'true'}
+    role="combobox"
+    tabindex={disabled ? undefined : 0}
+  >
+    {@render children?.()}
+    <ChevronDownIcon class="select-trigger-chevron-icon" />
+  </div>
+{/snippet}
 
 <SelectPrimitive.Trigger
   bind:ref
+  child={select.type === 'multiple' ? multipleTrigger : undefined}
   data-slot="select-trigger"
   data-size={size}
-  class={["trigger", className]}
+  class={['trigger', className]}
   {...restProps}
 >
   {@render children?.()}
@@ -58,7 +80,7 @@ let {
   box-shadow: 0 0 0 3px rgba(var(--colors-error), 0.2);
   border-color: var(--colors-error);
 }
-:global([data-slot="select-trigger"].trigger[disabled]) {
+:global([data-slot="select-trigger"].trigger[data-disabled]) {
   cursor: not-allowed;
   opacity: 0.5;
 }
