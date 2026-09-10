@@ -1,10 +1,14 @@
 <script lang="ts">
-import { Typography } from '../Typography';
+import { onDestroy } from 'svelte';
+import { calculateSize } from '../../utils';
 import { Slider } from '../Slider';
+import { getSliderStep, snapSliderValue } from '../Slider/step';
+import { Typography } from '../Typography';
 
 import type { SliderInputProps } from './types';
 import { formatNumber, parseFormattedNumber } from './utils';
-import { calculateSize } from '../../utils';
+
+const uid = $props.id();
 
 let {
   min = 0,
@@ -20,45 +24,93 @@ let {
   ref = $bindable(null),
   onValueChange,
   onValueCommit,
-  id = 'slider-input',
+  id = `${uid}-input`,
   ...restProps
 }: SliderInputProps = $props();
 
-let timerId: NodeJS.Timeout | undefined;
+let timerId: ReturnType<typeof setTimeout> | undefined;
 const calculatedWidth = $derived(calculateSize(width));
+const sliderStep = $derived(getSliderStep(min, max, step));
 
-// Внутреннее состояние для редактирования
-let innerDisplayValue = $derived(formatNumber(value || min));
+let innerValue = $state(0);
+let inputValue = $state('');
+let inputFocused = $state(false);
+let inputDirty = false;
 
-const adaptiveStep = $derived.by(() => {
-  const range = max - min;
-  const MAX_STEPS = 1000;
-  return Math.max(step, Math.ceil(range / MAX_STEPS));
-});
-
-// Применение и коммит значений
-function applyValues(newValue: number) {
-  const clampedValue = Math.max(min, Math.min(max, newValue));
-
-  // Обновляем bindable пропсы
-  value = clampedValue;
-
-  onValueChange?.(clampedValue);
+function normalizeValue(nextValue: number | undefined) {
+  const finiteValue = Number.isFinite(nextValue) ? (nextValue as number) : min;
+  return snapSliderValue(finiteValue, min, max, sliderStep);
 }
 
-function handleInput(e: Event) {
+function syncFromProps(nextValue: number) {
+  if (innerValue !== nextValue) {
+    innerValue = nextValue;
+  }
+
+  if (!inputFocused) {
+    inputValue = formatNumber(nextValue);
+  }
+}
+
+function updateValue(nextValue: number, commit = false) {
+  const normalized = normalizeValue(nextValue);
+  const changed = value !== normalized;
+
+  if (innerValue !== normalized) {
+    innerValue = normalized;
+  }
+
+  if (!inputFocused) {
+    inputValue = formatNumber(normalized);
+  }
+
+  if (changed) {
+    value = normalized;
+    onValueChange?.(normalized);
+  }
+
+  if (commit) {
+    onValueCommit?.(normalized);
+  }
+
+  return normalized;
+}
+
+function clearInputTimer() {
   clearTimeout(timerId);
+  timerId = undefined;
+}
 
+function applyInputValue(nextInputValue: string, commit = false) {
+  const parsedValue = parseFormattedNumber(nextInputValue);
+  if (Number.isNaN(parsedValue)) return;
+
+  return updateValue(parsedValue, commit);
+}
+
+function handleInput(event: Event) {
+  const nextInputValue = (event.currentTarget as HTMLInputElement).value;
+
+  inputDirty = true;
+  clearInputTimer();
   timerId = setTimeout(() => {
-    const target = e.target as HTMLInputElement;
-    let newValue = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
-
-    if (Number.isNaN(newValue)) {
-      newValue = min;
-    }
-
-    applyValues(newValue);
+    timerId = undefined;
+    applyInputValue(nextInputValue);
   }, 700);
+}
+
+function handleBlur() {
+  clearInputTimer();
+  inputFocused = false;
+
+  if (!inputDirty) {
+    inputValue = formatNumber(normalizeValue(innerValue));
+    return;
+  }
+
+  inputDirty = false;
+  const nextValue = applyInputValue(inputValue, true);
+  inputValue = formatNumber(nextValue ?? normalizeValue(innerValue));
 }
 
 function handleKeyDown(e: KeyboardEvent) {
@@ -67,26 +119,38 @@ function handleKeyDown(e: KeyboardEvent) {
   }
 }
 
-function handleSliderCommit(value: number) {
-  onValueCommit?.(value);
+function handleSliderCommit(nextValue: number) {
+  updateValue(nextValue, true);
 }
 
-function handleSliderChange(value: number) {
-  onValueChange?.(value);
+function handleSliderChange(nextValue: number) {
+  updateValue(nextValue);
 }
+
+syncFromProps(normalizeValue(value));
+
+$effect(() => {
+  syncFromProps(normalizeValue(value));
+});
+
+onDestroy(clearInputTimer);
 </script>
 
 <div
-  class={["container", `size-${size}`, { 'active': isActive }, className]}
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
+  class={["container", className]}
+  data-active={isActive || undefined}
+  data-size={size}
 >
   <input
     class="input"
     type="text"
-    inputmode="numeric"
-    value={innerDisplayValue}
+    inputmode="decimal"
+    bind:value={inputValue}
+    onblur={handleBlur}
+    onfocus={() => (inputFocused = true)}
     oninput={handleInput}
     onkeydown={handleKeyDown}
     {id}
@@ -101,11 +165,11 @@ function handleSliderChange(value: number) {
     {min}
     {max}
     {size}
-    step={adaptiveStep}
+    step={sliderStep}
     class="slider"
     trackClass={"track"}
     type="single"
-    bind:value
+    bind:value={innerValue}
     onValueCommit={handleSliderCommit}
     onValueChange={handleSliderChange}
   />
@@ -122,24 +186,25 @@ function handleSliderChange(value: number) {
   border: 1px solid var(--colors-border);
   border-radius: var(--radius-medium);
   transition: border 0.2s;
-}
-.active {
-  border-color: var(--colors-primary);
-}
-.size-small {
-  padding: 0.125rem var(--spacing-2);
-  height: 28px;
-  font-size: var(--fontSize-sm);
-}
-.size-medium {
-  padding: var(--spacing-1) var(--spacing-3);
-  height: 36px;
-  font-size: var(--fontSize-base);
-}
-.size-large {
-  padding: var(--spacing-2) var(--spacing-4);
-  height: 44px;
-  font-size: var(--fontSize-lg);
+
+  &[data-active] {
+    border-color: var(--colors-primary);
+  }
+  &[data-size="small"] {
+    padding: 0.125rem var(--spacing-2);
+    height: 28px;
+    font-size: var(--fontSize-sm);
+  }
+  &[data-size="medium"] {
+    padding: var(--spacing-1) var(--spacing-3);
+    height: 36px;
+    font-size: var(--fontSize-base);
+  }
+  &[data-size="large"] {
+    padding: var(--spacing-2) var(--spacing-4);
+    height: 44px;
+    font-size: var(--fontSize-lg);
+  }
 }
 .container :global(.text) {
   font-size: inherit;

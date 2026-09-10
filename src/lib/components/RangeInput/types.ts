@@ -2,10 +2,11 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef } from '../../types.ts';
 
 export type RangeInputSize = 'small' | 'medium' | 'large';
+export type RangeInputValue = [number, number];
 
 export interface RangeInputProps
 	extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
-	value?: number[];
+	value?: RangeInputValue;
 	min: number;
 	max: number;
 	step?: number;
@@ -13,8 +14,8 @@ export interface RangeInputProps
 	width?: number | string;
 	size?: RangeInputSize;
 	isActive?: boolean;
-	onValueChange?: (value: number[]) => void;
-	onValueCommit?: (value: number[]) => void;
+	onValueChange?: (value: RangeInputValue) => void;
+	onValueCommit?: (value: RangeInputValue) => void;
 	minInputId?: string;
 	maxInputId?: string;
 }

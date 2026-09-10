@@ -1,10 +1,21 @@
 <script lang="ts">
+import { onDestroy } from 'svelte';
 import { calculateSize } from '../../utils';
 
-import type { RangeInputProps } from './types';
-import { formatNumber, parseFormattedNumber } from './utils';
-import { Typography } from '../Typography';
 import { Slider } from '../Slider';
+import { getSliderStep, snapSliderValue } from '../Slider/step';
+import { Typography } from '../Typography';
+import type { RangeInputProps, RangeInputValue } from './types';
+import {
+  clamp,
+  formatNumber,
+  normalizeRangeValue,
+  parseFormattedNumber,
+} from './utils';
+
+type RangeField = 'min' | 'max';
+
+const uid = $props.id();
 
 let {
   min = 0,
@@ -19,61 +30,124 @@ let {
   ref = $bindable(null),
   onValueChange,
   onValueCommit,
-  minInputId = 'min',
-  maxInputId = 'max',
+  minInputId = `${uid}-min`,
+  maxInputId = `${uid}-max`,
   ...restProps
 }: RangeInputProps = $props();
 
-let timerId: NodeJS.Timeout | undefined;
+const timers: Partial<Record<RangeField, ReturnType<typeof setTimeout>>> = {};
+const dirtyFields: Record<RangeField, boolean> = { min: false, max: false };
 const calculatedWidth = $derived(calculateSize(width));
+const sliderStep = $derived(getSliderStep(min, max, step));
 
-// svelte-ignore state_referenced_locally
-let innerValue = $state([value?.[0] || min, value?.[1] || max]);
+let innerValue = $state<number[]>([0, 0]);
+let minInputValue = $state('');
+let maxInputValue = $state('');
+let activeField = $state<RangeField | null>(null);
 
-let innerMin = $derived(formatNumber(innerValue[0]));
-let innerMax = $derived(formatNumber(innerValue[1]));
-
-$effect(() => {
-  innerValue = [value?.[0] || min, value?.[1] || max];
-});
-
-const adaptiveStep = $derived.by(() => {
-  const range = max - min;
-  const MAX_STEPS = 1000;
-  return Math.max(step, Math.ceil(range / MAX_STEPS));
-});
-
-// Применение и коммит значений
-function applyValues([newMin, newMax]: number[]) {
-  const clampedMin = Math.max(min, Math.min(newMin, newMax));
-  const clampedMax = Math.min(max, Math.max(newMax, newMin));
-
-  const newValue = [clampedMin, clampedMax];
-
-  // Обновляем bindable пропсы
-  value = newValue;
-
-  onValueChange?.(newValue);
+function rangesEqual(
+  first: readonly number[] | undefined,
+  second: RangeInputValue,
+) {
+  return first?.[0] === second[0] && first?.[1] === second[1];
 }
 
-// Обработчики инпутов
-function handleInput(e: Event) {
-  clearTimeout(timerId);
+function normalizeValue(nextValue: readonly number[] | undefined) {
+  const normalized = normalizeRangeValue(nextValue, min, max);
 
-  timerId = setTimeout(() => {
-    const target = e.target as HTMLInputElement;
-    let newValue = parseFormattedNumber(target.value.replace(/[^\d\s]/g, ''));
+  return normalized.map((item) =>
+    snapSliderValue(item, min, max, sliderStep),
+  ) as RangeInputValue;
+}
 
-    if (Number.isNaN(value)) {
-      newValue = target.name === 'min' ? min : max;
-    }
+function syncInputValues(nextValue: RangeInputValue, force = false) {
+  if (force || activeField !== 'min') {
+    minInputValue = formatNumber(nextValue[0]);
+  }
+  if (force || activeField !== 'max') {
+    maxInputValue = formatNumber(nextValue[1]);
+  }
+}
 
-    if (target.name === 'min') {
-      applyValues([newValue, value?.[1] || max]);
-    } else {
-      applyValues([value?.[0] || min, newValue]);
-    }
+function syncFromProps(nextValue: RangeInputValue) {
+  if (!rangesEqual(innerValue, nextValue)) {
+    innerValue = nextValue;
+  }
+  syncInputValues(nextValue);
+}
+
+function updateValue(nextValue: readonly number[], commit = false) {
+  const normalized = normalizeValue(nextValue);
+  const changed = !rangesEqual(value, normalized);
+
+  if (!rangesEqual(innerValue, normalized)) {
+    innerValue = normalized;
+  }
+
+  if (changed) {
+    value = normalized;
+    onValueChange?.(normalized);
+  }
+
+  if (commit) {
+    onValueCommit?.(normalized);
+  }
+
+  return normalized;
+}
+
+function clearInputTimer(field: RangeField) {
+  clearTimeout(timers[field]);
+  timers[field] = undefined;
+}
+
+function getInputValue(field: RangeField) {
+  return field === 'min' ? minInputValue : maxInputValue;
+}
+
+function applyInputValue(
+  field: RangeField,
+  inputValue: string,
+  commit = false,
+) {
+  const parsedValue = parseFormattedNumber(inputValue);
+  if (Number.isNaN(parsedValue)) return;
+
+  const [currentMin, currentMax] = normalizeRangeValue(innerValue, min, max);
+  const nextValue: RangeInputValue =
+    field === 'min'
+      ? [clamp(parsedValue, min, currentMax), currentMax]
+      : [currentMin, clamp(parsedValue, currentMin, max)];
+
+  return updateValue(nextValue, commit);
+}
+
+function handleInput(event: Event) {
+  const target = event.currentTarget as HTMLInputElement;
+  const field = target.name as RangeField;
+  const inputValue = target.value;
+
+  dirtyFields[field] = true;
+  clearInputTimer(field);
+  timers[field] = setTimeout(() => {
+    timers[field] = undefined;
+    applyInputValue(field, inputValue);
   }, 700);
+}
+
+function handleBlur(field: RangeField) {
+  clearInputTimer(field);
+  activeField = null;
+
+  if (!dirtyFields[field]) {
+    syncInputValues(normalizeRangeValue(innerValue, min, max), true);
+    return;
+  }
+
+  dirtyFields[field] = false;
+
+  const nextValue = applyInputValue(field, getInputValue(field), true);
+  syncInputValues(nextValue ?? normalizeRangeValue(innerValue, min, max), true);
 }
 
 function handleKeyDown(e: KeyboardEvent) {
@@ -82,43 +156,68 @@ function handleKeyDown(e: KeyboardEvent) {
   }
 }
 
-function handleSliderCommit(value: number[]) {
-  onValueCommit?.(value);
+function handleSliderCommit(nextValue: number[]) {
+  updateValue(nextValue, true);
 }
 
 function handleSliderChange(newValue: number[]) {
-  onValueChange?.(newValue);
+  updateValue(newValue);
 }
+
+function getValueFromProps() {
+  return normalizeValue(value);
+}
+
+syncFromProps(getValueFromProps());
+
+$effect(() => {
+  syncFromProps(getValueFromProps());
+});
+
+onDestroy(() => {
+  clearInputTimer('min');
+  clearInputTimer('max');
+});
 </script>
 
 <div
-  class={["container", `size-${size}`, { 'active': isActive }, className]}
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
+  class={["container", className]}
+  data-active={isActive || undefined}
+  data-size={size}
 >
-  <Typography class="text" color="muted" variant="body2"> от </Typography>
+  <label for={minInputId}>
+    <Typography class="text" color="muted" variant="body2"> от </Typography>
+  </label>
 
   <input
     id={minInputId}
     class="input"
     type="text"
-    inputmode="numeric"
+    inputmode="decimal"
     name="min"
-    value={innerMin}
+    bind:value={minInputValue}
+    onblur={() => handleBlur('min')}
+    onfocus={() => (activeField = 'min')}
     oninput={handleInput}
     onkeydown={handleKeyDown}
   >
 
-  <Typography class="text" color="muted" variant="body2"> до </Typography>
+  <label for={maxInputId}>
+    <Typography class="text" color="muted" variant="body2"> до </Typography>
+  </label>
 
   <input
     id={maxInputId}
     class="input"
     type="text"
-    inputmode="numeric"
+    inputmode="decimal"
     name="max"
-    value={innerMax}
+    bind:value={maxInputValue}
+    onblur={() => handleBlur('max')}
+    onfocus={() => (activeField = 'max')}
     oninput={handleInput}
     onkeydown={handleKeyDown}
   >
@@ -133,7 +232,7 @@ function handleSliderChange(newValue: number[]) {
     {min}
     {max}
     {size}
-    step={adaptiveStep}
+    step={sliderStep}
     style="position: absolute;"
     type="multiple"
     bind:value={innerValue}
@@ -153,24 +252,25 @@ function handleSliderChange(newValue: number[]) {
   border: 1px solid var(--colors-border);
   border-radius: var(--radius-medium);
   transition: border 0.2s;
-}
-.active {
-  border-color: var(--colors-primary);
-}
-.size-small {
-  padding: 0.125rem var(--spacing-2);
-  height: 28px;
-  font-size: var(--fontSize-sm);
-}
-.size-medium {
-  padding: var(--spacing-1) var(--spacing-3);
-  height: 36px;
-  font-size: var(--fontSize-base);
-}
-.size-large {
-  padding: var(--spacing-2) var(--spacing-4);
-  height: 44px;
-  font-size: var(--fontSize-lg);
+
+  &[data-active] {
+    border-color: var(--colors-primary);
+  }
+  &[data-size="small"] {
+    padding: 0.125rem var(--spacing-2);
+    height: 28px;
+    font-size: var(--fontSize-sm);
+  }
+  &[data-size="medium"] {
+    padding: var(--spacing-1) var(--spacing-3);
+    height: 36px;
+    font-size: var(--fontSize-base);
+  }
+  &[data-size="large"] {
+    padding: var(--spacing-2) var(--spacing-4);
+    height: 44px;
+    font-size: var(--fontSize-lg);
+  }
 }
 .container :global(.text) {
   font-size: inherit;

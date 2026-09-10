@@ -1,6 +1,11 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Label, RangeInput, Typography } from '../lib/components';
+import {
+  Label,
+  RangeInput,
+  type RangeInputValue,
+  Typography,
+} from '../lib/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const { Story } = defineMeta({
@@ -9,15 +14,11 @@ const { Story } = defineMeta({
   tags: ['autodocs'],
 });
 
-let price = $state<{ min?: number; max?: number }>({});
+let value = $state<RangeInputValue>([1_000_000, 5_000_000]);
+let decimalValue = $state<RangeInputValue>([-10.5, 0]);
 
-const value = $derived(
-  price.min && price.max ? [price.min, price.max] : undefined,
-);
-const handleChange = (value: number[]) => {
+const handleCommit = (value: RangeInputValue) => {
   console.log('Range changed:', value);
-  price.min = value[0];
-  price.max = value[1];
 };
 </script>
 
@@ -25,13 +26,27 @@ const handleChange = (value: number[]) => {
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <Label>Цена</Label>
     <RangeInput
-      value={price.min && price.max ? [price.min, price.max] : undefined}
+      bind:value
       unit="руб."
       min={1000000}
       max={5000000}
       width={300}
-      onValueCommit={handleChange}
+      onValueCommit={handleCommit}
     />
-    <Typography>{value?.join(" ") || ''}</Typography>
+    <Typography>{value.join(" ")}</Typography>
+  </div>
+</Story>
+
+<Story name="Negative and decimal values" asChild>
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <Label>Диапазон</Label>
+    <RangeInput
+      bind:value={decimalValue}
+      min={-100}
+      max={100}
+      step={0.5}
+      width={300}
+    />
+    <Typography>{decimalValue.join(" ")}</Typography>
   </div>
 </Story>

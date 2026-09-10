@@ -152,6 +152,7 @@ export {
 	RangeInput,
 	type RangeInputProps,
 	type RangeInputSize,
+	type RangeInputValue,
 } from './RangeInput';
 
 export {
