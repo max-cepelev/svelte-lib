@@ -27,8 +27,8 @@ let {
   gap: var(--spacing-1);
   font-size: var(--fontSize-sm);
   opacity: 0.8;
-  p {
-    line-height: var(--lineHeight-relaxed);
-  }
+}
+.description :global(p) {
+  line-height: var(--lineHeight-relaxed);
 }
 </style>

@@ -13,7 +13,9 @@ let {
   style,
   rowsCount = 1,
   text,
-  tooltipProps,
+  tooltipProps = {
+    arrow: true,
+  },
   visibleLastSymbolsCount = 0,
   ...restProps
 }: OverflowTypographyProps = $props();
@@ -34,19 +36,12 @@ const store = new OverflowTypographyStore({
   },
 });
 
-const joinClasses = (...classes: Array<string | false | undefined>) =>
-  classes.filter(Boolean).join(' ');
-
-const wrapperClass = $derived(joinClasses('wrapper', `wrapper-align-${align}`));
-const truncateClass = $derived(joinClasses('truncate', className));
-const contentClass = $derived(
-  joinClasses('truncate', store.hasMultipleRows && 'multiple-rows', className),
-);
 const contentStyle = $derived(
   [style, `--rows-count: ${store.rowsCount}`].filter(Boolean).join('; '),
 );
 const tooltipContent = $derived(
-  tooltipProps?.content ?? (store.isOverflowed ? label : undefined),
+  tooltipProps?.content ??
+    (store.isOverflowed ? (label ?? children) : undefined),
 );
 const tooltipConfig = $derived({
   ...tooltipProps,
@@ -78,13 +73,12 @@ $effect(() => {
 
 {#snippet typography()}
   {#if store.hasVisibleLastSymbols}
-    <div class={wrapperClass}>
+    <div class="wrapper" data-align={align}>
       <Typography
-        data-overflow-typography
         {...restProps}
         bind:ref
         {align}
-        class={truncateClass}
+        class="overflow-typography {className ?? ''}"
         component="span"
         display="block"
         {style}
@@ -92,7 +86,6 @@ $effect(() => {
         {store.firstPartLabel}
       </Typography>
       <Typography
-        data-overflow-typography
         {...restProps}
         {align}
         class={className}
@@ -104,11 +97,11 @@ $effect(() => {
     </div>
   {:else}
     <Typography
-      data-overflow-typography
       {...restProps}
       bind:ref
       {align}
-      class={contentClass}
+      class="overflow-typography {className ?? ''}"
+      data-multiple-rows={store.hasMultipleRows || undefined}
       display="block"
       style={contentStyle}
     >
@@ -124,36 +117,38 @@ $effect(() => {
 <Tooltip {...tooltipConfig}> {@render typography()} </Tooltip>
 
 <style>
-:global([data-overflow-typography].truncate) {
+:global(.overflow-typography) {
   overflow: hidden;
   max-width: 100%;
   min-width: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-:global([data-overflow-typography].truncate.multiple-rows) {
-  display: -webkit-box;
-  white-space: initial;
-  -webkit-box-orient: vertical;
-  line-clamp: var(--rows-count);
-  -webkit-line-clamp: var(--rows-count);
+
+  &[data-multiple-rows] {
+    display: -webkit-box;
+    white-space: initial;
+    -webkit-box-orient: vertical;
+    line-clamp: var(--rows-count);
+    -webkit-line-clamp: var(--rows-count);
+  }
 }
 .wrapper {
   display: flex;
   min-width: 0;
   width: 100%;
   white-space: nowrap;
-}
-.wrapper-align-left {
-  justify-content: flex-start;
-}
-.wrapper-align-center {
-  justify-content: center;
-}
-.wrapper-align-right {
-  justify-content: flex-end;
-}
-.wrapper-align-justify {
-  justify-content: space-between;
+
+  &[data-align="left"] {
+    justify-content: flex-start;
+  }
+  &[data-align="center"] {
+    justify-content: center;
+  }
+  &[data-align="right"] {
+    justify-content: flex-end;
+  }
+  &[data-align="justify"] {
+    justify-content: space-between;
+  }
 }
 </style>

@@ -33,6 +33,12 @@ const fileName =
   </div>
 </Story>
 
+<Story name="Snippet content" asChild>
+  <div style:width="260px">
+    <OverflowTypography variant="body2">{longText}</OverflowTypography>
+  </div>
+</Story>
+
 <Story name="Multiple rows" asChild>
   <div style:width="280px">
     <OverflowTypography text={longText} rowsCount={2} variant="body2" />

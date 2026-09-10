@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { HTMLAttributes } from 'svelte/elements';
 
 export type TypographyVariant =
 	| 'h1'
@@ -37,7 +38,10 @@ export type TypographyColor =
 	| 'muted'
 	| 'warning';
 
-export type TypographyProps = {
+export type TypographyProps = Omit<
+	HTMLAttributes<HTMLElement>,
+	'children' | 'class' | 'color' | 'style'
+> & {
 	align?: TypographyAlign;
 	variant?: TypographyVariant;
 	color?: TypographyColor;
