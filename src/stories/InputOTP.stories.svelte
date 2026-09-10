@@ -1,7 +1,7 @@
 <script module lang="ts">
 import { defineMeta } from '@storybook/addon-svelte-csf';
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'bits-ui';
-import { InputOTP } from '../components';
+import { InputOTP } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'InputOTP',

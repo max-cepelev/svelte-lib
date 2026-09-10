@@ -1,6 +1,8 @@
 node_modules
 dist
 .svelte-check
+.svelte-kit
+.pnpm-store
 *.log
 .DS_Store
 shadcn/

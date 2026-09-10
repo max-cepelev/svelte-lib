@@ -1,6 +1,6 @@
 <script lang="ts" module>
 import { defineMeta } from '@storybook/addon-svelte-csf';
-import { Button, Dialog, Input, Label } from '../components';
+import { Button, Dialog, Input, Label } from '../lib/components';
 
 const { Story } = defineMeta({
   title: 'Dialog',

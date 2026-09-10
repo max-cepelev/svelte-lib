@@ -10,19 +10,15 @@
     "types": ["node"],
     "strict": true,
     "noUnusedLocals": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "skipLibCheck": true,
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
-    "rootDir": ".",
-    "outDir": "./dist",
     "paths": {
-      "~/components": ["./src/components/index.ts"],
-      "~/theme": ["./src/theme.css.ts"],
-      "~/utils": ["./src/utils.ts"]
+      "~/components": ["./src/lib/components/index.ts"],
+      "~/theme": ["./src/lib/theme.ts"],
+      "~/utils": ["./src/lib/utils.ts"]
     }
   },
   "include": ["src"]

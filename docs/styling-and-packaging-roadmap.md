@@ -1,10 +1,20 @@
 # Roadmap: нативные стили Svelte и официальный packaging
 
-> Статус: целевое направление согласовано, миграция не начата
+> Статус: миграция реализована; требуется визуальная проверка Storybook и consumer fixture перед релизом
 >
 > Дата фиксации: 2026-08-10
 >
 > Текущая версия библиотеки на момент фиксации: `1.15.0`
+
+## Реализованный результат
+
+- Публичные исходники перенесены в `src/lib`, сборка выполняется через `svelte-package`.
+- Все 105 файлов `styles.css.ts` удалены; CSS перенесён в `<style>` соответствующих компонентов.
+- Классы короткие и локальные; `:global(...)` используется для DOM дочерних компонентов и пользовательских snippets. Файлы `styles.ts` и экспорты карт классов удалены.
+- `theme.css` сохраняет исходные имена всех 62 CSS-переменных, а `reset.css` подключается отдельно.
+- `theme.ts` экспортирует объект `theme` со ссылками `var(...)`, а также типы `Theme = typeof theme` и `SpacingKey`; значения по умолчанию остаются в `theme.css`.
+- Пакет публикует отдельные точки входа `./theme`, `./theme.css`, `./reset.css` и совместимую `./styles.css`.
+- Перед релизом остаются визуальная проверка Storybook и проверка собранного tarball в отдельном consumer fixture.
 
 ## Краткое решение
 
@@ -16,7 +26,7 @@
 - глобальный reset поставляется отдельно в `reset.css`;
 - библиотека собирается официальным `@sveltejs/package`;
 - Vanilla Extract, tsdown и собственная генерация Svelte declaration-файлов удаляются из Svelte-библиотеки;
-- отдельный публичный `tokens.ts` не создаётся, пока не появится подтверждённый сценарий программного создания темы;
+- `theme.ts` экспортирует ссылки на переменные для Vanilla Extract и другого TypeScript-кода, не дублируя значения темы;
 - подсказки переменных внутри Svelte `<style>` обеспечиваются через `svelte.plugin.css.globals`.
 
 Основной принцип: CSS-переменные являются одновременно runtime-контрактом между библиотекой и приложением-потребителем и источником данных для Svelte Language Server.
@@ -109,11 +119,11 @@ dist/
 
 ```css
 :root {
-	--max-colors-primary: oklch(0.27 0 0);
-	--max-colors-text-primary: oklch(0.21 0.03 265);
-	--max-spacing-2: 0.5rem;
-	--max-spacing-4: 1rem;
-	--max-radius-medium: 0.5rem;
+	--colors-primary: oklch(0.27 0 0);
+	--colors-text-primary: oklch(0.21 0.03 265);
+	--spacing-2: 0.5rem;
+	--spacing-4: 1rem;
+	--radius-medium: 0.5rem;
 }
 ```
 
@@ -122,9 +132,9 @@ dist/
 ```svelte
 <style>
 	.card {
-		padding: var(--max-spacing-4);
-		color: var(--max-colors-text-primary);
-		border-radius: var(--max-radius-medium);
+		padding: var(--spacing-4);
+		color: var(--colors-text-primary);
+		border-radius: var(--radius-medium);
 	}
 </style>
 ```
@@ -133,7 +143,7 @@ dist/
 
 ```css
 :root {
-	--max-colors-primary: oklch(0.55 0.2 260);
+	--colors-primary: oklch(0.55 0.2 260);
 }
 ```
 
@@ -141,23 +151,16 @@ dist/
 
 ```css
 [data-theme='dark'] {
-	--max-colors-primary: oklch(0.85 0.08 260);
-	--max-colors-text-primary: oklch(0.95 0 0);
+	--colors-primary: oklch(0.85 0.08 260);
+	--colors-text-primary: oklch(0.95 0 0);
 }
 ```
 
-### Почему в целевом решении нет публичного `tokens.ts`
+### Зачем нужен публичный `theme.ts`
 
-Внутри `<style>` TypeScript-объект использовать нельзя. Поэтому экспорт объекта с ключами темы не улучшает DX нативного CSS и создаёт второй публичный контракт, который нужно синхронизировать с CSS.
+Внутри `<style>` компоненты используют CSS custom properties напрямую. Потребителям, которые пишут стили через Vanilla Extract или другую CSS-in-TS библиотеку, нужен типизированный доступ к тем же ссылкам.
 
-Публичный TypeScript-контракт следует добавлять только при появлении конкретного сценария, например:
-
-- пользователь создаёт тему как объект с проверкой полноты;
-- тема динамически применяется из JavaScript;
-- те же исходные значения генерируют артефакты для нескольких платформ;
-- React- и Svelte-библиотеки переходят на общий пакет design tokens.
-
-До этого момента единственным контрактом остаются CSS custom properties.
+`theme.ts` экспортирует только объект `theme` со значениями вида `var(--colors-primary)`. Тип `Theme` выводится как `typeof theme`, поэтому структура не описывается второй раз. Значения по умолчанию остаются только в `theme.css`, а тест проверяет синхронизацию CSS-деклараций и TypeScript-ссылок.
 
 ### Глобальные стили
 
@@ -214,7 +217,7 @@ Svelte Language Server умеет читать CSS-файлы с глобаль�
 }
 ```
 
-После этого при вводе `var(--max-` редактор предлагает переменные из темы и показывает файл и текущее значение.
+После этого при вводе `var(--` редактор предлагает переменные из темы и показывает файл и текущее значение.
 
 Важное ограничение: npm-пакет не может автоматически изменить editor settings приложения. Настройку нужно:
 
@@ -231,7 +234,7 @@ Svelte Language Server умеет читать CSS-файлы с глобаль�
 `@property` можно рассмотреть отдельно для runtime-проверки типов некоторых переменных:
 
 ```css
-@property --max-colors-primary {
+@property --colors-primary {
 	syntax: '<color>';
 	inherits: true;
 	initial-value: black;
@@ -259,16 +262,16 @@ Vanilla Extract `styleVariants` заменяются на публичные pro
 <style>
 	button {
 		display: inline-flex;
-		border-radius: var(--max-radius-medium);
+		border-radius: var(--radius-medium);
 	}
 
 	button[data-variant='default'] {
-		background: var(--max-colors-primary);
+		background: var(--colors-primary);
 	}
 
 	button[data-size='medium'] {
-		height: var(--max-spacing-9);
-		padding: var(--max-spacing-2) var(--max-spacing-3);
+		height: var(--spacing-9);
+		padding: var(--spacing-2) var(--spacing-3);
 	}
 
 	button.loading {
@@ -314,7 +317,7 @@ Vanilla Extract `styleVariants` заменяются на публичные pro
 - Зафиксировать все текущие package exports.
 - Проверить, используются ли публичные style exports реальными приложениями.
 - Проверить, переопределяют ли приложения текущие переменные `--colors-*`, `--spacing-*` и другие.
-- Решить, сохраняются ли текущие имена переменных или вводятся новые имена с префиксом `--max-*`.
+- Сохранить текущие имена CSS-переменных.
 - Выбрать правила semver и compatibility period для `styles.css`.
 
 Результат: список breaking changes и согласованный контракт следующей major-версии.
@@ -367,7 +370,7 @@ Vanilla Extract `styleVariants` заменяются на публичные pro
 - Перенести значения из `src/theme.css.ts` в обычный `theme.css`.
 - Разделить тему и reset.
 - Удалить `createGlobalThemeContract`, `createGlobalTheme` и `globalStyle`.
-- Не публиковать `tokens.ts`, если к этому моменту нет подтверждённого TypeScript use case.
+- Добавить `theme.ts` со ссылками `var(...)` для использования из TypeScript и CSS-in-TS.
 - Добавить документацию подключения темы и editor completion.
 - При необходимости оставить compatibility export `styles.css`.
 
@@ -413,12 +416,7 @@ Vanilla Extract `styleVariants` заменяются на публичные pro
 
 Сам переход с tsdown на `svelte-package` не обязан быть breaking change, если опубликованный API и поведение остаются совместимыми. Однако перечисленные выше изменения делают итоговую миграцию вероятным кандидатом на следующую major-версию.
 
-Для CSS-переменных возможны два подхода:
-
-1. сохранить текущие имена (`--colors-primary`) и сделать миграцию менее ломающей;
-2. в major release перейти на префиксованные kebab-case имена (`--max-colors-primary`, `--max-font-size-xs`) и при необходимости оставить временные aliases.
-
-Рекомендация: использовать префикс пакета для снижения риска конфликтов, но окончательное решение принять после аудита потребителей.
+Имена CSS-переменных (`--colors-primary`, `--fontSize-xs` и остальные) сохраняются без изменений, чтобы не ломать темы приложений-потребителей.
 
 ## Риски
 
@@ -448,7 +446,6 @@ Scoped CSS не проходит автоматически внутрь доч�
 
 ## Открытые решения перед реализацией
 
-- Нужен ли новый префикс `--max-*`, или сохраняем существующие переменные?
 - Удаляем ли публичные style exports или заменяем стабильными классами?
 - Сколько релизов поддерживаем `@max-ts/svelte/styles.css`?
 - Должен ли `reset.css` оставаться полностью опциональным?
