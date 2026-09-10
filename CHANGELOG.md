@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.0.1
+
+### Patch Changes
+
+- Fix slider snapping at fractional bounds
+
 ## 2.0.0
 
 ### Major Changes

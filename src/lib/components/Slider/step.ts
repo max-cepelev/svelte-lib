@@ -14,6 +14,31 @@ const roundToPrecision = (value: number, precision: number): number => {
 	return Math.round(value * factor) / factor;
 };
 
+export const getSliderSteps = (
+	min: number,
+	max: number,
+	step: number,
+): number[] => {
+	if (max <= min) return [min];
+
+	const normalizedStep = Number.isFinite(step) && step > 0 ? step : 1;
+	const precision = Math.max(
+		getDecimalPlaces(normalizedStep),
+		getDecimalPlaces(min),
+		getDecimalPlaces(max),
+	);
+	const stepCount = Math.floor((max - min) / normalizedStep);
+	const steps = Array.from({ length: stepCount + 1 }, (_, index) =>
+		roundToPrecision(min + index * normalizedStep, precision),
+	);
+
+	if (steps.at(-1) !== max) {
+		steps.push(max);
+	}
+
+	return steps;
+};
+
 export const getSliderStep = (
 	min: number,
 	max: number,
@@ -35,18 +60,15 @@ export const snapSliderValue = (
 	value: number,
 	min: number,
 	max: number,
-	step: number,
+	step: number | readonly number[],
 ): number => {
 	const clampedValue = Math.min(max, Math.max(min, value));
-	const stepIndex = (clampedValue - min) / step;
-	const lowerValue = min + Math.floor(stepIndex) * step;
-	const upperValue = min + Math.ceil(stepIndex) * step;
-	const snappedValue =
-		upperValue <= max &&
-		Math.abs(upperValue - clampedValue) < Math.abs(clampedValue - lowerValue)
-			? upperValue
-			: lowerValue;
-	const precision = Math.max(getDecimalPlaces(step), getDecimalPlaces(min));
+	const steps =
+		typeof step === 'number' ? getSliderSteps(min, max, step) : step;
 
-	return roundToPrecision(snappedValue, precision);
+	return steps.reduce((closest, current) =>
+		Math.abs(current - clampedValue) < Math.abs(closest - clampedValue)
+			? current
+			: closest,
+	);
 };

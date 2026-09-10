@@ -1,8 +1,8 @@
 <script lang="ts">
-import { onDestroy } from 'svelte';
+import { onDestroy, untrack } from 'svelte';
 import { calculateSize } from '../../utils';
 import { Slider } from '../Slider';
-import { getSliderStep, snapSliderValue } from '../Slider/step';
+import { getSliderStep, getSliderSteps, snapSliderValue } from '../Slider/step';
 import { Typography } from '../Typography';
 
 import type { SliderInputProps } from './types';
@@ -31,6 +31,7 @@ let {
 let timerId: ReturnType<typeof setTimeout> | undefined;
 const calculatedWidth = $derived(calculateSize(width));
 const sliderStep = $derived(getSliderStep(min, max, step));
+const sliderSteps = $derived(getSliderSteps(min, max, sliderStep));
 
 let innerValue = $state(0);
 let inputValue = $state('');
@@ -39,7 +40,7 @@ let inputDirty = false;
 
 function normalizeValue(nextValue: number | undefined) {
   const finiteValue = Number.isFinite(nextValue) ? (nextValue as number) : min;
-  return snapSliderValue(finiteValue, min, max, sliderStep);
+  return snapSliderValue(finiteValue, min, max, sliderSteps);
 }
 
 function syncFromProps(nextValue: number) {
@@ -130,7 +131,8 @@ function handleSliderChange(nextValue: number) {
 syncFromProps(normalizeValue(value));
 
 $effect(() => {
-  syncFromProps(normalizeValue(value));
+  const nextValue = normalizeValue(value);
+  untrack(() => syncFromProps(nextValue));
 });
 
 onDestroy(clearInputTimer);
@@ -165,7 +167,7 @@ onDestroy(clearInputTimer);
     {min}
     {max}
     {size}
-    step={sliderStep}
+    step={sliderSteps}
     class="slider"
     trackClass={"track"}
     type="single"

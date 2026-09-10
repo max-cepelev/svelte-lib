@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getSliderStep, snapSliderValue } from './step';
+import { getSliderStep, getSliderSteps, snapSliderValue } from './step';
 
 describe('getSliderStep', () => {
 	it('keeps the requested step for small ranges', () => {
@@ -22,6 +22,18 @@ describe('snapSliderValue', () => {
 
 	it('keeps values inside the available step range', () => {
 		expect(snapSliderValue(-20, -10, 10, 3)).toBe(-10);
-		expect(snapSliderValue(20, -10, 10, 3)).toBe(8);
+		expect(snapSliderValue(20, -10, 10, 3)).toBe(10);
+	});
+});
+
+describe('getSliderSteps', () => {
+	it('preserves fractional bounds with an integer step', () => {
+		expect(getSliderSteps(24.85, 27.2, 1)).toEqual([24.85, 25.85, 26.85, 27.2]);
+	});
+
+	it('returns one valid value for a collapsed range', () => {
+		expect(getSliderSteps(24.850000381469727, 24.850000381469727, 1)).toEqual([
+			24.850000381469727,
+		]);
 	});
 });
