@@ -21,15 +21,17 @@ let {
 />
 
 <style>
-:global([data-slot="dropdown-menu-group-heading"].root) {
-  padding-left: var(--spacing-2);
-  padding-right: var(--spacing-2);
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-semibold);
-}
-:global([data-slot="dropdown-menu-group-heading"].root[data-inset]) {
-  padding-left: var(--spacing-8);
+@layer max-ts-svelte-components {
+  :global([data-slot="dropdown-menu-group-heading"].root) {
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-semibold);
+  }
+  :global([data-slot="dropdown-menu-group-heading"].root[data-inset]) {
+    padding-left: var(--spacing-8);
+  }
 }
 </style>

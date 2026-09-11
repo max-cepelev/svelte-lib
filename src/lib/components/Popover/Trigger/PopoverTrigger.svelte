@@ -21,7 +21,9 @@ let {
 </PopoverPrimitive.Trigger>
 
 <style>
-:global([data-slot="popover-trigger"].trigger) {
-  cursor: pointer;
+@layer max-ts-svelte-components {
+  :global([data-slot="popover-trigger"].trigger) {
+    cursor: pointer;
+  }
 }
 </style>

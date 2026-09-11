@@ -37,36 +37,38 @@ const showSeparator = $derived(!leader && direction !== 'column');
 {/if}
 
 <style>
-@media (max-width: 600px) {
-  .separator {
-    display: none;
+@layer max-ts-svelte-components {
+  @media (max-width: 600px) {
+    .separator {
+      display: none;
+    }
   }
-}
 
-.wrapper {
-  flex-shrink: 0;
-  align-self: flex-start;
-  margin-right: var(--spacing-2);
-  max-width: calc(100% - 12px);
-}
+  .wrapper {
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-right: var(--spacing-2);
+    max-width: calc(100% - 12px);
+  }
 
-.leader {
-  max-width: calc(100% - 36px);
-}
+  .leader {
+    max-width: calc(100% - 36px);
+  }
 
-.dashed-separator {
-  flex: 1;
-  align-self: flex-end;
-  min-width: 12px;
-  height: 4px;
-  margin-bottom: var(--spacing-1);
-  margin-right: var(--spacing-2);
-  border-bottom: 1px dashed var(--colors-border);
-}
-
-@media (max-width: 600px) {
   .dashed-separator {
-    display: none;
+    flex: 1;
+    align-self: flex-end;
+    min-width: 12px;
+    height: 4px;
+    margin-bottom: var(--spacing-1);
+    margin-right: var(--spacing-2);
+    border-bottom: 1px dashed var(--colors-border);
+  }
+
+  @media (max-width: 600px) {
+    .dashed-separator {
+      display: none;
+    }
   }
 }
 </style>

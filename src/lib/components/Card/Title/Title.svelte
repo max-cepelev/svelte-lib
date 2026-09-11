@@ -20,9 +20,11 @@ let {
 </div>
 
 <style>
-.title {
-  line-height: var(--lineHeight-none);
-  font-weight: var(--fontWeight-semibold);
-  font-size: var(--fontSize-base);
+@layer max-ts-svelte-components {
+  .title {
+    line-height: var(--lineHeight-none);
+    font-weight: var(--fontWeight-semibold);
+    font-size: var(--fontSize-base);
+  }
 }
 </style>

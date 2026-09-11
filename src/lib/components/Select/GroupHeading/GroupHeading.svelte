@@ -20,12 +20,14 @@ let {
 </SelectPrimitive.GroupHeading>
 
 <style>
-:global([data-slot="select-group-heading"].group-heading) {
-  color: var(--colors-text-secondary);
-  padding-left: var(--spacing-2);
-  padding-right: var(--spacing-2);
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  font-size: var(--fontSize-xs);
+@layer max-ts-svelte-components {
+  :global([data-slot="select-group-heading"].group-heading) {
+    color: var(--colors-text-secondary);
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: var(--fontSize-xs);
+  }
 }
 </style>

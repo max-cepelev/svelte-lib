@@ -32,27 +32,29 @@ const hasContent = $derived(!!children);
 </div>
 
 <style>
-.root {
-  position: relative;
-  margin-block: calc(-1 * var(--spacing-2));
-  height: var(--spacing-5);
-  font-size: var(--fontSize-sm);
-}
-:global([data-slot="field-group"][data-variant="outline"]) .root {
-  margin-bottom: calc(-1 * var(--spacing-2));
-}
-:global(.field-separator) {
-  position: absolute;
-  top: 50%;
-  inset-inline: 0;
-}
-.content {
-  position: relative;
-  margin-inline: auto;
-  display: block;
-  width: fit-content;
-  padding-inline: var(--spacing-2);
-  background-color: var(--colors-background-paper);
-  color: var(--colors-text-secondary);
+@layer max-ts-svelte-components {
+  .root {
+    position: relative;
+    margin-block: calc(-1 * var(--spacing-2));
+    height: var(--spacing-5);
+    font-size: var(--fontSize-sm);
+  }
+  :global([data-slot="field-group"][data-variant="outline"]) .root {
+    margin-bottom: calc(-1 * var(--spacing-2));
+  }
+  :global(.field-separator) {
+    position: absolute;
+    top: 50%;
+    inset-inline: 0;
+  }
+  .content {
+    position: relative;
+    margin-inline: auto;
+    display: block;
+    width: fit-content;
+    padding-inline: var(--spacing-2);
+    background-color: var(--colors-background-paper);
+    color: var(--colors-text-secondary);
+  }
 }
 </style>

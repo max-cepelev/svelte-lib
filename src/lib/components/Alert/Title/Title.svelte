@@ -20,13 +20,15 @@ let {
 </div>
 
 <style>
-.title {
-  grid-area: title;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  min-height: 1rem;
-  font-weight: var(--fontWeight-medium);
-  letter-spacing: -0.02em;
+@layer max-ts-svelte-components {
+  .title {
+    grid-area: title;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 1rem;
+    font-weight: var(--fontWeight-medium);
+    letter-spacing: -0.02em;
+  }
 }
 </style>

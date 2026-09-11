@@ -49,59 +49,61 @@ const handlePointerDown: PointerDownHandler = (event) => {
 </div>
 
 <style>
-.addon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-2);
-  color: var(--colors-text-hint);
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-medium);
-  padding-block: var(--spacing-2);
-  padding-inline: var(--spacing-2);
-  cursor: text;
-  user-select: none;
-  min-height: var(--spacing-9);
-}
-.align-inline-start {
-  order: -1;
-  padding-inline-start: var(--spacing-3);
-}
-.align-inline-end {
-  order: 1;
-  padding-inline-end: var(--spacing-3);
-}
-.align-block-start {
-  order: -1;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-inline: var(--spacing-3);
-  padding-bottom: var(--spacing-2);
-  border-bottom: 1px solid var(--colors-border);
-  min-height: auto;
-}
-.align-block-end {
-  order: 1;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding-inline: var(--spacing-3);
-  padding-top: var(--spacing-2);
-  border-top: 1px solid var(--colors-border);
-  min-height: auto;
-}
-.addon > :global(svg) {
-  pointer-events: none;
-}
-.addon > :global(svg:not([class*="size-"])) {
-  width: 1rem;
-  height: 1rem;
-}
-.addon > :global(kbd) {
-  border-radius: calc(var(--radius-medium) - 4px);
-}
-:global([data-slot="input-group"][data-disabled="true"]) .addon {
-  opacity: 0.6;
+@layer max-ts-svelte-components {
+  .addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    color: var(--colors-text-hint);
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-medium);
+    padding-block: var(--spacing-2);
+    padding-inline: var(--spacing-2);
+    cursor: text;
+    user-select: none;
+    min-height: var(--spacing-9);
+  }
+  .align-inline-start {
+    order: -1;
+    padding-inline-start: var(--spacing-3);
+  }
+  .align-inline-end {
+    order: 1;
+    padding-inline-end: var(--spacing-3);
+  }
+  .align-block-start {
+    order: -1;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-inline: var(--spacing-3);
+    padding-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--colors-border);
+    min-height: auto;
+  }
+  .align-block-end {
+    order: 1;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-inline: var(--spacing-3);
+    padding-top: var(--spacing-2);
+    border-top: 1px solid var(--colors-border);
+    min-height: auto;
+  }
+  .addon > :global(svg) {
+    pointer-events: none;
+  }
+  .addon > :global(svg:not([class*="size-"])) {
+    width: 1rem;
+    height: 1rem;
+  }
+  .addon > :global(kbd) {
+    border-radius: calc(var(--radius-medium) - 4px);
+  }
+  :global([data-slot="input-group"][data-disabled="true"]) .addon {
+    opacity: 0.6;
+  }
 }
 </style>

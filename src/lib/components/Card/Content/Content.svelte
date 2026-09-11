@@ -20,8 +20,10 @@ let {
 </div>
 
 <style>
-.content {
-  padding-left: var(--spacing-6);
-  padding-right: var(--spacing-6);
+@layer max-ts-svelte-components {
+  .content {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
 }
 </style>

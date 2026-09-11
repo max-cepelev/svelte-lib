@@ -19,8 +19,10 @@ const classNames = $derived(['description', className]);
 />
 
 <style>
-:global([data-slot="dialog-description"].description) {
-  color: var(--colors-text-secondary);
-  font-size: var(--fontSize-sm);
+@layer max-ts-svelte-components {
+  :global([data-slot="dialog-description"].description) {
+    color: var(--colors-text-secondary);
+    font-size: var(--fontSize-sm);
+  }
 }
 </style>

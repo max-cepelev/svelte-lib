@@ -16,13 +16,15 @@ let {
 />
 
 <style>
-:global([data-slot="select-separator"].separator) {
-  background-color: var(--colors-border);
-  pointer-events: none;
-  margin-left: calc(-1 * var(--spacing-1));
-  margin-right: calc(-1 * var(--spacing-1));
-  margin-top: var(--spacing-1);
-  margin-bottom: var(--spacing-1);
-  height: 1px;
+@layer max-ts-svelte-components {
+  :global([data-slot="select-separator"].separator) {
+    background-color: var(--colors-border);
+    pointer-events: none;
+    margin-left: calc(-1 * var(--spacing-1));
+    margin-right: calc(-1 * var(--spacing-1));
+    margin-top: var(--spacing-1);
+    margin-bottom: var(--spacing-1);
+    height: 1px;
+  }
 }
 </style>

@@ -23,9 +23,11 @@ let {
 </TabsPrimitive.Root>
 
 <style>
-:global([data-slot="tabs"].root) {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
+@layer max-ts-svelte-components {
+  :global([data-slot="tabs"].root) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
 }
 </style>

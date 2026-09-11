@@ -37,41 +37,43 @@ const classNames = $derived(['button', `size-${size}`, className]);
 </Button>
 
 <style>
-:global([data-input-group-button].button) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-1);
-  box-shadow: none;
-  font-size: var(--fontSize-sm);
-}
-:global([data-input-group-button].button.size-xs) {
-  height: var(--spacing-6);
-  padding-inline: var(--spacing-2);
-  border-radius: var(--radius-small);
-}
-:global([data-input-group-button].button.size-sm) {
-  height: var(--spacing-8);
-  padding-inline: var(--spacing-3);
-  border-radius: var(--radius-medium);
-}
-:global([data-input-group-button].button.size-icon-xs) {
-  height: var(--spacing-6);
-  width: var(--spacing-6);
-  padding: 0;
-  border-radius: var(--radius-small);
-}
-:global([data-input-group-button].button.size-icon-sm) {
-  height: var(--spacing-8);
-  width: var(--spacing-8);
-  padding: 0;
-  border-radius: var(--radius-medium);
-}
-:global([data-input-group-button].button) :global(svg) {
-  pointer-events: none;
-}
-:global([data-input-group-button].button) :global(svg:not([class*="size-"])) {
-  width: 1rem;
-  height: 1rem;
+@layer max-ts-svelte-components {
+  :global([data-input-group-button].button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-1);
+    box-shadow: none;
+    font-size: var(--fontSize-sm);
+  }
+  :global([data-input-group-button].button.size-xs) {
+    height: var(--spacing-6);
+    padding-inline: var(--spacing-2);
+    border-radius: var(--radius-small);
+  }
+  :global([data-input-group-button].button.size-sm) {
+    height: var(--spacing-8);
+    padding-inline: var(--spacing-3);
+    border-radius: var(--radius-medium);
+  }
+  :global([data-input-group-button].button.size-icon-xs) {
+    height: var(--spacing-6);
+    width: var(--spacing-6);
+    padding: 0;
+    border-radius: var(--radius-small);
+  }
+  :global([data-input-group-button].button.size-icon-sm) {
+    height: var(--spacing-8);
+    width: var(--spacing-8);
+    padding: 0;
+    border-radius: var(--radius-medium);
+  }
+  :global([data-input-group-button].button) :global(svg) {
+    pointer-events: none;
+  }
+  :global([data-input-group-button].button) :global(svg:not([class*="size-"])) {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 </style>

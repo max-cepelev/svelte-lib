@@ -24,14 +24,16 @@ let {
 </legend>
 
 <style>
-.root {
-  margin-bottom: var(--spacing-2);
-  font-weight: var(--fontWeight-medium);
-}
-.root[data-variant="legend"] {
-  font-size: var(--fontSize-base);
-}
-.root[data-variant="label"] {
-  font-size: var(--fontSize-sm);
+@layer max-ts-svelte-components {
+  .root {
+    margin-bottom: var(--spacing-2);
+    font-weight: var(--fontWeight-medium);
+  }
+  .root[data-variant="legend"] {
+    font-size: var(--fontSize-base);
+  }
+  .root[data-variant="label"] {
+    font-size: var(--fontSize-sm);
+  }
 }
 </style>

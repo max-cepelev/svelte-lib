@@ -20,15 +20,17 @@ let {
 </div>
 
 <style>
-.description {
-  grid-area: description;
-  display: grid;
-  justify-items: start;
-  gap: var(--spacing-1);
-  font-size: var(--fontSize-sm);
-  opacity: 0.8;
-}
-.description :global(p) {
-  line-height: var(--lineHeight-relaxed);
+@layer max-ts-svelte-components {
+  .description {
+    grid-area: description;
+    display: grid;
+    justify-items: start;
+    gap: var(--spacing-1);
+    font-size: var(--fontSize-sm);
+    opacity: 0.8;
+  }
+  .description :global(p) {
+    line-height: var(--lineHeight-relaxed);
+  }
 }
 </style>

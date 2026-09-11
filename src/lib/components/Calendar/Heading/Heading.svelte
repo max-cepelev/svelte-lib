@@ -15,10 +15,12 @@ let {
 />
 
 <style>
-:global(.calendar-heading) {
-  padding-left: var(--cell-size);
-  padding-right: var(--cell-size);
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-medium);
+@layer max-ts-svelte-components {
+  :global(.calendar-heading) {
+    padding-left: var(--cell-size);
+    padding-right: var(--cell-size);
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-medium);
+  }
 }
 </style>

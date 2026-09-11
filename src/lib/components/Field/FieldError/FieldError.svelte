@@ -55,19 +55,21 @@ const singleErrorMessage = $derived(
 {/if}
 
 <style>
-.root {
-  color: var(--colors-error);
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-normal);
-}
-.root :global(ul) {
-  margin-inline-start: var(--spacing-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-1);
-  list-style-type: disc;
-}
-.root :global(ul) :global(li) {
-  text-align: start;
+@layer max-ts-svelte-components {
+  .root {
+    color: var(--colors-error);
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-normal);
+  }
+  .root :global(ul) {
+    margin-inline-start: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    list-style-type: disc;
+  }
+  .root :global(ul) :global(li) {
+    text-align: start;
+  }
 }
 </style>

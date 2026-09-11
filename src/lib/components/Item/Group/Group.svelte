@@ -22,8 +22,10 @@ let {
 </div>
 
 <style>
-.group {
-  display: flex;
-  flex-direction: column;
+@layer max-ts-svelte-components {
+  .group {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

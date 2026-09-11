@@ -26,14 +26,16 @@ let {
 </div>
 
 <style>
-.separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--colors-text-secondary);
-}
-.separator :global(svg) {
-  width: var(--spacing-4);
-  height: var(--spacing-4);
+@layer max-ts-svelte-components {
+  .separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--colors-text-secondary);
+  }
+  .separator :global(svg) {
+    width: var(--spacing-4);
+    height: var(--spacing-4);
+  }
 }
 </style>

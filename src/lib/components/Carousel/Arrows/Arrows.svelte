@@ -51,64 +51,66 @@ const handleNextClick: ButtonClickHandler = (event) => {
 </button>
 
 <style>
-.button {
-  position: absolute;
-  z-index: 2;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.button:disabled {
-  user-select: none;
-  cursor: default;
-  opacity: 0.5;
-}
-.icon-wrapper {
-  width: var(--spacing-8);
-  height: var(--spacing-8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--colors-background-paper);
-  border-radius: 9999px;
-  transition: transform 0.2s ease;
-}
-.button:not(:disabled):hover .icon-wrapper {
-  transform: scale(1.1);
-}
-.icon-wrapper :global(svg) {
-  width: var(--spacing-5);
-  height: var(--spacing-5);
-}
-.button-next-horizontal {
-  right: 0;
-  top: 0;
-  width: clamp(2.5rem, 4vw, 4rem);
-  height: 100%;
-}
-.button-next-vertical {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: clamp(2.5rem, 4vw, 4rem);
-}
-.button-prev-horizontal {
-  left: 0;
-  top: 0;
-  width: clamp(2.5rem, 4vw, 4rem);
-  height: 100%;
-}
-.button-prev-vertical {
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: clamp(2.5rem, 4vw, 4rem);
-}
-.button-next-vertical :global(svg),
-.button-prev-vertical :global(svg) {
-  transform: rotate(90deg);
+@layer max-ts-svelte-components {
+  .button {
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button:disabled {
+    user-select: none;
+    cursor: default;
+    opacity: 0.5;
+  }
+  .icon-wrapper {
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colors-background-paper);
+    border-radius: 9999px;
+    transition: transform 0.2s ease;
+  }
+  .button:not(:disabled):hover .icon-wrapper {
+    transform: scale(1.1);
+  }
+  .icon-wrapper :global(svg) {
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+  }
+  .button-next-horizontal {
+    right: 0;
+    top: 0;
+    width: clamp(2.5rem, 4vw, 4rem);
+    height: 100%;
+  }
+  .button-next-vertical {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(2.5rem, 4vw, 4rem);
+  }
+  .button-prev-horizontal {
+    left: 0;
+    top: 0;
+    width: clamp(2.5rem, 4vw, 4rem);
+    height: 100%;
+  }
+  .button-prev-vertical {
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: clamp(2.5rem, 4vw, 4rem);
+  }
+  .button-next-vertical :global(svg),
+  .button-prev-vertical :global(svg) {
+    transform: rotate(90deg);
+  }
 }
 </style>

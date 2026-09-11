@@ -19,9 +19,11 @@ const classNames = $derived(['title', className]);
 />
 
 <style>
-:global([data-slot="dialog-title"].title) {
-  font-size: var(--fontSize-lg);
-  font-weight: var(--fontWeight-semibold);
-  line-height: var(--lineHeight-snug);
+@layer max-ts-svelte-components {
+  :global([data-slot="dialog-title"].title) {
+    font-size: var(--fontSize-lg);
+    font-weight: var(--fontWeight-semibold);
+    line-height: var(--lineHeight-snug);
+  }
 }
 </style>

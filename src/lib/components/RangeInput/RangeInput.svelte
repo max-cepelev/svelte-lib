@@ -244,66 +244,68 @@ onDestroy(() => {
 </div>
 
 <style>
-.container {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr auto 1fr auto;
-  align-items: center;
-  column-gap: var(--spacing-1);
-  background: var(--colors-background-paper);
-  border: 1px solid var(--colors-border);
-  border-radius: var(--radius-medium);
-  transition: border 0.2s;
-
-  &[data-active] {
-    border-color: var(--colors-primary);
-  }
-  &[data-size="small"] {
-    padding: 0.125rem var(--spacing-2);
-    height: 28px;
-    font-size: var(--fontSize-sm);
-  }
-  &[data-size="medium"] {
-    padding: var(--spacing-1) var(--spacing-3);
-    height: 36px;
-    font-size: var(--fontSize-base);
-  }
-  &[data-size="large"] {
-    padding: var(--spacing-2) var(--spacing-4);
-    height: 44px;
-    font-size: var(--fontSize-lg);
-  }
-}
-.container :global(.text) {
-  font-size: inherit;
-}
-.input {
-  text-align: center;
-  width: 100%;
-  min-width: 24px;
-  border: none;
-  font-size: inherit;
-  text-wrap: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-.input:focus {
-  border: none;
-}
-.container :global(.slider) {
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.container :global(.track.track) {
-  background-color: transparent;
-}
-@media (max-width: 600px) {
+@layer max-ts-svelte-components {
   .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    column-gap: var(--spacing-1);
+    background: var(--colors-background-paper);
+    border: 1px solid var(--colors-border);
+    border-radius: var(--radius-medium);
+    transition: border 0.2s;
+
+    &[data-active] {
+      border-color: var(--colors-primary);
+    }
+    &[data-size="small"] {
+      padding: 0.125rem var(--spacing-2);
+      height: 28px;
+      font-size: var(--fontSize-sm);
+    }
+    &[data-size="medium"] {
+      padding: var(--spacing-1) var(--spacing-3);
+      height: 36px;
+      font-size: var(--fontSize-base);
+    }
+    &[data-size="large"] {
+      padding: var(--spacing-2) var(--spacing-4);
+      height: 44px;
+      font-size: var(--fontSize-lg);
+    }
+  }
+  .container :global(.text) {
+    font-size: inherit;
+  }
+  .input {
+    text-align: center;
     width: 100%;
+    min-width: 24px;
+    border: none;
+    font-size: inherit;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    outline: none;
+    background: transparent;
+    color: inherit;
+  }
+  .input:focus {
+    border: none;
+  }
+  .container :global(.slider) {
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .container :global(.track.track) {
+    background-color: transparent;
+  }
+  @media (max-width: 600px) {
+    .container {
+      width: 100%;
+    }
   }
 }
 </style>

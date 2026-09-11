@@ -27,6 +27,10 @@ import '@max-ts/svelte/styles.css';
 ```
 
 Component styles live in each `.svelte` file and are included by the consumer's Svelte compiler.
+They are placed in the `max-ts-svelte-components` cascade layer so styles supplied
+through a component's `class` prop can override the library defaults. Unlayered
+consumer styles take precedence automatically; layered consumer styles should be
+declared after `max-ts-svelte-components`.
 
 ## Components
 

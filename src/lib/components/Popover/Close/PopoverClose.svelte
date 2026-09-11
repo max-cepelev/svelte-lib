@@ -21,7 +21,9 @@ let {
 </PopoverPrimitive.Close>
 
 <style>
-:global([data-slot="popover-close"].close) {
-  cursor: pointer;
+@layer max-ts-svelte-components {
+  :global([data-slot="popover-close"].close) {
+    cursor: pointer;
+  }
 }
 </style>

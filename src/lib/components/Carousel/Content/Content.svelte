@@ -32,36 +32,38 @@ onMount(() => {
 </div>
 
 <style>
-.content {
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+@layer max-ts-svelte-components {
+  .content {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-  &[data-orientation="horizontal"] {
-    overflow-x: auto;
-    overflow-y: hidden;
-    flex-direction: row;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    overscroll-behavior-y: auto;
-    column-gap: var(--spacing-4);
-  }
+    &[data-orientation="horizontal"] {
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex-direction: row;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      overscroll-behavior-y: auto;
+      column-gap: var(--spacing-4);
+    }
 
-  &[data-orientation="vertical"] {
-    overflow-y: auto;
-    overflow-x: hidden;
-    flex-direction: column;
-    scroll-snap-type: y mandatory;
-    overscroll-behavior-y: contain;
-    overscroll-behavior-x: auto;
-    row-gap: var(--spacing-4);
+    &[data-orientation="vertical"] {
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-direction: column;
+      scroll-snap-type: y mandatory;
+      overscroll-behavior-y: contain;
+      overscroll-behavior-x: auto;
+      row-gap: var(--spacing-4);
+    }
   }
 }
 </style>

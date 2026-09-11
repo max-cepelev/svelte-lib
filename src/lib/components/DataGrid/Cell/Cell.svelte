@@ -32,15 +32,17 @@ const widthValue = $derived(calculateSize(column.width));
 </td>
 
 <style>
-.cell {
-  overflow: hidden;
-  padding: var(--spacing-1) var(--spacing-2);
-  height: 100%;
-  color: var(--colors-text-primary);
-  font-size: var(--fontSize-base);
-  border-bottom: 1px solid var(--colors-border);
-}
-.disabled {
-  opacity: 0.5;
+@layer max-ts-svelte-components {
+  .cell {
+    overflow: hidden;
+    padding: var(--spacing-1) var(--spacing-2);
+    height: 100%;
+    color: var(--colors-text-primary);
+    font-size: var(--fontSize-base);
+    border-bottom: 1px solid var(--colors-border);
+  }
+  .disabled {
+    opacity: 0.5;
+  }
 }
 </style>

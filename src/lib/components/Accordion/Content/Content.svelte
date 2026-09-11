@@ -20,34 +20,36 @@ let {
 </AccordionPrimitive.Content>
 
 <style>
-:global([data-slot="accordion-content"].content) {
-  overflow: hidden;
-  padding-inline: var(--spacing-2);
-}
-:global([data-slot="accordion-content"].content[data-state="closed"]) {
-  animation: accordion-up 0.2s ease-out;
-}
-:global([data-slot="accordion-content"].content[data-state="open"]) {
-  animation: accordion-down 0.2s ease-out;
-}
-.inner {
-  padding-top: 0;
-  padding-bottom: var(--spacing-4);
-}
-@keyframes accordion-up {
-  0% {
-    height: var(--bits-accordion-content-height);
+@layer max-ts-svelte-components {
+  :global([data-slot="accordion-content"].content) {
+    overflow: hidden;
+    padding-inline: var(--spacing-2);
   }
-  100% {
-    height: 0;
+  :global([data-slot="accordion-content"].content[data-state="closed"]) {
+    animation: accordion-up 0.2s ease-out;
   }
-}
-@keyframes accordion-down {
-  from {
-    height: 0;
+  :global([data-slot="accordion-content"].content[data-state="open"]) {
+    animation: accordion-down 0.2s ease-out;
   }
-  to {
-    height: var(--bits-accordion-content-height);
+  .inner {
+    padding-top: 0;
+    padding-bottom: var(--spacing-4);
+  }
+  @keyframes accordion-up {
+    0% {
+      height: var(--bits-accordion-content-height);
+    }
+    100% {
+      height: 0;
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--bits-accordion-content-height);
+    }
   }
 }
 </style>

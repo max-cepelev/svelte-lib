@@ -15,15 +15,17 @@ let {
 </div>
 
 <style>
-.months {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-}
-@media (min-width: 48rem) {
+@layer max-ts-svelte-components {
   .months {
-    flex-direction: row;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  @media (min-width: 48rem) {
+    .months {
+      flex-direction: row;
+    }
   }
 }
 </style>

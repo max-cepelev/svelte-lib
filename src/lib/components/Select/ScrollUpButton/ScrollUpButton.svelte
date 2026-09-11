@@ -20,16 +20,18 @@ let {
 </SelectPrimitive.ScrollUpButton>
 
 <style>
-:global([data-slot="select-scroll-up-button"].scroll-up-button) {
-  display: flex;
-  cursor: default;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--spacing-1);
-  padding-bottom: var(--spacing-1);
-}
-:global(.select-scroll-up-button-icon) {
-  width: var(--spacing-4);
-  height: var(--spacing-4);
+@layer max-ts-svelte-components {
+  :global([data-slot="select-scroll-up-button"].scroll-up-button) {
+    display: flex;
+    cursor: default;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--spacing-1);
+    padding-bottom: var(--spacing-1);
+  }
+  :global(.select-scroll-up-button-icon) {
+    width: var(--spacing-4);
+    height: var(--spacing-4);
+  }
 }
 </style>

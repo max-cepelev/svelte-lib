@@ -20,11 +20,13 @@ let {
 </div>
 
 <style>
-.content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  line-height: var(--lineHeight-snug);
+@layer max-ts-svelte-components {
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    line-height: var(--lineHeight-snug);
+  }
 }
 </style>

@@ -12,9 +12,11 @@ const { class: className, ...restProps }: DrawerTitleProps = $props();
 />
 
 <style>
-:global([data-slot="drawer-title"].title) {
-  font-size: var(--fontSize-lg);
-  font-weight: var(--fontWeight-semibold);
-  color: var(--colors-text-primary);
+@layer max-ts-svelte-components {
+  :global([data-slot="drawer-title"].title) {
+    font-size: var(--fontSize-lg);
+    font-weight: var(--fontWeight-semibold);
+    color: var(--colors-text-primary);
+  }
 }
 </style>

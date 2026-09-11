@@ -20,11 +20,13 @@ let {
 </div>
 
 <style>
-.action {
-  grid-column: 2;
-  grid-row-start: 1;
-  grid-row-end: span 2;
-  justify-self: end;
-  align-self: start;
+@layer max-ts-svelte-components {
+  .action {
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    justify-self: end;
+    align-self: start;
+  }
 }
 </style>

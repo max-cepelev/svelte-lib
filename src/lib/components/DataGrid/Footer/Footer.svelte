@@ -13,20 +13,22 @@ let {
 <footer class={["footer", className]}>{@render children()}</footer>
 
 <style>
-.footer {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: var(--colors-background-paper);
-  position: sticky;
-  bottom: 0;
-  padding: var(--spacing-2);
-  border-top: 1px solid var(--colors-border);
-  margin-top: auto;
-}
-.footer:empty {
-  display: none;
+@layer max-ts-svelte-components {
+  .footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--colors-background-paper);
+    position: sticky;
+    bottom: 0;
+    padding: var(--spacing-2);
+    border-top: 1px solid var(--colors-border);
+    margin-top: auto;
+  }
+  .footer:empty {
+    display: none;
+  }
 }
 </style>

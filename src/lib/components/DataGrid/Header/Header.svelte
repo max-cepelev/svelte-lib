@@ -21,9 +21,11 @@ let { columns, height, sticky }: HeaderProps<TRow> = $props();
 </thead>
 
 <style>
-.sticky {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+@layer max-ts-svelte-components {
+  .sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 </style>

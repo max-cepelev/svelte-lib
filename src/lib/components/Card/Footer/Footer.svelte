@@ -20,14 +20,16 @@ let {
 </div>
 
 <style>
-.footer {
-  display: flex;
-  align-items: center;
-  padding-left: var(--spacing-6);
-  padding-right: var(--spacing-6);
+@layer max-ts-svelte-components {
+  .footer {
+    display: flex;
+    align-items: center;
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
 
-  &:global([data-slot="card-footer-border"]) {
-    padding-top: var(--spacing-6);
+    &:global([data-slot="card-footer-border"]) {
+      padding-top: var(--spacing-6);
+    }
   }
 }
 </style>

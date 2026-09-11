@@ -28,13 +28,15 @@ const widthValue = $derived(typeof width === 'number' ? `${width}px` : width);
 </th>
 
 <style>
-.cell {
-  padding: var(--spacing-1) var(--spacing-2);
-  width: 100%;
-  font-weight: var(--fontWeight-semibold);
-  font-size: var(--fontSize-sm);
-  overflow-wrap: break-word;
-  background-color: var(--colors-background-paper);
-  border-bottom: 1px solid var(--colors-border);
+@layer max-ts-svelte-components {
+  .cell {
+    padding: var(--spacing-1) var(--spacing-2);
+    width: 100%;
+    font-weight: var(--fontWeight-semibold);
+    font-size: var(--fontSize-sm);
+    overflow-wrap: break-word;
+    background-color: var(--colors-background-paper);
+    border-bottom: 1px solid var(--colors-border);
+  }
 }
 </style>

@@ -20,12 +20,14 @@ let {
 </div>
 
 <style>
-.header {
-  display: flex;
-  max-width: 24rem;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
-  text-align: center;
+@layer max-ts-svelte-components {
+  .header {
+    display: flex;
+    max-width: 24rem;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
 }
 </style>

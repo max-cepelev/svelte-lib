@@ -19,11 +19,13 @@ let {
 </div>
 
 <style>
-.footer {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
+@layer max-ts-svelte-components {
+  .footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+  }
 }
 </style>

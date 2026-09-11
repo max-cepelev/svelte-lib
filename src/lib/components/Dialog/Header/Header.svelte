@@ -21,15 +21,17 @@ const classNames = $derived(['header', className]);
 </div>
 
 <style>
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  text-align: center;
-}
-@media screen and (min-width: 640px) {
+@layer max-ts-svelte-components {
   .header {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
+  @media screen and (min-width: 640px) {
+    .header {
+      text-align: left;
+    }
   }
 }
 </style>

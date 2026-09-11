@@ -30,68 +30,70 @@ let {
 </CheckboxPrimitive.Root>
 
 <style>
-:global([data-slot="checkbox"]) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--spacing-4);
-  height: var(--spacing-4);
-  flex-shrink: 0;
-  border-radius: var(--spacing-1);
-  border: 1px solid var(--colors-border);
-  background-color: transparent;
-  transition:
-    background-color 200ms,
-    border-color 200ms;
-  cursor: pointer;
-  outline: none;
-  color: var(--colors-foreground-primary);
-
-  &:focus-visible {
+@layer max-ts-svelte-components {
+  :global([data-slot="checkbox"]) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--spacing-4);
+    height: var(--spacing-4);
+    flex-shrink: 0;
+    border-radius: var(--spacing-1);
+    border: 1px solid var(--colors-border);
+    background-color: transparent;
+    transition:
+      background-color 200ms,
+      border-color 200ms;
+    cursor: pointer;
     outline: none;
-    border-color: var(--colors-primary);
+    color: var(--colors-foreground-primary);
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--colors-primary);
+    }
+
+    &:hover {
+      border-color: var(--colors-primary);
+      box-shadow: var(--shadow-2);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &[data-state="checked"] {
+      background-color: var(--colors-primary);
+      border-color: var(--colors-primary);
+    }
+    &[aria-invalid="true"] {
+      border-color: var(--colors-error);
+    }
   }
 
-  &:hover {
-    border-color: var(--colors-primary);
-    box-shadow: var(--shadow-2);
+  :global([data-slot="checkbox-indicator"]) {
+    color: currentColor;
   }
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+  @keyframes checked {
+    0% {
+      scale: 0;
+    }
+    60% {
+      scale: 1.15;
+    }
+    100% {
+      scale: 1;
+    }
   }
-
-  &[data-state="checked"] {
-    background-color: var(--colors-primary);
-    border-color: var(--colors-primary);
-  }
-  &[aria-invalid="true"] {
-    border-color: var(--colors-error);
-  }
-}
-
-:global([data-slot="checkbox-indicator"]) {
-  color: currentColor;
-}
-
-@keyframes checked {
-  0% {
-    scale: 0;
-  }
-  60% {
-    scale: 1.15;
-  }
-  100% {
-    scale: 1;
-  }
-}
-@keyframes unchecked {
-  from {
-    scale: 1;
-  }
-  to {
-    scale: 0;
+  @keyframes unchecked {
+    from {
+      scale: 1;
+    }
+    to {
+      scale: 0;
+    }
   }
 }
 </style>

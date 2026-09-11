@@ -16,24 +16,26 @@ let {
 >
 
 <style>
-.wrapper {
-  display: block;
-  max-width: 100%;
-  object-fit: contain;
-  color: var(--colors-text-secondary);
-}
-.size-small {
-  margin: auto auto var(--spacing-4);
-}
-.size-medium {
-  margin: auto auto var(--spacing-8);
-}
-.size-large {
-  margin: auto auto var(--spacing-10);
-}
-@media (max-width: 600px) {
+@layer max-ts-svelte-components {
   .wrapper {
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+    color: var(--colors-text-secondary);
+  }
+  .size-small {
     margin: auto auto var(--spacing-4);
+  }
+  .size-medium {
+    margin: auto auto var(--spacing-8);
+  }
+  .size-large {
+    margin: auto auto var(--spacing-10);
+  }
+  @media (max-width: 600px) {
+    .wrapper {
+      margin: auto auto var(--spacing-4);
+    }
   }
 }
 </style>

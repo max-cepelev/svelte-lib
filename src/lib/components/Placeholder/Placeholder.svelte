@@ -58,46 +58,48 @@ let {
 </div>
 
 <style>
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: var(--spacing-4);
-  background-color: var(--colors-background-paper);
-}
-.size-small {
-  gap: var(--spacing-4);
-}
-.size-medium {
-  gap: var(--spacing-8);
-}
-.size-large {
-  gap: var(--spacing-10);
-}
-.inner-container {
-  margin: 0 auto;
-}
-:global(.placeholder-description) {
-  text-align: center;
-  display: block;
-  color: var(--colors-text-secondary);
-}
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  color: var(--colors-text-secondary);
-  gap: var(--spacing-2);
-}
-@media (max-width: 560px) {
+@layer max-ts-svelte-components {
   .wrapper {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-4);
+    background-color: var(--colors-background-paper);
+  }
+  .size-small {
     gap: var(--spacing-4);
+  }
+  .size-medium {
+    gap: var(--spacing-8);
+  }
+  .size-large {
+    gap: var(--spacing-10);
+  }
+  .inner-container {
+    margin: 0 auto;
+  }
+  :global(.placeholder-description) {
+    text-align: center;
+    display: block;
+    color: var(--colors-text-secondary);
+  }
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--colors-text-secondary);
+    gap: var(--spacing-2);
+  }
+  @media (max-width: 560px) {
+    .wrapper {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 1fr max-content;
+      gap: var(--spacing-4);
+    }
   }
 }
 </style>

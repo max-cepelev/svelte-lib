@@ -117,38 +117,40 @@ $effect(() => {
 <Tooltip {...tooltipConfig}> {@render typography()} </Tooltip>
 
 <style>
-:global(.overflow-typography) {
-  overflow: hidden;
-  max-width: 100%;
-  min-width: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+@layer max-ts-svelte-components {
+  :global(.overflow-typography) {
+    overflow: hidden;
+    max-width: 100%;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-  &[data-multiple-rows] {
-    display: -webkit-box;
-    white-space: initial;
-    -webkit-box-orient: vertical;
-    line-clamp: var(--rows-count);
-    -webkit-line-clamp: var(--rows-count);
+    &[data-multiple-rows] {
+      display: -webkit-box;
+      white-space: initial;
+      -webkit-box-orient: vertical;
+      line-clamp: var(--rows-count);
+      -webkit-line-clamp: var(--rows-count);
+    }
   }
-}
-.wrapper {
-  display: flex;
-  min-width: 0;
-  width: 100%;
-  white-space: nowrap;
+  .wrapper {
+    display: flex;
+    min-width: 0;
+    width: 100%;
+    white-space: nowrap;
 
-  &[data-align="left"] {
-    justify-content: flex-start;
-  }
-  &[data-align="center"] {
-    justify-content: center;
-  }
-  &[data-align="right"] {
-    justify-content: flex-end;
-  }
-  &[data-align="justify"] {
-    justify-content: space-between;
+    &[data-align="left"] {
+      justify-content: flex-start;
+    }
+    &[data-align="center"] {
+      justify-content: center;
+    }
+    &[data-align="right"] {
+      justify-content: flex-end;
+    }
+    &[data-align="justify"] {
+      justify-content: space-between;
+    }
   }
 }
 </style>

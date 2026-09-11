@@ -59,36 +59,38 @@ const handleClick = () => {
 {/if}
 
 <style>
-.wrapper {
-  display: flex;
-  position: relative;
-  align-items: center;
-  gap: var(--spacing-1);
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  width: 100%;
-  height: 100%;
-  overflow-wrap: break-word;
-}
-.wrapper :global(svg) {
-  min-width: 12px;
-  stroke: currentColor;
-}
-.align-left {
-  justify-content: flex-start;
-}
-.align-center {
-  justify-content: center;
-}
-.align-right {
-  justify-content: flex-end;
-}
-.align-justify {
-  justify-content: space-between;
+@layer max-ts-svelte-components {
+  .wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: var(--spacing-1);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    width: 100%;
+    height: 100%;
+    overflow-wrap: break-word;
+  }
+  .wrapper :global(svg) {
+    min-width: 12px;
+    stroke: currentColor;
+  }
+  .align-left {
+    justify-content: flex-start;
+  }
+  .align-center {
+    justify-content: center;
+  }
+  .align-right {
+    justify-content: flex-end;
+  }
+  .align-justify {
+    justify-content: space-between;
+  }
 }
 </style>

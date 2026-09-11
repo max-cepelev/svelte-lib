@@ -1,5 +1,12 @@
 # @max-ts/svelte
 
+## 2.0.3
+
+### Patch Changes
+
+- Restore consumer class overrides after the native Svelte style migration, apply button variants and sizes to link buttons, and restore the Separator background.
+- Restore consumer style overrides
+
 ## 2.0.2
 
 ### Patch Changes

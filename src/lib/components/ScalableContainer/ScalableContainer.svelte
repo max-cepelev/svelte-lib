@@ -183,50 +183,52 @@ $effect(() => () => store.destroy());
 </div>
 
 <style>
-:global(.scalable-container-toolbar) {
-  position: absolute;
-  right: 4px;
-  z-index: 1;
-  opacity: 0.5;
-  top: 50%;
-  bottom: unset;
-  transform: translateY(-50%);
-  transition: opacity 0.2s ease-in-out;
-}
-:global(.scalable-container-toolbar:hover) {
-  opacity: 1;
-}
-.viewport {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-.content-wrapper {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-.overlay {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: var(--spacing-2) var(--spacing-4);
-  border-radius: var(--radius-small);
-  font-size: var(--fontSize-sm);
-  pointer-events: none;
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-.overlay[data-visible="true"] {
-  opacity: 1;
+@layer max-ts-svelte-components {
+  :global(.scalable-container-toolbar) {
+    position: absolute;
+    right: 4px;
+    z-index: 1;
+    opacity: 0.5;
+    top: 50%;
+    bottom: unset;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease-in-out;
+  }
+  :global(.scalable-container-toolbar:hover) {
+    opacity: 1;
+  }
+  .viewport {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+  }
+  .content-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  .overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-small);
+    font-size: var(--fontSize-sm);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .overlay[data-visible="true"] {
+    opacity: 1;
+  }
 }
 </style>

@@ -32,27 +32,29 @@ const carouselCtx = getCarouselContext('<Carousel.Item/>');
 </div>
 
 <style>
-.item {
-  min-width: 0;
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: 100%;
+@layer max-ts-svelte-components {
+  .item {
+    min-width: 0;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 100%;
 
-  &[data-orientation="horizontal"] {
-    scroll-snap-stop: always;
-  }
-  &[data-orientation="vertical"] {
-    scroll-snap-stop: always;
-  }
+    &[data-orientation="horizontal"] {
+      scroll-snap-stop: always;
+    }
+    &[data-orientation="vertical"] {
+      scroll-snap-stop: always;
+    }
 
-  &[data-align="start"] {
-    scroll-snap-align: start;
-  }
-  &[data-align="center"] {
-    scroll-snap-align: center;
-  }
-  &[data-align="end"] {
-    scroll-snap-align: end;
+    &[data-align="start"] {
+      scroll-snap-align: start;
+    }
+    &[data-align="center"] {
+      scroll-snap-align: center;
+    }
+    &[data-align="end"] {
+      scroll-snap-align: end;
+    }
   }
 }
 </style>

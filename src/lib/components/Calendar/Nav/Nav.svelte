@@ -15,15 +15,17 @@ let {
 </nav>
 
 <style>
-.nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-1);
+@layer max-ts-svelte-components {
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-1);
+  }
 }
 </style>

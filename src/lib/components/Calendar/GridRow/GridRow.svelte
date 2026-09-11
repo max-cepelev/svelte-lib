@@ -15,8 +15,10 @@ let {
 />
 
 <style>
-:global(.calendar-grid-row) {
-  display: flex;
-  column-gap: var(--spacing-1);
+@layer max-ts-svelte-components {
+  :global(.calendar-grid-row) {
+    display: flex;
+    column-gap: var(--spacing-1);
+  }
 }
 </style>

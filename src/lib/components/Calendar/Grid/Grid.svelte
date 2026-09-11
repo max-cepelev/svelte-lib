@@ -15,12 +15,14 @@ let {
 />
 
 <style>
-:global(.calendar-grid) {
-  margin-top: var(--spacing-4);
-  display: flex;
-  width: 100%;
-  border-collapse: collapse;
-  flex-direction: column;
-  gap: var(--spacing-1);
+@layer max-ts-svelte-components {
+  :global(.calendar-grid) {
+    margin-top: var(--spacing-4);
+    display: flex;
+    width: 100%;
+    border-collapse: collapse;
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
 }
 </style>

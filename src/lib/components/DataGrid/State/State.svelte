@@ -57,15 +57,17 @@ const errorStateData = $derived(errorState || { text: 'Произошла оши
 {/if}
 
 <style>
-.container {
-  width: 100%;
-  height: 100%;
-}
-.loader {
-  height: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@layer max-ts-svelte-components {
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+  .loader {
+    height: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

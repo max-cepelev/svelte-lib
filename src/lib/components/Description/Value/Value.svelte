@@ -115,37 +115,39 @@ function handleKeyDown(event: KeyboardEvent) {
 </dd>
 
 <style>
-.wrapper {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: default;
-  margin: 0;
-}
-.can-copy {
-  cursor: pointer;
-}
-.can-copy:hover {
-  text-decoration: underline;
-}
-:global(.description-value-copy-icon) {
-  color: var(--colors-text-secondary);
-  cursor: pointer;
-}
-:global(.description-value-copy-icon:hover) {
-  color: var(--colors-primary);
-}
-:global(.description-value-copy-icon[data-position="left"]) {
-  margin-right: var(--spacing-1);
-}
-:global(.description-value-copy-icon[data-position="right"]) {
-  margin-left: var(--spacing-1);
-}
-.hide-personal-data {
-  filter: blur(4px);
-  user-select: none;
+@layer max-ts-svelte-components {
+  .wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: default;
+    margin: 0;
+  }
+  .can-copy {
+    cursor: pointer;
+  }
+  .can-copy:hover {
+    text-decoration: underline;
+  }
+  :global(.description-value-copy-icon) {
+    color: var(--colors-text-secondary);
+    cursor: pointer;
+  }
+  :global(.description-value-copy-icon:hover) {
+    color: var(--colors-primary);
+  }
+  :global(.description-value-copy-icon[data-position="left"]) {
+    margin-right: var(--spacing-1);
+  }
+  :global(.description-value-copy-icon[data-position="right"]) {
+    margin-left: var(--spacing-1);
+  }
+  .hide-personal-data {
+    filter: blur(4px);
+    user-select: none;
+  }
 }
 </style>

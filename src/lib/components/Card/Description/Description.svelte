@@ -20,8 +20,10 @@ let {
 </p>
 
 <style>
-.description {
-  font-size: var(--fontSize-sm);
-  color: var(--colors-text-secondary);
+@layer max-ts-svelte-components {
+  .description {
+    font-size: var(--fontSize-sm);
+    color: var(--colors-text-secondary);
+  }
 }
 </style>

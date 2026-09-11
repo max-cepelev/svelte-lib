@@ -12,8 +12,10 @@ const { class: className, ...restProps }: DrawerDescriptionProps = $props();
 />
 
 <style>
-:global([data-slot="drawer-description"].description) {
-  font-size: var(--fontSize-sm);
-  color: var(--colors-text-secondary);
+@layer max-ts-svelte-components {
+  :global([data-slot="drawer-description"].description) {
+    font-size: var(--fontSize-sm);
+    color: var(--colors-text-secondary);
+  }
 }
 </style>

@@ -21,28 +21,30 @@ let {
 />
 
 <style>
-:global(.spinner) {
-  display: inline-block;
-  animation: spin 1s linear infinite;
-}
-:global(.spinner-size-small) {
-  width: var(--spacing-4);
-  height: var(--spacing-4);
-}
-:global(.spinner-size-medium) {
-  width: var(--spacing-6);
-  height: var(--spacing-6);
-}
-:global(.spinner-size-large) {
-  width: var(--spacing-8);
-  height: var(--spacing-8);
-}
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+@layer max-ts-svelte-components {
+  :global(.spinner) {
+    display: inline-block;
+    animation: spin 1s linear infinite;
   }
-  to {
-    transform: rotate(360deg);
+  :global(.spinner-size-small) {
+    width: var(--spacing-4);
+    height: var(--spacing-4);
+  }
+  :global(.spinner-size-medium) {
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+  }
+  :global(.spinner-size-large) {
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
 </style>

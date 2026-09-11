@@ -20,15 +20,17 @@ let {
 </div>
 
 <style>
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-6);
-  border-radius: var(--radius-large);
-  border: 1px solid var(--colors-border);
-  padding: var(--spacing-6) 0;
-  background-color: var(--colors-background-paper);
-  color: var(--colors-text-primary);
-  box-shadow: var(--shadow-2);
+@layer max-ts-svelte-components {
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    border-radius: var(--radius-large);
+    border: 1px solid var(--colors-border);
+    padding: var(--spacing-6) 0;
+    background-color: var(--colors-background-paper);
+    color: var(--colors-text-primary);
+    box-shadow: var(--shadow-2);
+  }
 }
 </style>

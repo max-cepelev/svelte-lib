@@ -20,9 +20,11 @@ let {
 </div>
 
 <style>
-.actions {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
+@layer max-ts-svelte-components {
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
 }
 </style>

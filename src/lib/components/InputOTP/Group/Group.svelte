@@ -20,8 +20,10 @@ let {
 </div>
 
 <style>
-.group {
-  display: flex;
-  align-items: center;
+@layer max-ts-svelte-components {
+  .group {
+    display: flex;
+    align-items: center;
+  }
 }
 </style>

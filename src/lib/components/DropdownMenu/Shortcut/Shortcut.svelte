@@ -20,10 +20,12 @@ let {
 </span>
 
 <style>
-.shortcut {
-  color: var(--colors-text-secondary);
-  margin-inline-start: auto;
-  font-size: var(--fontSize-xs);
-  letter-spacing: 0.1em;
+@layer max-ts-svelte-components {
+  .shortcut {
+    color: var(--colors-text-secondary);
+    margin-inline-start: auto;
+    font-size: var(--fontSize-xs);
+    letter-spacing: 0.1em;
+  }
 }
 </style>

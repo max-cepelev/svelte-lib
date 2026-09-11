@@ -38,11 +38,13 @@ let {
 </SelectPrimitive.Value>
 
 <style>
-:global([data-slot="select-value"].value) {
-  display: flex;
-  min-width: 0;
-  flex: 1;
-  align-items: center;
-  overflow: hidden;
+@layer max-ts-svelte-components {
+  :global([data-slot="select-value"].value) {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    overflow: hidden;
+  }
 }
 </style>

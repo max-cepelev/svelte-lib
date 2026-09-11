@@ -38,7 +38,9 @@ let {
 </CalendarPrimitive.PrevButton>
 
 <style>
-:global([dir="rtl"] [data-slot="calendar-prev-button"]) {
-  transform: rotate(180deg);
+@layer max-ts-svelte-components {
+  :global([dir="rtl"] [data-slot="calendar-prev-button"]) {
+    transform: rotate(180deg);
+  }
 }
 </style>

@@ -21,15 +21,17 @@ const classNames = $derived(['footer', className]);
 </div>
 
 <style>
-.footer {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: var(--spacing-2);
-}
-@media screen and (min-width: 640px) {
+@layer max-ts-svelte-components {
   .footer {
-    flex-direction: row;
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--spacing-2);
+  }
+  @media screen and (min-width: 640px) {
+    .footer {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
   }
 }
 </style>

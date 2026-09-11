@@ -25,58 +25,60 @@ const classNames = $derived(['container', className]);
 </div>
 
 <style>
-.container {
-  display: flex;
-  width: fit-content;
-  align-items: stretch;
-  &:has(> :global([data-slot="button-group"])) {
-    gap: var(--spacing-2);
-  }
-
-  & > :global(*) {
-    position: relative;
-  }
-
-  & > :global(*:focus-visible) {
-    z-index: 10;
-  }
-
-  & > :global(input) {
-    flex: 1;
-  }
-
-  &[data-orientation="horizontal"] {
-    flex-direction: row;
-
-    & > :global(*:not(:first-child)) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-left-width: 0;
+@layer max-ts-svelte-components {
+  .container {
+    display: flex;
+    width: fit-content;
+    align-items: stretch;
+    &:has(> :global([data-slot="button-group"])) {
+      gap: var(--spacing-2);
     }
 
-    & > :global(*:not(:last-child)) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+    & > :global(*) {
+      position: relative;
     }
 
-    &:has(> :global(select[aria-hidden="true"]:last-child))
-      > :global([data-slot="select-trigger"]:last-of-type) {
-      border-top-right-radius: var(--radius-medium);
-      border-bottom-right-radius: var(--radius-medium);
+    & > :global(*:focus-visible) {
+      z-index: 10;
     }
-  }
 
-  &[data-orientation="vertical"] {
-    flex-direction: column;
-
-    & > :global(*:not(:first-child)) {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-top-width: 0;
+    & > :global(input) {
+      flex: 1;
     }
-    & > :global(*:not(:last-child)) {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+
+    &[data-orientation="horizontal"] {
+      flex-direction: row;
+
+      & > :global(*:not(:first-child)) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left-width: 0;
+      }
+
+      & > :global(*:not(:last-child)) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:has(> :global(select[aria-hidden="true"]:last-child))
+        > :global([data-slot="select-trigger"]:last-of-type) {
+        border-top-right-radius: var(--radius-medium);
+        border-bottom-right-radius: var(--radius-medium);
+      }
+    }
+
+    &[data-orientation="vertical"] {
+      flex-direction: column;
+
+      & > :global(*:not(:first-child)) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-width: 0;
+      }
+      & > :global(*:not(:last-child)) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 }

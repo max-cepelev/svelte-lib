@@ -114,23 +114,25 @@ get along, so we shut typescript up by casting `value` to `never`.
 </CalendarPrimitive.Root>
 
 <style>
-:global(.calendar) {
-  --cell-size: var(--spacing-8);
-  width: max-content;
-  background-color: var(--colors-background-paper);
-  padding: var(--spacing-3);
-}
-:global([data-slot="card-content"]) :global(.calendar) {
-  background-color: transparent;
-}
-:global([data-slot="popover-content"]) :global(.calendar) {
-  background-color: transparent;
-}
-:global(.calendar-grid-row) {
-  margin-top: var(--spacing-2);
-  width: 100%;
-}
-:global(.calendar-grid-row-head) {
-  user-select: none;
+@layer max-ts-svelte-components {
+  :global(.calendar) {
+    --cell-size: var(--spacing-8);
+    width: max-content;
+    background-color: var(--colors-background-paper);
+    padding: var(--spacing-3);
+  }
+  :global([data-slot="card-content"]) :global(.calendar) {
+    background-color: transparent;
+  }
+  :global([data-slot="popover-content"]) :global(.calendar) {
+    background-color: transparent;
+  }
+  :global(.calendar-grid-row) {
+    margin-top: var(--spacing-2);
+    width: 100%;
+  }
+  :global(.calendar-grid-row-head) {
+    user-select: none;
+  }
 }
 </style>

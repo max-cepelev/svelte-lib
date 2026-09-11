@@ -43,12 +43,14 @@ let {
 {/if}
 
 <style>
-.loading-container {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+@layer max-ts-svelte-components {
+  .loading-container {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

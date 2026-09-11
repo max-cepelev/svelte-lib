@@ -20,8 +20,10 @@ let {
 </TabsPrimitive.Content>
 
 <style>
-:global([data-slot="tabs-content"].content) {
-  flex: 1;
-  outline: none;
+@layer max-ts-svelte-components {
+  :global([data-slot="tabs-content"].content) {
+    flex: 1;
+    outline: none;
+  }
 }
 </style>

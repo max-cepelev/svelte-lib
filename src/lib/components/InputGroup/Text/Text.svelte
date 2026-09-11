@@ -16,18 +16,20 @@ const classNames = $derived(['text', className]);
 </span>
 
 <style>
-.text {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  color: var(--colors-text-hint);
-  font-size: var(--fontSize-sm);
-}
-.text :global(svg) {
-  pointer-events: none;
-}
-.text :global(svg:not([class*="size-"])) {
-  width: 1rem;
-  height: 1rem;
+@layer max-ts-svelte-components {
+  .text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--colors-text-hint);
+    font-size: var(--fontSize-sm);
+  }
+  .text :global(svg) {
+    pointer-events: none;
+  }
+  .text :global(svg:not([class*="size-"])) {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 </style>

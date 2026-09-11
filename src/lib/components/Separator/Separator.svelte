@@ -19,16 +19,18 @@ let {
 />
 
 <style>
-:global(.separator) {
-  /*background-color: var(--colors-border);*/
-  flex-shrink: 0;
-}
-:global(.separator[data-orientation="horizontal"]) {
-  height: 1px;
-  width: 100%;
-}
-:global(.separator[data-orientation="vertical"]) {
-  height: 100%;
-  width: 1px;
+@layer max-ts-svelte-components {
+  :global(.separator) {
+    background-color: var(--colors-border);
+    flex-shrink: 0;
+  }
+  :global(.separator[data-orientation="horizontal"]) {
+    height: 1px;
+    width: 100%;
+  }
+  :global(.separator[data-orientation="vertical"]) {
+    height: 100%;
+    width: 1px;
+  }
 }
 </style>

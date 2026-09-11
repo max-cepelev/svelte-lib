@@ -20,16 +20,18 @@ let {
 </div>
 
 <style>
-.root {
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  gap: var(--spacing-2);
-  font-size: var(--fontSize-sm);
-  line-height: var(--lineHeight-snug);
-  font-weight: var(--fontWeight-medium);
-}
-:global([data-slot="field"][data-disabled="true"]) .root {
-  opacity: 0.5;
+@layer max-ts-svelte-components {
+  .root {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--fontSize-sm);
+    line-height: var(--lineHeight-snug);
+    font-weight: var(--fontWeight-medium);
+  }
+  :global([data-slot="field"][data-disabled="true"]) .root {
+    opacity: 0.5;
+  }
 }
 </style>

@@ -21,17 +21,19 @@ let {
 </TabsPrimitive.List>
 
 <style>
-:global([data-slot="tabs-list"].list) {
-  background-color: var(--colors-background-paper);
-  color: var(--colors-text-secondary);
-  display: inline-flex;
-  height: var(--spacing-10);
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-3);
-  padding: var(--spacing-1);
-  gap: var(--spacing-1);
+@layer max-ts-svelte-components {
+  :global([data-slot="tabs-list"].list) {
+    background-color: var(--colors-background-paper);
+    color: var(--colors-text-secondary);
+    display: inline-flex;
+    height: var(--spacing-10);
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-3);
+    padding: var(--spacing-1);
+    gap: var(--spacing-1);
+  }
 }
 </style>

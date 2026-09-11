@@ -26,17 +26,19 @@ const handleSelect = () => {
 </tr>
 
 <style>
-.row {
-  background-color: transparent;
-  transition: background-color 0.2s ease;
-}
-.row:last-child :global(td) {
-  border-bottom: none;
-}
-.selectable {
-  cursor: pointer;
-}
-.selectable:hover {
-  background-color: var(--colors-background-elementHover);
+@layer max-ts-svelte-components {
+  .row {
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+  .row:last-child :global(td) {
+    border-bottom: none;
+  }
+  .selectable {
+    cursor: pointer;
+  }
+  .selectable:hover {
+    background-color: var(--colors-background-elementHover);
+  }
 }
 </style>

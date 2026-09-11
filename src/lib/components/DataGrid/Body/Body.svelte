@@ -45,11 +45,13 @@ const isStateVisible = $derived(isError || isLoading || isEmpty);
 {/if}
 
 <style>
-.container {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  list-style: none;
+@layer max-ts-svelte-components {
+  .container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    list-style: none;
+  }
 }
 </style>

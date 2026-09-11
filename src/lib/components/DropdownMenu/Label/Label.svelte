@@ -24,16 +24,18 @@ let {
 </div>
 
 <style>
-.label {
-  padding-left: var(--spacing-2);
-  padding-right: var(--spacing-2);
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-semibold);
-  color: var(--colors-text-primary);
-}
-.label[data-inset] {
-  padding-left: var(--spacing-8);
+@layer max-ts-svelte-components {
+  .label {
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-semibold);
+    color: var(--colors-text-primary);
+  }
+  .label[data-inset] {
+    padding-left: var(--spacing-8);
+  }
 }
 </style>

@@ -20,15 +20,17 @@ let {
 </div>
 
 <style>
-.content {
-  display: flex;
-  width: 100%;
-  max-width: 24rem;
-  min-width: 0;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-4);
-  font-size: var(--fontSize-sm);
-  text-wrap: balance;
+@layer max-ts-svelte-components {
+  .content {
+    display: flex;
+    width: 100%;
+    max-width: 24rem;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    font-size: var(--fontSize-sm);
+    text-wrap: balance;
+  }
 }
 </style>

@@ -19,17 +19,19 @@ let {
 />
 
 <style>
-:global(
-  [data-slot="button-group-separator"].separator[data-slot="button-group-separator"].separator
-) {
-  background-color: var(--colors-border);
-  position: relative;
-  margin: 0;
-  align-self: stretch;
-}
-:global(
-  [data-slot="button-group-separator"].separator[data-orientation="vertical"]
-) {
-  height: auto;
+@layer max-ts-svelte-components {
+  :global(
+    [data-slot="button-group-separator"].separator[data-slot="button-group-separator"].separator
+  ) {
+    background-color: var(--colors-border);
+    position: relative;
+    margin: 0;
+    align-self: stretch;
+  }
+  :global(
+    [data-slot="button-group-separator"].separator[data-orientation="vertical"]
+  ) {
+    height: auto;
+  }
 }
 </style>

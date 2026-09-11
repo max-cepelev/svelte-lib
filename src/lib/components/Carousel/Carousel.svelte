@@ -63,7 +63,9 @@ $effect(() => {
 </section>
 
 <style>
-.carousel {
-  position: relative;
+@layer max-ts-svelte-components {
+  .carousel {
+    position: relative;
+  }
 }
 </style>

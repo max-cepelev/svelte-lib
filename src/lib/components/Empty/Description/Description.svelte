@@ -20,16 +20,18 @@ let {
 </div>
 
 <style>
-.description {
-  color: var(--colors-text-secondary);
-  font-size: var(--fontSize-sm);
-  line-height: var(--lineHeight-relaxed);
-}
-.description > :global(a) {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.description > :global(a:hover) {
-  color: var(--colors-primary);
+@layer max-ts-svelte-components {
+  .description {
+    color: var(--colors-text-secondary);
+    font-size: var(--fontSize-sm);
+    line-height: var(--lineHeight-relaxed);
+  }
+  .description > :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .description > :global(a:hover) {
+    color: var(--colors-primary);
+  }
 }
 </style>

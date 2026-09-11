@@ -20,29 +20,31 @@ let {
 </p>
 
 <style>
-.root {
-  color: var(--colors-text-disabled);
-  font-size: var(--fontSize-sm);
-  line-height: var(--lineHeight-normal);
-  font-weight: var(--fontWeight-normal);
-}
-.root:last-child {
-  margin-top: 0;
-}
-.root:nth-last-child(2) {
-  margin-top: calc(-1 * var(--spacing-1));
-}
-.root > :global(a) {
-  text-decoration-line: underline;
-  text-underline-offset: 4px;
-}
-.root > :global(a:hover) {
-  color: var(--colors-primary);
-}
-:global([data-variant="legend"]) + .root {
-  margin-top: calc(-1.5 * var(--spacing-1));
-}
-:global([data-slot="field"][data-orientation="horizontal"]) .root {
-  text-wrap: balance;
+@layer max-ts-svelte-components {
+  .root {
+    color: var(--colors-text-disabled);
+    font-size: var(--fontSize-sm);
+    line-height: var(--lineHeight-normal);
+    font-weight: var(--fontWeight-normal);
+  }
+  .root:last-child {
+    margin-top: 0;
+  }
+  .root:nth-last-child(2) {
+    margin-top: calc(-1 * var(--spacing-1));
+  }
+  .root > :global(a) {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+  }
+  .root > :global(a:hover) {
+    color: var(--colors-primary);
+  }
+  :global([data-variant="legend"]) + .root {
+    margin-top: calc(-1.5 * var(--spacing-1));
+  }
+  :global([data-slot="field"][data-orientation="horizontal"]) .root {
+    text-wrap: balance;
+  }
 }
 </style>

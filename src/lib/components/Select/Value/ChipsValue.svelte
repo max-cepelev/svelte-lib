@@ -141,73 +141,75 @@ $effect(() => {
 </span>
 
 <style>
-.chips {
-  position: relative;
-  display: flex;
-  width: 100%;
-  min-width: 0;
-  align-items: center;
-  gap: var(--spacing-1);
-  overflow: hidden;
-}
-.measure {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  gap: var(--spacing-1);
-  visibility: hidden;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.chip {
-  display: inline-flex;
-  width: fit-content;
-  height: var(--spacing-5);
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-1);
-  border-radius: var(--radius-small);
-  background-color: var(--colors-background-element);
-  padding: 0 var(--spacing-2);
-  color: var(--colors-text-primary);
-  font-size: var(--fontSize-xs);
-  font-weight: var(--fontWeight-medium);
-  white-space: nowrap;
-
-  &[data-removable] {
-    padding-right: 0;
+@layer max-ts-svelte-components {
+  .chips {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    gap: var(--spacing-1);
+    overflow: hidden;
   }
-}
-.label {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.remove {
-  display: inline-flex;
-  width: var(--spacing-5);
-  height: var(--spacing-5);
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-small);
-  background-color: transparent;
-  color: inherit;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity ease-in-out 0.2s;
-
-  &:hover {
-    opacity: 1;
-  }
-  &:disabled {
-    cursor: not-allowed;
-  }
-  & :global(svg) {
-    width: var(--spacing-3);
-    height: var(--spacing-3);
+  .measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: var(--spacing-1);
+    visibility: hidden;
     pointer-events: none;
+    white-space: nowrap;
+  }
+  .chip {
+    display: inline-flex;
+    width: fit-content;
+    height: var(--spacing-5);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-1);
+    border-radius: var(--radius-small);
+    background-color: var(--colors-background-element);
+    padding: 0 var(--spacing-2);
+    color: var(--colors-text-primary);
+    font-size: var(--fontSize-xs);
+    font-weight: var(--fontWeight-medium);
+    white-space: nowrap;
+
+    &[data-removable] {
+      padding-right: 0;
+    }
+  }
+  .label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .remove {
+    display: inline-flex;
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-small);
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity ease-in-out 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+    & :global(svg) {
+      width: var(--spacing-3);
+      height: var(--spacing-3);
+      pointer-events: none;
+    }
   }
 }
 </style>

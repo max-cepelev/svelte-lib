@@ -19,15 +19,17 @@ let {
 </div>
 
 <style>
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4);
-}
-@media (max-width: 48rem) {
+@layer max-ts-svelte-components {
   .header {
-    padding: var(--spacing-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+  }
+  @media (max-width: 48rem) {
+    .header {
+      padding: var(--spacing-3);
+    }
   }
 }
 </style>

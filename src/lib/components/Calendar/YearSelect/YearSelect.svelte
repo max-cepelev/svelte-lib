@@ -41,39 +41,41 @@ let {
 </span>
 
 <style>
-.wrapper {
-  position: relative;
-  display: flex;
-  border-radius: var(--radius-medium);
-  border: 1px solid var(--colors-border);
-  box-shadow: var(--shadow-1);
-}
-.wrapper:has(:global(:focus-visible)) {
-  box-shadow: var(--shadow-3);
-}
-:global(.calendar-year-select) {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-}
-.visible-part {
-  display: flex;
-  height: var(--spacing-8);
-  align-items: center;
-  gap: var(--spacing-1);
-  border-radius: var(--radius-medium);
-  padding-left: var(--spacing-2);
-  padding-right: var(--spacing-1);
-  font-size: var(--fontSize-sm);
-  font-weight: var(--fontWeight-medium);
-  user-select: none;
-}
-.visible-part > :global(svg) {
-  color: var(--colors-text-secondary);
-  width: 0.875rem;
-  height: 0.875rem;
+@layer max-ts-svelte-components {
+  .wrapper {
+    position: relative;
+    display: flex;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--colors-border);
+    box-shadow: var(--shadow-1);
+  }
+  .wrapper:has(:global(:focus-visible)) {
+    box-shadow: var(--shadow-3);
+  }
+  :global(.calendar-year-select) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .visible-part {
+    display: flex;
+    height: var(--spacing-8);
+    align-items: center;
+    gap: var(--spacing-1);
+    border-radius: var(--radius-medium);
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-1);
+    font-size: var(--fontSize-sm);
+    font-weight: var(--fontWeight-medium);
+    user-select: none;
+  }
+  .visible-part > :global(svg) {
+    color: var(--colors-text-secondary);
+    width: 0.875rem;
+    height: 0.875rem;
+  }
 }
 </style>

@@ -20,9 +20,11 @@ let {
 </div>
 
 <style>
-.title {
-  font-size: var(--fontSize-lg);
-  font-weight: var(--fontWeight-medium);
-  letter-spacing: -0.025em;
+@layer max-ts-svelte-components {
+  .title {
+    font-size: var(--fontSize-lg);
+    font-weight: var(--fontWeight-medium);
+    letter-spacing: -0.025em;
+  }
 }
 </style>
