@@ -1,6 +1,15 @@
 <script lang="ts">
-import { Badge, Button, Card, Separator, Tabs } from './components';
+import { Badge, Button, Card, Select, Separator, Tabs } from './components';
 import './theme.css';
+
+const longSelectItems = [
+  {
+    value: 'long-label',
+    label: 'A selected option with a label wider than its trigger',
+  },
+];
+
+let longSelectValue = $state(['long-label']);
 </script>
 
 <Tabs.Root class="consumer-tabs" value="first">
@@ -16,6 +25,16 @@ import './theme.css';
 </Button>
 <Badge class="consumer-badge">Badge</Badge>
 <Separator data-testid="separator" />
+
+<Select.Root
+  type="multiple"
+  items={longSelectItems}
+  bind:value={longSelectValue}
+>
+  <Select.Trigger class="long-select-trigger" data-testid="long-select-trigger">
+    <Select.Value />
+  </Select.Trigger>
+</Select.Root>
 
 <Card.Root class="consumer-card">
   <Card.Content>Card</Card.Content>
@@ -39,5 +58,9 @@ import './theme.css';
 :global(.consumer-card) {
   display: grid;
   padding: 13px;
+}
+
+:global(.long-select-trigger) {
+  width: 160px;
 }
 </style>

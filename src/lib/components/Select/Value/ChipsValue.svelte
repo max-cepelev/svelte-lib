@@ -63,7 +63,8 @@ function updateVisibleCount() {
     nextVisibleCount += 1;
   }
 
-  visibleCount = nextVisibleCount;
+  visibleCount =
+    selection.selected.length > 0 ? Math.max(1, nextVisibleCount) : 0;
 }
 
 function handlePointerDown(event: PointerEvent) {
@@ -119,8 +120,13 @@ $effect(() => {
   </span>
 
   {#each visibleValues as selected (selected.value)}
-    <span class="chip" data-removable data-slot="select-value-chip">
-      <span class="label">{selected.label}</span>
+    <span
+      class:truncate={visibleCount === 1}
+      class="chip"
+      data-removable
+      data-slot="select-value-chip"
+    >
+      <span class="label" title={selected.label}>{selected.label}</span>
       <button
         aria-label={`Remove ${selected.label}`}
         class="remove"
@@ -185,6 +191,10 @@ $effect(() => {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .chip.truncate {
+    min-width: 0;
+    flex-shrink: 1;
   }
   .remove {
     display: inline-flex;

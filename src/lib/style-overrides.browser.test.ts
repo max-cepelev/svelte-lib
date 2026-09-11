@@ -49,4 +49,42 @@ describe('consumer class overrides', () => {
 		expect(styles.height).toBe('1px');
 		expect(styles.backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
 	});
+
+	it('truncates a single long chip instead of replacing it with +1', async () => {
+		const screen = await render(StyleOverrides);
+		const trigger = screen.getByTestId('long-select-trigger').element();
+
+		await expect
+			.poll(
+				() =>
+					trigger.querySelector('[data-slot="select-value-chip"]')?.textContent,
+			)
+			.toContain('A selected option');
+
+		const chips = trigger.querySelector<HTMLElement>(
+			'[data-slot="select-value-chips"]',
+		);
+		const chip = trigger.querySelector<HTMLElement>(
+			'[data-slot="select-value-chip"]',
+		);
+		const label = chip?.querySelector<HTMLElement>('.label');
+
+		if (!chips || !chip || !label) {
+			throw new Error('Expected the selected chip to be rendered');
+		}
+
+		const displayedChips = Array.from(
+			chips.querySelectorAll<HTMLElement>(
+				':scope > [data-slot="select-value-chip"]',
+			),
+		);
+
+		expect(displayedChips).toHaveLength(1);
+		expect(displayedChips[0]?.textContent).not.toContain('+1');
+		expect(chip.getBoundingClientRect().width).toBeLessThanOrEqual(
+			chips.getBoundingClientRect().width,
+		);
+		expect(label.scrollWidth).toBeGreaterThan(label.clientWidth);
+		expect(getComputedStyle(label).textOverflow).toBe('ellipsis');
+	});
 });

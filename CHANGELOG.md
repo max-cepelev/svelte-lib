@@ -1,5 +1,12 @@
 # @max-ts/svelte
 
+## 2.0.4
+
+### Patch Changes
+
+- Keep a single long value visible in a multiple Select by truncating its chip instead of replacing it with `+1`.
+- Keep long Select chip visible with truncation
+
 ## 2.0.3
 
 ### Patch Changes
