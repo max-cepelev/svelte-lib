@@ -1,5 +1,15 @@
 # @max-ts/svelte
 
+## 2.1.0
+
+### Minor Changes
+
+- Add a `clearable` option to `Select.Value` for clearing all values in a multiple Select, and rotate the Select trigger chevron while its content is open.
+
+### Patch Changes
+
+- Add clearable multiple Select values
+
 ## 2.0.4
 
 ### Patch Changes

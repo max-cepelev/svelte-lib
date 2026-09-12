@@ -32,8 +32,15 @@ let longSelectValue = $state(['long-label']);
   bind:value={longSelectValue}
 >
   <Select.Trigger class="long-select-trigger" data-testid="long-select-trigger">
-    <Select.Value />
+    <Select.Value clearable clearLabel="Clear all selected options" />
   </Select.Trigger>
+  <Select.Content>
+    {#each longSelectItems as item (item.value)}
+      <Select.Item value={item.value} label={item.label}>
+        {item.label}
+      </Select.Item>
+    {/each}
+  </Select.Content>
 </Select.Root>
 
 <Card.Root class="consumer-card">

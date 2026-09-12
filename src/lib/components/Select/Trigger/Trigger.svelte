@@ -22,34 +22,44 @@ const select = getSelectContext();
 </script>
 
 {#snippet multipleTrigger({ props }: TriggerChildProps)}
-  {@const { disabled, ...triggerProps } = props}
+  {@const { class: triggerClass, disabled, ...triggerProps } = props}
   <div
     {...triggerProps}
     aria-disabled={disabled ? 'true' : undefined}
     aria-expanded={triggerProps['aria-expanded'] === 'true'}
+    class={['trigger', triggerClass]}
     role="combobox"
     tabindex={disabled ? undefined : 0}
   >
     {@render children?.()}
-    <ChevronDownIcon class="select-trigger-chevron-icon" />
+    <span class="chevron" data-state={triggerProps['data-state']}>
+      <ChevronDownIcon size={16} />
+    </span>
   </div>
+{/snippet}
+
+{#snippet singleTrigger({ props }: TriggerChildProps)}
+  {@const { class: triggerClass, type = 'button', ...triggerProps } = props}
+  <button {...triggerProps} class={['trigger', triggerClass]} {type}>
+    {@render children?.()}
+    <span class="chevron" data-state={triggerProps['data-state']}>
+      <ChevronDownIcon size={16} />
+    </span>
+  </button>
 {/snippet}
 
 <SelectPrimitive.Trigger
   bind:ref
-  child={select.type === 'multiple' ? multipleTrigger : undefined}
+  child={select.type === 'multiple' ? multipleTrigger : singleTrigger}
   data-slot="select-trigger"
   data-size={size}
-  class={['trigger', className]}
+  class={className}
   {...restProps}
->
-  {@render children?.()}
-  <ChevronDownIcon class="select-trigger-chevron-icon" />
-</SelectPrimitive.Trigger>
+/>
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-trigger"].trigger) {
+  .trigger {
     display: flex;
     width: fit-content;
     align-items: center;
@@ -70,48 +80,40 @@ const select = getSelectContext();
     outline-offset: 2px;
     user-select: none;
   }
-  :global([data-slot="select-trigger"].trigger[data-placeholder]) {
+  .trigger[data-placeholder] {
     color: var(--colors-text-secondary);
   }
-  :global([data-slot="select-trigger"].trigger:focus-visible) {
+  .trigger:focus-visible {
     border-color: var(--colors-info);
     box-shadow: 0 0 0 3px var(--colors-info);
   }
-  :global([data-slot="select-trigger"].trigger[aria-invalid="true"]) {
+  .trigger[aria-invalid="true"] {
     box-shadow: 0 0 0 3px rgba(var(--colors-error), 0.2);
     border-color: var(--colors-error);
   }
-  :global([data-slot="select-trigger"].trigger[data-disabled]) {
+  .trigger[data-disabled] {
     cursor: not-allowed;
     opacity: 0.5;
   }
-  :global([data-slot="select-trigger"].trigger[data-size="default"]) {
+  .trigger[data-size="default"] {
     height: 2.25rem;
   }
-  :global([data-slot="select-trigger"].trigger[data-size="sm"]) {
+  .trigger[data-size="sm"] {
     height: 2rem;
   }
-  :global([data-slot="select-trigger"].trigger) :global(svg) {
-    pointer-events: none;
+  .chevron {
+    display: inline-flex;
+    width: var(--spacing-4);
+    height: var(--spacing-4);
     flex-shrink: 0;
-    width: var(--spacing-4);
-    height: var(--spacing-4);
-  }
-  :global([data-slot="select-trigger"].trigger)
-    > :global([data-slot="select-value"]) {
-    display: flex;
     align-items: center;
-    gap: var(--spacing-2);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-clamp: 1;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-  }
-  :global(.select-trigger-chevron-icon) {
-    width: var(--spacing-4);
-    height: var(--spacing-4);
+    justify-content: center;
     opacity: 0.5;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+  }
+  .chevron[data-state="open"] {
+    transform: rotate(180deg);
   }
 }
 </style>

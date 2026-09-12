@@ -53,7 +53,7 @@ const triggerContent = $derived(
       bind:value={multipleValue}
     >
       <Select.Trigger style="width: 100%;">
-        <Select.Value placeholder="Select fruits" />
+        <Select.Value clearable placeholder="Select fruits" />
       </Select.Trigger>
       <Select.Content>
         <Select.Group>

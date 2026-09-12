@@ -87,4 +87,50 @@ describe('consumer class overrides', () => {
 		expect(label.scrollWidth).toBeGreaterThan(label.clientWidth);
 		expect(getComputedStyle(label).textOverflow).toBe('ellipsis');
 	});
+
+	it('clears all values in a multiple Select without opening it', async () => {
+		const screen = await render(StyleOverrides);
+		const trigger = screen.getByTestId('long-select-trigger').element();
+		const clearButton = trigger.querySelector<HTMLButtonElement>(
+			'[data-slot="select-value-clear"]',
+		);
+
+		if (!clearButton) throw new Error('Expected a clear button to be rendered');
+
+		expect(clearButton.getAttribute('aria-label')).toBe(
+			'Clear all selected options',
+		);
+		clearButton.click();
+
+		await expect
+			.poll(
+				() =>
+					trigger.querySelectorAll(
+						'[data-slot="select-value-chip"][data-removable]',
+					).length,
+			)
+			.toBe(0);
+		expect(trigger.getAttribute('aria-expanded')).toBe('false');
+	});
+
+	it('rotates the Select trigger chevron while open', async () => {
+		const screen = await render(StyleOverrides);
+		const triggerLocator = screen.getByTestId('long-select-trigger');
+		const trigger = triggerLocator.element();
+		const chevron = trigger.querySelector<HTMLElement>('.chevron');
+
+		if (!chevron) throw new Error('Expected a trigger chevron to be rendered');
+
+		expect(trigger.getAttribute('data-state')).toBe('closed');
+		expect(chevron.getAttribute('data-state')).toBe('closed');
+		expect(getComputedStyle(chevron).transform).toBe('none');
+
+		await triggerLocator.click();
+
+		await expect.poll(() => trigger.getAttribute('data-state')).toBe('open');
+		expect(chevron.getAttribute('data-state')).toBe('open');
+		await expect
+			.poll(() => getComputedStyle(chevron).transform)
+			.not.toBe('none');
+	});
 });
