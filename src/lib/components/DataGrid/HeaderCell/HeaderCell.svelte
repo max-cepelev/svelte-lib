@@ -35,7 +35,7 @@ const widthValue = $derived(typeof width === 'number' ? `${width}px` : width);
     font-weight: var(--fontWeight-semibold);
     font-size: var(--fontSize-sm);
     overflow-wrap: break-word;
-    background-color: var(--colors-background-paper);
+    background-color: var(--colors-background-sidebar);
     border-bottom: 1px solid var(--colors-border);
   }
 }

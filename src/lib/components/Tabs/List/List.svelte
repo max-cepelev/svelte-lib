@@ -1,39 +1,81 @@
 <script lang="ts">
 import { Tabs as TabsPrimitive } from 'bits-ui';
 
+import { setTabsListContext } from '../context.svelte';
 import type { TabsListProps } from '../types';
+import { observeActiveTab } from './scrollActiveTab';
+
+type ListChildProps = Parameters<
+  NonNullable<TabsPrimitive.ListProps['child']>
+>[0];
 
 let {
   ref = $bindable(null),
+  variant = 'default',
   class: className,
   children,
   ...restProps
 }: TabsListProps = $props();
+
+setTabsListContext({
+  get variant() {
+    return variant;
+  },
+});
+
+$effect(() => {
+  if (ref) return observeActiveTab(ref);
+});
 </script>
+
+{#snippet list({ props }: ListChildProps)}
+  {@const { class: listClass, ...listProps } = props}
+  <div {...listProps} class={["list", listClass]}>
+    {@render children?.()}
+  </div>
+{/snippet}
 
 <TabsPrimitive.List
   bind:ref
+  child={list}
   data-slot="tabs-list"
-  class={["list", className]}
+  data-variant={variant}
+  class={className}
   {...restProps}
->
-  {@render children?.()}
-</TabsPrimitive.List>
+/>
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="tabs-list"].list) {
-    background-color: var(--colors-background-paper);
-    color: var(--colors-text-secondary);
+  .list {
     display: inline-flex;
-    height: var(--spacing-10);
     width: fit-content;
+    max-width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: safe center;
+    overflow-x: auto;
+    scrollbar-width: none;
     border-radius: var(--radius-medium);
-    box-shadow: var(--shadow-3);
     padding: var(--spacing-1);
-    gap: var(--spacing-1);
+    color: var(--colors-text-secondary);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &[data-variant="default"] {
+      background-color: var(--colors-background-element);
+    }
+    &[data-variant="line"] {
+      gap: var(--spacing-1);
+      border-radius: 0;
+      background-color: transparent;
+    }
+    &[data-orientation="horizontal"] {
+      height: var(--spacing-8);
+      gap: var(--spacing-1);
+    }
+    &[data-orientation="vertical"] {
+      height: fit-content;
+      flex-direction: column;
+    }
   }
 }
 </style>
