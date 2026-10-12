@@ -31,7 +31,7 @@ let {
     >
       <SliderPrimitive.Range data-slot="slider-range" class="range" />
     </span>
-    {#each thumbItems as thumb (thumb)}
+    {#each thumbItems as thumb (thumb.index)}
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
         index={thumb.index}
