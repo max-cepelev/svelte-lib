@@ -17,7 +17,7 @@ let {
   bind:this={ref}
   data-slot="field-legend"
   data-variant={variant}
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
   {@render children?.()}

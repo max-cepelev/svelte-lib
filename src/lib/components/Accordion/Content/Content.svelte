@@ -16,7 +16,7 @@ let {
   class="content"
   {...restProps}
 >
-  <div class={["inner", className]}>{@render children?.()}</div>
+  <div class={['inner', className]}>{@render children?.()}</div>
 </AccordionPrimitive.Content>
 
 <style>

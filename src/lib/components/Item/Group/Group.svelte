@@ -15,7 +15,7 @@ let {
   bind:this={ref}
   role="list"
   data-slot="item-group"
-  class={["group", className]}
+  class={['group', className]}
   {...restProps}
 >
   {@render children?.()}

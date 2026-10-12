@@ -17,7 +17,7 @@ let {
   bind:ref
   data-slot="dropdown-menu-sub-trigger"
   data-inset={inset}
-  class={["sub-trigger", className]}
+  class={['sub-trigger', className]}
   {...restProps}
 >
   {@render children?.()}

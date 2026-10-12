@@ -16,7 +16,11 @@ let {
   {cell}
   bind:ref
   data-slot={dataSlot}
-  class={["input-otp-slot", cell.isActive && "input-otp-slot-slot-active", className]}
+  class={[
+    'input-otp-slot',
+    cell.isActive && 'input-otp-slot-slot-active',
+    className,
+  ]}
   {...restProps}
 >
   {cell.char}

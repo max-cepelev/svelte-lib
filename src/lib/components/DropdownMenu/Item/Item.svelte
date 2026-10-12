@@ -18,7 +18,7 @@ let {
   data-slot="dropdown-menu-item"
   data-inset={inset}
   data-variant={variant}
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 />
 

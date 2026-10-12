@@ -52,7 +52,9 @@ const { Story } = defineMeta({
         </InputGroup.Button>
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
-            {#snippet child({ props })}
+            {#snippet child({
+              props,
+            })}
               <InputGroup.Button {...props} variant="ghost">
                 Auto
               </InputGroup.Button>

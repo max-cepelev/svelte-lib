@@ -131,7 +131,7 @@ $effect(() => () => store.destroy());
 
 <div
   bind:this={viewportElement}
-  class={["viewport", className]}
+  class={['viewport', className]}
   style:cursor={store.cursor}
   {...restProps}
 >

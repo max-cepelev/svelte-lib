@@ -14,7 +14,7 @@ let {
   bind:this={ref}
   data-slot="item-media"
   data-variant={variant}
-  class={["media", `variant-${variant}`, className]}
+  class={['media', `variant-${variant}`, className]}
   {...restProps}
 >
   {@render children?.()}

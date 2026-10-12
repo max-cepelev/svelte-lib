@@ -14,7 +14,7 @@ let {
 <SeparatorPrimitive.Root
   bind:ref
   data-slot={dataSlot}
-  class={["separator", className]}
+  class={['separator', className]}
   {...restProps}
 />
 

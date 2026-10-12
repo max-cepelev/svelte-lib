@@ -235,7 +235,8 @@ const handleValueChange = (newValue: number) => {
     <Label>Opacity Slider</Label>
     <SliderInput bind:value={opacity} min={0} max={100} unit="%" width={300} />
     <div
-      style="width: 200px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); opacity: {opacity / 100}; border-radius: 8px; transition: opacity 0.2s;"
+      style="width: 200px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); opacity: {opacity /
+        100}; border-radius: 8px; transition: opacity 0.2s;"
     ></div>
     <div style="font-size: 14px;">Opacity: {opacity}%</div>
   </div>

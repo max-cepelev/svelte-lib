@@ -10,7 +10,7 @@ let {
 
 <CalendarPrimitive.Header
   bind:ref
-  class={["calendar-header", className]}
+  class={['calendar-header', className]}
   {...restProps}
 />
 

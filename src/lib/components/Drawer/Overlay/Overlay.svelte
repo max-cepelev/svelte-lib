@@ -7,7 +7,7 @@ let { class: className, ...restProps }: DrawerOverlayProps = $props();
 
 <DialogPrimitive.Overlay
   data-slot="drawer-overlay"
-  class={["overlay", className]}
+  class={['overlay', className]}
   {...restProps}
 />
 

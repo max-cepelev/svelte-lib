@@ -21,7 +21,9 @@ let {
 const select = getSelectContext();
 </script>
 
-{#snippet multipleTrigger({ props }: TriggerChildProps)}
+{#snippet multipleTrigger({
+  props,
+}: TriggerChildProps)}
   {@const { class: triggerClass, disabled, ...triggerProps } = props}
   <div
     {...triggerProps}
@@ -38,7 +40,9 @@ const select = getSelectContext();
   </div>
 {/snippet}
 
-{#snippet singleTrigger({ props }: TriggerChildProps)}
+{#snippet singleTrigger({
+  props,
+}: TriggerChildProps)}
   {@const { class: triggerClass, type = 'button', ...triggerProps } = props}
   <button {...triggerProps} class={['trigger', triggerClass]} {type}>
     {@render children?.()}

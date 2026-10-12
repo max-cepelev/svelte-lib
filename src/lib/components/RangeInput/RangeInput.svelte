@@ -186,7 +186,7 @@ onDestroy(() => {
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
-  class={["container", className]}
+  class={['container', className]}
   data-active={isActive || undefined}
   data-size={size}
 >
@@ -229,7 +229,7 @@ onDestroy(() => {
   </Typography>
 
   <Slider
-    trackClass={"track"}
+    trackClass={'track'}
     class="slider"
     {min}
     {max}

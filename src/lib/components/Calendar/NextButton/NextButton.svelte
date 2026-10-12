@@ -20,7 +20,9 @@ let {
 {/snippet}
 
 <CalendarPrimitive.NextButton bind:ref class={className} {...restProps}>
-  {#snippet child({ props })}
+  {#snippet child({
+    props,
+  })}
     {#if customChild}
       {@render customChild({ props })}
     {:else}

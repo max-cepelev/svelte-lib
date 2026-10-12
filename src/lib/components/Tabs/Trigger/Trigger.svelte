@@ -18,12 +18,14 @@ let {
 const list = getTabsListContext();
 </script>
 
-{#snippet trigger({ props }: TriggerChildProps)}
+{#snippet trigger({
+  props,
+}: TriggerChildProps)}
   {@const { class: triggerClass, type = 'button', ...triggerProps } = props}
   <button
     {...triggerProps}
-    class={["trigger", triggerClass]}
-    data-variant={list?.variant ?? "default"}
+    class={['trigger', triggerClass]}
+    data-variant={list?.variant ?? 'default'}
     {type}
   >
     {@render children?.()}

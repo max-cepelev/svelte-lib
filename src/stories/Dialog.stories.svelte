@@ -12,7 +12,9 @@ const { Story } = defineMeta({
 <Story name="EditProfile" asChild>
   <Dialog.Root>
     <Dialog.Trigger>
-      {#snippet child({ props })}
+      {#snippet child({
+        props,
+      })}
         <Button {...props} variant="outline">Open Dialog</Button>
       {/snippet}
     </Dialog.Trigger>
@@ -35,7 +37,9 @@ const { Story } = defineMeta({
       </div>
       <Dialog.Footer>
         <Dialog.Close>
-          {#snippet child({ props })}
+          {#snippet child({
+            props,
+          })}
             <Button {...props} variant="outline">Cancel</Button>
           {/snippet}
         </Dialog.Close>
@@ -48,7 +52,9 @@ const { Story } = defineMeta({
 <Story name="ShareLink" asChild>
   <Dialog.Root>
     <Dialog.Trigger>
-      {#snippet child({ props })}
+      {#snippet child({
+        props,
+      })}
         <Button {...props} variant="outline">Share</Button>
       {/snippet}
     </Dialog.Trigger>
@@ -76,7 +82,9 @@ const { Story } = defineMeta({
       </div>
       <Dialog.Footer style="justify-content: flex-start;">
         <Dialog.Close>
-          {#snippet child({ props })}
+          {#snippet child({
+            props,
+          })}
             <Button {...props}>Close</Button>
           {/snippet}
         </Dialog.Close>

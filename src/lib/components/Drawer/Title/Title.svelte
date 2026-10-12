@@ -7,7 +7,7 @@ const { class: className, ...restProps }: DrawerTitleProps = $props();
 
 <DialogPrimitive.Title
   data-slot="drawer-title"
-  class={["title", className]}
+  class={['title', className]}
   {...restProps}
 />
 

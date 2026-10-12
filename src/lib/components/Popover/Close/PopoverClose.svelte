@@ -14,7 +14,7 @@ let {
 <PopoverPrimitive.Close
   bind:ref
   data-slot="popover-close"
-  class={["close", className]}
+  class={['close', className]}
   {...restProps}
 >
   {@render children?.()}

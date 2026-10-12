@@ -9,6 +9,6 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Example" args={{size: 30, color: 'primary'}} />
+<Story name="Example" args={{ size: 30, color: 'primary' }} />
 
-<Story name="Determinate" args={{variant: 'determinate', value:70 }} />
+<Story name="Determinate" args={{ variant: 'determinate', value: 70 }} />

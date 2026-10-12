@@ -12,8 +12,8 @@ const { Story } = defineMeta({
 <Story
   name="default"
   args={{
-  variant: 'body2'
-}}
+    variant: 'body2',
+  }}
 >
   Default Typography
 </Story>
@@ -22,11 +22,11 @@ const { Story } = defineMeta({
   name="H1"
   args={{
     variant: 'h1',
-	color: 'primary',
-	align: 'center',
-	weight: 'bold',
-	transform: 'capitalize',
-}}
+    color: 'primary',
+    align: 'center',
+    weight: 'bold',
+    transform: 'capitalize',
+  }}
 >
   Главный заголовок
 </Story>
@@ -34,8 +34,8 @@ const { Story } = defineMeta({
 <Story
   name="H2"
   args={{
-  variant: 'h2',
-}}
+    variant: 'h2',
+  }}
 >
   Второстепенный заголовок
 </Story>
@@ -43,9 +43,9 @@ const { Story } = defineMeta({
 <Story
   name="Overline"
   args={{
-  variant: 'overline',
-	weight: 'bold',
-}}
+    variant: 'overline',
+    weight: 'bold',
+  }}
 >
   Подпись
 </Story>
@@ -53,11 +53,11 @@ const { Story } = defineMeta({
 <Story
   name="Caption"
   args={{
-		variant: 'caption',
-		color: 'error',
-		display: 'inline',
-		decoration: 'underline'
-}}
+    variant: 'caption',
+    color: 'error',
+    display: 'inline',
+    decoration: 'underline',
+  }}
 >
   Подпись с ошибкой
 </Story>

@@ -15,12 +15,15 @@ let {
 <CheckboxPrimitive.Root
   bind:ref
   data-slot="checkbox"
-  class={["checkbox", className]}
+  class={['checkbox', className]}
   bind:checked
   bind:indeterminate
   {...restProps}
 >
-  {#snippet children({ checked, indeterminate })}
+  {#snippet children({
+    checked,
+    indeterminate,
+  })}
     {#if checked}
       <CheckIcon data-slot="checkbox-indicator" class="indicator" size={16} />
     {:else if indeterminate}

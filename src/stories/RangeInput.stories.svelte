@@ -33,7 +33,7 @@ const handleCommit = (value: RangeInputValue) => {
       width={300}
       onValueCommit={handleCommit}
     />
-    <Typography>{value.join(" ")}</Typography>
+    <Typography>{value.join(' ')}</Typography>
   </div>
 </Story>
 
@@ -47,6 +47,6 @@ const handleCommit = (value: RangeInputValue) => {
       step={0.5}
       width={300}
     />
-    <Typography>{decimalValue.join(" ")}</Typography>
+    <Typography>{decimalValue.join(' ')}</Typography>
   </div>
 </Story>

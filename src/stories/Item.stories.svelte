@@ -25,7 +25,9 @@ const { Story } = defineMeta({
       </Item.Actions>
     </Item.Root>
     <Item.Root variant="outline" size="small">
-      {#snippet child({ props })}
+      {#snippet child({
+        props,
+      })}
         <a href="#/" {...props}>
           <Item.Media> <BadgeCheckIcon size={16} /> </Item.Media>
           <Item.Content>

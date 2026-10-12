@@ -13,7 +13,7 @@ let {
 <fieldset
   bind:this={ref}
   data-slot="field-set"
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
   {@render children?.()}

@@ -142,7 +142,7 @@ onDestroy(clearInputTimer);
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
-  class={["container", className]}
+  class={['container', className]}
   data-active={isActive || undefined}
   data-size={size}
 >
@@ -169,7 +169,7 @@ onDestroy(clearInputTimer);
     {size}
     step={sliderSteps}
     class="slider"
-    trackClass={"track"}
+    trackClass={'track'}
     type="single"
     bind:value={innerValue}
     onValueCommit={handleSliderCommit}

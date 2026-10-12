@@ -10,7 +10,7 @@ let {
 
 <CalendarPrimitive.GridRow
   bind:ref
-  class={["calendar-grid-row", className]}
+  class={['calendar-grid-row', className]}
   {...restProps}
 />
 

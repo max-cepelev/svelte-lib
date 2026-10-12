@@ -18,7 +18,7 @@ let {
   <AccordionPrimitive.Trigger
     data-slot="accordion-trigger"
     bind:ref
-    class={["trigger", className]}
+    class={['trigger', className]}
     {...restProps}
   >
     {@render children?.()}

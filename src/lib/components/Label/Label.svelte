@@ -14,11 +14,7 @@ let {
 <Label.Root
   bind:ref
   data-slot="label"
-  class={[
-		"label",
-		{ 'required': required },
-		className
-	]}
+  class={['label', { required: required }, className]}
   {...restProps}
 />
 

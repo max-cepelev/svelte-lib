@@ -13,7 +13,7 @@ let {
 <div
   bind:this={ref}
   data-slot="empty-header"
-  class={["header", className]}
+  class={['header', className]}
   {...restProps}
 >
   {@render children?.()}

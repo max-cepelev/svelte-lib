@@ -17,9 +17,9 @@ const fileName =
 <Story
   name="Default"
   args={{
-		text: longText,
-		variant: 'body2',
-	}}
+    text: longText,
+    variant: 'body2',
+  }}
   asChild
 >
   <div style:width="260px">
@@ -61,10 +61,10 @@ const fileName =
       text={longText}
       variant="body2"
       tooltipProps={{
-				content: 'Кастомный текст tooltip',
-				placement: 'bottom',
-				arrow: true,
-			}}
+        content: 'Кастомный текст tooltip',
+        placement: 'bottom',
+        arrow: true,
+      }}
     />
   </div>
 </Story>

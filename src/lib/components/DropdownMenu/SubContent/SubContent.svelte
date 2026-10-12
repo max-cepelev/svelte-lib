@@ -11,7 +11,7 @@ let {
 <DropdownMenuPrimitive.SubContent
   bind:ref
   data-slot="dropdown-menu-sub-content"
-  class={["sub-content", className]}
+  class={['sub-content', className]}
   {...restProps}
 />
 

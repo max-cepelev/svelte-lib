@@ -12,13 +12,17 @@ let {
 }: WithoutChildrenOrChild<CalendarPrimitive.MonthSelectProps> = $props();
 </script>
 
-<span class={["wrapper", className]}>
+<span class={['wrapper', className]}>
   <CalendarPrimitive.MonthSelect
     bind:ref
     class="calendar-month-select"
     {...restProps}
   >
-    {#snippet child({ props, monthItems, selectedMonthItem })}
+    {#snippet child({
+      props,
+      monthItems,
+      selectedMonthItem,
+    })}
       <select {...props} {value} {onchange}>
         {#each monthItems as monthItem (monthItem.value)}
           <option

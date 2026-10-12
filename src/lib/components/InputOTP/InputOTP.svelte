@@ -16,7 +16,7 @@ let {
   bind:ref
   bind:value
   data-slot={dataSlot}
-  class={["input-otp-root", className]}
+  class={['input-otp-root', className]}
   {...restProps}
 />
 

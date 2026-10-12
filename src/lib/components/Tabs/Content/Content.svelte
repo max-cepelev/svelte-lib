@@ -14,9 +14,11 @@ let {
 }: TabsContentProps = $props();
 </script>
 
-{#snippet content({ props }: ContentChildProps)}
+{#snippet content({
+  props,
+}: ContentChildProps)}
   {@const { class: contentClass, ...contentProps } = props}
-  <div {...contentProps} class={["content", contentClass]}>
+  <div {...contentProps} class={['content', contentClass]}>
     {@render children?.()}
   </div>
 {/snippet}

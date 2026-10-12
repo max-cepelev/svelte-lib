@@ -16,7 +16,7 @@ let {
 <Loader
   role="status"
   aria-label="Loading"
-  class={["spinner", `spinner-size-${size}`, className]}
+  class={['spinner', `spinner-size-${size}`, className]}
   {...restProps}
 />
 

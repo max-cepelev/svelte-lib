@@ -28,9 +28,11 @@ $effect(() => {
 });
 </script>
 
-{#snippet list({ props }: ListChildProps)}
+{#snippet list({
+  props,
+}: ListChildProps)}
   {@const { class: listClass, ...listProps } = props}
-  <div {...listProps} class={["list", listClass]}>
+  <div {...listProps} class={['list', listClass]}>
     {@render children?.()}
   </div>
 {/snippet}

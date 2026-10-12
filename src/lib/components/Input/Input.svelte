@@ -13,11 +13,11 @@ let {
 }: InputProps = $props();
 </script>
 
-{#if type === "file"}
+{#if type === 'file'}
   <input
     bind:this={ref}
     data-slot={dataSlot}
-    class={["file-input", `size-${size}`, className]}
+    class={['file-input', `size-${size}`, className]}
     type="file"
     bind:files
     bind:value
@@ -27,7 +27,7 @@ let {
   <input
     bind:this={ref}
     data-slot={dataSlot}
-    class={["input", `size-${size}`, className]}
+    class={['input', `size-${size}`, className]}
     {type}
     bind:value
     {...restProps}

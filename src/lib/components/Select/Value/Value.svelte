@@ -46,7 +46,9 @@ function clearSelection(selection: MultipleSelection, event: MouseEvent) {
   {placeholder}
   {...restProps}
 >
-  {#snippet children(props: ValueSnippetProps)}
+  {#snippet children(
+    props: ValueSnippetProps,
+  )}
     {#if childrenProp}
       {@render childrenProp(props)}
     {:else if props.selection.type === 'multiple'}
@@ -58,7 +60,9 @@ function clearSelection(selection: MultipleSelection, event: MouseEvent) {
     {:else}
       {props.selection.selected?.label ?? props.placeholder}
     {/if}
-    {#if clearable && props.selection.type === 'multiple' && props.selection.selected.length > 0}
+    {#if clearable &&
+      props.selection.type === 'multiple' &&
+      props.selection.selected.length > 0}
       <button
         aria-label={clearLabel}
         class="clear"

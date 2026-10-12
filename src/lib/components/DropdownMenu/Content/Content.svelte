@@ -20,7 +20,7 @@ let {
     bind:ref
     data-slot="dropdown-menu-content"
     {sideOffset}
-    class={["content", className]}
+    class={['content', className]}
     {...restProps}
   />
 </Portal>

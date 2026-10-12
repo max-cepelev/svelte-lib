@@ -13,7 +13,7 @@ let {
 <div
   bind:this={ref}
   data-slot="alert-description"
-  class={["description", className]}
+  class={['description', className]}
   {...restProps}
 >
   {@render children?.()}

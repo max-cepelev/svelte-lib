@@ -29,11 +29,11 @@ setDescriptionContext({
 <svelte:element
   this={component}
   class={[
-		"wrapper",
-		`direction-${direction}`,
-		`justify-${justifyContent}`,
-		className,
-	]}
+    'wrapper',
+    `direction-${direction}`,
+    `justify-${justifyContent}`,
+    className,
+  ]}
 >
   {@render children?.()}
 </svelte:element>

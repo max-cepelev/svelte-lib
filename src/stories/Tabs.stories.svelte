@@ -14,7 +14,9 @@ const { Story } = defineMeta({
 });
 </script>
 
-{#snippet content(text: string)}
+{#snippet content(
+  text: string,
+)}
   <div
     style="width: 420px; min-height: 160px; padding: var(--spacing-4); border: 1px solid var(--colors-border); border-radius: var(--radius-medium);"
   >
@@ -34,7 +36,9 @@ const { Story } = defineMeta({
   </Tabs.Content>
 {/snippet}
 
-{#snippet tabList(variant: TabsVariant = 'default')}
+{#snippet tabList(
+  variant: TabsVariant = 'default',
+)}
   <Tabs.List {variant}>
     <Tabs.Trigger value="account">
       <UserIcon />

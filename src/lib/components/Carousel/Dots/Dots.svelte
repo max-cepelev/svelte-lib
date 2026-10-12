@@ -25,7 +25,7 @@ const onClick = (index: number) => {
       aria-label={`Go to slide ${index + 1}`}
       aria-current={index === carouselCtx.selectedIndex ? 'true' : undefined}
       data-selected={index === carouselCtx.selectedIndex}
-      class={"button"}
+      class={'button'}
       data-orientation={carouselCtx.orientation}
       onclick={() => onClick(index)}
     ></button>

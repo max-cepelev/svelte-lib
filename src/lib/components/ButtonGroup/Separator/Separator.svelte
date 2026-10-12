@@ -14,7 +14,7 @@ let {
   bind:ref
   data-slot="button-group-separator"
   {orientation}
-  class={["separator", className]}
+  class={['separator', className]}
   {...restProps}
 />
 

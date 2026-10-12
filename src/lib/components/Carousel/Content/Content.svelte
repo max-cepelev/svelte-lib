@@ -21,10 +21,7 @@ onMount(() => {
 <div
   bind:this={ref}
   data-slot="carousel-content"
-  class={[
-    "content",
-    className,
-  ]}
+  class={['content', className]}
   data-orientation={carouselCtx.orientation}
   {...restProps}
 >

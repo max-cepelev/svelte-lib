@@ -13,7 +13,7 @@ let {
 <SelectPrimitive.ScrollDownButton
   bind:ref
   data-slot="select-scroll-down-button"
-  class={["scroll-down-button", className]}
+  class={['scroll-down-button', className]}
   {...restProps}
 >
   <ChevronDownIcon size={16} />

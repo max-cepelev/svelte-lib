@@ -69,9 +69,13 @@ function handlePointerCancel(event: PointerEvent) {
   <Overlay />
   <DialogPrimitive.Content
     data-slot="drawer-content"
-    class={["content", {
-      'content-transition': !isDragging
-    }, className]}
+    class={[
+      'content',
+      {
+        'content-transition': !isDragging,
+      },
+      className,
+    ]}
     {style}
     {...restProps}
   >

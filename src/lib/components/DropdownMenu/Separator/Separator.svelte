@@ -11,7 +11,7 @@ let {
 <DropdownMenuPrimitive.Separator
   bind:ref
   data-slot="dropdown-menu-separator"
-  class={["separator", className]}
+  class={['separator', className]}
   {...restProps}
 />
 

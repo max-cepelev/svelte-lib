@@ -64,7 +64,8 @@ const { Story } = defineMeta({
     <ScalableContainer
       showToolbar={true}
       onScaleChanged={(scale) => console.log('Scale changed:', scale)}
-      onPositionChanged={(position) => console.log('Position changed:', position)}
+      onPositionChanged={(position) =>
+        console.log('Position changed:', position)}
     >
       <Card.Root style="width: 300px; padding: 24px;">
         <Typography variant="h3">With Callbacks</Typography>

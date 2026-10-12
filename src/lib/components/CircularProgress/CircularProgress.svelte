@@ -27,7 +27,7 @@ const sizeValue = $derived(`${size}px`);
   style:height={sizeValue}
   data-variant={variant}
   data-color={color}
-  class={["root", className]}
+  class={['root', className]}
 >
   <svg class="svg" {viewBox}>
     <title>Progress bar</title>

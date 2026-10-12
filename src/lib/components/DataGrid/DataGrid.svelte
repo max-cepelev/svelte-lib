@@ -39,18 +39,18 @@ const heightValue = $derived(
 <div
   data-slot="data-grid"
   style:height={heightValue}
-  class={["container", className]}
+  class={['container', className]}
 >
   <table
     class={[
-		"table",
-		{
-			'disabled': isDisabled,
-			'loading': isLoading,
-			'full-height': isFullHeight,
-		},
-		className
-	]}
+      'table',
+      {
+        disabled: isDisabled,
+        loading: isLoading,
+        'full-height': isFullHeight,
+      },
+      className,
+    ]}
   >
     {#if title}
       <caption class="title">

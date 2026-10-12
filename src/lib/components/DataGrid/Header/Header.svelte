@@ -11,8 +11,8 @@ let { columns, height, sticky }: HeaderProps<TRow> = $props();
 <thead>
   <tr
     class={{
-		'sticky': sticky
-	}}
+      sticky: sticky,
+    }}
   >
     {#each columns as column (column.title)}
       <HeaderCell {column} {height} width={column.width} />

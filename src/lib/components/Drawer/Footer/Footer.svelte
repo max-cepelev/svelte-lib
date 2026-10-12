@@ -12,7 +12,7 @@ let {
 <div
   bind:this={ref}
   data-slot="drawer-footer"
-  class={["footer", className]}
+  class={['footer', className]}
   {...restProps}
 >
   {@render children?.()}

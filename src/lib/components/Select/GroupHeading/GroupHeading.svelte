@@ -13,7 +13,7 @@ let {
 <SelectPrimitive.GroupHeading
   bind:ref
   data-slot="select-group-heading"
-  class={["group-heading", className]}
+  class={['group-heading', className]}
   {...restProps}
 >
   {@render children?.()}

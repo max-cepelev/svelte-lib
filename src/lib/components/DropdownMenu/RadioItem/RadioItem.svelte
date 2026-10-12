@@ -14,10 +14,12 @@ let {
 <DropdownMenuPrimitive.RadioItem
   bind:ref
   data-slot="dropdown-menu-radio-item"
-  class={["item", className]}
+  class={['item', className]}
   {...restProps}
 >
-  {#snippet children({ checked })}
+  {#snippet children({
+    checked,
+  })}
     <span class="indicator">
       {#if checked}
         <CircleIcon class="dropdown-menu-radio-item-icon" />

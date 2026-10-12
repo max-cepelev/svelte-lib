@@ -39,11 +39,7 @@ const handleClick = () => {
   <button
     type="button"
     onclick={handleClick}
-    class={[
-			"wrapper",
-			`align-${align}`,
-			className,
-		]}
+    class={['wrapper', `align-${align}`, className]}
   >
     {title}
     {#if sorting.key === field}

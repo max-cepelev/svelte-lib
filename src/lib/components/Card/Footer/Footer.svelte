@@ -13,7 +13,7 @@ let {
 <div
   bind:this={ref}
   data-slot="card-footer"
-  class={["footer", className]}
+  class={['footer', className]}
   {...restProps}
 >
   {@render children?.()}

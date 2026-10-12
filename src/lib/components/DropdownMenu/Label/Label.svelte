@@ -17,7 +17,7 @@ let {
   bind:this={ref}
   data-slot="dropdown-menu-label"
   data-inset={inset}
-  class={["label", className]}
+  class={['label', className]}
   {...restProps}
 >
   {@render children?.()}

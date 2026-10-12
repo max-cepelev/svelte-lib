@@ -17,9 +17,11 @@ let {
 }: TabsProps = $props();
 </script>
 
-{#snippet root({ props }: RootChildProps)}
+{#snippet root({
+  props,
+}: RootChildProps)}
   {@const { class: rootClass, ...rootProps } = props}
-  <div {...rootProps} class={["root", rootClass]}>
+  <div {...rootProps} class={['root', rootClass]}>
     {@render children?.()}
   </div>
 {/snippet}

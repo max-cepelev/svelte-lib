@@ -35,7 +35,7 @@ const singleErrorMessage = $derived(
     bind:this={ref}
     role="alert"
     data-slot="field-error"
-    class={["root", className]}
+    class={['root', className]}
     {...restProps}
   >
     {#if children}

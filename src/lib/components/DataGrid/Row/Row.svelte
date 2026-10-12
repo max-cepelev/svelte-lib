@@ -18,7 +18,7 @@ const handleSelect = () => {
 <tr
   onclick={handleSelect}
   onkeydown={handleSelect}
-  class={["row", { 'selectable': !!onRowClick }]}
+  class={['row', { selectable: !!onRowClick }]}
 >
   {#each columns as column, index (`${rowId}-${index}`)}
     <Cell {row} {rowIndex} {column} height={rowHeight} />

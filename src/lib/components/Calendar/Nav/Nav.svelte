@@ -10,7 +10,7 @@ let {
 }: WithElementRef<HTMLAttributes<HTMLElement>> = $props();
 </script>
 
-<nav {...restProps} bind:this={ref} class={["nav", className]}>
+<nav {...restProps} bind:this={ref} class={['nav', className]}>
   {@render children?.()}
 </nav>
 

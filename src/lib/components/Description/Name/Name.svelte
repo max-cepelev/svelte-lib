@@ -18,13 +18,7 @@ const direction = $derived(context.direction);
 const showSeparator = $derived(!leader && direction !== 'column');
 </script>
 
-<dt
-  class={[
-		"wrapper",
-		{ 'leader': leader },
-		className,
-	]}
->
+<dt class={['wrapper', { leader: leader }, className]}>
   <Typography {color} {variant} component="span">
     {@render children?.()}
   </Typography>

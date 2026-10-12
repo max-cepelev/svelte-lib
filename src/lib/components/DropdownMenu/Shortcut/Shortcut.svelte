@@ -13,7 +13,7 @@ let {
 <span
   bind:this={ref}
   data-slot="dropdown-menu-shortcut"
-  class={["shortcut", className]}
+  class={['shortcut', className]}
   {...restProps}
 >
   {@render children?.()}

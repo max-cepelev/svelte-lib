@@ -16,7 +16,7 @@ let {
   bind:ref
   data-slot="dropdown-menu-group-heading"
   data-inset={inset}
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 />
 

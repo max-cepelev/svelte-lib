@@ -53,7 +53,7 @@ $effect(() => () => store.destroy());
       data-slot="tooltip-content"
       data-state={store.open ? 'open' : 'closed'}
       data-side={store.placement}
-      class={["content", contentClass]}
+      class={['content', contentClass]}
       style:position="fixed"
       style:top="{store.y}px"
       style:left="{store.x}px"
@@ -69,7 +69,7 @@ $effect(() => () => store.destroy());
       {#if arrow}
         <!-- biome-ignore lint/a11y/noSvgWithoutTitle: decorative -->
         <svg
-          class={["arrow", arrowClass]}
+          class={['arrow', arrowClass]}
           data-side={store.placement}
           viewBox="0 0 7.68 4.35"
           xmlns="http://www.w3.org/2000/svg"

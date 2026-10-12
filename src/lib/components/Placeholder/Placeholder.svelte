@@ -21,7 +21,7 @@ let {
 }: PlaceholderProps = $props();
 </script>
 
-<div class={["wrapper",`size-${size}`, className]}>
+<div class={['wrapper', `size-${size}`, className]}>
   <div class="inner-container" style:max-width={MAX_INNER_WIDTH[size]}>
     {#if imgSrc}
       <Image

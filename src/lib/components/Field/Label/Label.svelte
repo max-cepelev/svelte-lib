@@ -13,7 +13,7 @@ let {
 <Label
   bind:ref
   data-slot="field-label"
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
   {@render children?.()}

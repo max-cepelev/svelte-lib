@@ -16,9 +16,12 @@ const widthValue = $derived(calculateSize(column.width));
   style:background-color={column.cellColor?.(row)}
   style:height={hightValue}
   style:width={widthValue}
-  class={["cell",{
-		'disabled': column.isDisabled
-	}]}
+  class={[
+    'cell',
+    {
+      disabled: column.isDisabled,
+    },
+  ]}
 >
   {#if column.cell}
     {@render column.cell(row, rowIndex)}

@@ -11,7 +11,7 @@ let {
 <Separator
   bind:ref
   data-slot="select-separator"
-  class={["separator", className]}
+  class={['separator', className]}
   {...restProps}
 />
 

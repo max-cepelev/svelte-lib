@@ -57,7 +57,9 @@ const { Story } = defineMeta({
         <Drawer.Footer>
           <Button>Submit</Button>
           <Drawer.Close>
-            {#snippet child({ props })}
+            {#snippet child({
+              props,
+            })}
               <Button {...props} variant="outline">Cancel</Button>
             {/snippet}
           </Drawer.Close>
@@ -95,7 +97,9 @@ const { Story } = defineMeta({
       </form>
       <Drawer.Footer>
         <Drawer.Close>
-          {#snippet child({ props })}
+          {#snippet child({
+            props,
+          })}
             <Button {...props} variant="outline">Cancel</Button>
           {/snippet}
         </Drawer.Close>

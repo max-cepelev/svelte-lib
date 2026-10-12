@@ -10,7 +10,7 @@ let {
 } = $props();
 </script>
 
-<footer class={["footer", className]}>{@render children()}</footer>
+<footer class={['footer', className]}>{@render children()}</footer>
 
 <style>
 @layer max-ts-svelte-components {

@@ -53,13 +53,16 @@ get along, so we shut typescript up by casting `value` to `never`.
   bind:placeholder
   {weekdayFormat}
   {disableDaysOutsideMonth}
-  class={["calendar", className]}
+  class={['calendar', className]}
   {locale}
   {monthFormat}
   {yearFormat}
   {...restProps}
 >
-  {#snippet children({ months, weekdays })}
+  {#snippet children({
+    months,
+    weekdays,
+  })}
     <Months>
       <Nav>
         <PrevButton variant={buttonVariant} />
@@ -95,9 +98,9 @@ get along, so we shut typescript up by casting `value` to `never`.
                     <Cell {date} month={month.value}>
                       {#if day}
                         {@render day({
-    						day: date,
-    						outsideMonth: !isEqualMonth(date, month.value),
-						})}
+                          day: date,
+                          outsideMonth: !isEqualMonth(date, month.value),
+                        })}
                       {:else}
                         <Day />
                       {/if}

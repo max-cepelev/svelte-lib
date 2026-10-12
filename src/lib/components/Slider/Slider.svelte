@@ -20,22 +20,24 @@ let {
   bind:value={value as never}
   data-slot="slider"
   {orientation}
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
-  {#snippet children({ thumbItems })}
+  {#snippet children({
+    thumbItems,
+  })}
     <span
       data-orientation={orientation}
       data-slot="slider-track"
-      class={["track", `track-size-${size}`, trackClass]}
+      class={['track', `track-size-${size}`, trackClass]}
     >
       <SliderPrimitive.Range data-slot="slider-range" class="range" />
     </span>
-    {#each thumbItems as thumb (thumb)}
+    {#each thumbItems as thumb (thumb.index)}
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
         index={thumb.index}
-        class={["thumb", `thumb-size-${size}`, thumbClass]}
+        class={['thumb', `thumb-size-${size}`, thumbClass]}
       />
     {/each}
   {/snippet}

@@ -21,7 +21,7 @@ let {
     data-slot="popover-content"
     {sideOffset}
     {align}
-    class={["content", className]}
+    class={['content', className]}
     {...restProps}
   >
     {@render children?.()}

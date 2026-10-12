@@ -20,7 +20,7 @@ const hasContent = $derived(!!children);
   bind:this={ref}
   data-slot="field-separator"
   data-content={hasContent}
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
   <Separator class="field-separator" />

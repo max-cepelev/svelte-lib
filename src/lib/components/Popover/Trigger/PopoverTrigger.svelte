@@ -14,7 +14,7 @@ let {
 <PopoverPrimitive.Trigger
   bind:ref
   data-slot="popover-trigger"
-  class={["trigger", className]}
+  class={['trigger', className]}
   {...restProps}
 >
   {@render children?.()}

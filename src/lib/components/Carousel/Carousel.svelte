@@ -54,7 +54,7 @@ $effect(() => {
   {...restProps}
   bind:this={ref}
   data-slot="carousel"
-  class={["carousel", className]}
+  class={['carousel', className]}
   role="region"
   aria-roledescription="carousel"
   onkeydowncapture={handleKeyDownCapture}

@@ -12,7 +12,7 @@ let {
 <img
   {...restProps}
   alt={altAttr}
-  class={["wrapper", `size-${size}`, className]}
+  class={['wrapper', `size-${size}`, className]}
 >
 
 <style>

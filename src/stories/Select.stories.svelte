@@ -34,7 +34,7 @@ const triggerContent = $derived(
           <Select.Item
             value={fruit.value}
             label={fruit.label}
-            disabled={fruit.value === "grapes"}
+            disabled={fruit.value === 'grapes'}
           >
             {fruit.label}
           </Select.Item>

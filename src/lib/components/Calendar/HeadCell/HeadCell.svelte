@@ -10,7 +10,7 @@ let {
 
 <CalendarPrimitive.HeadCell
   bind:ref
-  class={["calendar-head-cell", className]}
+  class={['calendar-head-cell', className]}
   {...restProps}
 />
 

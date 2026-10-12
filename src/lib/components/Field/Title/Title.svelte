@@ -13,7 +13,7 @@ let {
 <div
   bind:this={ref}
   data-slot="field-title"
-  class={["root", className]}
+  class={['root', className]}
   {...restProps}
 >
   {@render children?.()}

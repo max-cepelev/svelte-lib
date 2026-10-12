@@ -17,10 +17,13 @@ let {
   bind:ref
   {value}
   data-slot="select-item"
-  class={["item", className]}
+  class={['item', className]}
   {...restProps}
 >
-  {#snippet children({ selected, highlighted })}
+  {#snippet children({
+    selected,
+    highlighted,
+  })}
     <span class="check-span">
       {#if selected}
         <CheckIcon size={16} />

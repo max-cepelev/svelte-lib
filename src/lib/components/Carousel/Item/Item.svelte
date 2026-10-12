@@ -21,11 +21,7 @@ const carouselCtx = getCarouselContext('<Carousel.Item/>');
   data-align={carouselCtx.align}
   role="group"
   aria-roledescription="slide"
-  class={[
-    "item",
-    `align-${carouselCtx.align}`,
-    className,
-  ]}
+  class={['item', `align-${carouselCtx.align}`, className]}
   {...restProps}
 >
   {@render children?.()}

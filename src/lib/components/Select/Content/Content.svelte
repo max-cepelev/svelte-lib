@@ -25,7 +25,7 @@ let {
     {sideOffset}
     {preventScroll}
     data-slot="select-content"
-    class={["content", className]}
+    class={['content', className]}
     {...restProps}
   >
     <ScrollUpButton />

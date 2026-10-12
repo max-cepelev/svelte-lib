@@ -10,7 +10,7 @@ let {
 
 <CalendarPrimitive.Day
   bind:ref
-  class={["calendar-day", className]}
+  class={['calendar-day', className]}
   {...restProps}
 />
 

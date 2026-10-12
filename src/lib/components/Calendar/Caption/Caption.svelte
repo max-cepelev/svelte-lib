@@ -52,11 +52,11 @@ function formatMonth(date: DateValue) {
     {monthFormat}
     value={month.month}
     onchange={(e) => {
-			if (!placeholder) return;
-			const v = Number.parseInt(e.currentTarget.value, 10);
-			const newPlaceholder = placeholder.set({ month: v });
-			placeholder = newPlaceholder.subtract({ months: monthIndex });
-		}}
+      if (!placeholder) return;
+      const v = Number.parseInt(e.currentTarget.value, 10);
+      const newPlaceholder = placeholder.set({ month: v });
+      placeholder = newPlaceholder.subtract({ months: monthIndex });
+    }}
   />
 {/snippet}
 
@@ -64,15 +64,15 @@ function formatMonth(date: DateValue) {
   <YearSelect {years} {yearFormat} value={month.year} />
 {/snippet}
 
-{#if captionLayout === "dropdown"}
+{#if captionLayout === 'dropdown'}
   {@render monthSelect()}
   {@render yearSelect()}
-{:else if captionLayout === "dropdown-months"}
+{:else if captionLayout === 'dropdown-months'}
   {@render monthSelect()}
   {#if placeholder}
     {formatYear(placeholder)}
   {/if}
-{:else if captionLayout === "dropdown-years"}
+{:else if captionLayout === 'dropdown-years'}
   {#if placeholder}
     {formatMonth(placeholder)}
   {/if}

@@ -83,12 +83,12 @@ function handleKeyDown(event: KeyboardEvent) {
   onclick={canCopy ? handleCopy : undefined}
   onkeydown={canCopy ? handleKeyDown : undefined}
   class={[
-    "wrapper",
+    'wrapper',
     {
       'can-copy': canCopy,
-      'hide-personal-data': isHidePersonalData
+      'hide-personal-data': isHidePersonalData,
     },
-    className
+    className,
   ]}
 >
   {#if canCopy && copyPosition === 'left'}

@@ -13,7 +13,7 @@ let {
 <p
   bind:this={ref}
   data-slot="item-description"
-  class={["description", className]}
+  class={['description', className]}
   {...restProps}
 >
   {@render children?.()}
