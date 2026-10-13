@@ -10,15 +10,18 @@ let {
 
 <CalendarPrimitive.GridRow
   bind:ref
-  class={['calendar-grid-row', className]}
+  data-slot="calendar-grid-row"
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.calendar-grid-row) {
-    display: flex;
-    column-gap: var(--spacing-1);
+  :global {
+    [data-slot="calendar-grid-row"] {
+      display: flex;
+      column-gap: var(--spacing-1);
+    }
   }
 }
 </style>

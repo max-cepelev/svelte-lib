@@ -78,7 +78,8 @@ $effect(() => {
         {...restProps}
         bind:ref
         {align}
-        class="overflow-typography {className ?? ''}"
+        data-slot="overflow-typography"
+        class={className}
         component="span"
         display="block"
         {style}
@@ -100,7 +101,8 @@ $effect(() => {
       {...restProps}
       bind:ref
       {align}
-      class="overflow-typography {className ?? ''}"
+      data-slot="overflow-typography"
+      class={className}
       data-multiple-rows={store.hasMultipleRows || undefined}
       display="block"
       style={contentStyle}
@@ -118,19 +120,21 @@ $effect(() => {
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.overflow-typography) {
-    overflow: hidden;
-    max-width: 100%;
-    min-width: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  :global {
+    [data-slot="overflow-typography"] {
+      overflow: hidden;
+      max-width: 100%;
+      min-width: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-    &[data-multiple-rows] {
-      display: -webkit-box;
-      white-space: initial;
-      -webkit-box-orient: vertical;
-      line-clamp: var(--rows-count);
-      -webkit-line-clamp: var(--rows-count);
+      &[data-multiple-rows] {
+        display: -webkit-box;
+        white-space: initial;
+        -webkit-box-orient: vertical;
+        line-clamp: var(--rows-count);
+        -webkit-line-clamp: var(--rows-count);
+      }
     }
   }
   .wrapper {

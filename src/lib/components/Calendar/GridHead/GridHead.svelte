@@ -5,4 +5,8 @@ let { ref = $bindable(null), ...restProps }: CalendarPrimitive.GridHeadProps =
   $props();
 </script>
 
-<CalendarPrimitive.GridHead bind:ref {...restProps} />
+<CalendarPrimitive.GridHead
+  bind:ref
+  data-slot="calendar-grid-head"
+  {...restProps}
+/>

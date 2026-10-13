@@ -7,23 +7,25 @@ let { class: className, ...restProps }: DrawerOverlayProps = $props();
 
 <DialogPrimitive.Overlay
   data-slot="drawer-overlay"
-  class={['overlay', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="drawer-overlay"].overlay) {
-    position: fixed;
-    inset: 0;
-    background-color: rgb(15 23 42 / 0.5);
-    z-index: 50;
-  }
-  :global([data-slot="drawer-overlay"].overlay[data-state="open"]) {
-    animation: fade-in 150ms ease-out;
-  }
-  :global([data-slot="drawer-overlay"].overlay[data-state="closed"]) {
-    animation: fade-out 150ms ease-in;
+  :global {
+    [data-slot="drawer-overlay"] {
+      position: fixed;
+      inset: 0;
+      background-color: rgb(15 23 42 / 0.5);
+      z-index: 50;
+      &[data-state="open"] {
+        animation: fade-in 150ms ease-out;
+      }
+      &[data-state="closed"] {
+        animation: fade-out 150ms ease-in;
+      }
+    }
   }
   @keyframes fade-in {
     from {

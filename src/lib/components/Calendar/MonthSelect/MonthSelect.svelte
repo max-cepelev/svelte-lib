@@ -13,17 +13,13 @@ let {
 </script>
 
 <span class={['wrapper', className]}>
-  <CalendarPrimitive.MonthSelect
-    bind:ref
-    class="calendar-month-select"
-    {...restProps}
-  >
+  <CalendarPrimitive.MonthSelect bind:ref {...restProps}>
     {#snippet child({
       props,
       monthItems,
       selectedMonthItem,
     })}
-      <select {...props} {value} {onchange}>
+      <select {...props} class="calendar-month-select" {value} {onchange}>
         {#each monthItems as monthItem (monthItem.value)}
           <option
             value={monthItem.value}
@@ -53,10 +49,10 @@ let {
     border: 1px solid var(--colors-border);
     box-shadow: var(--shadow-1);
   }
-  .wrapper:has(:global(:focus-visible)) {
+  .wrapper:has(.calendar-month-select:focus-visible) {
     box-shadow: var(--shadow-3);
   }
-  :global(.calendar-month-select) {
+  .calendar-month-select {
     position: absolute;
     top: 0;
     right: 0;

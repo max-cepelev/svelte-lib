@@ -13,7 +13,7 @@ let {
 <SelectPrimitive.GroupHeading
   bind:ref
   data-slot="select-group-heading"
-  class={['group-heading', className]}
+  class={className}
   {...restProps}
 >
   {@render children?.()}
@@ -21,13 +21,15 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-group-heading"].group-heading) {
-    color: var(--colors-text-secondary);
-    padding-left: var(--spacing-2);
-    padding-right: var(--spacing-2);
-    padding-top: 0.375rem;
-    padding-bottom: 0.375rem;
-    font-size: var(--fontSize-xs);
+  :global {
+    [data-slot="select-group-heading"] {
+      color: var(--colors-text-secondary);
+      padding-left: var(--spacing-2);
+      padding-right: var(--spacing-2);
+      padding-top: 0.375rem;
+      padding-bottom: 0.375rem;
+      font-size: var(--fontSize-xs);
+    }
   }
 }
 </style>

@@ -53,7 +53,8 @@ get along, so we shut typescript up by casting `value` to `never`.
   bind:placeholder
   {weekdayFormat}
   {disableDaysOutsideMonth}
-  class={['calendar', className]}
+  data-slot="calendar"
+  class={className}
   {locale}
   {monthFormat}
   {yearFormat}
@@ -85,7 +86,7 @@ get along, so we shut typescript up by casting `value` to `never`.
           </Header>
           <Grid>
             <GridHead>
-              <GridRow class="calendar-grid-row-head">
+              <GridRow>
                 {#each weekdays as weekday (weekday)}
                   <HeadCell>{weekday.slice(0, 2)}</HeadCell>
                 {/each}
@@ -93,7 +94,7 @@ get along, so we shut typescript up by casting `value` to `never`.
             </GridHead>
             <GridBody>
               {#each month.weeks as weekDates (weekDates)}
-                <GridRow class="calendar-grid-row">
+                <GridRow>
                   {#each weekDates as date (date)}
                     <Cell {date} month={month.value}>
                       {#if day}
@@ -118,24 +119,24 @@ get along, so we shut typescript up by casting `value` to `never`.
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.calendar) {
-    --cell-size: var(--spacing-8);
-    width: max-content;
-    background-color: var(--colors-background-paper);
-    padding: var(--spacing-3);
-  }
-  :global([data-slot="card-content"]) :global(.calendar) {
-    background-color: transparent;
-  }
-  :global([data-slot="popover-content"]) :global(.calendar) {
-    background-color: transparent;
-  }
-  :global(.calendar-grid-row) {
-    margin-top: var(--spacing-2);
-    width: 100%;
-  }
-  :global(.calendar-grid-row-head) {
-    user-select: none;
+  :global {
+    [data-slot="calendar"] {
+      --cell-size: var(--spacing-8);
+      width: max-content;
+      background-color: var(--colors-background-paper);
+      padding: var(--spacing-3);
+      [data-slot="card-content"] &,
+      [data-slot="popover-content"] & {
+        background-color: transparent;
+      }
+    }
+    [data-slot="calendar-grid-row"] {
+      margin-top: var(--spacing-2);
+      width: 100%;
+      [data-slot="calendar-grid-head"] & {
+        user-select: none;
+      }
+    }
   }
 }
 </style>

@@ -7,30 +7,30 @@ let {
   class: className,
   ...restProps
 }: DialogOverlayProps = $props();
-
-const classNames = $derived(['overlay', className]);
 </script>
 
 <DialogPrimitive.Overlay
   bind:ref
   data-slot="dialog-overlay"
-  class={classNames}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="dialog-overlay"].overlay) {
-    position: fixed;
-    inset: 0;
-    background-color: rgb(15 23 42 / 0.5);
-    z-index: 50;
-  }
-  :global([data-slot="dialog-overlay"].overlay[data-state="open"]) {
-    animation: fade-in 150ms ease-out;
-  }
-  :global([data-slot="dialog-overlay"].overlay[data-state="closed"]) {
-    animation: fade-out 150ms ease-in;
+  :global {
+    [data-slot="dialog-overlay"] {
+      position: fixed;
+      inset: 0;
+      background-color: rgb(15 23 42 / 0.5);
+      z-index: 50;
+      &[data-state="open"] {
+        animation: fade-in 150ms ease-out;
+      }
+      &[data-state="closed"] {
+        animation: fade-out 150ms ease-in;
+      }
+    }
   }
   @keyframes fade-in {
     from {

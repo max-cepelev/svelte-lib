@@ -40,7 +40,8 @@ let {
   .variant-vertical {
     flex-direction: column;
   }
-  .variant-vertical > :global(*) {
+  /* Field.Label keeps its own fit-content width */
+  .variant-vertical > :global(:where(:not([data-slot="field-label"]))) {
     width: 100%;
   }
   .variant-horizontal {

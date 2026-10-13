@@ -34,51 +34,51 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="checkbox"]) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: var(--spacing-4);
-    height: var(--spacing-4);
-    flex-shrink: 0;
-    border-radius: var(--spacing-1);
-    border: 1px solid var(--colors-border);
-    background-color: transparent;
-    transition:
-      background-color 200ms,
-      border-color 200ms;
-    cursor: pointer;
-    outline: none;
-    color: var(--colors-foreground-primary);
-
-    &:focus-visible {
+  :global {
+    [data-slot="checkbox"] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: var(--spacing-4);
+      height: var(--spacing-4);
+      flex-shrink: 0;
+      border-radius: var(--spacing-1);
+      border: 1px solid var(--colors-border);
+      background-color: transparent;
+      transition:
+        background-color 200ms,
+        border-color 200ms;
+      cursor: pointer;
       outline: none;
-      border-color: var(--colors-primary);
-    }
+      color: var(--colors-foreground-primary);
 
-    &:hover {
-      border-color: var(--colors-primary);
-      box-shadow: var(--shadow-2);
-    }
+      &:focus-visible {
+        outline: none;
+        border-color: var(--colors-primary);
+      }
 
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+      &:hover {
+        border-color: var(--colors-primary);
+        box-shadow: var(--shadow-2);
+      }
 
-    &[data-state="checked"] {
-      background-color: var(--colors-primary);
-      border-color: var(--colors-primary);
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &[data-state="checked"] {
+        background-color: var(--colors-primary);
+        border-color: var(--colors-primary);
+      }
+      &[aria-invalid="true"] {
+        border-color: var(--colors-error);
+      }
     }
-    &[aria-invalid="true"] {
-      border-color: var(--colors-error);
+    [data-slot="checkbox-indicator"] {
+      color: currentColor;
     }
   }
-
-  :global([data-slot="checkbox-indicator"]) {
-    color: currentColor;
-  }
-
   @keyframes checked {
     0% {
       scale: 0;

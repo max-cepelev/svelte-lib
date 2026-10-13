@@ -14,7 +14,7 @@ let {
 <PopoverPrimitive.Trigger
   bind:ref
   data-slot="popover-trigger"
-  class={['trigger', className]}
+  class={className}
   {...restProps}
 >
   {@render children?.()}
@@ -22,8 +22,10 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="popover-trigger"].trigger) {
-    cursor: pointer;
+  :global {
+    [data-slot="popover-trigger"] {
+      cursor: pointer;
+    }
   }
 }
 </style>

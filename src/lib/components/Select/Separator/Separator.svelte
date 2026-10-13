@@ -11,20 +11,24 @@ let {
 <Separator
   bind:ref
   data-slot="select-separator"
-  class={['separator', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-separator"].separator) {
-    background-color: var(--colors-border);
-    pointer-events: none;
-    margin-left: calc(-1 * var(--spacing-1));
-    margin-right: calc(-1 * var(--spacing-1));
-    margin-top: var(--spacing-1);
-    margin-bottom: var(--spacing-1);
-    height: 1px;
+  :global {
+    [data-slot="select-separator"] {
+      background-color: var(--colors-border);
+      flex-shrink: 0;
+      pointer-events: none;
+      margin-left: calc(-1 * var(--spacing-1));
+      margin-right: calc(-1 * var(--spacing-1));
+      margin-top: var(--spacing-1);
+      margin-bottom: var(--spacing-1);
+      height: 1px;
+      width: 100%;
+    }
   }
 }
 </style>

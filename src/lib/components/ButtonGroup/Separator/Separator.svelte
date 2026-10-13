@@ -14,24 +14,28 @@ let {
   bind:ref
   data-slot="button-group-separator"
   {orientation}
-  class={['separator', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global(
-    [data-slot="button-group-separator"].separator[data-slot="button-group-separator"].separator
-  ) {
-    background-color: var(--colors-border);
-    position: relative;
-    margin: 0;
-    align-self: stretch;
-  }
-  :global(
-    [data-slot="button-group-separator"].separator[data-orientation="vertical"]
-  ) {
-    height: auto;
+  :global {
+    [data-slot="button-group-separator"] {
+      background-color: var(--colors-border);
+      position: relative;
+      flex-shrink: 0;
+      margin: 0;
+      align-self: stretch;
+      &[data-orientation="horizontal"] {
+        height: 1px;
+        width: 100%;
+      }
+      &[data-orientation="vertical"] {
+        height: auto;
+        width: 1px;
+      }
+    }
   }
 }
 </style>

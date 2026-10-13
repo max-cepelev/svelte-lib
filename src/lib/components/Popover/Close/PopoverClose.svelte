@@ -14,7 +14,7 @@ let {
 <PopoverPrimitive.Close
   bind:ref
   data-slot="popover-close"
-  class={['close', className]}
+  class={className}
   {...restProps}
 >
   {@render children?.()}
@@ -22,8 +22,10 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="popover-close"].close) {
-    cursor: pointer;
+  :global {
+    [data-slot="popover-close"] {
+      cursor: pointer;
+    }
   }
 }
 </style>

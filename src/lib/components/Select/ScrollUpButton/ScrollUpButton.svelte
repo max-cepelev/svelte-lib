@@ -13,25 +13,27 @@ let {
 <SelectPrimitive.ScrollUpButton
   bind:ref
   data-slot="select-scroll-up-button"
-  class={['scroll-up-button', className]}
+  class={className}
   {...restProps}
 >
-  <ChevronUpIcon class="select-scroll-up-button-icon" />
+  <ChevronUpIcon data-slot="select-scroll-up-button-icon" />
 </SelectPrimitive.ScrollUpButton>
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-scroll-up-button"].scroll-up-button) {
-    display: flex;
-    cursor: default;
-    align-items: center;
-    justify-content: center;
-    padding-top: var(--spacing-1);
-    padding-bottom: var(--spacing-1);
-  }
-  :global(.select-scroll-up-button-icon) {
-    width: var(--spacing-4);
-    height: var(--spacing-4);
+  :global {
+    [data-slot="select-scroll-up-button"] {
+      display: flex;
+      cursor: default;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--spacing-1);
+      padding-bottom: var(--spacing-1);
+    }
+    [data-slot="select-scroll-up-button-icon"] {
+      width: var(--spacing-4);
+      height: var(--spacing-4);
+    }
   }
 }
 </style>

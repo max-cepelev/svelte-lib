@@ -11,56 +11,46 @@ let {
 <DropdownMenuPrimitive.SubContent
   bind:ref
   data-slot="dropdown-menu-sub-content"
-  class={['sub-content', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="dropdown-menu-sub-content"].sub-content) {
-    background-color: var(--colors-background-paper);
-    color: var(--colors-text-primary);
-    z-index: 50;
-    min-width: 8rem;
-    overflow: hidden;
-    border-radius: var(--radius-medium);
-    border: 1px solid var(--colors-border);
-    padding: var(--spacing-1);
-    box-shadow: var(--shadow-3);
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-state="open"]
-  ) {
-    animation:
-      fade-in 0.2s ease-out,
-      zoom-in95 0.2s ease-out;
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-state="closed"]
-  ) {
-    animation:
-      fade-out 0.2s ease-in,
-      zoom-out95 0.2s ease-in;
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-side="bottom"]
-  ) {
-    animation: slide-in-from-top2 0.2s ease-out;
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-side="left"]
-  ) {
-    animation: slide-in-from-right2 0.2s ease-out;
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-side="right"]
-  ) {
-    animation: slide-in-from-left2 0.2s ease-out;
-  }
-  :global(
-    [data-slot="dropdown-menu-sub-content"].sub-content[data-side="top"]
-  ) {
-    animation: slide-in-from-bottom2 0.2s ease-out;
+  :global {
+    [data-slot="dropdown-menu-sub-content"] {
+      background-color: var(--colors-background-paper);
+      color: var(--colors-text-primary);
+      z-index: 50;
+      min-width: 8rem;
+      overflow: hidden;
+      border-radius: var(--radius-medium);
+      border: 1px solid var(--colors-border);
+      padding: var(--spacing-1);
+      box-shadow: var(--shadow-3);
+      &[data-state="open"] {
+        animation:
+          fade-in 0.2s ease-out,
+          zoom-in95 0.2s ease-out;
+      }
+      &[data-state="closed"] {
+        animation:
+          fade-out 0.2s ease-in,
+          zoom-out95 0.2s ease-in;
+      }
+      &[data-side="bottom"] {
+        animation: slide-in-from-top2 0.2s ease-out;
+      }
+      &[data-side="left"] {
+        animation: slide-in-from-right2 0.2s ease-out;
+      }
+      &[data-side="right"] {
+        animation: slide-in-from-left2 0.2s ease-out;
+      }
+      &[data-side="top"] {
+        animation: slide-in-from-bottom2 0.2s ease-out;
+      }
+    }
   }
   @keyframes fade-in {
     0% {

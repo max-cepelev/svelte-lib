@@ -42,7 +42,7 @@ function clearSelection(selection: MultipleSelection, event: MouseEvent) {
 <SelectPrimitive.Value
   bind:ref
   data-slot="select-value"
-  class={['value', className]}
+  class={className}
   {placeholder}
   {...restProps}
 >
@@ -82,15 +82,17 @@ function clearSelection(selection: MultipleSelection, event: MouseEvent) {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-value"].value) {
-    display: flex;
-    min-width: 0;
-    flex: 1;
-    align-items: center;
-    gap: var(--spacing-2);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  :global {
+    [data-slot="select-value"] {
+      display: flex;
+      min-width: 0;
+      flex: 1;
+      align-items: center;
+      gap: var(--spacing-2);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
   .clear {
     display: inline-flex;

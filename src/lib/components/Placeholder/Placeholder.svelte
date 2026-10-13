@@ -43,7 +43,7 @@ let {
 
     {#if description}
       <Typography
-        class="placeholder-description"
+        data-slot="placeholder-description"
         component="div"
         variant="body1"
       >
@@ -81,10 +81,12 @@ let {
   .inner-container {
     margin: 0 auto;
   }
-  :global(.placeholder-description) {
-    text-align: center;
-    display: block;
-    color: var(--colors-text-secondary);
+  :global {
+    [data-slot="placeholder-description"] {
+      text-align: center;
+      display: block;
+      color: var(--colors-text-secondary);
+    }
   }
   .footer {
     display: flex;

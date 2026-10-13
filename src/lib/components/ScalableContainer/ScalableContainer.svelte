@@ -136,7 +136,7 @@ $effect(() => () => store.destroy());
   {...restProps}
 >
   {#if showToolbar}
-    <ButtonGroup.Root orientation="vertical" class="scalable-container-toolbar">
+    <ButtonGroup.Root orientation="vertical">
       <Button
         onclick={store.zoomIn}
         size="iconSmall"
@@ -184,7 +184,7 @@ $effect(() => () => store.destroy());
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.scalable-container-toolbar) {
+  .viewport > :global([data-slot="button-group"]) {
     position: absolute;
     right: 4px;
     z-index: 1;
@@ -194,7 +194,7 @@ $effect(() => () => store.destroy());
     transform: translateY(-50%);
     transition: opacity 0.2s ease-in-out;
   }
-  :global(.scalable-container-toolbar:hover) {
+  .viewport > :global([data-slot="button-group"]:hover) {
     opacity: 1;
   }
   .viewport {

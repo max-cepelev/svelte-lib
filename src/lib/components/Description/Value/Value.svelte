@@ -61,14 +61,14 @@ function handleKeyDown(event: KeyboardEvent) {
   {#if copied}
     <Check
       size={16}
-      class="description-value-copy-icon"
+      data-slot="description-value-copy-icon"
       aria-label="Copy"
       data-position={copyPosition}
     />
   {:else}
     <Copy
       size={16}
-      class="description-value-copy-icon"
+      data-slot="description-value-copy-icon"
       aria-label="Copy"
       data-position={copyPosition}
     />
@@ -132,18 +132,20 @@ function handleKeyDown(event: KeyboardEvent) {
   .can-copy:hover {
     text-decoration: underline;
   }
-  :global(.description-value-copy-icon) {
-    color: var(--colors-text-secondary);
-    cursor: pointer;
-  }
-  :global(.description-value-copy-icon:hover) {
-    color: var(--colors-primary);
-  }
-  :global(.description-value-copy-icon[data-position="left"]) {
-    margin-right: var(--spacing-1);
-  }
-  :global(.description-value-copy-icon[data-position="right"]) {
-    margin-left: var(--spacing-1);
+  :global {
+    [data-slot="description-value-copy-icon"] {
+      color: var(--colors-text-secondary);
+      cursor: pointer;
+      &:hover {
+        color: var(--colors-primary);
+      }
+      &[data-position="left"] {
+        margin-right: var(--spacing-1);
+      }
+      &[data-position="right"] {
+        margin-left: var(--spacing-1);
+      }
+    }
   }
   .hide-personal-data {
     filter: blur(4px);

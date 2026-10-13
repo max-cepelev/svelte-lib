@@ -17,7 +17,7 @@ let {
   bind:ref
   {value}
   data-slot="select-item"
-  class={['item', className]}
+  class={className}
   {...restProps}
 >
   {#snippet children({
@@ -39,41 +39,43 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-item"].item) {
-    position: relative;
-    display: flex;
-    width: 100%;
-    cursor: default;
-    align-items: center;
-    gap: var(--spacing-2);
-    border-radius: var(--radius-small);
-    padding-top: 0.375rem;
-    padding-bottom: 0.375rem;
-    padding-left: var(--spacing-2);
-    padding-right: var(--spacing-8);
-    font-size: var(--fontSize-sm);
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    user-select: none;
-  }
-  :global([data-slot="select-item"].item[data-highlighted]) {
-    background-color: var(--colors-background-elementHover);
-    color: var(--colors-text-primary);
-  }
-  :global([data-slot="select-item"].item[data-disabled]) {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  :global([data-slot="select-item"].item) :global(svg) {
-    pointer-events: none;
-    flex-shrink: 0;
-    width: var(--spacing-4);
-    height: var(--spacing-4);
-  }
-  :global([data-slot="select-item"].item) > :global(span:last-child) {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
+  :global {
+    [data-slot="select-item"] {
+      position: relative;
+      display: flex;
+      width: 100%;
+      cursor: default;
+      align-items: center;
+      gap: var(--spacing-2);
+      border-radius: var(--radius-small);
+      padding-top: 0.375rem;
+      padding-bottom: 0.375rem;
+      padding-left: var(--spacing-2);
+      padding-right: var(--spacing-8);
+      font-size: var(--fontSize-sm);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      user-select: none;
+      &[data-highlighted] {
+        background-color: var(--colors-background-elementHover);
+        color: var(--colors-text-primary);
+      }
+      &[data-disabled] {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      & svg {
+        pointer-events: none;
+        flex-shrink: 0;
+        width: var(--spacing-4);
+        height: var(--spacing-4);
+      }
+      & > span:last-child {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2);
+      }
+    }
   }
   .check-span {
     position: absolute;

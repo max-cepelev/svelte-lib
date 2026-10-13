@@ -7,23 +7,23 @@ let {
   class: className,
   ...restProps
 }: DialogTitleProps = $props();
-
-const classNames = $derived(['title', className]);
 </script>
 
 <DialogPrimitive.Title
   bind:ref
   data-slot="dialog-title"
-  class={classNames}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="dialog-title"].title) {
-    font-size: var(--fontSize-lg);
-    font-weight: var(--fontWeight-semibold);
-    line-height: var(--lineHeight-snug);
+  :global {
+    [data-slot="dialog-title"] {
+      font-size: var(--fontSize-lg);
+      font-weight: var(--fontWeight-semibold);
+      line-height: var(--lineHeight-snug);
+    }
   }
 }
 </style>

@@ -191,7 +191,9 @@ onDestroy(() => {
   data-size={size}
 >
   <label for={minInputId}>
-    <Typography class="text" color="muted" variant="body2"> от </Typography>
+    <Typography data-slot="range-input-text" color="muted" variant="body2">
+      от
+    </Typography>
   </label>
 
   <input
@@ -208,7 +210,9 @@ onDestroy(() => {
   >
 
   <label for={maxInputId}>
-    <Typography class="text" color="muted" variant="body2"> до </Typography>
+    <Typography data-slot="range-input-text" color="muted" variant="body2">
+      до
+    </Typography>
   </label>
 
   <input
@@ -224,13 +228,11 @@ onDestroy(() => {
     onkeydown={handleKeyDown}
   >
 
-  <Typography class="text" color="muted" variant="body2">
+  <Typography data-slot="range-input-text" color="muted" variant="body2">
     {unit}
   </Typography>
 
   <Slider
-    trackClass={'track'}
-    class="slider"
     {min}
     {max}
     {size}
@@ -275,7 +277,7 @@ onDestroy(() => {
       font-size: var(--fontSize-lg);
     }
   }
-  .container :global(.text) {
+  .container :global([data-slot="range-input-text"]) {
     font-size: inherit;
   }
   .input {
@@ -294,12 +296,12 @@ onDestroy(() => {
   .input:focus {
     border: none;
   }
-  .container :global(.slider) {
+  .container :global([data-slot="slider"]) {
     bottom: -2px;
     left: 50%;
     transform: translateX(-50%);
   }
-  .container :global(.track.track) {
+  .container :global([data-slot="slider-track"]) {
     background-color: transparent;
   }
   @media (max-width: 600px) {

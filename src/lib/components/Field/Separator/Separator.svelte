@@ -23,7 +23,7 @@ const hasContent = $derived(!!children);
   class={['root', className]}
   {...restProps}
 >
-  <Separator class="field-separator" />
+  <Separator />
   {#if children}
     <span class="content" data-slot="field-separator-content">
       {@render children()}
@@ -42,7 +42,7 @@ const hasContent = $derived(!!children);
   :global([data-slot="field-group"][data-variant="outline"]) .root {
     margin-bottom: calc(-1 * var(--spacing-2));
   }
-  :global(.field-separator) {
+  .root > :global([data-slot="separator"]) {
     position: absolute;
     top: 50%;
     inset-inline: 0;

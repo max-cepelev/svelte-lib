@@ -13,7 +13,7 @@ let {
 <SelectPrimitive.ScrollDownButton
   bind:ref
   data-slot="select-scroll-down-button"
-  class={['scroll-down-button', className]}
+  class={className}
   {...restProps}
 >
   <ChevronDownIcon size={16} />
@@ -21,13 +21,15 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="select-scroll-down-button"].scroll-down-button) {
-    display: flex;
-    cursor: default;
-    align-items: center;
-    justify-content: center;
-    padding-top: var(--spacing-1);
-    padding-bottom: var(--spacing-1);
+  :global {
+    [data-slot="select-scroll-down-button"] {
+      display: flex;
+      cursor: default;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--spacing-1);
+      padding-bottom: var(--spacing-1);
+    }
   }
 }
 </style>

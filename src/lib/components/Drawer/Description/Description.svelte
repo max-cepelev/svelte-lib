@@ -7,15 +7,17 @@ const { class: className, ...restProps }: DrawerDescriptionProps = $props();
 
 <DialogPrimitive.Description
   data-slot="drawer-description"
-  class={['description', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="drawer-description"].description) {
-    font-size: var(--fontSize-sm);
-    color: var(--colors-text-secondary);
+  :global {
+    [data-slot="drawer-description"] {
+      font-size: var(--fontSize-sm);
+      color: var(--colors-text-secondary);
+    }
   }
 }
 </style>

@@ -69,13 +69,8 @@ function handlePointerCancel(event: PointerEvent) {
   <Overlay />
   <DialogPrimitive.Content
     data-slot="drawer-content"
-    class={[
-      'content',
-      {
-        'content-transition': !isDragging,
-      },
-      className,
-    ]}
+    data-dragging={isDragging || undefined}
+    class={className}
     {style}
     {...restProps}
   >
@@ -92,7 +87,7 @@ function handlePointerCancel(event: PointerEvent) {
     {/if}
     {@render children?.()}
     {#if !isNotCloseable && showCloseButton}
-      <DialogPrimitive.Close class="drawer-content-close-button">
+      <DialogPrimitive.Close data-slot="drawer-content-close" type="button">
         <XIcon />
         <span class="visually-hidden">Close drawer</span>
       </DialogPrimitive.Close>
@@ -102,53 +97,55 @@ function handlePointerCancel(event: PointerEvent) {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="drawer-content"].content) {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--colors-background-paper);
-    color: var(--colors-text-primary);
-    border: 1px solid var(--colors-border);
-    box-shadow: var(--shadow-4);
-    z-index: 51;
-    width: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    overscroll-behavior-y: contain;
-    inset: auto 0 0 0;
-    border-radius: var(--radius-large) var(--radius-large) 0 0;
-  }
-  :global([data-slot="drawer-content"].content[data-state="open"]) {
-    animation: slide-in 220ms ease-out;
-  }
-  :global([data-slot="drawer-content"].content[data-state="closed"]) {
-    transform: translateY(100%);
-  }
-  :global([data-slot="drawer-content"].content-transition) {
-    transition: transform 210ms ease-in-out;
-  }
-  :global(.drawer-content-close-button) {
-    position: absolute;
-    top: var(--spacing-2);
-    right: var(--spacing-2);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-    color: var(--colors-text-secondary);
-    padding: var(--spacing-1);
-    border-radius: var(--radius-small);
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-  }
-  :global(.drawer-content-close-button:hover) {
-    opacity: 1;
-  }
-  :global(.drawer-content-close-button:focus-visible) {
-    outline: 2px solid var(--colors-primary);
-    outline-offset: 2px;
+  :global {
+    [data-slot="drawer-content"] {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--colors-background-paper);
+      color: var(--colors-text-primary);
+      border: 1px solid var(--colors-border);
+      box-shadow: var(--shadow-4);
+      z-index: 51;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      overscroll-behavior-y: contain;
+      inset: auto 0 0 0;
+      border-radius: var(--radius-large) var(--radius-large) 0 0;
+      &:not([data-dragging]) {
+        transition: transform 210ms ease-in-out;
+      }
+      &[data-state="open"] {
+        animation: slide-in 220ms ease-out;
+      }
+      &[data-state="closed"] {
+        transform: translateY(100%);
+      }
+    }
+    [data-slot="drawer-content-close"] {
+      position: absolute;
+      top: var(--spacing-2);
+      right: var(--spacing-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      color: var(--colors-text-secondary);
+      padding: var(--spacing-1);
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+      &:hover {
+        opacity: 1;
+      }
+      &:focus-visible {
+        outline: 2px solid var(--colors-primary);
+        outline-offset: 2px;
+      }
+    }
   }
   .handle {
     width: 100%;

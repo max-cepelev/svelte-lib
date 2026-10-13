@@ -7,22 +7,22 @@ let {
   class: className,
   ...restProps
 }: DialogDescriptionProps = $props();
-
-const classNames = $derived(['description', className]);
 </script>
 
 <DialogPrimitive.Description
   bind:ref
   data-slot="dialog-description"
-  class={classNames}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="dialog-description"].description) {
-    color: var(--colors-text-secondary);
-    font-size: var(--fontSize-sm);
+  :global {
+    [data-slot="dialog-description"] {
+      color: var(--colors-text-secondary);
+      font-size: var(--fontSize-sm);
+    }
   }
 }
 </style>

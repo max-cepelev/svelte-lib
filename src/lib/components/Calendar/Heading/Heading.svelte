@@ -10,17 +10,20 @@ let {
 
 <CalendarPrimitive.Heading
   bind:ref
-  class={['calendar-heading', className]}
+  data-slot="calendar-heading"
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.calendar-heading) {
-    padding-left: var(--cell-size);
-    padding-right: var(--cell-size);
-    font-size: var(--fontSize-sm);
-    font-weight: var(--fontWeight-medium);
+  :global {
+    [data-slot="calendar-heading"] {
+      padding-left: var(--cell-size);
+      padding-right: var(--cell-size);
+      font-size: var(--fontSize-sm);
+      font-weight: var(--fontWeight-medium);
+    }
   }
 }
 </style>

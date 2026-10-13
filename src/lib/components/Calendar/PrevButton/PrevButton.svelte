@@ -41,8 +41,10 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([dir="rtl"] [data-slot="calendar-prev-button"]) {
-    transform: rotate(180deg);
+  :global {
+    [dir="rtl"] [data-slot="calendar-prev-button"] {
+      transform: rotate(180deg);
+    }
   }
 }
 </style>

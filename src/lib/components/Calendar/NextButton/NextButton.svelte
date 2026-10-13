@@ -41,11 +41,15 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="calendar-next-button"][disabled]) {
-    opacity: 0.5;
-  }
-  :global([dir="rtl"] [data-slot="calendar-next-button"]) {
-    transform: rotate(180deg);
+  :global {
+    [data-slot="calendar-next-button"] {
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+    [dir="rtl"] [data-slot="calendar-next-button"] {
+      transform: rotate(180deg);
+    }
   }
 }
 </style>

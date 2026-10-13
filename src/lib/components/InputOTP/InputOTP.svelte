@@ -22,16 +22,19 @@ let {
 
 <style>
 @layer max-ts-svelte-components {
-  :global(.input-otp-root) {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-  }
-  :global(.input-otp-root:has(input:disabled)) {
-    opacity: 0.5;
-  }
-  :global(.input-otp-root) :global(input:disabled) {
-    cursor: not-allowed;
+  /* PinInput.Root forwards only `class` to its container (other props go to the hidden input) */
+  :global {
+    .input-otp-root {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      &:has(input:disabled) {
+        opacity: 0.5;
+      }
+      & input:disabled {
+        cursor: not-allowed;
+      }
+    }
   }
 }
 </style>

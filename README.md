@@ -87,7 +87,7 @@ For CSS variable completion in Svelte files, add this workspace setting:
 
 ## Development
 
-Component styles use short local classes scoped by Svelte. Selectors crossing into Bits UI components or user snippets use targeted `:global(...)` selectors. CSS classes are implementation details; use component props and the theme variables for customization. The former class-map exports (`buttonVariants`, `badgeVariants`, `alertVariants`, `spinnerSizes`, `addonAlignVariants` and `inputGroupButtonSizes`) have been removed.
+Markup a component renders itself is styled with short local classes scoped by Svelte. Elements rendered by Bits UI or by another component are styled through their `data-slot` attribute (plus state attributes such as `data-state`, `data-variant` and `data-size`) inside a `:global { ... }` block. CSS classes are implementation details; use component props and the theme variables for customization. The former class-map exports (`buttonVariants`, `badgeVariants`, `alertVariants`, `spinnerSizes`, `addonAlignVariants` and `inputGroupButtonSizes`) have been removed.
 
 ```bash
 pnpm run storybook

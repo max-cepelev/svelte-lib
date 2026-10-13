@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.2.0
+
+### Minor Changes
+
+- Style foreign elements through data-slot attributes
+
 ## 2.1.1
 
 ### Patch Changes

@@ -7,16 +7,18 @@ const { class: className, ...restProps }: DrawerTitleProps = $props();
 
 <DialogPrimitive.Title
   data-slot="drawer-title"
-  class={['title', className]}
+  class={className}
   {...restProps}
 />
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="drawer-title"].title) {
-    font-size: var(--fontSize-lg);
-    font-weight: var(--fontWeight-semibold);
-    color: var(--colors-text-primary);
+  :global {
+    [data-slot="drawer-title"] {
+      font-size: var(--fontSize-lg);
+      font-weight: var(--fontWeight-semibold);
+      color: var(--colors-text-primary);
+    }
   }
 }
 </style>

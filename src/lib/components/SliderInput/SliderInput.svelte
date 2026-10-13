@@ -159,7 +159,7 @@ onDestroy(clearInputTimer);
     {name}
   >
 
-  <Typography class="text" color="muted" variant="caption">
+  <Typography data-slot="slider-input-unit" color="muted" variant="caption">
     {unit}
   </Typography>
 
@@ -168,8 +168,6 @@ onDestroy(clearInputTimer);
     {max}
     {size}
     step={sliderSteps}
-    class="slider"
-    trackClass={'track'}
     type="single"
     bind:value={innerValue}
     onValueCommit={handleSliderCommit}
@@ -209,7 +207,7 @@ onDestroy(clearInputTimer);
       font-size: var(--fontSize-lg);
     }
   }
-  .container :global(.text) {
+  .container :global([data-slot="slider-input-unit"]) {
     font-size: inherit;
   }
   .input {
@@ -227,7 +225,7 @@ onDestroy(clearInputTimer);
   .input:focus {
     border: none;
   }
-  .container :global(.slider) {
+  .container :global([data-slot="slider"]) {
     position: absolute;
     bottom: -2px;
     left: 50%;
@@ -235,7 +233,7 @@ onDestroy(clearInputTimer);
     width: calc(100% - var(--radius-large));
     border-radius: 9999px;
   }
-  .container :global(.track) {
+  .container :global([data-slot="slider-track"]) {
     background-color: transparent;
   }
   @media (max-width: 600px) {

@@ -20,49 +20,51 @@ let {
     bind:ref
     data-slot="dropdown-menu-content"
     {sideOffset}
-    class={['content', className]}
+    class={className}
     {...restProps}
   />
 </Portal>
 
 <style>
 @layer max-ts-svelte-components {
-  :global([data-slot="dropdown-menu-content"].content) {
-    z-index: 50;
-    background-color: var(--colors-background-paper);
-    color: var(--colors-text-primary);
-    max-height: var(--bits-dropdown-menu-content-available-height);
-    min-width: 8rem;
-    transform-origin: var(--bits-dropdown-menu-content-transform-origin);
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-radius: var(--radius-medium);
-    border: 1px solid var(--colors-border);
-    padding: var(--spacing-1);
-    box-shadow: var(--shadow-4);
-    outline: none;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-state="open"]) {
-    animation:
-      fade-in 150ms ease-out,
-      zoom-in95 150ms ease-out;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-state="closed"]) {
-    animation:
-      fade-out 150ms ease-in,
-      zoom-out95 150ms ease-in;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-side="bottom"]) {
-    animation: slide-from-top 150ms ease-out;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-side="top"]) {
-    animation: slide-from-bottom 150ms ease-out;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-side="left"]) {
-    animation: slide-from-end 150ms ease-out;
-  }
-  :global([data-slot="dropdown-menu-content"].content[data-side="right"]) {
-    animation: slide-from-start 150ms ease-out;
+  :global {
+    [data-slot="dropdown-menu-content"] {
+      z-index: 50;
+      background-color: var(--colors-background-paper);
+      color: var(--colors-text-primary);
+      max-height: var(--bits-dropdown-menu-content-available-height);
+      min-width: 8rem;
+      transform-origin: var(--bits-dropdown-menu-content-transform-origin);
+      overflow-x: hidden;
+      overflow-y: auto;
+      border-radius: var(--radius-medium);
+      border: 1px solid var(--colors-border);
+      padding: var(--spacing-1);
+      box-shadow: var(--shadow-4);
+      outline: none;
+      &[data-state="open"] {
+        animation:
+          fade-in 150ms ease-out,
+          zoom-in95 150ms ease-out;
+      }
+      &[data-state="closed"] {
+        animation:
+          fade-out 150ms ease-in,
+          zoom-out95 150ms ease-in;
+      }
+      &[data-side="bottom"] {
+        animation: slide-from-top 150ms ease-out;
+      }
+      &[data-side="top"] {
+        animation: slide-from-bottom 150ms ease-out;
+      }
+      &[data-side="left"] {
+        animation: slide-from-end 150ms ease-out;
+      }
+      &[data-side="right"] {
+        animation: slide-from-start 150ms ease-out;
+      }
+    }
   }
   @keyframes fade-in {
     from {
