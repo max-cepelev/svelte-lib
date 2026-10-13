@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.3.0
+
+### Minor Changes
+
+- Added FileUploader, Notification and ProgressBar
+
 ## 2.2.0
 
 ### Minor Changes

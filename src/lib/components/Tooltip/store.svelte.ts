@@ -71,17 +71,25 @@ export class TooltipStore {
 		if (!el) return;
 		this.triggerEl = el;
 
+		// Removing a focused trigger fires `focusout` synchronously while Svelte tears
+		// the block down, when state writes are forbidden, so hide on the next microtask.
+		const handleFocusOut = () => {
+			queueMicrotask(() => {
+				if (!el.contains(document.activeElement)) this.hide();
+			});
+		};
+
 		el.addEventListener('mouseenter', this.show);
 		el.addEventListener('mouseleave', this.hide);
 		el.addEventListener('focusin', this.show);
-		el.addEventListener('focusout', this.hide);
+		el.addEventListener('focusout', handleFocusOut);
 		el.setAttribute('aria-describedby', this.tooltipId);
 
 		return () => {
 			el.removeEventListener('mouseenter', this.show);
 			el.removeEventListener('mouseleave', this.hide);
 			el.removeEventListener('focusin', this.show);
-			el.removeEventListener('focusout', this.hide);
+			el.removeEventListener('focusout', handleFocusOut);
 			el.removeAttribute('aria-describedby');
 			this.triggerEl = undefined;
 		};

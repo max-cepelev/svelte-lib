@@ -1,4 +1,7 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
+import type {
+	HTMLAnchorAttributes,
+	HTMLButtonAttributes,
+} from 'svelte/elements';
 
 export type ButtonVariant =
 	| 'default'
@@ -9,12 +12,13 @@ export type ButtonVariant =
 
 export type ButtonSize = 'medium' | 'small' | 'large' | 'icon' | 'iconSmall';
 
-export type ButtonProps = HTMLButtonAttributes & {
-	variant?: ButtonVariant;
-	loading?: boolean;
-	fullWidth?: boolean;
-	size?: ButtonSize;
-	label?: string;
-	href?: string;
-	ref?: HTMLElement | null;
-};
+export type ButtonProps = HTMLButtonAttributes &
+	Pick<HTMLAnchorAttributes, 'download' | 'rel' | 'target'> & {
+		variant?: ButtonVariant;
+		loading?: boolean;
+		fullWidth?: boolean;
+		size?: ButtonSize;
+		label?: string;
+		href?: string;
+		ref?: HTMLElement | null;
+	};

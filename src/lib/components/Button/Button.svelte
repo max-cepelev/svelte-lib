@@ -1,4 +1,6 @@
 <script lang="ts">
+import type { HTMLAnchorAttributes } from 'svelte/elements';
+
 import type { ButtonProps } from './types';
 
 let {
@@ -35,6 +37,7 @@ const classNames = $derived([
     href={disabled ? undefined : href}
     aria-disabled={disabled}
     tabindex={disabled ? -1 : undefined}
+    {...restProps as HTMLAnchorAttributes}
   >
     {@render children?.()}
   </a>
