@@ -1,6 +1,6 @@
 import type { Tabs as TabsPrimitive } from 'bits-ui';
 
-export type TabsVariant = 'default' | 'line';
+export type TabsVariant = 'default' | 'line' | 'group';
 
 export type TabsProps = TabsPrimitive.RootProps;
 export type TabsListProps = TabsPrimitive.ListProps & {

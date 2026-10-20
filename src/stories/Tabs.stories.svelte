@@ -69,6 +69,13 @@ const { Story } = defineMeta({
   </Tabs.Root>
 </Story>
 
+<Story name="Group" asChild>
+  <Tabs.Root value="account">
+    {@render tabList('group')}
+    {@render tabContents()}
+  </Tabs.Root>
+</Story>
+
 <Story name="Vertical" asChild>
   <Tabs.Root value="account" orientation="vertical">
     {@render tabList()}
@@ -79,6 +86,13 @@ const { Story } = defineMeta({
 <Story name="Vertical Line" asChild>
   <Tabs.Root value="account" orientation="vertical">
     {@render tabList('line')}
+    {@render tabContents()}
+  </Tabs.Root>
+</Story>
+
+<Story name="Vertical Group" asChild>
+  <Tabs.Root value="account" orientation="vertical">
+    {@render tabList('group')}
     {@render tabContents()}
   </Tabs.Root>
 </Story>

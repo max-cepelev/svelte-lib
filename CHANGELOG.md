@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.3.1
+
+### Patch Changes
+
+- Add group variant to Tabs
+
 ## 2.3.0
 
 ### Minor Changes

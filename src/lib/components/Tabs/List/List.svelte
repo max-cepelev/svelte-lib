@@ -60,6 +60,11 @@ $effect(() => {
         height: fit-content;
         flex-direction: column;
       }
+      &[data-variant="group"] {
+        gap: 0;
+        padding: 0;
+        background-color: transparent;
+      }
     }
   }
 }
