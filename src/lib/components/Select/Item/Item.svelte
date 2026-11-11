@@ -20,10 +20,7 @@ let {
   class={className}
   {...restProps}
 >
-  {#snippet children({
-    selected,
-    highlighted,
-  })}
+  {#snippet children({ selected, highlighted })}
     <span class="check-span">
       {#if selected}
         <CheckIcon size={16} />

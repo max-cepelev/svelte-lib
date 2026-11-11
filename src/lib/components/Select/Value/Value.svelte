@@ -46,9 +46,7 @@ function clearSelection(selection: MultipleSelection, event: MouseEvent) {
   {placeholder}
   {...restProps}
 >
-  {#snippet children(
-    props: ValueSnippetProps,
-  )}
+  {#snippet children(props: ValueSnippetProps)}
     {#if childrenProp}
       {@render childrenProp(props)}
     {:else if props.selection.type === 'multiple'}

@@ -14,9 +14,7 @@ let value = $state('');
 
 <Story name="Default" asChild>
   <InputOTP.Root maxlength={6}>
-    {#snippet children(
-      _args,
-    )}
+    {#snippet children(_args)}
       <InputOTP.Group>
         {#each _args.cells.slice(0, 3) as cell, index (index)}
           <InputOTP.Slot {cell} />
@@ -34,9 +32,7 @@ let value = $state('');
 
 <Story name="Controlled" asChild>
   <InputOTP.Root maxlength={6} bind:value>
-    {#snippet children(
-      _args,
-    )}
+    {#snippet children(_args)}
       <InputOTP.Group>
         {#each _args.cells as cell, index (index)}
           <InputOTP.Slot {cell} />
@@ -48,9 +44,7 @@ let value = $state('');
 
 <Story name="Invalid" asChild>
   <InputOTP.Root maxlength={6} aria-invalid>
-    {#snippet children(
-      _args,
-    )}
+    {#snippet children(_args)}
       <InputOTP.Group>
         {#each _args.cells.slice(0, 3) as cell, index (index)}
           <InputOTP.Slot aria-invalid {cell} />
@@ -68,9 +62,7 @@ let value = $state('');
 
 <Story name="Pattern" asChild>
   <InputOTP.Root maxlength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
-    {#snippet children(
-      _args,
-    )}
+    {#snippet children(_args)}
       <InputOTP.Group>
         {#each _args.cells as cell, index (index)}
           <InputOTP.Slot {cell} />

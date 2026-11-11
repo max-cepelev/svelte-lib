@@ -20,10 +20,7 @@ let {
   bind:indeterminate
   {...restProps}
 >
-  {#snippet children({
-    checked,
-    indeterminate,
-  })}
+  {#snippet children({ checked, indeterminate })}
     {#if checked}
       <CheckIcon data-slot="checkbox-indicator" class="indicator" size={16} />
     {:else if indeterminate}

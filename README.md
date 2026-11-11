@@ -52,7 +52,7 @@ The theme preserves the original CSS custom property names, including `--colors-
   --radius-medium: 0.75rem;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --colors-background-paper: oklch(0.18 0.02 264);
   --colors-text-primary: oklch(0.95 0 0);
 }

@@ -13,11 +13,7 @@ let {
 
 <span class={['wrapper', className]}>
   <CalendarPrimitive.YearSelect bind:ref {...restProps}>
-    {#snippet child({
-      props,
-      yearItems,
-      selectedYearItem,
-    })}
+    {#snippet child({ props, yearItems, selectedYearItem })}
       <select {...props} class="calendar-year-select" {value}>
         {#each yearItems as yearItem (yearItem.value)}
           <option

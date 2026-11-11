@@ -3,24 +3,40 @@ allowBuilds:
 enableGlobalVirtualStore: false
 minimumReleaseAgeExclude:
   - verkit@0.1.0
-  - '@lucide/svelte@1.31.0 || 1.44.0'
-  - '@biomejs/biome@2.5.13'
-  - '@biomejs/cli-darwin-arm64@2.5.13'
-  - '@biomejs/cli-darwin-x64@2.5.13'
-  - '@biomejs/cli-linux-arm64-musl@2.5.13'
-  - '@biomejs/cli-linux-arm64@2.5.13'
-  - '@biomejs/cli-linux-x64-musl@2.5.13'
-  - '@biomejs/cli-linux-x64@2.5.13'
-  - '@biomejs/cli-win32-arm64@2.5.13'
-  - '@biomejs/cli-win32-x64@2.5.13'
+  - "@lucide/svelte@1.31.0 || 1.44.0"
+  - "@biomejs/biome@2.5.13"
+  - "@biomejs/cli-darwin-arm64@2.5.13"
+  - "@biomejs/cli-darwin-x64@2.5.13"
+  - "@biomejs/cli-linux-arm64-musl@2.5.13"
+  - "@biomejs/cli-linux-arm64@2.5.13"
+  - "@biomejs/cli-linux-x64-musl@2.5.13"
+  - "@biomejs/cli-linux-x64@2.5.13"
+  - "@biomejs/cli-win32-arm64@2.5.13"
+  - "@biomejs/cli-win32-x64@2.5.13"
   - bits-ui@2.19.2
-  - vite@8.3.0
-  - '@chromatic-com/storybook@5.5.0'
-  - '@vitest/browser-playwright@5.0.4'
-  - '@vitest/browser@5.0.4'
-  - '@vitest/mocker@5.0.4'
-  - '@vitest/pretty-format@5.0.4'
-  - '@vitest/spy@5.0.4'
-  - '@vitest/ui@5.0.4'
-  - '@vitest/utils@5.0.4'
+  - vite@8.3.0 || 8.3.7
+  - "@chromatic-com/storybook@5.5.0"
+  - "@vitest/browser-playwright@5.0.4"
+  - "@vitest/browser@5.0.4"
+  - "@vitest/mocker@5.0.4"
+  - "@vitest/pretty-format@5.0.4"
+  - "@vitest/spy@5.0.4"
+  - "@vitest/ui@5.0.4"
+  - "@vitest/utils@5.0.4"
   - vitest@5.0.4
+  - "@rolldown/binding-android-arm-eabi@1.2.18"
+  - "@rolldown/binding-android-arm64@1.2.18"
+  - "@rolldown/binding-darwin-arm64@1.2.18"
+  - "@rolldown/binding-darwin-x64@1.2.18"
+  - "@rolldown/binding-freebsd-x64@1.2.18"
+  - "@rolldown/binding-linux-arm-gnueabihf@1.2.18"
+  - "@rolldown/binding-linux-arm64-gnu@1.2.18"
+  - "@rolldown/binding-linux-arm64-musl@1.2.18"
+  - "@rolldown/binding-linux-ppc64-gnu@1.2.18"
+  - "@rolldown/binding-linux-s390x-gnu@1.2.18"
+  - "@rolldown/binding-linux-x64-gnu@1.2.18"
+  - "@rolldown/binding-linux-x64-musl@1.2.18"
+  - "@rolldown/binding-openharmony-arm64@1.2.18"
+  - "@rolldown/binding-win32-arm64-msvc@1.2.18"
+  - "@rolldown/binding-win32-x64-msvc@1.2.18"
+  - rolldown@1.2.18

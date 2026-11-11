@@ -23,9 +23,7 @@ let {
   class={className}
   {...restProps}
 >
-  {#snippet children({
-    thumbItems,
-  })}
+  {#snippet children({ thumbItems })}
     <span
       data-orientation={orientation}
       data-slot="slider-track"

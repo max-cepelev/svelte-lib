@@ -24,10 +24,7 @@ let {
   class={className}
   {...restProps}
 >
-  {#snippet children({
-    checked,
-    indeterminate,
-  })}
+  {#snippet children({ checked, indeterminate })}
     <span class="icon-wrapper">
       {#if indeterminate}
         <MinusIcon size={16} />

@@ -60,10 +60,7 @@ get along, so we shut typescript up by casting `value` to `never`.
   {yearFormat}
   {...restProps}
 >
-  {#snippet children({
-    months,
-    weekdays,
-  })}
+  {#snippet children({ months, weekdays })}
     <Months>
       <Nav>
         <PrevButton variant={buttonVariant} />

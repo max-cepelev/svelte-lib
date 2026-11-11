@@ -119,11 +119,11 @@ dist/
 
 ```css
 :root {
-	--colors-primary: oklch(0.27 0 0);
-	--colors-text-primary: oklch(0.21 0.03 265);
-	--spacing-2: 0.5rem;
-	--spacing-4: 1rem;
-	--radius-medium: 0.5rem;
+  --colors-primary: oklch(0.27 0 0);
+  --colors-text-primary: oklch(0.21 0.03 265);
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --radius-medium: 0.5rem;
 }
 ```
 
@@ -143,16 +143,16 @@ dist/
 
 ```css
 :root {
-	--colors-primary: oklch(0.55 0.2 260);
+  --colors-primary: oklch(0.55 0.2 260);
 }
 ```
 
 Или для отдельного поддерева:
 
 ```css
-[data-theme='dark'] {
-	--colors-primary: oklch(0.85 0.08 260);
-	--colors-text-primary: oklch(0.95 0 0);
+[data-theme="dark"] {
+  --colors-primary: oklch(0.85 0.08 260);
+  --colors-text-primary: oklch(0.95 0 0);
 }
 ```
 
@@ -178,20 +178,20 @@ Reset должен подключаться явно, поскольку пра�
 
 ```json
 {
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js",
-			"default": "./dist/index.js"
-		},
-		"./theme.css": "./dist/theme.css",
-		"./reset.css": "./dist/reset.css",
-		"./utils": {
-			"types": "./dist/utils.d.ts",
-			"default": "./dist/utils.js"
-		}
-	},
-	"sideEffects": ["**/*.css"]
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./reset.css": "./dist/reset.css",
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "default": "./dist/utils.js"
+    }
+  },
+  "sideEffects": ["**/*.css"]
 }
 ```
 
@@ -213,7 +213,7 @@ Svelte Language Server умеет читать CSS-файлы с глобаль�
 
 ```json
 {
-	"svelte.plugin.css.globals": "node_modules/@max-ts/svelte/dist/theme.css,src/app.css"
+  "svelte.plugin.css.globals": "node_modules/@max-ts/svelte/dist/theme.css,src/app.css"
 }
 ```
 
@@ -235,9 +235,9 @@ Svelte Language Server умеет читать CSS-файлы с глобаль�
 
 ```css
 @property --colors-primary {
-	syntax: '<color>';
-	inherits: true;
-	initial-value: black;
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
 }
 ```
 

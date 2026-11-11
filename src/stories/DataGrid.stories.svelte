@@ -196,9 +196,7 @@ const setSorting = (newSorting: DataGridSorting<(typeof rows)[0]>) => {
 };
 </script>
 
-{#snippet headerCell(
-  column: DataGridColumn<(typeof rows)[0]>,
-)}
+{#snippet headerCell(column: DataGridColumn<(typeof rows)[0]>)}
   <DataGridSortHeader {column} {sorting} {setSorting} />
 {/snippet}
 

@@ -14,11 +14,7 @@ let {
 
 <span class={['wrapper', className]}>
   <CalendarPrimitive.MonthSelect bind:ref {...restProps}>
-    {#snippet child({
-      props,
-      monthItems,
-      selectedMonthItem,
-    })}
+    {#snippet child({ props, monthItems, selectedMonthItem })}
       <select {...props} class="calendar-month-select" {value} {onchange}>
         {#each monthItems as monthItem (monthItem.value)}
           <option

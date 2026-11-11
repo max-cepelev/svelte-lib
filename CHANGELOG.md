@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.3.2
+
+### Patch Changes
+
+- update deps
+
 ## 2.3.1
 
 ### Patch Changes

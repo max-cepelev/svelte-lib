@@ -42,9 +42,7 @@ let label = $state('personal');
       <Button size="small" variant="outline">Snooze</Button>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          {#snippet child({
-            props,
-          })}
+          {#snippet child({ props })}
             <Button
               {...props}
               variant="outline"

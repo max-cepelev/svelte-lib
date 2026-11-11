@@ -17,9 +17,7 @@ let {
   class={className}
   {...restProps}
 >
-  {#snippet children({
-    checked,
-  })}
+  {#snippet children({ checked })}
     <span class="indicator">
       {#if checked}
         <CircleIcon data-slot="dropdown-menu-radio-item-indicator" />

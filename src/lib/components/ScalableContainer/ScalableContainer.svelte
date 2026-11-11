@@ -139,25 +139,25 @@ $effect(() => () => store.destroy());
     <ButtonGroup.Root orientation="vertical">
       <Button
         onclick={store.zoomIn}
-        size="iconSmall"
         title="Увеличить"
         variant="outline"
+        size="icon"
       >
         <ZoomIn />
       </Button>
       <Button
         onclick={store.zoomOut}
-        size="iconSmall"
         title="Уменьшить"
         variant="outline"
+        size="icon"
       >
         <ZoomOut />
       </Button>
       <Button
         onclick={store.reset}
-        size="iconSmall"
         title="Сбросить"
         variant="outline"
+        size="icon"
       >
         <RotateCcw />
       </Button>
@@ -184,25 +184,36 @@ $effect(() => () => store.destroy());
 
 <style>
 @layer max-ts-svelte-components {
-  .viewport > :global([data-slot="button-group"]) {
-    position: absolute;
-    right: 4px;
-    z-index: 1;
-    opacity: 0.5;
-    top: 50%;
-    bottom: unset;
-    transform: translateY(-50%);
-    transition: opacity 0.2s ease-in-out;
-  }
-  .viewport > :global([data-slot="button-group"]:hover) {
-    opacity: 1;
-  }
   .viewport {
     width: 100%;
     height: 100%;
     overflow: hidden;
     position: relative;
     touch-action: none;
+    & :global([data-slot="button-group"]) {
+      position: absolute;
+      right: var(--spacing-4);
+      bottom: var(--spacing-4);
+      z-index: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+
+      @media (max-width: 48rem) {
+        right: var(--spacing-2);
+        bottom: var(--spacing-2);
+      }
+    }
+    & :global([data-slot="button"]) {
+      color: var(--colors-text-secondary);
+
+      @media (max-width: 48rem) {
+        width: var(--spacing-8);
+        height: var(--spacing-8);
+      }
+    }
   }
   .content-wrapper {
     position: absolute;
@@ -218,7 +229,7 @@ $effect(() => () => store.destroy());
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: var(--colors-background-paper);
     padding: var(--spacing-2) var(--spacing-4);
     border-radius: var(--radius-small);
     font-size: var(--fontSize-sm);
