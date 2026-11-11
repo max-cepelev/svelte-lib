@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.3.3
+
+### Patch Changes
+
+- Update ScalableContainer toolbar icons
+
 ## 2.3.2
 
 ### Patch Changes

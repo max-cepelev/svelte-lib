@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RotateCcw, ZoomIn, ZoomOut } from '@lucide/svelte';
+import { RotateCcw, Plus, Minus } from '@lucide/svelte';
 import { on } from 'svelte/events';
 
 import type { ScalableContainerProps } from './types';
@@ -141,23 +141,23 @@ $effect(() => () => store.destroy());
         onclick={store.zoomIn}
         title="Увеличить"
         variant="outline"
-        size="icon"
+        size="iconSmall"
       >
-        <ZoomIn />
+        <Plus />
       </Button>
       <Button
         onclick={store.zoomOut}
         title="Уменьшить"
         variant="outline"
-        size="icon"
+        size="iconSmall"
       >
-        <ZoomOut />
+        <Minus />
       </Button>
       <Button
         onclick={store.reset}
         title="Сбросить"
         variant="outline"
-        size="icon"
+        size="iconSmall"
       >
         <RotateCcw />
       </Button>
@@ -209,9 +209,9 @@ $effect(() => () => store.destroy());
     & :global([data-slot="button"]) {
       color: var(--colors-text-secondary);
 
-      @media (max-width: 48rem) {
-        width: var(--spacing-8);
-        height: var(--spacing-8);
+      @media (min-width: 48rem) {
+        width: var(--spacing-9);
+        height: var(--spacing-9);
       }
     }
   }
