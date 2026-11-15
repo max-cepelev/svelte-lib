@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.4.0
+
+### Minor Changes
+
+- Add Tabs indicators and export ToggleGroup
+
 ## 2.3.3
 
 ### Patch Changes

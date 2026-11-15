@@ -222,6 +222,16 @@ export {
 } from './Tabs';
 
 export {
+	ToggleGroup,
+	type ToggleGroupOption,
+	type ToggleGroupProps,
+	type ToggleGroupSelection,
+	type ToggleGroupSize,
+	type ToggleGroupValue,
+	type ToggleGroupVariant,
+} from './ToggleGroup';
+
+export {
 	Tooltip,
 	type TooltipProps,
 } from './Tooltip';
