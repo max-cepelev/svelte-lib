@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.4.1
+
+### Patch Changes
+
+- Fix Tabs, ToggleGroup, and Tooltip behavior
+
 ## 2.4.0
 
 ### Minor Changes

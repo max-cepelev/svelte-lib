@@ -11,6 +11,30 @@ const options = [
 	{ value: 'month', label: 'Full month' },
 ];
 
+const overflowOptions = [
+	{ value: 'first', label: 'First choice' },
+	{ value: 'second', label: 'Second choice' },
+	{ value: 'third', label: 'Third choice' },
+	{ value: 'fourth', label: 'Fourth choice' },
+	{ value: 'fifth', label: 'Fifth choice' },
+];
+
+function visibleInside(list: Element, item: Element) {
+	const viewport = list.getBoundingClientRect();
+	const target = item.getBoundingClientRect();
+	const styles = getComputedStyle(list);
+	const leftInset = list.hasAttribute('data-overflow-start')
+		? Number.parseFloat(styles.scrollPaddingLeft)
+		: 0;
+	const rightInset = list.hasAttribute('data-overflow-end')
+		? Number.parseFloat(styles.scrollPaddingRight)
+		: 0;
+	return (
+		target.left >= viewport.left + leftInset - 1 &&
+		target.right <= viewport.right - rightInset + 1
+	);
+}
+
 describe('ToggleGroup', () => {
 	it.each([
 		{ size: 'small', height: 28 },
@@ -269,5 +293,225 @@ describe('ToggleGroup', () => {
 		);
 		expect(getComputedStyle(inactive).borderTopLeftRadius).toBe('8px');
 		expect(getComputedStyle(active).borderTopLeftRadius).toBe('0px');
+	});
+});
+
+describe('ToggleGroup overflow', () => {
+	it.each(['default', 'group'] as const)(
+		'reveals initial and externally selected options in the %s variant',
+		async (variant) => {
+			const onChange = vi.fn();
+			const screen = await render(ToggleGroup, {
+				options: overflowOptions,
+				value: 'fifth',
+				variant,
+				label: 'Choices',
+				style: 'width: 160px;',
+				onChange,
+			});
+			const list = screen.getByRole('group', { name: 'Choices' }).element();
+
+			await expect.poll(() => list.scrollLeft).toBeGreaterThan(0);
+			await expect
+				.poll(() =>
+					visibleInside(
+						list,
+						screen.getByRole('radio', { name: 'Fifth choice' }).element(),
+					),
+				)
+				.toBe(true);
+			await expect.element(list).toHaveAttribute('data-overflow-start');
+			await expect.element(list).not.toHaveAttribute('data-overflow-end');
+			expect(getComputedStyle(list).maskImage).not.toBe('none');
+
+			await screen.rerender({ value: 'third' });
+			await expect
+				.poll(() =>
+					visibleInside(
+						list,
+						screen.getByRole('radio', { name: 'Third choice' }).element(),
+					),
+				)
+				.toBe(true);
+			await screen.rerender({ value: 'first' });
+			await expect.poll(() => list.scrollLeft).toBe(0);
+			await expect.element(list).not.toHaveAttribute('data-overflow-start');
+			await expect.element(list).toHaveAttribute('data-overflow-end');
+			expect(onChange).not.toHaveBeenCalled();
+		},
+	);
+
+	it('updates fades after manual scrolling and removes them when everything fits', async () => {
+		const screen = await render(ToggleGroup, {
+			options: overflowOptions,
+			value: 'first',
+			label: 'Choices',
+			style: 'width: 160px;',
+		});
+		const list = screen.getByRole('group', { name: 'Choices' }).element();
+		await expect.element(list).toHaveAttribute('data-overflow-end');
+		await expect.element(list).not.toHaveAttribute('data-overflow-start');
+
+		list.scrollTo({ left: list.scrollWidth, behavior: 'instant' });
+		await expect.element(list).toHaveAttribute('data-overflow-start');
+		await expect.element(list).not.toHaveAttribute('data-overflow-end');
+		await expect
+			.element(screen.getByRole('radio', { name: 'First choice' }))
+			.toHaveAttribute('aria-checked', 'true');
+
+		await screen.rerender({ style: 'width: 1000px; max-width: none;' });
+		await expect.element(list).not.toHaveAttribute('data-overflow-start');
+		await expect.element(list).not.toHaveAttribute('data-overflow-end');
+		expect(getComputedStyle(list).maskImage).toBe('none');
+	});
+
+	it.each([false, true])(
+		'respects reduced motion when revealing selections (reduced=%s)',
+		async (reduced) => {
+			const screen = await render(ToggleGroup, {
+				options: overflowOptions,
+				value: 'first',
+				label: 'Choices',
+				style: 'width: 160px;',
+			});
+			const list = screen.getByRole('group', { name: 'Choices' }).element();
+			await expect.element(list).toHaveAttribute('data-overflow-end');
+
+			const originalMatchMedia = window.matchMedia.bind(window);
+			const media = vi
+				.spyOn(window, 'matchMedia')
+				.mockImplementation((query) => {
+					const result = originalMatchMedia(query);
+					if (query === '(prefers-reduced-motion: reduce)') {
+						Object.defineProperty(result, 'matches', { value: reduced });
+					}
+					return result;
+				});
+			const scroll = vi.spyOn(list, 'scrollBy');
+			try {
+				await screen.rerender({ value: 'fifth' });
+				await expect.poll(() => scroll.mock.calls.length).toBeGreaterThan(0);
+				expect(scroll).toHaveBeenCalledWith(
+					expect.objectContaining({ behavior: reduced ? 'instant' : 'smooth' }),
+				);
+				await expect
+					.poll(() =>
+						visibleInside(
+							list,
+							screen.getByRole('radio', { name: 'Fifth choice' }).element(),
+						),
+					)
+					.toBe(true);
+			} finally {
+				media.mockRestore();
+				scroll.mockRestore();
+			}
+		},
+	);
+
+	it.each(['default', 'group'] as const)(
+		'reveals newly selected multiple options without jumping on deselection in the %s variant',
+		async (variant) => {
+			const screen = await render(ToggleGroup, {
+				options: overflowOptions,
+				multiple: true,
+				value: ['first'],
+				variant,
+				label: 'Choices',
+				style: 'width: 160px;',
+			});
+			const list = screen.getByRole('group', { name: 'Choices' }).element();
+			await expect.element(list).toHaveAttribute('data-overflow-end');
+
+			await screen.rerender({ value: ['first', 'fifth'] });
+			await expect
+				.poll(() =>
+					Math.abs(list.scrollLeft - (list.scrollWidth - list.clientWidth)),
+				)
+				.toBeLessThanOrEqual(1);
+			await expect
+				.poll(() =>
+					visibleInside(
+						list,
+						screen.getByRole('button', { name: 'Fifth choice' }).element(),
+					),
+				)
+				.toBe(true);
+			const offset = list.scrollLeft;
+
+			await screen.rerender({ value: ['first'] });
+			await expect
+				.element(screen.getByRole('button', { name: 'Fifth choice' }))
+				.toHaveAttribute('aria-pressed', 'false');
+			await new Promise<void>((resolve) =>
+				requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+			);
+			expect(Math.abs(list.scrollLeft - offset)).toBeLessThanOrEqual(1);
+		},
+	);
+
+	it('reveals selections and fades the correct edges in RTL layouts', async () => {
+		const screen = await render(ToggleGroup, {
+			options: overflowOptions,
+			value: 'first',
+			label: 'Choices',
+			style: 'width: 160px; direction: rtl;',
+		});
+		const list = screen.getByRole('group', { name: 'Choices' }).element();
+		await expect.element(list).toHaveAttribute('data-overflow-start');
+		await expect.element(list).not.toHaveAttribute('data-overflow-end');
+
+		await screen.rerender({ value: 'fifth' });
+		await expect.poll(() => list.scrollLeft).toBeLessThan(0);
+		await expect
+			.poll(() =>
+				visibleInside(
+					list,
+					screen.getByRole('radio', { name: 'Fifth choice' }).element(),
+				),
+			)
+			.toBe(true);
+		await expect.element(list).not.toHaveAttribute('data-overflow-start');
+		await expect.element(list).toHaveAttribute('data-overflow-end');
+	});
+
+	it('supports constrained vertical groups', async () => {
+		const screen = await render(ToggleGroup, {
+			options: overflowOptions,
+			value: 'fifth',
+			orientation: 'vertical',
+			label: 'Choices',
+			style: 'max-height: 90px;',
+		});
+		const list = screen.getByRole('group', { name: 'Choices' }).element();
+		await expect.poll(() => list.scrollTop).toBeGreaterThan(0);
+		await expect.element(list).toHaveAttribute('data-overflow-start');
+		await expect.element(list).not.toHaveAttribute('data-overflow-end');
+		const viewport = list.getBoundingClientRect();
+		const selected = screen
+			.getByRole('radio', { name: 'Fifth choice' })
+			.element()
+			.getBoundingClientRect();
+		expect(selected.top).toBeGreaterThanOrEqual(viewport.top);
+		expect(selected.bottom).toBeLessThanOrEqual(viewport.bottom);
+	});
+
+	it('keeps the beginning of an oversized option readable', async () => {
+		const screen = await render(ToggleGroup, {
+			options: [
+				{
+					value: 'long',
+					label: 'A very long option that cannot fit on a narrow screen',
+				},
+				{ value: 'short', label: 'Short' },
+			],
+			value: 'long',
+			label: 'Choices',
+			style: 'width: 120px;',
+		});
+		const list = screen.getByRole('group', { name: 'Choices' }).element();
+		await expect.element(list).toHaveAttribute('data-overflow-end');
+		await expect.element(list).not.toHaveAttribute('data-overflow-start');
+		expect(list.scrollLeft).toBe(0);
 	});
 });

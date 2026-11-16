@@ -5,6 +5,7 @@
 import { ToggleGroup as ToggleGroupPrimitive } from 'bits-ui';
 import { observeActiveIndicator } from '../../observeActiveIndicator';
 import { Tooltip } from '../Tooltip';
+import { observeViewport } from './observeViewport';
 import type {
   ToggleGroupOption,
   ToggleGroupProps,
@@ -71,6 +72,10 @@ $effect(() => {
       cssVariablePrefix: '--toggle-group-indicator',
     });
   }
+});
+
+$effect(() => {
+  if (ref) return observeViewport(ref);
 });
 </script>
 
@@ -157,6 +162,7 @@ $effect(() => {
 <style>
 @layer max-ts-svelte-components {
   .container {
+    min-width: 0;
     max-width: 100%;
     font-family: inherit;
     font-size: inherit;
@@ -182,6 +188,9 @@ $effect(() => {
     --toggle-group-indicator-y: 0px;
     --toggle-group-indicator-width: 0px;
     --toggle-group-indicator-height: 0px;
+    --toggle-group-overflow-fade: var(--spacing-4);
+    --toggle-group-fade-start: 0px;
+    --toggle-group-fade-end: 0px;
     position: relative;
     isolation: isolate;
     display: inline-flex;
@@ -190,6 +199,7 @@ $effect(() => {
     align-items: stretch;
     gap: var(--spacing-1);
     overflow: auto;
+    scroll-padding: var(--toggle-group-overflow-fade);
     scrollbar-width: none;
     border-radius: var(--radius-medium);
     background-color: var(--colors-background-element);
@@ -213,6 +223,35 @@ $effect(() => {
     &:global([data-orientation="vertical"]) {
       flex-direction: column;
       width: fit-content;
+    }
+
+    &:global([data-overflow-start]) {
+      --toggle-group-fade-start: var(--toggle-group-overflow-fade);
+    }
+
+    &:global([data-overflow-end]) {
+      --toggle-group-fade-end: var(--toggle-group-overflow-fade);
+    }
+
+    &:global([data-overflow-start]),
+    &:global([data-overflow-end]) {
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 var(--toggle-group-fade-start),
+        #000 calc(100% - var(--toggle-group-fade-end)),
+        transparent
+      );
+
+      &:global([data-orientation="vertical"]) {
+        mask-image: linear-gradient(
+          to bottom,
+          transparent,
+          #000 var(--toggle-group-fade-start),
+          #000 calc(100% - var(--toggle-group-fade-end)),
+          transparent
+        );
+      }
     }
   }
 

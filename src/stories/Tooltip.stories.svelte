@@ -107,7 +107,7 @@ const gridItems = Array.from({ length: 30 }, (_, i) => i + 1);
       <Tooltip
         content={`Tooltip #${id}`}
         delayDuration={80}
-        placement="top"
+        placement="right-start"
         arrow
       >
         <Button variant="outline"> Item {id} </Button>

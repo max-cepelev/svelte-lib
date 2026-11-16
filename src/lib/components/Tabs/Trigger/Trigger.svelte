@@ -150,6 +150,11 @@ let {
           }
         }
       }
+      [data-slot="tabs-list"][data-variant="line"][data-indicator-ready]
+        &::after {
+        opacity: 0;
+        transition: none;
+      }
       & svg {
         width: var(--spacing-4);
         height: var(--spacing-4);

@@ -131,6 +131,30 @@ describe('Tabs', () => {
 		},
 	);
 
+	it.each(['horizontal', 'vertical'] as const)(
+		'keeps the %s line fallback until the moving indicator is ready',
+		async (orientation) => {
+			const screen = await render(TabsExample, {
+				variant: 'line',
+				orientation,
+			});
+			const list = screen.getByRole('tablist', { name: 'Settings' }).element();
+			const active = screen.getByRole('tab', { name: 'Account' }).element();
+			await expect
+				.element(list)
+				.toHaveAttribute('data-indicator-ready', 'true');
+
+			list.removeAttribute('data-indicator-ready');
+			await expect
+				.poll(() => getComputedStyle(active, '::after').opacity)
+				.toBe('1');
+
+			list.setAttribute('data-indicator-ready', 'true');
+			expect(getComputedStyle(active, '::after').opacity).toBe('0');
+			expect(getComputedStyle(active, '::after').transitionDuration).toBe('0s');
+		},
+	);
+
 	it.each(['default', 'line'] as const)(
 		'removes the %s indicator when switching to the group variant',
 		async (variant) => {

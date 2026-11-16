@@ -98,6 +98,9 @@ export class TooltipStore {
 	attachContent = (node: HTMLElement) => {
 		if (!this.triggerEl) return;
 
+		node.addEventListener('mouseenter', this.keepOpen);
+		node.addEventListener('mouseleave', this.hide);
+
 		this.cleanupAutoUpdate = autoUpdate(this.triggerEl, node, () => {
 			if (!this.triggerEl) return;
 
@@ -119,6 +122,8 @@ export class TooltipStore {
 		});
 
 		return () => {
+			node.removeEventListener('mouseenter', this.keepOpen);
+			node.removeEventListener('mouseleave', this.hide);
 			this.cleanupAutoUpdate?.();
 			this.cleanupAutoUpdate = undefined;
 		};

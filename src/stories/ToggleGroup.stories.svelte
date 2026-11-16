@@ -28,12 +28,18 @@ const periods: ToggleGroupOption<string>[] = [
   { value: 'month', label: 'Full month' },
 ];
 const sizes: ToggleGroupSize[] = ['small', 'medium', 'large'];
+const overflowOptions: ToggleGroupOption<string>[] = [
+  ...periods,
+  { value: 'quarter', label: 'Full quarter' },
+  { value: 'year', label: 'Full year' },
+];
 </script>
 
 <script lang="ts">
 let period = $state('week');
 let formats = $state<string[]>(['bold']);
 let alignment = $state('left');
+let overflowValue = $state('year');
 </script>
 
 {#snippet calendar()}
@@ -192,11 +198,28 @@ let alignment = $state('left');
 </Story>
 
 <Story name="Overflow" asChild>
+  <div style="display: grid; gap: var(--spacing-4); width: 200px;">
+    <ToggleGroup
+      label="Default"
+      options={overflowOptions}
+      bind:value={overflowValue}
+    />
+    <ToggleGroup
+      label="Group"
+      options={overflowOptions}
+      bind:value={overflowValue}
+      variant="group"
+    />
+  </div>
+</Story>
+
+<Story name="Multiple Overflow" asChild>
   <div style="width: 200px;">
     <ToggleGroup
-      aria-label="Period"
-      value="week"
-      options={[...periods, { value: 'year', label: 'Full year' }]}
+      label="Reporting periods"
+      options={overflowOptions}
+      multiple
+      value={['day', 'year']}
     />
   </div>
 </Story>
