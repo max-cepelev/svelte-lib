@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Label } from 'bits-ui';
-
 import type { LabelProps } from './types';
 
 let {

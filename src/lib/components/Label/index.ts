@@ -1,3 +1,2 @@
-import Label from './Label.svelte';
-
-export { Label };
+export { default as Label } from './Label.svelte';
+export * from './types';

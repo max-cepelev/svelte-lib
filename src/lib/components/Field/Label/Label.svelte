@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { ComponentProps } from 'svelte';
-import { Label } from '../../Label';
+import { Label, type LabelProps } from '../../Label';
 
 let {
   ref = $bindable(null),
   class: className,
   children,
   ...restProps
-}: ComponentProps<typeof Label> = $props();
+}: LabelProps = $props();
 </script>
 
 <Label bind:ref data-slot="field-label" class={className} {...restProps}>

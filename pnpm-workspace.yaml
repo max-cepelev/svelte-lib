@@ -40,3 +40,4 @@ minimumReleaseAgeExclude:
   - "@rolldown/binding-win32-arm64-msvc@1.2.18"
   - "@rolldown/binding-win32-x64-msvc@1.2.18"
   - rolldown@1.2.18
+  - svelte@5.59.1

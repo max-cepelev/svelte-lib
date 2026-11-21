@@ -8,6 +8,11 @@
   --colors-success: oklch(0.63 0.17 149);
   --colors-border: oklch(0.92 0 0);
   --colors-info: oklch(0.6 0.19 250);
+  --colors-background-primary: color-mix(
+    in oklch,
+    var(--colors-primary) 10%,
+    transparent
+  );
   --colors-background-tooltip: oklch(0.37 0 0);
   --colors-background-paper: #ffffff;
   --colors-background-element: oklch(0.97 0 265);

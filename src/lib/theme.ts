@@ -9,6 +9,7 @@ export const theme = {
 		info: 'var(--colors-info)',
 		background: {
 			tooltip: 'var(--colors-background-tooltip)',
+			primary: 'var(--colors-background-primary)',
 			paper: 'var(--colors-background-paper)',
 			element: 'var(--colors-background-element)',
 			elementHover: 'var(--colors-background-elementHover)',

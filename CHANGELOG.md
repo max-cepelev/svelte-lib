@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.4.2
+
+### Patch Changes
+
+- Update dependencies and Label exports
+
 ## 2.4.1
 
 ### Patch Changes
