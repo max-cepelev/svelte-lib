@@ -17,7 +17,7 @@ let { class: className, ...restProps }: DrawerOverlayProps = $props();
     [data-slot="drawer-overlay"] {
       position: fixed;
       inset: 0;
-      background-color: rgb(15 23 42 / 0.5);
+      background-color: var(--colors-background-overlay);
       z-index: 50;
       &[data-state="open"] {
         animation: fade-in 150ms ease-out;

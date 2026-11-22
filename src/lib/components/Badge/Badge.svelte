@@ -77,13 +77,13 @@ const classNames = $derived(['badge', className]);
     &[data-variant="secondary"][href]:hover {
       background-color: color-mix(
         in oklch,
-        var(--colors-secondary) 90%,
-        transparent
+        var(--colors-background-elementHover),
+        var(--colors-secondary) 20%
       );
     }
     &[data-variant="destructive"] {
       background-color: var(--colors-error);
-      color: var(--colors-foreground-primary);
+      color: var(--colors-foreground-error);
     }
     &[data-variant="outline"] {
       background-color: transparent;

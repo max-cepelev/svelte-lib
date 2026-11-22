@@ -78,9 +78,8 @@ const classNames = $derived([
       opacity: 0.6;
     }
     &:focus-visible {
-      outline: 2px solid transparent;
+      outline: 2px solid var(--colors-info);
       outline-offset: 2px;
-      box-shadow: var(--elevation-1);
     }
 
     &[data-variant="default"] {
@@ -97,7 +96,7 @@ const classNames = $derived([
 
     &[data-variant="destructive"] {
       background-color: var(--colors-error);
-      color: var(--colors-foreground-primary);
+      color: var(--colors-foreground-error);
       &:hover {
         background-color: color-mix(
           in oklch,

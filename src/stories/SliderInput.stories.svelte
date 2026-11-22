@@ -196,7 +196,7 @@ const handleValueChange = (newValue: number) => {
       unit="руб."
       width={350}
     />
-    <div style="font-size: 12px; color: #666;">
+    <div style="font-size: 12px; color: var(--colors-text-secondary);">
       Note: Adaptive step is automatically calculated for large ranges
     </div>
   </div>

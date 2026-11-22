@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.4.3
+
+### Patch Changes
+
+- Add dark theme support and semantic color tokens
+
 ## 2.4.2
 
 ### Patch Changes

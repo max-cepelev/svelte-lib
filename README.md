@@ -44,6 +44,12 @@ declared after `max-ts-svelte-components`.
 
 ## Theme contract
 
+`@max-ts/svelte/theme.css` includes light and dark palettes. Light is the default.
+Add `data-theme="dark"` to `<html>` to enable dark mode and remove it to return
+to light mode. Applications manage the theme selection. With the optional reset,
+the page background and text follow the palette. `NotificationContainer` follows
+the `<html>` theme by default and accepts an explicit `theme` prop.
+
 The theme preserves the original CSS custom property names, including `--colors-primary`, `--spacing-4` and `--fontSize-sm`. Override tokens globally or on a DOM subtree:
 
 ```css
@@ -53,8 +59,8 @@ The theme preserves the original CSS custom property names, including `--colors-
 }
 
 [data-theme="dark"] {
-  --colors-background-paper: oklch(0.18 0.02 264);
-  --colors-text-primary: oklch(0.95 0 0);
+  --colors-primary: oklch(0.8 0.11 260);
+  --colors-foreground-primary: oklch(0.2 0.02 260);
 }
 ```
 
@@ -86,6 +92,9 @@ For CSS variable completion in Svelte files, add this workspace setting:
 ```
 
 ## Development
+
+Use the **Theme** menu in the Storybook toolbar to preview components in both
+palettes.
 
 Markup a component renders itself is styled with short local classes scoped by Svelte. Elements rendered by Bits UI or by another component are styled through their `data-slot` attribute (plus state attributes such as `data-state`, `data-variant` and `data-size`) inside a `:global { ... }` block. CSS classes are implementation details; use component props and the theme variables for customization. The former class-map exports (`buttonVariants`, `badgeVariants`, `alertVariants`, `spinnerSizes`, `addonAlignVariants` and `inputGroupButtonSizes`) have been removed.
 

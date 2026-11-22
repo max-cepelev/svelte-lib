@@ -70,9 +70,10 @@ let {
   }
   .input[aria-invalid="true"] {
     border-color: var(--colors-error);
-    box-shadow: 0 0 0 3px var(--colors-error) 20;
+    box-shadow: 0 0 0 3px
+      color-mix(in oklch, var(--colors-error) 20%, transparent);
   }
-  .input:hover:not(:disabled) {
+  .input:hover:not(:disabled, [aria-invalid="true"]) {
     border-color: var(--colors-primary);
   }
   .input::selection {
@@ -111,7 +112,7 @@ let {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-1);
   }
   .file-input::selection {
     background-color: var(--colors-primary);
@@ -120,7 +121,8 @@ let {
   .file-input:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px var(--colors-primary) 20;
+    box-shadow: 0 0 0 3px
+      color-mix(in oklch, var(--colors-primary) 20%, transparent);
     border-color: var(--colors-primary);
   }
   .file-input:disabled {
@@ -132,7 +134,8 @@ let {
   }
   .file-input[aria-invalid="true"] {
     border-color: var(--colors-error);
-    box-shadow: 0 0 0 3px var(--colors-error) 20;
+    box-shadow: 0 0 0 3px
+      color-mix(in oklch, var(--colors-error) 20%, transparent);
   }
   .file-input::-webkit-file-upload-button {
     cursor: pointer;

@@ -9,8 +9,27 @@ import { Toaster } from 'svelte-sonner';
 import { NOTIFICATION_POSITIONS } from '../constants';
 import type { NotificationContainerProps } from './types';
 
-let { position = 'bottomRight', ...restProps }: NotificationContainerProps =
-  $props();
+let {
+  position = 'bottomRight',
+  theme,
+  ...restProps
+}: NotificationContainerProps = $props();
+
+let documentTheme = $state<'light' | 'dark'>('light');
+
+$effect(() => {
+  if (theme !== undefined) return;
+
+  const root = document.documentElement;
+  const updateTheme = () => {
+    documentTheme = root.dataset.theme === 'dark' ? 'dark' : 'light';
+  };
+
+  updateTheme();
+  const observer = new MutationObserver(updateTheme);
+  observer.observe(root, { attributeFilter: ['data-theme'] });
+  return () => observer.disconnect();
+});
 </script>
 
 {#snippet errorIcon()}
@@ -33,6 +52,7 @@ let { position = 'bottomRight', ...restProps }: NotificationContainerProps =
   {warningIcon}
   {infoIcon}
   position={NOTIFICATION_POSITIONS[position]}
+  theme={theme ?? documentTheme}
   {...restProps}
 />
 

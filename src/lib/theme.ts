@@ -14,10 +14,14 @@ export const theme = {
 			element: 'var(--colors-background-element)',
 			elementHover: 'var(--colors-background-elementHover)',
 			sidebar: 'var(--colors-background-sidebar)',
+			overlay: 'var(--colors-background-overlay)',
 		},
 		foreground: {
 			primary: 'var(--colors-foreground-primary)',
 			secondary: 'var(--colors-foreground-secondary)',
+			error: 'var(--colors-foreground-error)',
+			tooltip: 'var(--colors-foreground-tooltip)',
+			overlay: 'var(--colors-foreground-overlay)',
 		},
 		text: {
 			primary: 'var(--colors-text-primary)',

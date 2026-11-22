@@ -88,7 +88,8 @@ const select = getSelectContext();
     box-shadow: 0 0 0 3px var(--colors-info);
   }
   .trigger[aria-invalid="true"] {
-    box-shadow: 0 0 0 3px rgba(var(--colors-error), 0.2);
+    box-shadow: 0 0 0 3px
+      color-mix(in oklch, var(--colors-error) 20%, transparent);
     border-color: var(--colors-error);
   }
   .trigger[data-disabled] {

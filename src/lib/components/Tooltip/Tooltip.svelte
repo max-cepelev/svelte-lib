@@ -108,7 +108,7 @@ $effect(() => () => store.destroy());
     position: relative;
     box-sizing: border-box;
     background-color: var(--colors-background-tooltip);
-    color: var(--colors-background-paper);
+    color: var(--colors-foreground-tooltip);
     border-radius: var(--radius-small);
     padding: var(--spacing-2);
     font-size: var(--fontSize-xs);

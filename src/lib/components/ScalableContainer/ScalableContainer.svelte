@@ -229,7 +229,7 @@ $effect(() => () => store.destroy());
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.7);
-    color: var(--colors-background-paper);
+    color: var(--colors-foreground-overlay);
     padding: var(--spacing-2) var(--spacing-4);
     border-radius: var(--radius-small);
     font-size: var(--fontSize-sm);
