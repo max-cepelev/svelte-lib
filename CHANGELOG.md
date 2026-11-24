@@ -1,5 +1,11 @@
 # @max-ts/svelte
 
+## 2.4.4
+
+### Patch Changes
+
+- Improve RangeInput layout and localization
+
 ## 2.4.3
 
 ### Patch Changes

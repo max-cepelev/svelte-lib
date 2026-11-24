@@ -10,6 +10,8 @@ export interface RangeInputProps
 	min: number;
 	max: number;
 	step?: number;
+	/** Label displayed before the range. */
+	title?: string;
 	unit?: string;
 	width?: number | string;
 	size?: RangeInputSize;

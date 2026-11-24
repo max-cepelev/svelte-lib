@@ -24,9 +24,9 @@ const handleCommit = (value: RangeInputValue) => {
 
 <Story name="Default" asChild>
   <div style="display: flex; flex-direction: column; gap: 16px;">
-    <Label>Цена</Label>
     <RangeInput
       bind:value
+      title="Цена"
       unit="руб."
       min={1000000}
       max={5000000}

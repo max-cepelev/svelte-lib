@@ -1,5 +1,7 @@
 export const formatNumber = (num: number): string => {
-	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+	const [integer, fraction] = num.toString().split('.');
+	const groupedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+	return fraction ? `${groupedInteger},${fraction}` : groupedInteger;
 };
 
 export const parseFormattedNumber = (str: string): number => {

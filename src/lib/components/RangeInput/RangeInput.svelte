@@ -23,6 +23,7 @@ let {
   value = $bindable(),
   width = 180,
   step = 1,
+  title,
   unit,
   size = 'medium',
   class: className,
@@ -186,15 +187,21 @@ onDestroy(() => {
   bind:this={ref}
   style:width={calculatedWidth}
   {...restProps}
+  {title}
   class={['container', className]}
   data-active={isActive || undefined}
   data-size={size}
 >
-  <label for={minInputId}>
-    <Typography data-slot="range-input-text" color="muted" variant="body2">
-      от
+  {#if title}
+    <Typography
+      component="span"
+      data-slot="range-input-text"
+      color="muted"
+      variant="body2"
+    >
+      {title}
     </Typography>
-  </label>
+  {/if}
 
   <input
     id={minInputId}
@@ -202,6 +209,7 @@ onDestroy(() => {
     type="text"
     inputmode="decimal"
     name="min"
+    aria-label={title ? `${title} от` : 'от'}
     bind:value={minInputValue}
     onblur={() => handleBlur('min')}
     onfocus={() => (activeField = 'min')}
@@ -209,11 +217,9 @@ onDestroy(() => {
     onkeydown={handleKeyDown}
   >
 
-  <label for={maxInputId}>
-    <Typography data-slot="range-input-text" color="muted" variant="body2">
-      до
-    </Typography>
-  </label>
+  <span class="separator" data-slot="range-input-text" aria-hidden="true"
+    >–</span
+  >
 
   <input
     id={maxInputId}
@@ -221,6 +227,7 @@ onDestroy(() => {
     type="text"
     inputmode="decimal"
     name="max"
+    aria-label={title ? `${title} до` : 'до'}
     bind:value={maxInputValue}
     onblur={() => handleBlur('max')}
     onfocus={() => (activeField = 'max')}
@@ -228,9 +235,16 @@ onDestroy(() => {
     onkeydown={handleKeyDown}
   >
 
-  <Typography data-slot="range-input-text" color="muted" variant="body2">
-    {unit}
-  </Typography>
+  {#if unit}
+    <Typography
+      component="span"
+      data-slot="range-input-text"
+      color="muted"
+      variant="body2"
+    >
+      {unit}
+    </Typography>
+  {/if}
 
   <Slider
     {min}
@@ -249,8 +263,7 @@ onDestroy(() => {
 @layer max-ts-svelte-components {
   .container {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr auto 1fr auto;
+    display: flex;
     align-items: center;
     column-gap: var(--spacing-1);
     background: var(--colors-background-paper);
@@ -279,13 +292,22 @@ onDestroy(() => {
   }
   .container :global([data-slot="range-input-text"]) {
     font-size: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .separator {
+    flex: none;
+    color: var(--colors-text-hint);
   }
   .input {
+    flex: 1 1 0;
     text-align: center;
-    width: 100%;
     min-width: 24px;
+    padding: 0;
     border: none;
     font-size: inherit;
+    font-variant-numeric: tabular-nums;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
